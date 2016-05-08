@@ -1,0 +1,494 @@
+;;							-*- emacs-lisp -*-
+;;; ~/.wl (setting file for Wanderlust)
+;;;						Last-Modified: 1999-05-12
+;;;
+
+;;; 
+;;; 基本的な設定
+;;; 
+
+;; メッセージデータベースを作るディレクトリ
+(setq elmo-msgdb-directory "~/.elmo")
+;; MH (localdir) のホーム
+(setq elmo-localdir-folder-path "~/Mail")
+;; アイコンを置くディレクトリ (XEmacs のみ)
+;; (XEmacs の package としてインストールされている場合、必要ありません)
+(setq  wl-icon-directory "~/Tools/FreeBSD/share/emacs/etc/wl")
+;; メイル検索での namazu のインデックス
+(setq elmo-search-namazu-default-index-path "~/Devel/namazu/Mail")
+;; メイル検索での namazu のキャラセット
+(setq elmo-nmz-charset 'euc-jp)
+
+
+;; Cc や To に自分のメイルアドレスは省く
+(setq wl-draft-always-delete-myself t)
+;; 終了時に確認する
+(setq wl-interactive-exit t)	     
+;; メール送信時には確認する
+(setq wl-interactive-send t)
+;; MUA 側では message-id を付けない
+(setq wl-insert-message-id nil)
+;; imput により非同期で送信する
+;; (utils/im-wl.el をインストールしておく必要があります。
+;;  また，~/.im/Config の設定(Smtpservers)を忘れないことと，
+;;  wl-draft-enable-queuing の機能が働かなくなることに注意。)
+;(autoload 'wl-draft-send-with-imput-async "im-wl")
+;(setq wl-draft-send-func 'wl-draft-send-with-imput-async)
+
+
+
+;;;
+;;; サマリモード設定
+;;;
+
+;; サマリ移動後の先頭メッセージを表示
+(setq wl-auto-select-first nil)
+;; 未読メッセージがある場合の次のフォルダへの移動
+(setq wl-auto-select-next nil)
+;; wl-auto-select-next が t のとき，移動先でも未読がないと次々に移動していく
+(setq wl-summary-next-no-unread t)
+;; 未読メッセージを優先的に読む
+(setq wl-summary-move-order 'unread)
+;; サマリに移動したときにフォルダバッファの右にサマリのバッファを表示する
+(setq wl-stay-folder-window nil)
+;; ステッキサマリにするフォルダの正規表現リスト
+(setq wl-summary-always-sticky-folder-list '(".*"))
+
+;;;
+;;; フォルダモード設定
+;;;
+
+;; フォルダ種別ごとのキャッシュの設定(localdir, localnews, maildir はキャッシュしない)
+(setq elmo-archive-use-cache nil)
+(setq elmo-nntp-use-cache t)
+(setq elmo-imap4-use-cache t)
+(setq elmo-pop3-use-cache t)
+;; wl-summary-goto-folder の時に選択するデフォルトのフォルダ
+(setq wl-default-folder "+inbox")
+;; フォルダ名補完時に使用するデフォルトのスペック
+(setq wl-default-spec "+")	     
+;; IMAP フォルダなどでのオフライン(unplugged)操作を有効にする
+(setq elmo-enable-disconnected-operation t)
+;; unplugged 状態で送信すると，キュー(`wl-queue-folder')に格納する
+(setq wl-draft-enable-queuing t)
+;; unplugged から plugged に変えると，キューにあるメッセージを送信する
+;; "+queue" フォルダをあらかじめ作っておきましょう
+(setq wl-auto-flush-queue t)
+;; 送信ファイルを保存
+(setq wl-fcc "+outbox")
+;; 起動時に新着メールをチェックしない
+(setq wl-auto-check-folder-name 'none)
+;; スレッドは閉じた状態にする
+(setq wl-thread-insert-opened nil)
+;; グループをcheckした後に未読があるフォルダのグループを自動的に開く
+(add-hook 'wl-folder-check-entity-hook
+	  '(lambda ()
+	     (wl-folder-open-unread-folder entity)
+	     ))
+;; サマリ行表示は無制限
+(setq wl-summary-width nil)
+
+
+;;;
+;;; キー設定
+;;;
+
+;; サマリモード
+(add-hook 'wl-summary-mode-hook
+		  '(lambda ()
+			 (local-set-key "j" 'wl-summary-next-line-content)
+			 (local-set-key "k" 'wl-summary-prev-line-content)
+			 (local-set-key " " 'wl-summary-next-page)
+			 (local-set-key "b" 'wl-summary-prev-page)
+			 (local-set-key "\J" 'wl-summary-jump-to-current-message)			 
+			 (local-set-key "\;" 'wl-summary-jump-to-current-message)
+			 (local-set-key "\:" 'delete-other-windows)			 
+			 ;(local-set-key "w" 'wl-draft)			 
+			 (local-set-key "l" (lambda () 
+								  (interactive)
+								  (wl-summary-toggle-disp-folder)
+								  (other-window -1)))			 			 
+			 (local-set-key "\C-p" 'previous-line)
+			 (local-set-key "\C-n" 'next-line)
+			 (local-set-key "\," 'next-line)
+			 (local-set-key "\." 'previous-line)))
+;; エディットモード
+(add-hook 'mime-edit-mode-hook
+    '(lambda ()
+	   (local-set-key "\C-c\C-w" 'insert-signature-eref)))
+;; フォルダモード
+(add-hook 'wl-folder-mode-hook
+		  '(lambda ()
+			 (local-set-key "\:" 'delete-other-windows)
+			 (local-set-key "\;" 'delete-window)))
+
+
+;; imgetを使ってspoolよりmailをinc 
+;; key-bind ``M-i''
+(defun TT:wl-inc-mail ()
+  (interactive)
+  (message "Incing ... ")
+  (call-process "imget" nil nil nil)
+  (if (and (boundp 'wl-summary-buffer-folder-name)
+		   (eq wl-summary-buffer-folder-name wl-default-folder))
+	  (wl-summary-sync-force-update)
+	(wl-summary-goto-folder-subr wl-default-folder 'force-update nil nil)))
+(add-hook 'wl-summary-mode-hook
+		  (function
+		   (lambda ()
+			 (define-key wl-summary-mode-map "\M-i" 'TT:wl-inc-mail))))
+
+
+
+
+;;;
+;;; 自動リフィアイル
+;;;
+
+;; 自動リファイルしない永続マーク設定(nil なら全てのメッセージが対象)
+(setq wl-summary-auto-refile-skip-marks nil)
+
+;; 自動リファイルに必要なフィールドの設定
+(setq elmo-msgdb-extra-fields
+	  '("newsgroups"
+		"Resent-From"
+		"x-ml-name"
+		"X-Mailing-List"
+		"To"
+		"From"
+		"mailing-list"
+		"In-Reply-To"
+		"Subject"
+		"Reply-To"))
+
+
+
+
+;;;
+;;; X-Face(要 x-face (and (x-face-mule or x-face-e21)))
+;;;
+(when window-system
+  (cond 
+   ;; for XEmacs
+   (wl-on-xemacs
+	(autoload 'x-face-xmas-mew-display-x-face "x-face" nil t)
+	(setq wl-highlight-x-face-function 'x-face-xmas-mew-display-x-face))
+   ;; setting of x-face-mule for emacs-20
+   ((string-match "^20" emacs-version)
+	(setq wl-highlight-x-face-function
+		  (function
+		   (lambda (beg end)
+			 (x-face-mule-x-face-decode-message-header beg end))))
+	(setq x-face-mule-highlight-x-face-style 'xmas)
+	(require 'x-face-mule))
+   ;; setting of x-face-e21 for emacs-20
+   ((string-match "^21" emacs-version)
+	(setq wl-highlight-x-face-function 'x-face-decode-message-header))))
+
+
+;;;
+;;; サマリ表示変更パッチ
+;;;
+
+;; 差出人の代わりに宛先を表示するフォルダ
+(setq my-wl-summary-showto-folder-regexp "\\(^\\+outbox\\|^%#mh/outbox\\)")
+;; Newsgroupsフィールドをoverview情報に入れる設定(ただし，localフォルダのみ)
+
+;; サマリの表示関数を変更する
+(setq wl-summary-from-function 'my-wl-summary-from-function-petname)
+(defun my-wl-summary-from-function-petname (from)
+  (let (retval tos ng)
+    (unless
+	(and (eq major-mode 'wl-summary-mode)
+	     (string-match my-wl-summary-showto-folder-regexp
+			   wl-summary-buffer-folder-name)
+	     (member (wl-address-header-extract-address from)
+		     my-wl-user-mail-address-list)
+	     (cond
+	      ((setq tos (elmo-msgdb-overview-entity-get-to entity))
+	       (setq retval
+		     (concat "To:"
+			     (mapconcat
+			      (function
+			       (lambda (to)
+				 (if wl-use-petname
+				     (wl-address-get-petname to)
+				   (car (std11-extract-address-components to)))))
+			      (wl-parse-addresses tos)
+			      ","))))
+	      ((setq ng (elmo-msgdb-overview-entity-get-extra-field
+			 entity "newsgroups"))
+	       (setq retval (concat "Ng:" ng)))))
+      (if wl-use-petname
+	  (setq retval (wl-address-get-petname from))
+	(setq retval from)))
+    retval))
+;; 自分の送ったメールは To: hoge と表示する
+(defun TT:wl-summary-from-funcion-petname (from)
+  (let ((to (elmo-msgdb-overview-entity-get-to entity))
+		(get-petname-func))
+	(if (and (string= (wl-address-header-extract-address from)
+					  (wl-address-header-extract-address wl-from))
+			 to)
+		(progn
+		  (if wl-use-petname
+			  (setq get-petname-func 'wl-address-get-petname)
+			(setq get-petname-func
+				  '(lambda (fromstr)
+					 (or (car (wl-chop-full-name fromstr))
+						 (nth 1 (wl-chop-full-name fromstr))))))
+		  (concat "To:"
+				  (mapconcat
+				   (function (lambda (petname)
+							   (funcall get-petname-func petname)))
+				   (wl-parse-addresses to)
+				   ",")))
+	  (if wl-use-petname
+		  (wl-address-get-petname from)
+		from))))
+  (setq wl-summary-from-funcion 'TT:wl-summary-from-funcion-petname)
+;; 自分が差出人である mail への reply 時は, To: と Cc: を保存する。
+; (defadvice wl-draft
+;   (before TT:wl-not-include-myself-in-To-field activate)
+;   (if (and to
+; 		   (null (std11-field-body "Reply-To")))
+;       (let ((to-list (split-string to ",\n\t")))
+; 		(when (member (wl-address-header-extract-address wl-from) to-list)
+; 		  (setq to (std11-field-body "To")
+; 				cc (std11-field-body "Cc"))))))
+
+
+
+
+
+;;;
+;;; テンプレートの設定
+;;;
+
+
+;; マッチンク設定(non nil なら最初にマッチしたもののみ実行)
+(setq wl-draft-config-matchone nil)
+;; Mail-Followup-To と Mail-Reply-To を自動的に付ける
+(setq wl-insert-mail-followup-to nil)
+(setq wl-insert-mail-reply-to nil)
+
+
+;; 自動リファイルルール wl-refile-rule-alist の，To フィールドをもとに
+;; FCC のフィールドの値を設定する(デフォルトは +inbox)
+(setq wl-draft-config-for-fcc-alist nil)
+(let ((ralist wl-refile-rule-alist)
+	  (fcc-rule-alist  nil))
+  (while ralist
+	(if (string-match (caar ralist) "To")
+		(setq fcc-rule-alist (append (cdar ralist) fcc-rule-alist)))
+	(setq ralist (cdr ralist)))
+  (while fcc-rule-alist
+	(if (not (string-match (caar fcc-rule-alist) ".*"))
+		(setq wl-draft-config-for-fcc-alist
+			  (cons (list (format "^To: .*%s" (caar fcc-rule-alist))
+						  (cons "FCC" (cdar fcc-rule-alist))
+						  '(template . "default"))
+					wl-draft-config-for-fcc-alist)))
+	(setq fcc-rule-alist	(cdr fcc-rule-alist)))
+  (setq wl-draft-config-for-fcc-alist
+		(cons '(t
+				("FCC" . "+inbox"))
+				wl-draft-config-for-fcc-alist)))
+
+
+;; FCC に +outbox 追加
+;; 2003/06/12 User-Agent に FCC: +outbox が追加されるのでコメントアウトg
+(setq wl-generate-mailer-string-function
+	   (lambda ()
+		 (concat
+		  (wl-generate-user-agent-string)		; User Agent
+		  "\n"									; 改行
+		  (concat "Fcc: "						; Fcc で outbox にコピー
+				  (format "%s" "+outbox")))))
+
+
+	;(setq wl-template-alist
+	;	   '(("default"
+	;		  ("From" . wl-from)
+	;		  ("Organization" . "~/.wl sample")
+	;		  (body . "  ○○です。\n"))		;; 本文
+	;		 ("report"
+	;		  ("To" . "boss@company.jp")
+	;		  ("Subject" . "報告")
+	;		  (top . "今週の報告です。\n")		;; 本文先頭への挿入
+	;		  ;;	 (file-bottom . "~/work/report.txt")	;; 本文末尾へファイルの挿入
+	;		  )
+	;		 ))
+
+
+
+	;; メールの返信時に宛先を付ける方針の設定
+
+	;; 下記変数の alist の要素
+	;; ('返信元に存在するフィールド' .
+	;;   ('Toフィールド' 'Ccフィールド' 'Newsgroupsフィールド'))
+	
+	;; "a" (without-argument)では Reply-To や From などで指定された唯一人
+	;; または唯一つの投稿先に返信する。また，X-ML-Name と Reply-To がつい
+	;; ているなら Reply-To 宛にする。
+	; (setq wl-draft-reply-without-argument-list
+	;       '((("X-ML-Name" "Reply-To") . (("Reply-To") nil nil))
+	; 	("X-ML-Name" . (("To" "Cc") nil nil))
+	; 	("Followup-To" . (nil nil ("Followup-To")))
+	; 	("Newsgroups" . (nil nil ("Newsgroups")))
+	; 	("Reply-To" . (("Reply-To") nil nil))
+	; 	("Mail-Reply-To" . (("Mail-Reply-To") nil nil))
+	; 	("From" . (("From") nil nil))))
+	; 
+	;; "C-u a" (with-argument)であれば関係する全ての人・投稿先に返信する。
+	; (setq wl-draft-reply-with-argument-list
+	;       '(("Followup-To" . (("From") nil ("Followup-To")))
+	; 	("Newsgroups" . (("From") nil ("Newsgroups")))
+	; 	("Mail-Followup-To" . (("Mail-Followup-To") nil ("Newsgroups")))
+	; 	("From" . (("From") ("To" "Cc") ("Newsgroups")))))
+
+
+;;; 個人的な設定
+(load "$HOME/.emacs.d/wanderlust/init-private")
+
+
+
+
+;;;
+;;; highlightの設定 (明るい背景色の場合)
+;;;
+
+;; 引用レベルで色分けしない
+;(setq wl-highlight-citation-face-list
+;      '(wl-highlight-message-cited-text-1))
+
+;; 引用文の highlight の設定
+(setq wl-highlight-citation-prefix-regexp "^\\(\\([^ 
+<>\"]\\)* ?> ?\\)+\\([|:}]\\|# \\)?\\|^[#;|:}>]+ ?")
+	;(setq wl-highlight-citation-prefix-regexp "^[>|:} ]*[>|:}]\\([^ 
+	;>]*>\\)?\\|^\\([^ <
+	;>]*[>|}] ?\\)+")
+
+
+;; グループを未読数により色分けしない。開閉状態により色分けする。
+;(setq wl-highlight-group-folder-by-numbers nil)
+
+;; ヘッダ
+(setq wl-highlight-message-header-alist
+      '(("Subject[ \t]*:" . wl-highlight-message-subject-header-contents)
+	("From[ \t]*:" . wl-highlight-message-from-header-contents)
+	("\\(.*To\\|Cc\\|Newsgroups\\)[ \t]*:" . wl-highlight-message-important-header-contents)
+	("\\(User-Agent\\|X-Mailer\\|X-Newsreader\\)[ \t]*:" .
+	 wl-highlight-message-unimportant-header-contents)
+	))
+
+(defun my-wl-set-face (face spec)
+  (make-face face)
+  (cond ((fboundp 'face-spec-set)
+		 (face-spec-set face spec))
+		(t
+		 (wl-declare-face face spec))))
+
+
+
+;;;
+;;; 特殊な設定
+;;;
+
+;(setq elmo-msgdb-extra-fields
+;      (append (list
+;			   )
+;			  elmo-msgdb-extra-fields))
+
+
+;; jka-compr を利用して ~/elmo/SPEC/ 以下のデータベースを圧縮する
+;(setq elmo-msgdb-overview-filename "overview.gz")
+;(setq elmo-msgdb-number-filename "number.gz")
+;(setq wl-summary-cache-file ".wl-summary-cache.gz")
+;(setq wl-thread-top-file ".wl-thread-top.gz")
+
+
+
+; ;; メッセージヘッダ
+; (my-wl-set-face 'wl-highlight-message-subject-header-contents
+; 		'((t (:foreground "blue" :bold t))))
+; (my-wl-set-face 'wl-highlight-message-from-header-contents
+; 		'((t (:foreground "red" :bold t))))
+; (my-wl-set-face 'wl-highlight-message-important-header-contents
+; 		'((t (:foreground "purple" :bold t))))
+; (my-wl-set-face 'wl-highlight-message-unimportant-header-contents
+; 		'((t (:foreground "RoyalBlue" :bold t))))
+; (my-wl-set-face 'wl-highlight-message-headers
+; 		'((t (:foreground "magenta3" :bold t))))
+; (my-wl-set-face 'wl-highlight-message-header-contents
+; 		'((t (:foreground "brown" :bold nil))))
+; (my-wl-set-face 'wl-highlight-message-signature
+; 		'((t (:foreground "blue"))))
+; ;; 引用
+; (my-wl-set-face 'wl-highlight-message-citation-header
+; 		'((t (:foreground "DarkGreen"))))
+; (my-wl-set-face 'wl-highlight-message-cited-text-1
+; 		'((t (:foreground "forest green"))))
+; (my-wl-set-face 'wl-highlight-message-cited-text-2
+; 		'((t (:foreground "SaddleBrown"))))
+; (my-wl-set-face 'wl-highlight-message-cited-text-3
+; 		'((t (:foreground "orchid3"))))
+; (my-wl-set-face 'wl-highlight-message-cited-text-4
+; 		'((t (:foreground "purple1"))))
+; (my-wl-set-face 'wl-highlight-message-cited-text-5
+; 		'((t (:foreground "MediumPurple1"))))
+; (my-wl-set-face 'wl-highlight-message-cited-text-6
+; 		'((t (:foreground "PaleVioletRed"))))
+; (my-wl-set-face 'wl-highlight-message-cited-text-7
+; 		'((t (:foreground "LightPink"))))
+; (my-wl-set-face 'wl-highlight-message-cited-text-8
+; 		'((t (:foreground "salmon"))))
+; (my-wl-set-face 'wl-highlight-message-cited-text-9
+; 		'((t (:foreground "SandyBrown"))))
+; (my-wl-set-face 'wl-highlight-message-cited-text-10
+; 		'((t (:foreground "wheat"))))
+; ;; サマリ
+; (my-wl-set-face 'wl-highlight-summary-important-face
+; 		'((t (:foreground "purple"))))
+; (my-wl-set-face 'wl-highlight-summary-new-face
+; 		'((t (:foreground "tomato"))))
+; (my-wl-set-face 'wl-highlight-summary-unread-face
+; 		'((t (:foreground "RoyalBlue"))))
+; (my-wl-set-face 'wl-highlight-summary-deleted-face
+; 		'((t (:foreground "gray"))))
+; (my-wl-set-face 'wl-highlight-summary-refiled-face
+; 		'((t (:foreground "blue"))))
+; (my-wl-set-face 'wl-highlight-summary-temp-face
+; 		'((t (:foreground "salmon"))))
+; (my-wl-set-face 'wl-highlight-summary-displaying-face
+; 		'((t (:bold t :underline t))))
+; ;; (スレッド)
+; (my-wl-set-face 'wl-highlight-summary-thread-top-face
+; 		'((t (:foreground "green4"))))
+; (my-wl-set-face 'wl-highlight-summary-normal-face
+; 		'((t (:foreground "SeaGreen"))))
+; ;; フォルダ
+; (my-wl-set-face 'wl-highlight-folder-unknown-face
+; 		'((t (:foreground "RoyalBlue"))))
+; (my-wl-set-face 'wl-highlight-folder-killed-face
+; 		'((t (:foreground "gray50"))))
+; (my-wl-set-face 'wl-highlight-folder-unread-face
+; 		'((t (:foreground "brown"))))
+; (my-wl-set-face 'wl-highlight-folder-zero-face
+; 		'((t (:foreground "blue4"))))
+; (my-wl-set-face 'wl-highlight-folder-few-face
+; 		'((t (:foreground "tomato"))))
+; (my-wl-set-face 'wl-highlight-folder-many-face
+; 		'((t (:foreground "HotPink1"))))
+; ;; グループ
+; (my-wl-set-face 'wl-highlight-folder-opened-face
+; 		'((t (:foreground "forest green"))))
+; (my-wl-set-face 'wl-highlight-folder-closed-face
+; 		'((t (:foreground "DarkOliveGreen4"))))
+; ;; スタートアップデモ
+; (my-wl-set-face 'wl-highlight-demo-face
+; 		'((t (:foreground "blue2"))))
+
+;;;
+;;; end of file
+;;;

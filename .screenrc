@@ -1,0 +1,65 @@
+#defkanji euc
+escape ^z^z
+escape ^zz
+pastefont on
+
+###################################################################
+#  PJE-0.1 ユーザ設定ファイルサンプル for screen 3.07.02
+#                       MATSUMOTO Shoji (shom@i.h.kyoto-u.ac.jp)
+#                            Time-stamp: <97/12/04 05:59:17 shom>
+
+####
+# kterm/rxvt 上で screen (ver. 3.07.02) を動かして、
+# EUC および色を扱うためのサンプルです
+# 注意：screen は PJE には含まれていません。
+#       ベースディストリビューションからインストールするか、
+#       個別にコンパイル・インストールしてください
+
+#escape ^z^z
+vbell off
+autodetach on
+
+
+hardstatus string "screen(%h): %t %n (%W)"
+msgminwait 0
+
+startup_message off
+
+# スクロールバッファは最大100000行にする
+defscrollback 100000
+
+
+# hardstatus をタイトルバー/アイコンに表示
+termcapinfo xterm|kterm|rxvt 'hs:ts=\E]0;:fs=\007:ds=\E]0;screen\007'
+
+termcapinfo  xterm* LP:hs
+termcapinfo  kterm* LP:G0:hs
+
+
+########################################## UTF-8 のための設定
+defencoding     utf8
+defkanji        utf8
+encoding        utf-8 utf-8
+
+########################################## EUC のための設定
+#defcharset B^BIB01
+#defkanji euc
+#termcap kterm* eA=\E(B:
+#terminfo kterm* enacs=\E(B:
+#termcapinfo kterm* KJ=euc
+
+
+########################################## JIS のための設定
+#defkanji jis
+#termcap  kterm* KJ=jis
+#terminfo kterm* KJ=jis
+
+########################################## 色を使うための設定 (ansi-pc-color)
+termcap  xterm 'AF=\E[3%dm:AB=\E[4%dm'
+terminfo xterm 'AF=\E[3%p1%dm:AB=\E[4%p1%dm'
+termcap  kterm 'AF=\E[3%dm:AB=\E[4%dm'
+terminfo kterm 'AF=\E[3%p1%dm:AB=\E[4%p1%dm' 
+
+
+### 隠れているwindowで動きがあったときのメッセージ
+activity "Activity in window %."

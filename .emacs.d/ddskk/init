@@ -1,0 +1,100 @@
+;;; skk-lookup を使用する
+;(autoload 'skk-lookup-search "skk-lookup" nil t)
+;(setq skk-search-prog-list
+;	  '((skk-search-jisyo-file skk-jisyo 0 t)
+;		(skk-search-server skk-aux-large-jisyo 10000)
+;		(skk-lookup-search)))
+
+
+
+(setq skk-large-jisyo (substitute-in-file-name "$HOME/.emacs.d/ddskk/SKK-JISYO.L"))
+
+;; ローマ字のルール
+;; 最初ふたつは SKK のデフォルトで組込まれるもの
+;; それ以外は自分で追加したものです.
+;; 5行目以降は, もともと skk-input-vector にいれてあったのですが,
+;; SKK 10.46 で廃止になったのにともない, ここに移しました.
+
+(setq skk-rom-kana-rule-list       
+	  '(("nn" nil ("ン" . "ん"))
+		("n'" nil ("ン" . "ん"))
+										;		("di" nil ("ディ" . "でぃ"))
+										;		("dji" nil ("ヂ" . "ぢ"))
+										;		("du" nil ("デゥ" . "でぅ"))
+										;		("dju" nil ("ヅ" .  "づ"))
+ 		("~"  nil ("〜" . "〜"))
+		("z<" nil ("《" . "《"))
+		("z>" nil ("》" . "》"))
+		("."  nil ("．" . "．"))
+        (","  nil ("，" . "，"))
+ 		("x." nil ("."  . "." ))
+ 		("x," nil (","  . "," ))
+        (":"  nil (":"  . ":" ))
+		(";"  nil (";"  . ";" ))
+		("!"  nil ("！"  . "！"))
+		("?"  nil ("？"  . "？"))
+ 		("~"  nil ("〜" . "〜"))
+ 		("@"  nil ("＠" . "＠"))
+ 		("$"  nil ("$"  . "$"))
+ 		("\\"  nil ("\\"  . "\\"))))
+
+
+
+;; メッセージおよびエラー出力を日本語で行う
+(setq skk-japanese-message-and-error t)
+;; 変換に関するログをとらない
+(setq skk-keep-record nil)
+
+;; 日付表示("@")に関する設定
+;; 西暦表示
+(setq skk-date-ad t)
+;; 数字には1バイト文字を利用
+(setq skk-number-style nil)
+
+;;; 直前の変換をやり直す
+(define-key skk-j-mode-map "\M-/" 'skk-undo-kakutei)
+
+(load "skk-isearch")
+
+(add-hook 'isearch-mode-hook
+		  (function (lambda ()
+					  (and (boundp 'skk-mode) skk-mode
+						   (skk-isearch-mode-setup) ))))
+(add-hook 'isearch-mode-end-hook
+		  (function (lambda ()
+					  (and (boundp 'skk-mode) skk-mode
+						   (skk-isearch-mode-cleanup)
+						   (skk-set-cursor-color-properly) ))))
+
+              
+(add-hook 'isearch-mode-hook 'skk-isearch-mode-setup)
+(add-hook 'isearch-mode-end-hook 'skk-isearch-mode-cleanup)
+
+
+
+(setq skk-tut-file
+ 	  (substitute-in-file-name "$EMACS_SITE_LISP/skk/SKK.tut"))
+	   
+
+
+(if window-system
+	(progn
+	  (setq skk-hiragana-cursor-color "pink")
+	  (setq skk-katakana-cursor-color "LightGreen")
+	  (setq skk-zenkaku-cursor-color "gold")
+	  (setq skk-latin-cursor-color "LightBlue1")))
+
+
+;;; 日本語句読点を文の終了を表わす syntax に追加する(for dabbrev-expand)
+(modify-syntax-entry ?． ".")
+(modify-syntax-entry ?。 ".")
+(modify-syntax-entry ?， ".")
+(modify-syntax-entry ?、 ".")
+(modify-syntax-entry ?！ ".")
+(modify-syntax-entry ?？ ".")
+(modify-syntax-entry ?「 ".")
+(modify-syntax-entry ?」 ".")
+
+
+;;; デフォルトの検索は英数(for migemo)
+(setq skk-isearch-start-mode 'latin)
