@@ -7,6 +7,8 @@
 *.elc
 *-private
 *-private.*
+*-private[1-9]
+*-private[1-9].el
 .emacs.d/.session
 .emacs.d/ac-comphist.dat
 .emacs.d/anything-c-adaptive-history
