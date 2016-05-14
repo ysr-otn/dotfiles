@@ -258,7 +258,8 @@
 ; 				cc (std11-field-body "Cc"))))))
 
 
-
+;;; 個人的な設定
+(load "$HOME/.emacs.d/wanderlust/init-private")
 
 
 ;;;
@@ -348,8 +349,8 @@
 	; 	("From" . (("From") ("To" "Cc") ("Newsgroups")))))
 
 
-;;; 個人的な設定
-(load "$HOME/.emacs.d/wanderlust/init-private")
+;;; 個人的な設定(2)
+(load "$HOME/.emacs.d/wanderlust/init-private1")
 
 
 

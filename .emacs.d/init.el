@@ -296,6 +296,8 @@
 ;				'(define-key skk-isearch-mode-map sticky-key sticky-map))
 
 
+;;; ediffを1ウィンドウで実行
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 ;;; load init file for each version emacs
 (load (concat (substitute-in-file-name "$HOME/.emacs.d/init-")

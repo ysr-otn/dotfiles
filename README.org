@@ -13,4 +13,6 @@ Unix 系の各種設定ファイル(.*)を GitHub で管理する
     * .emacs .emacs.d .screenrc .vimrc .zshrc を追加
   * <2016-05-14 Sat 23:31>
     * .gitignore に *-private[1-9], *-private[1-9].el を追加
-
+  * <2016-05-14 Sat 23:36>
+    * ediff の設定を追加
+    * wanderlust の private 設定を修正
