@@ -7,12 +7,15 @@ Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 
 * 2. 更新履歴
-  * <2016-05-08 Sun 12:51> 
-    * .gitignore を追加
-  * <2016-05-08 Sun 13:05>
-    * .emacs .emacs.d .screenrc .vimrc .zshrc を追加
-  * <2016-05-14 Sat 23:31>
-    * .gitignore に *-private[1-9], *-private[1-9].el を追加
+  * <2016-06-11 Sat 22:26>
+    * skk の補完の設定を追加
+    * README.org の更新履歴を新しい日付を上に変更
   * <2016-05-14 Sat 23:36>
     * ediff の設定を追加
     * wanderlust の private 設定を修正
+  * <2016-05-14 Sat 23:31>
+    * .gitignore に *-private[1-9], *-private[1-9].el を追加
+  * <2016-05-08 Sun 13:05>
+    * .emacs .emacs.d .screenrc .vimrc .zshrc を追加
+  * <2016-05-08 Sun 12:51> 
+    * .gitignore を追加

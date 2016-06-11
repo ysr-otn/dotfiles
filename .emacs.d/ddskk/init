@@ -98,3 +98,9 @@
 
 ;;; デフォルトの検索は英数(for migemo)
 (setq skk-isearch-start-mode 'latin)
+
+;;; インライン候補表示(non nil の代りに 'vertical を設定すると縦方向に候補を表示する)
+(setq skk-show-inline t)
+
+;;; 動的補完の複数表示 
+(setq skk-dcomp-multiple-activate t)
