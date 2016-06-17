@@ -30,14 +30,31 @@ PROMPT='%m%S[%~]%s(%h)%# '
 WORDCHARS='*?[]~'
 
 ####### Set Host #######
-export HOSTTYPE=i386
+export HOSTNAME=`hostname`
+
+if [ $HOSTNAME = imglinux110 ]; then
+	export HOSTTYPE=linux
+else
+	export HOSTTYPE=i386
+fi
+
 
 ####### Set lang #######
-export LANG=ja_JP.UTF-8
+if [ $HOSTTYPE = linux ]; then
+	export LANG=ja_JP.eucJP
+else
+	export LANG=ja_JP.UTF-8
+fi
 	
 ########## PATH ##########
 export PATH=$HOME/Tools/$HOSTTYPE/bin:$HOME/Tools/share/bin:$PATH
+if [ $HOSTTYPE = linux ]; then
+	PATH=${HOME}/pkg/bin:${HOME}/pkg/sbin:${PATH}
+fi
 export MANPATH=$MANPATH
+
+export GITHUG_DOTFILE_DIR=$HOME/Development/github/ysr-otn/dotfiles
+
 
 ####### Emacs Environment ########
 export EMACS_DIR=$HOME/.inits/share/emacs
@@ -60,6 +77,7 @@ alias reset='source ~/.zshrc'
 alias l='echo \!* > /dev/null'
 #alias less='jless'	
 alias -g L='| less'	
+alias screen='screen -h 65536'
 alias Showdotfiles='defaults write com.apple.finder AppleShowAllFiles -boolean TRUE && killall Finder'
 alias Hidedotfiles='defaults write com.apple.finder AppleShowAllFiles -boolean FALSE && killall Finder'
 # 画像ビューア qlmanage の ql(と古の X11 画像ヒューア xv)のエイリアスを作成
@@ -80,3 +98,7 @@ alias xv='qlmanage -p "$@" >& /dev/null'
 # zle -C dabbrev-complete menu-complete dabbrev-complete
 # bindkey '^o' dabbrev-complete
 # bindkey '^o^_' reverse-menu-complete
+
+
+######### Private setting #########
+source $GITHUG_DOTFILE_DIR/.zshrc-private

@@ -22,3 +22,5 @@
 .emacs.d/scratch
 .emacs.d/session
 .emacs.d/url
+.emacs.d/projectile*
+.emacs.d/undohist

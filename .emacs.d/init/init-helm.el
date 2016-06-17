@@ -43,12 +43,39 @@
                                helm-source-emacs-commands
                                )))
 
-(define-key global-map (kbd "C-;") 'helm-mini)
-; session.el との組合せで 'helm-show-kill-ring のエラーが発生するので無効化
-;(define-key global-map (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+
+;; set helm-command-prefix-key to "C-c h"
+(progn
+  (require 'helm-config)
+  (global-unset-key (kbd "C-c h"))
+  (custom-set-variables
+   '(helm-command-prefix-key "C-c h")))
+
+;; key settings
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "M-X" ) 'execute-extended-command)
+; emacs-24.5 以下だと session.el との組合せで 'helm-show-kill-ring のエラーが発生するので無効化
+(if (>= (string-to-number emacs-version) 24.5)
+	(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+  )
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-x C-r") 'helm-for-files)
+(global-set-key (kbd "C-x C-r") 'helm-recentf)
+(global-set-key (kbd "C-x b") 'helm-buffers-list)
+(define-key helm-command-map (kbd "m") 'helm-mini)
+(define-key helm-command-map (kbd "d") 'helm-descbinds)
+(define-key helm-command-map (kbd "i") 'helm-imenu)
+(define-key helm-command-map (kbd "g") 'helm-ag)
+(define-key helm-command-map (kbd "o") 'helm-occur)
+(define-key helm-command-map (kbd "y") 'yas/insert-snippet)
+(define-key helm-command-map (kbd "M-/") 'helm-dabbrev)
+
+(define-key helm-map (kbd "C-h") 'delete-backward-char)
+(eval-after-load "helm-files"
+  '(progn
+     (define-key helm-find-files-map (kbd "C-h") 'helm-ff-backspace)
+     (define-key helm-find-files-map (kbd "C-i") 'helm-execute-persistent-action)
+	 (define-key helm-find-files-map (kbd "C-o") 'dabbrev-expand)
+	 ))
 
 
 ; ;; customize

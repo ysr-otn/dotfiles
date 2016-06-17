@@ -4,14 +4,31 @@
 
   (setq migemo-user-dictionary nil)
   (setq migemo-regex-dictionary nil)
-  (setq migemo-coding-system 'utf-8-unix)
   (load-library "migemo")
   (migemo-init)
+
+  ;;; 環境毎の設定
+  (cond ((string= (getenv "HOSTTYPE") "linux")
+		 (progn
+		   (setq migemo-command (substitute-in-file-name "$HOME/pkg/bin/cmigemo"))
+		   (setq migemo-dictionary (substitute-in-file-name "$HOME/pkg/share/migemo/euc-jp/migemo-dict"))
+		   (setq migemo-coding-system 'euc-jp-unix)
+		   ))
+		(t
+		 (progn
+		   (setq migemo-command "/usr/local/bin/cmigemo")
+		   (setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict")
+		   (setq migemo-coding-system 'utf-8-unix)
+		   )))
+
+  ;;; migemo を C-q で無効化
+  (define-key isearch-mode-map "\C-q" 'migemo-toggle-isearch-enable)
+
+  ;;; isearch-mode が C-y が 'migemo-isearch-yank-line に設定されるので元に戻す
+  (defun my-migemo-register-isearch-keybinding ()
+	(define-key isearch-mode-map "\C-d" 'migemo-isearch-yank-char)
+	(define-key isearch-mode-map "\C-w" 'migemo-isearch-yank-word)
+	(define-key isearch-mode-map "\C-y" 'isearch-yank-pop)
+	(define-key isearch-mode-map "\M-m" 'migemo-isearch-toggle-migemo))
+  (setq migemo-register-isearch-keybinding-function 'my-migemo-register-isearch-keybinding)
 )
-
-(setq migemo-command "/usr/local/bin/cmigemo")
-
-(setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict")
-
-;;; migemo を C-q で無効化
-(define-key isearch-mode-map "\C-q" 'migemo-toggle-isearch-enable)

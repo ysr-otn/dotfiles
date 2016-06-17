@@ -12,5 +12,6 @@
     (define-key minibuffer-local-must-match-filename-map
                 " " 'minibuffer-complete-word)) 
 
-;;; ツールバーを消す
-(tool-bar-mode 0)
+;;; ツールバーを消す(ウィンドウシステムの時のみ)
+(if window-system
+	(tool-bar-mode 0))

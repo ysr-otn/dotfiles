@@ -41,8 +41,8 @@
 (line-number-mode t)
 ;;; 列番号を表示
 (column-number-mode t)
-;;; 縦分割されたウィンドウでも行末を折り返す．
-(setq truncate-partial-width-windows nil)
+;;; 縦分割されたウィンドウは 200 より狭いウインドウなら行末を折り返えさない
+(setq truncate-partial-width-windows 200)
 ;;; yes/no の代りに y/n で応える．
 (fset 'yes-or-no-p 'y-or-n-p)
 ;; 長い行の折り返し表示をする．
@@ -50,7 +50,7 @@
 
 
 ;;;;;;;;;;;;;;;;;;;; キー設定 ;;;;;;;;;;;;;;;;;;;;;;;;
-;;; 基本作
+;;; 基本操作
 (global-set-key "\C-x\C-c" nil) ; 誤って終了しないように
 (global-set-key "\C-x\C-c\C-c" 'save-buffers-kill-emacs)
 ;(global-set-key "\C-h" 'backward-delete-char)
@@ -93,6 +93,8 @@
 (global-set-key "\C-c\C-s" 'shell)
 ;;; ispell
 (global-set-key "\C-c\C-i" 'ispell-complete-word)
+;;; isearch-mode で M-y を isearch-yank-pop に設定
+(define-key isearch-mode-map "\M-y" 'isearch-yank-pop)
 
 
 ;;; view-mode
@@ -124,6 +126,7 @@
 	(local-set-key "u" 'dired-up-directory)
 	(local-set-key "U" 'dired-unmark)
 	(local-set-key "j" 'dired-view-file)
+	(local-set-key "r" 'wdired-change-to-wdired-mode)
 	(define-key dired-mode-map "i" 'dired-view-file)))
 
 ;;; help-mode
@@ -296,6 +299,18 @@
 ;				'(define-key skk-isearch-mode-map sticky-key sticky-map))
 
 
+;;; 時計表示
+;; 時計更新タイミング 1 秒
+(setq display-time-interval 1)
+;; 時計フォーマット変更
+(setq display-time-string-forms
+	  '((format " %s/%s/%s(%s)%s:%s:%s"
+				year month day dayname
+				24-hours minutes seconds
+				)))
+;; 時計表示 ON
+(display-time)
+
 ;;; ediffを1ウィンドウで実行
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
@@ -317,11 +332,10 @@
 (require 'package)
 ;; MELPAを追加
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-;; Marmaladeを追加
-(add-to-list 'package-archives  '("marmalade" . "http://marmalade-repo.org/packages/"))
-;; www.e6h.orgを追加
-; 見付からなくなったので無効化
-;(add-to-list 'package-archives	'("e6h" . "http://www.e6h.org/packages/"))
+;; Marmaladeを追加(見付からないので無効化)
+;; (add-to-list 'package-archives  '("marmalade" . "http://marmalade-repo.org/packages/"))
+;; www.e6h.orgを追加(見付からないので無効化)
+;;(add-to-list 'package-archives	'("e6h" . "http://www.e6h.org/packages/") t)
 ;; 初期化
 (package-initialize)
 
@@ -329,6 +343,12 @@
 
 ;;; for mylisp
 (load "mylisp.el")
+
+;;; for text-adjust
+(load "text-adjust.el")
+
+;;; for dmacro
+(load "init-dmacro.el")
 
 ;;; for elscreen
 ;; 正常に動作しないので無効化
@@ -347,7 +367,8 @@
 (load "init-session.el")
 
 ;;; for minibuf-isearch
-(load "init-minibuf-isearch.el")
+;; 検索関係は helm の方に統合するので無効化(2015/02/23)
+;; (load "init-minibuf-isearch.el")
 
 ;;; for mew
 (load "init-mew.el")
@@ -356,6 +377,7 @@
 (load "init-wanderlust.el")
 
 ;;; for auto-install
+;; 使ってないので無効化(2015/02/23)
 ;(load "init-auto-install.el")
 
 ;;; for windows
@@ -374,6 +396,9 @@
 ; C-v, M-v によるスクロールが遅すぎるので無効化
 ;(load "init-smooth-scroll.el")
 
+;;; for helm-gtags
+(load "init-helm-gtags.el")
+
 ;;; for migemo
 (load "init-migemo.el")
 
@@ -391,6 +416,31 @@
 
 ;;; for yasnippet
 (load "init-yasnippet.el")
+
+;;; for cc-mode
+(load "init-cc-mode.el")
+
+;;; for ggtags
+(load "init-ggtags.el")
+
+;;; for VC
+(load "init-vc.el")
+
+;;; for flycheck
+;; 正常に動作しないので無効化
+;;(load "init-flycheck.el")
+
+;;; for undo-tree
+(load "init-undo-tree.el")
+
+;;; for undohist
+(load "init-undohist.el")
+
+;;; for projectile
+(load "init-projectile.el")
+
+;;; for wgrep
+(load "init-wgrep.el")
 
 ;;; mode-line setting
 ;; 何故か elscreen の設定より先に実行するとエラーがでるのでその後ろに移動
