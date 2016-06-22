@@ -8,6 +8,8 @@
 ;(setq browse-url-browser-function 'navi2ch-browse-url)
 
 
+;;; dat アクセスのために 2chproxy.pl をプロキシに設定
+(setq navi2ch-net-http-proxy "127.0.0.1:8080")
 
 (add-hook 'navi2ch-list-mode-hook
 		  '(lambda ()
