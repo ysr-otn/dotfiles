@@ -334,8 +334,11 @@ max-fill-column, min-fill-column を利用する"
 			(move-to-column (% cc (1- ww)))))))))
 
 
-(define-key global-map "\C-p" 'move-to-window-prev-line)
-(define-key global-map "\C-n" 'move-to-window-next-line)
+;;; Emacs-22 以前は上下カーソル移動が論理行なので物理行移動の対応をしておく
+(if (<= (string-to-number emacs-version) 22)
+	(progn
+	  (define-key global-map "\C-p" 'move-to-window-prev-line)
+	  (define-key global-map "\C-n" 'move-to-window-next-line)))
 ;(define-key global-map [up] 'move-to-window-prev-line)
 ;(define-key global-map [down] 'move-to-window-next-line)
 
