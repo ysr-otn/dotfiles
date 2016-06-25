@@ -7,6 +7,8 @@ Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 
 * 2. 更新履歴
+  * <2016-06-25 Sat 18:44>
+    * ace-pinyin の設定を追加し，日本語用の変換テーブルファイル pinyinlib-japanese を作成
   * <2016-06-22 Sat 09:22>
     * 自前の物理行移動関数 move-to-window-(prev|next)-line の C-p/C-n への割り当てを 
       emacs-22 以前のみに限定(emacs 23 以降は標準で物理行移動なので)
