@@ -31,5 +31,5 @@
     "äääˆ–H›V‰Åê”—îŸ—ŠŽãœØŠ½ŠZ–œäÝ‰ß•Ö¥‰˜Ÿµ€žZãÂãg›¹—|—~—‚—ƒ—}•Ä”äÏåä‘•“b—„c‹bËäÑ‰xŽƒ‹XŒ\’õˆ¯Œci”üâU–FŠì‹g‹`â~œJážžéžÕàôá˜—uè´Ÿ–á‡æâmœ™öà@áy›sáTœ×ê¡ž@à àfæûœ‰œÈ›Làüä“©—x›ô‘éàûàŒç±—yX—iê¢—qœsâwä^Ÿg—s—j—fšî—g—tåŒ˜—r—oà—€š×—l—d—n—p˜Ñ—w—z—m‰Ãªå^‘háS›@ç„‰¡‘IçËŒP—`Žl”\™À—\—^Ÿb‘ãã¿—aœßœ‰rŒÄ“Çæ¤éK‚SéP”ð”QáaäoãråPälæ£˜¬—_Š«³Œ¢—]‚æŽÍ’oŠÉ’®›®è|šë“wã’ˆŒÌ‘óžùâtæ²–LŒôŽuåà”VKáæä“Žæ¨÷à¬Ž‡‰—°à¹äº—W˜Ú“ÑŒF—Q›—åwœ£êzšœå åC¿‰À–Þ—C§‰E—X—O˜Ð—SŸà—P—N—Z—G—[—H—IçÖ—F—Y—J—L™`æOäJž¾œg—A–ùšgåŸ‰Œ‹‹|äk—@—Ràïç¥áˆ—M‘¿Š—Væ‡“‘–ûŸßªä¥—hæú‘µ‚äƒ¥ƒÅæË”Úç¿ä‘Œ™–…“’ˆð“–²ä†èmènÊ—ØFéÂšãY‘ÝáO‰ž“š–úš§žTåmäŸèÄ›TŸZˆüæÔçÈèï“Ð›šˆûèªŸ…ŸÎšÃ‰DœMI‰¹œ¾‰CˆôˆúŸmˆ÷è¦‰@ˆòŸu‰B‰AŒAŠÞ›ÜèñjéÚéÙˆñŠâ”Öê˜cœTœU•ø‰ùæÒãíán‹çœúŠ£Œ¢æ¿Ý–¢“ðærŒx‰ú”›¡ƒ£ƒÃžH‰Ñâjˆõˆöå›ˆóš|Š‚“dˆøçQ—U“®œ|…êB•d’ô“{—‹èÆè»‘úž”³ƒ§ƒÇ‹›ä½ˆÁå«”AŒtž™ˆï‹F“˜–½àÌæ³ŒÃãäèL‰³éðŒÞçdŽ÷Žœ“‰œÑœÆ˜JŠi“žŽŠêŒ’¸‘Õ“k’vçå’É”Âžo»¹±ãÖŒ‰æy—óŒ÷æ|™¬—EŒM‹™ŠÐœÚŒeâí”Mˆ•®ˆæè‡¨‹Î–Z‹}ˆé›xàŸ×òŒµ‰½˜M‰Õ†ä—èOšPŸ{æbàŽ‘§Žw’§‹’ãNã~‰}šz‰cˆ¤—cç¡‰ÉŽ…‚h˜Ÿšããæä–ä•ŸJ’˜Žs”èè]‘báKä\œWÎà¸‹]µ’rˆì˜Ãˆë1‚PŠŸŸyâöàšâD“IíDŒRˆèŠôˆêˆî‹–”Û”Ñ—K‘À‹“üˆÛ«Ÿ¤‘}—e—ÇsˆÜŠˆáâŸÍˆÔˆí‰à¨—B”ãé]àu¶“€èóoˆÐˆÝáá›H—vãåˆà™EˆÏ‰]ˆ×ŒÜˆÞ÷‰Uèhˆäœ‹ˆÊœòçÎæÄDˆÈ‚îš€œ}ˆËˆØˆáà’ŠÎÖ’’”@ˆÎˆÚˆå›ç’_š¡œRœSŸ¹áwàÆˆÖÀéØˆÙà‘š˜‘P‹ŽŠõ˜ßˆÒ–üˆÌ‰ˆâ‹UˆãŽË›é–Ž—¦‰ÂèèˆÓá~’–ˆßç›ˆÍ—›Œ¾ægœbˆÉä‚¢’tâcˆù‘™‘„–ø›qéÛ‰Ç„`áù—bŒÙˆÅ”s™å–÷åMŸlŽ‰Šñh˜Eç`ç_âÊ—ÀS‘Qçõn‹„“î˜a_â€éå“z–läË—D–öŒ–‘îŠÚŠÙ‘°”yèVèoæ¡âÞêžäÞåŽàåZãˆŸKN‰v–ï‰u–ô–ñ–ð–ó–ò›±ákŽ¾—kæ¬Ž×’æ·àºqsrtŽR“@œDšÝæ´—{ŽÐèkˆçˆÑ—õ”J—T‘×‹±ˆÕ‹xN•ÛˆÀ–õÆœ\–î–ë•aŽEç†Ž«‰®çt–éŽ~›ßÄ”ë“iË–ç‘‰’J”ªŽÜà–à–èâ–íá‹ž½–ì”j–êÌˆ‰‰”WŒ­‰Æ‚â‚™„E„u‰~©ª«¨„F„v„ª„Ÿƒ†ƒ„ƒˆ„zƒCƒÒ„ƒ²Y„\„Jy"
     "‹ó‘¹‘¶‘µ‰’‰€’ê‘©ã”›¢‘«¹¸‘¯‘±ˆ¾‘°‘­‘®ž”æÚähäf‘X‘mœÒæÙ‘ž‘œ‘Ÿ‘¡Û‘‘¢“Y‰ˆ‘]”½‰‘\‚¼ä’‘U‘Rã¿âWåNçå¾Íé™‘T‘P‘Q™f‘O‘SèŠÖä‘VèA‘Kâšƒà¨â¬æÒÆÅUÓ¥‚ºàÂ‹lž„¡šbé½•Ÿœ¶ŽÇåAåBé’äZè©ä@ç¬‘“¤D}|“ª’Ã~üœC€’ß•tš¤‚¸‰–ŽÈ“ˆ›¸“‡žíåÆŽ±Ž³åÇäwœxŽ²ã‘c‹òH’¼‹Ã“ú›‰áˆóè‹ŽÒøŽ×ŽÖêl’…çïŽÚŽäŽŽâŽáŽãKæ×àHâñá¶˜¿i–«™ƒbœŒ˜¾˜Ô–™u˜Þå@vnèÕ‰`rxàžžèžçosqwtplŸ¬ž`ä´å‹Ä“ðšä¥ãÒÅ˜®ãtJåñäêŸçŠR›™ãP–˜•›jãá¯ãU‘ù›o“Ò˜¹˜©çYmæ¨˜½áhŸü’ŸãŠç«æ{ágšÅèÎŸÄã…áiäûëçÔéˆâtâYåõšß¶åª”@Ý™”–ºìùÃø“ê—ˆÑé`ä¬à~›]õïåñêžŠðö’åóµèôç’èòæîéãí÷œµ˜h’Ú“¾œù’G™îAQœíæ¦”GãÚæm™Ã”¹‚â¡œmâ¢|“Ääñ“Õ~Ÿ«‰[œ–æx“é{ä¤†„z…‡y}ƒ€æ@æuŽùœúžQ›xhmŽìnœ•pqŽô›}æ±ŽòŽøŽ÷ŽóŽöšæàF“ùâðãsàG˜¸èâœnà»†^E’†æø_`à×ãOca_Y[\]bZedäVŽžŽ˜›y™Z“ñàà‘ü–è‰açŽä¢œ‚Ž€ŽŽqâJŽªŽkŽ¤Ž«ç†á^ç~Ž›Ž¦˜­˜¯Ž©áIŽj›¬Ž™ˆÈÅšË›³Ž–•~Ž¡˜HŽ¢ŽŸŽœŽõŽ âæŽ¨’mœ”ŽdŽ—ŽŠ›•–êõŽš’nŽ¥œŽ§’ŒmŽmŽiŽ£“ô‚¶‘›‘òàV‰Žâ•ŽMŽN”˜ŽLèSâ‚œÌœñŽQŽRŽZŸkšÍ›Øœð›Îæ§ŽSŽbœÎœÍŽaŽcŽÀùŽðâ·ŽO›½è÷žÖèµè¶ž¨ŠÆŽG¼ÄÏàZËæÁ™ÜÞàßÝ‘ ¿‹YÀ¶çÁ—âÁ·áŠoåU—ô‚´‚š¨ª„[„Œ„Ž„]«©„G„wƒYƒ]—ëZ§ƒUƒWƒ¤„xƒÄƒ[„Hz"
 	)
-  "ASCII char to simplifed Chinese characters.")
+  "ASCII char to shift-jis Japanese characters.")
 
