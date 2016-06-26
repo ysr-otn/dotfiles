@@ -10,15 +10,6 @@
 		)
        load-path))
 
-(setq exec-path
-	  (append
-	   (list
-		"/usr/local/bin"
-		"/Applications/CarbonEmacs.app/Contents/MacOS/bin/"
-		)
-	   exec-path))
-
-
 ;;; 各設定ファイルのモード指定
 (setq auto-mode-alist
       (append
@@ -318,6 +309,10 @@
 (load (concat (substitute-in-file-name "$HOME/.emacs.d/init-")
 			  (number-to-string emacs-major-version)
 			  ".el"))
+
+;;; load init file for each systems
+(case system-type ((darwin)
+				   (load "init-darwin.el")))
 
 ;;; load init file for window systems
 (cond ((eq window-system 'mac)
