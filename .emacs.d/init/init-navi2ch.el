@@ -1,8 +1,7 @@
 (autoload 'navi2ch "navi2ch" nil t)
 
 ;;; *bbstable の URL
-(setq navi2ch-list-bbstable-url "http://azlucky.s25.xrea.com/2chboard/bbsmenu.html")
-;(setq navi2ch-list-bbstable-url "http://www6.ocn.ne.jp/~mirv/bbstable.html")
+(setq navi2ch-list-bbstable-url "http://kita.jikkyo.org/cbm/cbm.cgi/20.op.p0.sc.m0/-all/bbsmenu.html")
 ;(autoload 'navi2ch-browse-url "navi2ch" nil t)
 ;(setq navi2ch-browse-url-browser-function 'w3m-browse-url)
 ;(setq browse-url-browser-function 'navi2ch-browse-url)
