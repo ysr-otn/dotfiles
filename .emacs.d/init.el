@@ -311,8 +311,8 @@
 			  ".el"))
 
 ;;; load init file for each systems
-(case system-type ((darwin)
-				   (load "init-darwin.el")))
+(cond ((eq system-type 'darwin)
+	   (load "init-darwin.el")))
 
 ;;; load init file for window systems
 (cond ((eq window-system 'mac)

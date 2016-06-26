@@ -7,6 +7,10 @@ Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 
 * 2. 更新履歴
+  * <2016-06-26 Sun 22:37>
+    * init-darwin.el の記述を case から cond に変更(case は cl.el が必要なので)
+    * pinyinlib をパッケージを使用するように変更
+    * .emacs/elisp/pinyinlib を .emacs/elisp/pinyinlib-japanese に変更
   * <2016-06-26 Sun 22:07>
     * Carbon Emacs 用設定ファイル init-darwin.el 追加
   * <2016-06-26 Sun 20:08>

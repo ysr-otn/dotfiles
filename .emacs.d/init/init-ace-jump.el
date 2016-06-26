@@ -9,14 +9,11 @@
 (setq load-path
       (append
         (list
-		 (substitute-in-file-name "$HOME/.emacs.d/elisp/pinyinlib"))
+		 (substitute-in-file-name "$HOME/.emacs.d/elisp/pinyinlib-japanese"))
 		load-path))
 
 ;;; ace-pinyin はデフォルトで avy を使うので ace-jump を使うように設定
 (setq ace-pinyin-use-avy nil)
-
-;;; オリジナルの pinyinlib をロード
-(load "pinyinlib")
 
 ;;; pinyinlib の漢字変換テーブルを日本語化するライブラリをロード
 (load "pinyinlib-japanese")
