@@ -10,6 +10,7 @@
 *-private[1-9]
 *-private[1-9].el
 .emacs.d/.session
+.emacs.d/.mc-lists.el
 .emacs.d/ac-comphist.dat
 .emacs.d/anything-c-adaptive-history
 .emacs.d/auto-save

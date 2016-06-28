@@ -437,6 +437,9 @@
 ;;; for wgrep
 (load "init-wgrep.el")
 
+;;; for multiple-cursors
+(load "init-multiple-cursors.el")
+
 ;;; mode-line setting
 ;; 何故か elscreen の設定より先に実行するとエラーがでるのでその後ろに移動
 (setq-default mode-line-format
