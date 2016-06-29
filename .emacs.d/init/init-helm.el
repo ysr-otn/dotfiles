@@ -78,6 +78,10 @@
 	 ))
 
 
+;;; for helm-migemo
+(helm-migemo-mode 1)
+
+
 ; ;; customize
 ; (progn
 ; ;  (require 'helm-ls-git)

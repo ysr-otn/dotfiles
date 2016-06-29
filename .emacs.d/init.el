@@ -387,12 +387,15 @@
 ;;; for helm
 (load "init-helm.el")
 
-;;; for smooth-scroll
-; C-v, M-v によるスクロールが遅すぎるので無効化
-;(load "init-smooth-scroll.el")
+;;; for helm-swoop
+(load "init-helm-swoop.el")
 
 ;;; for helm-gtags
 (load "init-helm-gtags.el")
+
+;;; for smooth-scroll
+; C-v, M-v によるスクロールが遅すぎるので無効化
+;(load "init-smooth-scroll.el")
 
 ;;; for migemo
 (load "init-migemo.el")

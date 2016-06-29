@@ -7,7 +7,10 @@ Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 
 * 2. 更新履歴
-  * <2016-06-29 水 01:58>
+  * <2016-06-29 Wed 22:04>
+    * helm-swoop の設定を追加
+    * helm-migemo の設定を追加
+  * <2016-06-29 Wed 01:58>
     * multiple-cursors の設定を追加
   * <2016-06-26 Sun 22:37>
     * init-darwin.el の記述を case から cond に変更(case は cl.el が必要なので)
