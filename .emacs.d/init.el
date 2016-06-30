@@ -355,6 +355,9 @@
 ;;; for ddskk
 (load "init-ddskk.el")
 
+;;; for migemo
+(load "init-migemo.el")
+
 ;;; for navi2ch
 (load "init-navi2ch.el")
 
@@ -396,9 +399,6 @@
 ;;; for smooth-scroll
 ; C-v, M-v によるスクロールが遅すぎるので無効化
 ;(load "init-smooth-scroll.el")
-
-;;; for migemo
-(load "init-migemo.el")
 
 ;;; for popwin
 (load "init-popwin.el")
