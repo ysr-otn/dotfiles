@@ -72,7 +72,7 @@
 (define-key helm-map (kbd "C-h") 'delete-backward-char)
 (eval-after-load "helm-files"
   '(progn
-     (define-key helm-find-files-map (kbd "C-h") 'helm-ff-backspace)
+     (define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
      (define-key helm-find-files-map (kbd "C-i") 'helm-execute-persistent-action)
 	 (define-key helm-find-files-map (kbd "C-o") 'dabbrev-expand)
 	 ))
@@ -80,6 +80,9 @@
 
 ;;; for helm-migemo
 (helm-migemo-mode 1)
+
+;;; 過去に開いたファイルを参照する recentf のための最大保存ファイル数設定
+(setq recentf-max-saved-items 4096)
 
 
 ; ;; customize

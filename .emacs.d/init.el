@@ -396,6 +396,9 @@
 ;;; for helm-gtags
 (load "init-helm-gtags.el")
 
+;;; for ag
+(load "init-ag.el")
+
 ;;; for smooth-scroll
 ; C-v, M-v によるスクロールが遅すぎるので無効化
 ;(load "init-smooth-scroll.el")
