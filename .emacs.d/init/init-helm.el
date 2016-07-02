@@ -77,6 +77,9 @@
 	 (define-key helm-find-files-map (kbd "C-o") 'dabbrev-expand)
 	 ))
 
+;; helm-find-files 中にコピー等がしにくいので find-file を別のキーにアサインして残しておく
+(global-set-key (kbd "C-x f") 'find-file)
+
 
 ;;; for helm-migemo
 (helm-migemo-mode 1)

@@ -7,6 +7,13 @@ Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 
 * 2. 更新履歴
+  * <2016-07-03 Sun 01:13>
+    * .agignore, .gitignore の設定追加
+    * 括弧の範囲内の強調表示，ミニバッファの履歴の設定追加
+    * e2wm, god-mode の設定を追加
+    * 日本語 ag のための Mac 環境でのパス設定を追加
+    * helm に find-file の設定を追加
+    * howm のパスを package を使うように変更
   * <2016-07-01 Fri 23:44>
     * helm の設定を一部修正
     * ag, wgrep-ag, helm-ag の設定を追加

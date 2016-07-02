@@ -25,3 +25,5 @@
 .emacs.d/url
 .emacs.d/projectile*
 .emacs.d/undohist
+.emacs.d/history
+

@@ -86,6 +86,15 @@
 (global-set-key "\C-c\C-i" 'ispell-complete-word)
 ;;; isearch-mode で M-y を isearch-yank-pop に設定
 (define-key isearch-mode-map "\M-y" 'isearch-yank-pop)
+;;; 括弧の範囲内を強調表示
+(show-paren-mode t)
+(setq show-paren-delay 0)
+(setq show-paren-style 'parenthesis)
+(set-face-background 'show-paren-match-face "#F0F")
+;; ミニバッファの履歴を保存する
+(savehist-mode 1)
+;; ミニバッファの履歴の保存数を増やす
+(setq history-length 4096)
 
 
 ;;; view-mode
@@ -346,7 +355,6 @@
 (load "init-dmacro.el")
 
 ;;; for elscreen
-;; 正常に動作しないので無効化
 (load "init-elscreen.el")
 
 ;;; for w3m
@@ -445,6 +453,12 @@
 
 ;;; for multiple-cursors
 (load "init-multiple-cursors.el")
+
+;;; for e2wm
+(load "init-e2wm.el")
+
+;;; for god-mode
+(load "init-god-mode.el")
 
 ;;; mode-line setting
 ;; 何故か elscreen の設定より先に実行するとエラーがでるのでその後ろに移動
