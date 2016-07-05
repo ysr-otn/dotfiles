@@ -24,6 +24,9 @@
 ;; nilなら一覧のテキストカラーを失う代わりに、起動スピードをほんの少し上げる
 (setq helm-swoop-speed-or-color t)
 
+;; helm-multi-swoop で参照しないバッファの正規表現
+(setq helm-multi-swoop-ignore-buffers-match "\\(.*~$\\|\*.*\*$\\)")
+
 
 ;;; http://fukuyama.co/helm-swoop
 ;;	編集機能: 
