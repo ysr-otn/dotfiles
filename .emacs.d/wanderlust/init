@@ -19,6 +19,9 @@
 ;; メイル検索での namazu のキャラセット
 (setq elmo-nmz-charset 'euc-jp)
 
+;; Hyper Estraier 用の検索ツールをロード
+(load "~/.emacs.d/elisp/elmo-search-est/elmo-search-est.el")
+
 
 ;; Cc や To に自分のメイルアドレスは省く
 (setq wl-draft-always-delete-myself t)
