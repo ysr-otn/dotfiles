@@ -82,6 +82,7 @@ break;" (lambda nil (c-indent-command) (backward-char 10)) 2)
 	;; ´Ø¿ô
     ("p" "printf(\"\");" (lambda nil (backward-char 3)) 2)
     ("pn" "printf(\"\\n\");" (lambda nil (backward-char 5)) 2)
+	("dpn" "dbgprintf(\"\\r\\n\");" (lambda nil (backward-char 7)) 2)
     ("fpn" "fprintf(, \"\\n\");" (lambda nil (backward-char 8)) 2)
     ("fpe" "fprintf(stderr, \"\");" (lambda nil (backward-char 3)) 2)
     ("sp" "sprintf(, \"\");" (lambda nil (backward-char 6)) 2)

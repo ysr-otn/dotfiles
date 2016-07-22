@@ -1,6 +1,6 @@
 ;;; キー設定
 (define-key global-map (kbd "C-'") 'ace-jump-mode)
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+(define-key global-map (kbd "C-c RET") 'ace-jump-mode)
 
 
 ;;; 日本語対応のために ace-pinyin をロード
@@ -21,7 +21,7 @@
 
 ;;; キー設定
 (global-set-key (kbd "C-;") 'ace-jump-char-mode)
-(define-key global-map (kbd "C-c RET") 'ace-jump-char-mode)
+(define-key global-map (kbd "C-c SPC") 'ace-jump-char-mode)
 (ace-pinyin-global-mode 1)
 
 

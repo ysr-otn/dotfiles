@@ -7,6 +7,9 @@ Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 
 * 2. 更新履歴
+  * <2016-07-22 Fri 15:00>
+    * ace-jump モードと ace-jump-char-mode のキーバインドを入れ替え
+    * abbrev の設定変更
   * <2016-07-18 Mon 23:45>
     * Hyper Estraier による Wanderlust での検索設定を追加
   * <2016-07-05 Tue 14:50>
