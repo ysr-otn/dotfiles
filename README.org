@@ -7,6 +7,9 @@ Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 
 * 2. 更新履歴
+  * <2016-07-24 Sun 19:13>
+    * auto-complete-clang-async の設定を追加
+    * srefactor の設定を追加(正しエラーで動作しない)
   * <2016-07-22 Fri 15:00>
     * ace-jump モードと ace-jump-char-mode のキーバインドを入れ替え
     * abbrev の設定変更

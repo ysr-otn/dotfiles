@@ -429,6 +429,9 @@
 ;;; for cc-mode
 (load "init-cc-mode.el")
 
+;;; for auto-complete-clang-async
+(load "init-auto-complete-clang-async.el")
+
 ;;; for ggtags
 (load "init-ggtags.el")
 
@@ -459,6 +462,9 @@
 
 ;;; for god-mode
 (load "init-god-mode.el")
+
+;;; for srefactor
+(load "srefactor.el")
 
 ;;; mode-line setting
 ;; 何故か elscreen の設定より先に実行するとエラーがでるのでその後ろに移動
