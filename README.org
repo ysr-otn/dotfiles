@@ -7,6 +7,11 @@ Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 
 * 2. 更新履歴
+  * <2016-07-25 Mon 18:41>
+    * .gitignore の設定追加
+    * emacs-refactor の設定を追加
+    * CEDET の設定を追加(ただし init ファイルを追加しただけで有効にはしていない)
+    * srefactor のキー設定を追加(プレフィクスは C-c r)
   * <2016-07-24 Sun 19:13>
     * auto-complete-clang-async の設定を追加
     * srefactor の設定を追加(正しエラーで動作しない)

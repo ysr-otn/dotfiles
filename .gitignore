@@ -26,4 +26,7 @@
 .emacs.d/projectile*
 .emacs.d/undohist
 .emacs.d/history
-
+.emacs.d/ede-projects.el
+.emacs.d/games/*
+.emacs.d/semanticdb/
+.emacs.d/srecode-map.el
