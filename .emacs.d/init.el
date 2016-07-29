@@ -463,6 +463,9 @@
 ;;; for god-mode
 (load "init-god-mode.el")
 
+;;; for emacs-refactor
+(load "init-emr.el")
+
 ;;; for srefactor
 ;;; helm-imenu が誤動作するので無効化
 ;(load "srefactor.el")
