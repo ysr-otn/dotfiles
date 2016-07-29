@@ -7,6 +7,10 @@ Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 
 * 2. 更新履歴
+  * <2016-07-29 Fri 18:03>
+    * .zshrc のパス設定修正
+    * auto-complete の設定を修正
+    * helm-imenu が誤動作するので srefactor を無効化
   * <2016-07-25 Mon 18:41>
     * .gitignore の設定追加
     * emacs-refactor の設定を追加

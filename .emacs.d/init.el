@@ -464,7 +464,8 @@
 (load "init-god-mode.el")
 
 ;;; for srefactor
-(load "srefactor.el")
+;;; helm-imenu が誤動作するので無効化
+;(load "srefactor.el")
 
 ;;; mode-line setting
 ;; 何故か elscreen の設定より先に実行するとエラーがでるのでその後ろに移動

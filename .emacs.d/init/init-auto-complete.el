@@ -9,4 +9,4 @@
 (global-set-key "\M-/" 'ac-start)
 
 (require 'ac-helm)
-(define-key ac-complete-mode-map (kbd "C-,") 'ac-complete-with-helm)
+(define-key ac-complete-mode-map (kbd "C-c a") 'ac-complete-with-helm)

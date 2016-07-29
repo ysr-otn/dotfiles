@@ -49,7 +49,7 @@ fi
 ########## PATH ##########
 export PATH=$HOME/Tools/$HOSTTYPE/bin:$HOME/Tools/share/bin:$PATH
 if [ $HOSTTYPE = linux ]; then
-	PATH=${HOME}/pkg/bin:${HOME}/pkg/sbin:${PATH}
+	export PATH=${HOME}/pkg/bin:${HOME}/pkg/sbin:${PATH}
 fi
 export MANPATH=$MANPATH
 
