@@ -55,7 +55,7 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-X" ) 'execute-extended-command)
 ; session.el との組合せで 'helm-show-kill-ring のエラーが発生するので無効化
-;(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "C-M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-x C-r") 'helm-recentf)
 (global-set-key (kbd "C-x b") 'helm-buffers-list)

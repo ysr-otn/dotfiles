@@ -408,8 +408,8 @@
 
 ;;; for browse-kill-ring
 ;;; (helm-show-kill-ring が session との相性でエラーが発生するので 
-;;;  代りに browse-kill-ring を使用する)
-(load "init-browse-kill-ring.el")
+;;;  代りに browse-kill-ring を使用する) → 解消したので browse-kill-ring を無効化
+;(load "init-browse-kill-ring.el")
 
 ;;; for helm
 (load "init-helm.el")

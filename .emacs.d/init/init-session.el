@@ -12,4 +12,8 @@
 			  (number-to-string emacs-major-version)
 			  ".el"))
 
+;;; この設定をしておかないと helm-show-kill-ring でエラーが発生する
+;;; https://github.com/emacs-helm/helm/issues/94
+(setq session-save-print-spec '(t nil 40000))
+
 (require 'session nil t)

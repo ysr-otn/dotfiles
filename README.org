@@ -7,6 +7,8 @@ Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 
 * 2. 更新履歴
+  * <2016-07-30 Sat 00:50>
+    * helm-show-kill-ring が使えるようになったので browse-kill-ring の方を無効化
   * <2016-07-30 Sat 00:27>
     * emr と srefactor で c-mode/c++-mode のエラーが発生していたので修正
     * helm-show-kill-ring の代りに browse-kill-ring を使用するように変更
