@@ -311,8 +311,19 @@
 ;; 時計表示 ON
 (display-time)
 
+;; スタートアップ非表示
+(setq inhibit-startup-screen t)
+
+;; scratchの初期メッセージ消去
+(setq initial-scratch-message "")
+
 ;;; ediffを1ウィンドウで実行
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
+;;; emacsclient の為のサーバを起動
+(require 'server)
+(unless (server-running-p)
+  (server-start))
 
 ;;; load init file for each version emacs
 (load (concat (substitute-in-file-name "$HOME/.emacs.d/init-")
@@ -394,6 +405,11 @@
 
 ;;; for mpg123
 (load "init-mpg123.el")
+
+;;; for browse-kill-ring
+;;; (helm-show-kill-ring が session との相性でエラーが発生するので 
+;;;  代りに browse-kill-ring を使用する)
+(load "init-browse-kill-ring.el")
 
 ;;; for helm
 (load "init-helm.el")
