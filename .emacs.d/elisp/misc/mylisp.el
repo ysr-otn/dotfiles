@@ -268,7 +268,7 @@ max-fill-column, min-fill-column を利用する"
 		  (wc (% (current-column) (1- (window-width)))))
 		(let ((window-line-end-diff (- ww wc 2)))
 		  (move-to-column (+ cc window-line-end-diff))))))
-(global-set-key "\C-e" 'end-of-window-line)				
+;(global-set-key "\C-e" 'end-of-window-line)
 
 (defun begin-of-window-line ()
   "改行がある場合はカーソルのあるラインのウインドの先頭に移動"
@@ -278,7 +278,7 @@ max-fill-column, min-fill-column を利用する"
 		  (wc (% (current-column) (1- (window-width)))))
 	  (let ((window-line-begin-diff wc))
 		(move-to-column (- cc window-line-begin-diff))))))
-(global-set-key "\C-a" 'begin-of-window-line)				
+;(global-set-key "\C-a" 'begin-of-window-line)
 
 						 
   
