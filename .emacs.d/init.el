@@ -482,6 +482,9 @@
 ;;; for emacs-refactor
 (load "init-emr.el")
 
+;;; for minimap
+(load "init-minimap.el")
+
 ;;; for srefactor
 ;;; helm-imenu が誤動作するので無効化
 ;(load "srefactor.el")
