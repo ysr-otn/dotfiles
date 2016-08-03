@@ -1,3 +1,6 @@
+;;; iedit-toggle-key-default に設定されている C-; が ace-jump-char-mode とキーが被るので無効化
+(setq iedit-toggle-key-default nil)
+
 (autoload 'emr-show-refactor-menu "emr")
 (load "emr-c")
 
