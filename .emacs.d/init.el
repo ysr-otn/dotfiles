@@ -455,8 +455,7 @@
 (load "init-vc.el")
 
 ;;; for flycheck
-;; 正常に動作しないので無効化
-;;(load "init-flycheck.el")
+(load "init-flycheck.el")
 
 ;;; for undo-tree
 (load "init-undo-tree.el")

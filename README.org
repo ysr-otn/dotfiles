@@ -7,6 +7,8 @@ Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 
 * 2. 更新履歴
+  * <2016-08-10 Wed 20:16>
+    * flycheck モードの設定を追加
   * <2016-08-03 Wed 12:08>
     * init-emr.el に iedit-toggle-key-default を無効にする設定を追加
       (ace-jump-char-mode とキーが被るため)
