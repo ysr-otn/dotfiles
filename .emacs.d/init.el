@@ -466,6 +466,9 @@
 ;;; for point-undo
 (load "init-point-undo.el")
 
+;;; for volatile-highlights
+(load "init-volatile-highlights.el")
+
 ;;; for projectile
 (load "init-projectile.el")
 
