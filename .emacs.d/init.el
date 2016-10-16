@@ -463,6 +463,9 @@
 ;;; for undohist
 (load "init-undohist.el")
 
+;;; for point-undo
+(load "init-point-undo.el")
+
 ;;; for projectile
 (load "init-projectile.el")
 
