@@ -475,6 +475,9 @@
 ;;; for wgrep
 (load "init-wgrep.el")
 
+;;; for anzu
+(load "init-anzu.el")
+
 ;;; for multiple-cursors
 (load "init-multiple-cursors.el")
 
