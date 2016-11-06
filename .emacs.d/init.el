@@ -497,6 +497,12 @@
 ;;; helm-imenu が誤動作するので無効化
 ;(load "srefactor.el")
 
+;;; for erlang-mode
+(load "init-erlang.el")
+
+;;; for google-translate
+(load "init-google-translate.el")
+
 ;;; mode-line setting
 ;; 何故か elscreen の設定より先に実行するとエラーがでるのでその後ろに移動
 (setq-default mode-line-format
