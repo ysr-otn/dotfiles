@@ -68,6 +68,8 @@
 
 (setq navi2ch-history-max-line nil) ; 履歴の表示行制限無し
 
+ ;;; 書き込みは 2chproxy.pl 経由をせずに直接行う
+ (setq navi2ch-net-send-message-use-http-proxy nil) 
 
 
 ;(setq navi2ch-board-enable-readcgi nil
