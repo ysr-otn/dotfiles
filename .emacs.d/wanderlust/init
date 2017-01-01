@@ -31,14 +31,14 @@
 (setq wl-interactive-send t)
 ;; MUA 側では message-id を付けない
 (setq wl-insert-message-id nil)
+;; 大きいメッセージを送信時に分割しない
+(setq mime-edit-split-message nil)
 ;; imput により非同期で送信する
 ;; (utils/im-wl.el をインストールしておく必要があります。
 ;;  また，~/.im/Config の設定(Smtpservers)を忘れないことと，
 ;;  wl-draft-enable-queuing の機能が働かなくなることに注意。)
 ;(autoload 'wl-draft-send-with-imput-async "im-wl")
 ;(setq wl-draft-send-func 'wl-draft-send-with-imput-async)
-
-
 
 ;;;
 ;;; サマリモード設定
