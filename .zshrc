@@ -34,10 +34,10 @@ export HOSTNAME=`hostname`
 
 if [ $HOSTNAME = imglinux110 ]; then
 	export HOSTTYPE=linux
-elif [ $OS = Windows_NT ]; then
+elif [ "$OS" ]; then
 	export HOSTTYPE=windows
 else
-	export HOSTTYPE=i386
+	export HOSTTYPE=i386		# mac
 fi
 
 
