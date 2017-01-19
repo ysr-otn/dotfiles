@@ -508,6 +508,9 @@
 ;;; for google-translate
 (load "init-google-translate.el")
 
+;;; for highlight-symbol
+(load "init-highlight-symbol.el")
+
 ;;; mode-line setting
 ;; 何故か elscreen の設定より先に実行するとエラーがでるのでその後ろに移動
 (setq-default mode-line-format
