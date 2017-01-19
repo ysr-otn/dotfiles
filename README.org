@@ -7,6 +7,9 @@ Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 
 * 2. 更新履歴
+  * <2017-01-19 Thu 21:33>
+    * Windows 環境での flycheck を無効化
+    * Windows 環境での wanderlust の設定をマージ
   * <2017-01-19 Thu 17:35>
     * Windows 10 用の設定を追加
   * <2017-01-19 Thu 11:50>
