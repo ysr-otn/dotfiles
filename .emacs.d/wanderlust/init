@@ -22,6 +22,8 @@
 ;; Hyper Estraier 用の検索ツールをロード
 (load "~/.emacs.d/elisp/elmo-search-est/elmo-search-est.el")
 
+;;; シグネチャの切り替え用のツールをロード
+(load "c-sig.el")
 
 ;; Cc や To に自分のメイルアドレスは省く
 (setq wl-draft-always-delete-myself t)
@@ -115,10 +117,25 @@
 			 (local-set-key "\C-n" 'next-line)
 			 (local-set-key "\," 'next-line)
 			 (local-set-key "\." 'previous-line)))
+
 ;; エディットモード
-(add-hook 'mime-edit-mode-hook
-    '(lambda ()
-	   (local-set-key "\C-c\C-w" 'insert-signature-eref)))
+(cond ((eq system-type 'darwin)
+	   (progn 
+		 ;; c-sig を用いてシグネチャを挿入
+		 (add-hook 'mime-edit-mode-hook
+				   '(lambda ()
+					  (local-set-key "\C-c\C-w" 'insert-signature-eref)))))
+	  (t
+	   (progn
+	     ;; ドラフト編集時、C-c C-w でシグネチャ挿入するときに '--' が前につかないようにする
+		 ;;  http://yoshitaro.hp.infoseek.co.jp/comp/wl/index.html
+		 (setq signature-separator "")
+		 (add-hook 'wl-mail-setup-hook
+				   (lambda ()
+					 (require 'signature)
+					 (local-set-key "\C-c\C-w" 'insert-signature))))))
+
+
 ;; フォルダモード
 (add-hook 'wl-folder-mode-hook
 		  '(lambda ()

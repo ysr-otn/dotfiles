@@ -79,8 +79,9 @@
 (global-set-key (kbd "C-x f") 'find-file)
 
 
-;;; for helm-migemo
-(helm-migemo-mode 1)
+;;; for helm-migemo(Windos 環境は未だ動作しないので無効化)
+(if (null (eq system-type 'windows-nt))
+	(helm-migemo-mode 1))
 
 ;;; 過去に開いたファイルを参照する recentf のための最大保存ファイル数設定
 (setq recentf-max-saved-items 4096)

@@ -275,3 +275,7 @@ break;"
 (define-abbrev-table 'global-abbrev-table '(
     ))
 
+
+;;; for private setting
+(if (file-exists-p (substitute-in-file-name "$HOME/.emacs.d/abbrev_defs-private.el"))
+	(load (substitute-in-file-name "$HOME/.emacs.d/abbrev_defs-private.el")))

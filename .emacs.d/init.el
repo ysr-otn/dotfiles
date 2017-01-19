@@ -332,7 +332,10 @@
 
 ;;; load init file for each systems
 (cond ((eq system-type 'darwin)
-	   (load "init-darwin.el")))
+	   (load "init-darwin.el"))
+	  ((eq system-type 'windows-nt)
+	   (load "init-windows-nt.el"))
+	  )
 
 ;;; load init file for window systems
 (cond ((eq window-system 'mac)
@@ -374,8 +377,9 @@
 ;;; for ddskk
 (load "init-ddskk.el")
 
-;;; for migemo
-(load "init-migemo.el")
+;;; for migemo(Windos 環境は未だ動作しないので無効化)
+(if (null (eq system-type 'windows-nt))
+	(load "init-migemo.el"))
 
 ;;; for navi2ch
 (load "init-navi2ch.el")

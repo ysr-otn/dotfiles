@@ -14,6 +14,12 @@
 		   (setq migemo-dictionary (substitute-in-file-name "$HOME/pkg/share/migemo/euc-jp/migemo-dict"))
 		   (setq migemo-coding-system 'euc-jp-unix)
 		   ))
+		((string= (getenv "HOSTTYPE") "windows")
+		 (progn
+		   (setq migemo-command (substitute-in-file-name "c:/cygwin64/opt/cmigemo-default-win64/cmigemo"))
+		   (setq migemo-dictionary (substitute-in-file-name "c:/cygwin64/opt/cmigemo-default-win64/dict/utf-8"))
+		   (setq migemo-coding-system 'utf-8-dos)
+		   ))
 		(t
 		 (progn
 		   (setq migemo-command "/usr/local/bin/cmigemo")
