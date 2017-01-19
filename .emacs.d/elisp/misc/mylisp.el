@@ -575,7 +575,6 @@ max-fill-column, min-fill-column を利用する"
   (interactive "sregexp:")
   (goto-char (point-min))
   (let (lines)
-    (forward-line 2)
     (setq lines (buffer-substring (point-min) (point)))
     (while (re-search-forward str nil t)
 	  (Buffer-menu-delete))))
@@ -613,6 +612,27 @@ max-fill-column, min-fill-column を利用する"
 	   (insert-rectangle rect)))) 
 
 
+;;; TV, AV, SV, BV 計算
+(defun TV (T)
+  (log (/ 1.0 T)
+	   2))
+
+(defun AV (A)
+  (log (expt A 2)
+	   2))
+
+(defun SV (S)
+  (log (* 0.3 S)
+	   2))
+
+(defun EV (T A)
+  (+ (TV T)
+	 (AV A)))
+
+(defun BV (T A S)
+  (+ (TV T)
+	 (AV A)
+	 (- (SV S))))
 
 
 ;;; *scratch の保存
