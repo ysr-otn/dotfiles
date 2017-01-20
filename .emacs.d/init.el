@@ -357,6 +357,52 @@
 ;; 初期化
 (package-initialize)
 
+;;; 各種パッケージ情報の更新
+(package-refresh-contents)
+
+;;; インストールするパッケージのリスト
+(defvar my/favorite-packages
+    '(
+	  ;; helm
+	  helm ac-helm helm-ag helm-c-yasnippet helm-gtags helm-projectile helm-swoop
+	  
+	  ;; ace-jump
+	  ace-jump-mode	ace-pinyin	ace-window
+	  
+	  ;; search tools
+	  ag google-translate migemo wgrep wgrep-ag 
+	  
+	  ;; buffer/window control tools
+	  elscreen minibuf-isearch minimap point-undo popup popwin session highlight-symbol
+	  
+	  ;; misc
+	  anzu god-mode multiple-cursors undo-tree undohist
+	  
+	  ;; auto-complete
+	  auto-complete auto-complete-clang-async
+	  
+	  ;; skk
+	  ddskk
+	  
+	  ;; howm
+	  howm
+	  
+	  ;; web tools
+	  mew navi2ch search-web semi w3m wanderlust
+	  
+	  ;; developmemt tools
+	  e2wm emr flycheck ggtags projectile yasnippet
+	  
+	  ;;  proglaming language tools
+	  erlang
+	  ))
+
+;; インストールされていないパッケージがあればインストール
+(dolist (package my/favorite-packages)
+    (unless (package-installed-p package)
+	      (package-install package)))
+
+
 ;;;; 各種ライブラリの設定
 
 ;;; for mylisp
