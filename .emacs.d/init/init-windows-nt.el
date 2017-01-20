@@ -19,6 +19,7 @@
 (set-keyboard-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
 (set-selection-coding-system 'utf-16le-dos)
+(setq default-process-coding-system '(utf-8 . cp932))	; vc-svn で日本語ファイル名のファイルの文字化けを防ぐ(http://yoshimov.com/tips/windows-emacs-vc-git/)
 
 ;; Grep
 (defadvice grep (around grep-coding-setup activate)
@@ -33,6 +34,21 @@
       (function (lambda()
                   (set-buffer-process-coding-system 'utf-8-unix
                                                     'utf-8-unix))))
+
+;;; vc-git
+;; コミットログの文字化けを防ぐ
+;; http://moimoitei.blogspot.jp/2010/05/use-ntemacs-231x.html
+(defadvice vc-git-checkin
+    (around my-vc-git-checkin activate)
+  (let ((files (ad-get-arg 0))
+		(comment (ad-get-arg 2))
+		(fname (make-temp-file "vc-git-")))
+	(let ((buffer-file-coding-system 'utf-8-unix))
+	  (with-temp-file fname (insert comment)))
+	(vc-git-command nil 0 files "commit" "-F" fname "--only" "--")
+	(delete-file fname)
+	))
+
 
 ;; Cygwin のドライブ・プレフィックスを有効にする
 ;(require 'cygwin-mount)
