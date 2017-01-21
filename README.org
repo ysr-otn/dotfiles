@@ -7,6 +7,10 @@ Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 
 * 2. 更新履歴
+  * <2017-01-21 Sat 23:19>
+    * elscreen, howm, ddskk を package の方を使用するように変更し，
+      .emacs.d/elisp 以下のファイルを削除
+    * elscreen に elscreen-(wl|w3m|howm|dired) の設定を追加
   * <2017-01-20 Fri 21:07>
     * Windows 環境の VC の文字化け対策を追加
   * <2017-01-20 Fri 10:19>

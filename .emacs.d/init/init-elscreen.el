@@ -1,16 +1,16 @@
-(setq load-path
-      (append
-       (list
-		(substitute-in-file-name "$HOME/.emacs.d/elisp/elscreen")
-		)
-       load-path))
-
 (load "elscreen")
+
+;; elscreen 開始
+(elscreen-start)
+
 ;; for elscreen-w3m
-;; (load "elscreen-w3m")
+(load "elscreen-w3m")
 ;; for elscreen-howm
-;; (load "elscreen-howm")
-;; (load "elscreen-gf")
+(load "elscreen-howm")
+;; for elscreen-wl
+(load "elscreen-wl")
+;; for elscreen-dired
+(load "elscreen-dired")
 
 (cond (window-system
 	   (elscreen-set-prefix-key "\C-z")

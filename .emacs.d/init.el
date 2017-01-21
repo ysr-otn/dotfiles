@@ -10,6 +10,9 @@
 		)
        load-path))
 
+;;; info ファイルの設定
+(add-to-list 'Info-default-directory-list "~/.emacs.d/info")
+
 ;;; 各設定ファイルのモード指定
 (setq auto-mode-alist
       (append
