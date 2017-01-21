@@ -7,6 +7,8 @@ Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 
 * 2. 更新履歴
+  * <2017-01-21 Sat 23:24>
+    * .emacsd/elisp/skk を削除し忘れていたので削除
   * <2017-01-21 Sat 23:19>
     * elscreen, howm, ddskk を package の方を使用するように変更し，
       .emacs.d/elisp 以下のファイルを削除
