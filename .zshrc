@@ -26,7 +26,8 @@ function history-all { history -E 1 }
 setopt share_history		# share command history data
 # setopt hist_ignore_dups     # ignore duplication command history list
 
-PROMPT='%m%S[%~]%s(%h)%# '	
+PROMPT='%m%S[%~]%s(%h)
+%# '
 WORDCHARS='*?[]~'
 
 ####### Set Host #######
