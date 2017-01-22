@@ -1,3 +1,4 @@
+#+STARTUP: showall
 #+TITLE:	各種ドットファイルの設定
 #+AUTHOR:	Yoshihiro Ohtani
 
@@ -7,6 +8,8 @@ Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 
 * 2. 更新履歴
+  * <2017-01-22 Sun 18:07>
+    * README.org を org-mode で折り畳まないように変更
   * <2017-01-21 Sat 23:39>
     * zsh のプロンプトを修正
   * <2017-01-21 Sat 23:24>
