@@ -127,6 +127,12 @@
 			 (local-set-key "\." 'previous-line)))
 
 ;; エディットモード
+(add-hook 'wl-draft-mode-hook
+		  '(lambda ()
+			 (local-set-key "\M-n" 'next-line-more)
+			 (local-set-key "\M-p" 'previous-line-more)
+			 ))
+
 (cond ((eq system-type 'darwin)
 	   (progn 
 		 ;; c-sig を用いてシグネチャを挿入
