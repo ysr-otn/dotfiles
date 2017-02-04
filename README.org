@@ -8,6 +8,8 @@ Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 
 * 2. 更新履歴
+  * <2017-02-05 Sun 00:34>
+    * god-mode を無効化
   * <2017-01-24 Tue 10:35>
     * wanderlust の draft モードに next-line-more, previous-line-more のキー設定を追加
   * <2017-01-22 Sun 18:07>

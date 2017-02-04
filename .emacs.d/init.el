@@ -539,7 +539,8 @@
 (load "init-e2wm.el")
 
 ;;; for god-mode
-(load "init-god-mode.el")
+;;; うざいので無効化
+;(load "init-god-mode.el")
 
 ;;; for emacs-refactor
 (load "init-emr.el")
