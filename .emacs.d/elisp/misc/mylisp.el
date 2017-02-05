@@ -14,6 +14,14 @@
   (scroll-up -1))
 (global-set-key "\M-Z" 'scroll-one-line-down)
 
+;;; 一つ次の window に移動するか，window が 1 つなら window を横に 2 分割する
+(defun other-window-or-split ()
+  (interactive)
+  (when (one-window-p)
+    (split-window-vertically))
+  (other-window 1))
+(global-set-key "\C-q" 'other-window-or-split)
+
 ;;; 一つ前の window に移動する
 (defun pre-window ()
   " 一つ前の window に移動する"
