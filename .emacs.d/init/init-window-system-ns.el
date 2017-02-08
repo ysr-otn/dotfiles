@@ -137,12 +137,24 @@
 ; 				  '("Hiragino Maru Gothic ProN"))
 
 ;;; フレームの設定
+;;; (何故か初期化時のフレームの位置がずれるので，default-frame-alist と
+;;;  initial-frame-alist でフレーム位置を微調整)
 (setq default-frame-alist
 					(append (list
-							 '(height	. 60)
-							 '(width	. 100)
+							 '(height	. 59)
+							 '(width	. 99)
 							 '(top		. 0)
 							 '(left		. 0)
+							 '(foreground-color . "white")
+							 '(background-color . "black")
+							 '(cursor-color . "turquoise3")
+							 )))
+(setq initial-frame-alist 
+					(append (list
+							 '(height	. 58)
+							 '(width	. 99)
+							 '(top		. 29)
+							 '(left		. 4)
 							 '(foreground-color . "white")
 							 '(background-color . "black")
 							 '(cursor-color . "turquoise3")
