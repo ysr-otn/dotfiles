@@ -16,8 +16,10 @@
 ;;; 各設定ファイルのモード指定
 (setq auto-mode-alist
       (append
-       '(("init$"				. emacs-lisp-mode)
-		 ("init-private$"		. emacs-lisp-mode))
+       '(("init$"				. emacs-lisp-mode)	; emacs 設定ファイル
+		 ("init-private$"		. emacs-lisp-mode)	; emacs 個人用設定ファイル
+		 ("\.src"				. asm-mode)			; アセンブラファイル
+		 )
        auto-mode-alist))
 
 ;;;;;;;;;;;;;;;;;;  基本的な設定 ;;;;;;;;;;;;;;;;;;;;;;;;
@@ -560,6 +562,9 @@
 
 ;;; for highlight-symbol
 (load "init-highlight-symbol.el")
+
+;;; for org-mode
+(load "init-org-mode.el")
 
 ;;; mode-line setting
 ;; 何故か elscreen の設定より先に実行するとエラーがでるのでその後ろに移動

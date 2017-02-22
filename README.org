@@ -8,6 +8,10 @@ Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 
 * 2. 更新履歴
+  * <2017-02-22 Wed 15:49>
+    * asm-mode の設定を追加
+    * org-mode の設定を追加
+    * minimap-mode に text-mode を追加
   * <2017-02-10 Fri 01:21>
     * C-x C-j で skk-mode ではなく dired-x が起動する問題を修正
   * <2017-02-08 Wed 13:31>
