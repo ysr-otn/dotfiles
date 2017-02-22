@@ -2,154 +2,156 @@
 #+TITLE:	各種ドットファイルの設定
 #+AUTHOR:	Yoshihiro Ohtani
 
-* 1. 概要
+* 概要
 
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
-
-* 2. 更新履歴
-  * <2017-02-22 Wed 15:49>
-    * asm-mode の設定を追加
-    * org-mode の設定を追加
-    * minimap-mode に text-mode を追加
-  * <2017-02-10 Fri 01:21>
-    * C-x C-j で skk-mode ではなく dired-x が起動する問題を修正
-  * <2017-02-08 Wed 13:31>
-    * Mac の emacs におけるフレームの位置ずれを修正
-  * <2017-02-08 Wed 13:00>
-    * Mac の emacs で新しいフレームを作った時のフォント設定を修正
-  * <2017-02-05 Sun 15:57>
-    * other-window-or-split の設定を追加
-  * <2017-02-05 Sun 00:34>
-    * god-mode を無効化
-  * <2017-01-24 Tue 10:35>
-    * wanderlust の draft モードに next-line-more, previous-line-more のキー設定を追加
-  * <2017-01-22 Sun 18:07>
-    * README.org を org-mode で折り畳まないように変更
-  * <2017-01-21 Sat 23:39>
-    * zsh のプロンプトを修正
-  * <2017-01-21 Sat 23:24>
-    * .emacsd/elisp/skk を削除し忘れていたので削除
-  * <2017-01-21 Sat 23:19>
-    * elscreen, howm, ddskk を package の方を使用するように変更し，
+* 更新履歴
+  - <2017-02-22 Wed 22:03>
+    - README.org の見出しと項目を org-mode の形式に変更
+    - minimap-mode に org-mode を追加
+  - <2017-02-22 Wed 15:49>
+    - asm-mode の設定を追加
+    - org-mode の設定を追加
+    - minimap-mode に text-mode を追加
+  - <2017-02-10 Fri 01:21>
+    - C-x C-j で skk-mode ではなく dired-x が起動する問題を修正
+  - <2017-02-08 Wed 13:31>
+    - Mac の emacs におけるフレームの位置ずれを修正
+  - <2017-02-08 Wed 13:00>
+    - Mac の emacs で新しいフレームを作った時のフォント設定を修正
+  - <2017-02-05 Sun 15:57>
+    - other-window-or-split の設定を追加
+  - <2017-02-05 Sun 00:34>
+    - god-mode を無効化
+  - <2017-01-24 Tue 10:35>
+    - wanderlust の draft モードに next-line-more, previous-line-more のキー設定を追加
+  - <2017-01-22 Sun 18:07>
+    - README.org を org-mode で折り畳まないように変更
+  - <2017-01-21 Sat 23:39>
+    - zsh のプロンプトを修正
+  - <2017-01-21 Sat 23:24>
+    - .emacsd/elisp/skk を削除し忘れていたので削除
+  - <2017-01-21 Sat 23:19>
+    - elscreen, howm, ddskk を package の方を使用するように変更し，
       .emacs.d/elisp 以下のファイルを削除
-    * elscreen に elscreen-(wl|w3m|howm|dired) の設定を追加
-  * <2017-01-20 Fri 21:07>
-    * Windows 環境の VC の文字化け対策を追加
-  * <2017-01-20 Fri 10:19>
-    * パッケージの自動インストールの設定を追加
-  * <2017-01-20 Fri 02:02>
-    * highlight-symbol の設定を追加
-  * <2017-01-20 Fri 00:27>
-    * .zshrc の HOSTTYPE 判定処理修正
-  * <2017-01-19 Thu 21:33>
-    * Windows 環境での flycheck を無効化
-    * Windows 環境での wanderlust の設定をマージ
-  * <2017-01-19 Thu 17:35>
-    * Windows 10 用の設定を追加
-  * <2017-01-19 Thu 11:50>
-    * mylisp を修正
-  * <2017-01-01 Sun 19:05>
-    * Wanderlust のメール送信時の分割を廃止
-  * <2016-12-04 Sun 01:08>
-    * navi2ch に 2chproxy 使用時の書き込み設定を追加
-  * <2016-11-07 Mon 00:04>
-    * erlang-mode の設定を追加
-    * google-translate の設定を追加
-  * <2016-10-18 Tue 10:31>
-    * anzu の設定を追加
-  * <2016-10-16 Sun 22:21>
-    * volatile-highlights の設定を追加
-  * <2016-10-16 Sun 21:51>
-    * point-undo の設定を追加
-  * <2016-08-10 Wed 20:16>
-    * flycheck モードの設定を追加
-  * <2016-08-03 Wed 12:08>
-    * init-emr.el に iedit-toggle-key-default を無効にする設定を追加
+    - elscreen に elscreen-(wl|w3m|howm|dired) の設定を追加
+  - <2017-01-20 Fri 21:07>
+    - Windows 環境の VC の文字化け対策を追加
+  - <2017-01-20 Fri 10:19>
+    - パッケージの自動インストールの設定を追加
+  - <2017-01-20 Fri 02:02>
+    - highlight-symbol の設定を追加
+  - <2017-01-20 Fri 00:27>
+    - .zshrc の HOSTTYPE 判定処理修正
+  - <2017-01-19 Thu 21:33>
+    - Windows 環境での flycheck を無効化
+    - Windows 環境での wanderlust の設定をマージ
+  - <2017-01-19 Thu 17:35>
+    - Windows 10 用の設定を追加
+  - <2017-01-19 Thu 11:50>
+    - mylisp を修正
+  - <2017-01-01 Sun 19:05>
+    - Wanderlust のメール送信時の分割を廃止
+  - <2016-12-04 Sun 01:08>
+    - navi2ch に 2chproxy 使用時の書き込み設定を追加
+  - <2016-11-07 Mon 00:04>
+    - erlang-mode の設定を追加
+    - google-translate の設定を追加
+  - <2016-10-18 Tue 10:31>
+    - anzu の設定を追加
+  - <2016-10-16 Sun 22:21>
+    - volatile-highlights の設定を追加
+  - <2016-10-16 Sun 21:51>
+    - point-undo の設定を追加
+  - <2016-08-10 Wed 20:16>
+    - flycheck モードの設定を追加
+  - <2016-08-03 Wed 12:08>
+    - init-emr.el に iedit-toggle-key-default を無効にする設定を追加
       (ace-jump-char-mode とキーが被るため)
-  * <2016-08-01 Mon 20:39>
-    * sublime 的なコードのリストを表示できる minimap モードの設定を追加
-  * <2016-08-01 Mon 17:51>
-    * begin-of-window-line/end-of-window-line のキー割り当てを廃止
+  - <2016-08-01 Mon 20:39>
+    - sublime 的なコードのリストを表示できる minimap モードの設定を追加
+  - <2016-08-01 Mon 17:51>
+    - begin-of-window-line/end-of-window-line のキー割り当てを廃止
       (ターミナル環境で行頭/行末への移動の誤動作が発生するため)
-  * <2016-07-30 Sat 00:50>
-    * helm-show-kill-ring が使えるようになったので browse-kill-ring の方を無効化
-  * <2016-07-30 Sat 00:27>
-    * emr と srefactor で c-mode/c++-mode のエラーが発生していたので修正
-    * helm-show-kill-ring の代りに browse-kill-ring を使用するように変更
-    * スタートアップ非表示
-    * scratch の初期メッセージ消去
-    * emacs サーバの設定を追加
-  * <2016-07-29 Fri 19:55>
-    * emr の設定を追加
-  * <2016-07-29 Fri 18:03>
-    * .zshrc のパス設定修正
-    * auto-complete の設定を修正
-    * helm-imenu が誤動作するので srefactor を無効化
-  * <2016-07-25 Mon 18:41>
-    * .gitignore の設定追加
-    * emacs-refactor の設定を追加
-    * CEDET の設定を追加(ただし init ファイルを追加しただけで有効にはしていない)
-    * srefactor のキー設定を追加(プレフィクスは C-c r)
-  * <2016-07-24 Sun 19:13>
-    * auto-complete-clang-async の設定を追加
-    * srefactor の設定を追加(正しエラーで動作しない)
-  * <2016-07-22 Fri 15:00>
-    * ace-jump モードと ace-jump-char-mode のキーバインドを入れ替え
-    * abbrev の設定変更
-  * <2016-07-18 Mon 23:45>
-    * Hyper Estraier による Wanderlust での検索設定を追加
-  * <2016-07-05 Tue 14:50>
-    * helm-multi-swoop で参照しないバッファの正規表現を追加
-  * <2016-07-03 Sun 01:13>
-    * .agignore, .gitignore の設定追加
-    * 括弧の範囲内の強調表示，ミニバッファの履歴の設定追加
-    * e2wm, god-mode の設定を追加
-    * 日本語 ag のための Mac 環境でのパス設定を追加
-    * helm に find-file の設定を追加
-    * howm のパスを package を使うように変更
-  * <2016-07-01 Fri 23:44>
-    * helm の設定を一部修正
-    * ag, wgrep-ag, helm-ag の設定を追加
-    * .agignore 追加
-  * <2016-06-30 Tue 22:20>
-    * ace-jump の設定を修正(ターミナルでの動作対応)
-    * migemo の設定を順序を修正(helm との依存関係の問題の対策)
-  * <2016-06-29 Wed 22:04>
-    * helm-swoop の設定を追加
-    * helm-migemo の設定を追加
-  * <2016-06-29 Wed 01:58>
-    * multiple-cursors の設定を追加
-  * <2016-06-26 Sun 22:37>
-    * init-darwin.el の記述を case から cond に変更(case は cl.el が必要なので)
-    * pinyinlib をパッケージを使用するように変更
-    * .emacs/elisp/pinyinlib を .emacs/elisp/pinyinlib-japanese に変更
-  * <2016-06-26 Sun 22:07>
-    * Carbon Emacs 用設定ファイル init-darwin.el 追加
-  * <2016-06-26 Sun 20:08>
-    * navi2ch の bbstable の URL を更新
-  * <2016-06-25 Sat 21:51>
-    * pinyinlib--japanese-char-table-* のコメントを修正
-  * <2016-06-25 Sat 21:45>
-    * ace-window の設定を追加
-  * <2016-06-25 Sat 18:44>
-    * ace-pinyin の設定を追加し，日本語用の変換テーブルファイル pinyinlib-japanese を作成
-  * <2016-06-22 Sat 09:22>
-    * 自前の物理行移動関数 move-to-window-(prev|next)-line の C-p/C-n への割り当てを 
+  - <2016-07-30 Sat 00:50>
+    - helm-show-kill-ring が使えるようになったので browse-kill-ring の方を無効化
+  - <2016-07-30 Sat 00:27>
+    - emr と srefactor で c-mode/c++-mode のエラーが発生していたので修正
+    - helm-show-kill-ring の代りに browse-kill-ring を使用するように変更
+    - スタートアップ非表示
+    - scratch の初期メッセージ消去
+    - emacs サーバの設定を追加
+  - <2016-07-29 Fri 19:55>
+    - emr の設定を追加
+  - <2016-07-29 Fri 18:03>
+    - .zshrc のパス設定修正
+    - auto-complete の設定を修正
+    - helm-imenu が誤動作するので srefactor を無効化
+  - <2016-07-25 Mon 18:41>
+    - .gitignore の設定追加
+    - emacs-refactor の設定を追加
+    - CEDET の設定を追加(ただし init ファイルを追加しただけで有効にはしていない)
+    - srefactor のキー設定を追加(プレフィクスは C-c r)
+  - <2016-07-24 Sun 19:13>
+    - auto-complete-clang-async の設定を追加
+    - srefactor の設定を追加(正しエラーで動作しない)
+  - <2016-07-22 Fri 15:00>
+    - ace-jump モードと ace-jump-char-mode のキーバインドを入れ替え
+    - abbrev の設定変更
+  - <2016-07-18 Mon 23:45>
+    - Hyper Estraier による Wanderlust での検索設定を追加
+  - <2016-07-05 Tue 14:50>
+    - helm-multi-swoop で参照しないバッファの正規表現を追加
+  - <2016-07-03 Sun 01:13>
+    - .agignore, .gitignore の設定追加
+    - 括弧の範囲内の強調表示，ミニバッファの履歴の設定追加
+    - e2wm, god-mode の設定を追加
+    - 日本語 ag のための Mac 環境でのパス設定を追加
+    - helm に find-file の設定を追加
+    - howm のパスを package を使うように変更
+  - <2016-07-01 Fri 23:44>
+    - helm の設定を一部修正
+    - ag, wgrep-ag, helm-ag の設定を追加
+    - .agignore 追加
+  - <2016-06-30 Tue 22:20>
+    - ace-jump の設定を修正(ターミナルでの動作対応)
+    - migemo の設定を順序を修正(helm との依存関係の問題の対策)
+  - <2016-06-29 Wed 22:04>
+    - helm-swoop の設定を追加
+    - helm-migemo の設定を追加
+  - <2016-06-29 Wed 01:58>
+    - multiple-cursors の設定を追加
+  - <2016-06-26 Sun 22:37>
+    - init-darwin.el の記述を case から cond に変更(case は cl.el が必要なので)
+	- pinyinlib をパッケージを使用するように変更
+    - .emacs/elisp/pinyinlib を .emacs/elisp/pinyinlib-japanese に変更
+  - <2016-06-26 Sun 22:07>
+    - Carbon Emacs 用設定ファイル init-darwin.el 追加
+  - <2016-06-26 Sun 20:08>
+    - navi2ch の bbstable の URL を更新
+  - <2016-06-25 Sat 21:51>
+    - pinyinlib--japanese-char-table-* のコメントを修正
+  - <2016-06-25 Sat 21:45>
+    - ace-window の設定を追加
+  - <2016-06-25 Sat 18:44>
+    - ace-pinyin の設定を追加し，日本語用の変換テーブルファイル pinyinlib-japanese を作成
+  - <2016-06-22 Sat 09:22>
+    - 自前の物理行移動関数 move-to-window-(prev|next)-line の C-p/C-n への割り当てを 
       emacs-22 以前のみに限定(emacs 23 以降は標準で物理行移動なので)
-  * <2016-06-21 Tue 00:42>
-    * navi2ch 用に 2chproxy.pl の Proxy 設定を追加
-  * <2016-06-11 Sat 22:26>
-    * Linux 環境の設定を追加
-  * <2016-06-11 Sat 22:26>
-    * skk の補完の設定を追加
-    * README.org の更新履歴を新しい日付を上に変更
-  * <2016-05-14 Sat 23:36>
-    * ediff の設定を追加
-    * wanderlust の private 設定を修正
-  * <2016-05-14 Sat 23:31>
-    * .gitignore に *-private[1-9], *-private[1-9].el を追加
-  * <2016-05-08 Sun 13:05>
-    * .emacs .emacs.d .screenrc .vimrc .zshrc を追加
-  * <2016-05-08 Sun 12:51> 
-    * .gitignore を追加
+  - <2016-06-21 Tue 00:42>
+    - navi2ch 用に 2chproxy.pl の Proxy 設定を追加
+  - <2016-06-11 Sat 22:26>
+    - Linux 環境の設定を追加
+  - <2016-06-11 Sat 22:26>
+    - skk の補完の設定を追加
+    - README.org の更新履歴を新しい日付を上に変更
+  - <2016-05-14 Sat 23:36>
+    - ediff の設定を追加
+    - wanderlust の private 設定を修正
+  - <2016-05-14 Sat 23:31>
+    - .gitignore に *-private[1-9], *-private[1-9].el を追加
+  - <2016-05-08 Sun 13:05>
+    - .emacs .emacs.d .screenrc .vimrc .zshrc を追加
+  - <2016-05-08 Sun 12:51> 
+    - .gitignore を追加
