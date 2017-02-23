@@ -18,7 +18,7 @@
       (append
        '(("init$"				. emacs-lisp-mode)	; emacs 設定ファイル
 		 ("init-private$"		. emacs-lisp-mode)	; emacs 個人用設定ファイル
-		 ("\.src"				. asm-mode)			; アセンブラファイル
+		 ("\.src$"				. asm-mode)			; アセンブラファイル
 		 )
        auto-mode-alist))
 
