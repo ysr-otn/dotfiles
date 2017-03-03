@@ -557,6 +557,9 @@
 ;;; for erlang-mode
 (load "init-erlang.el")
 
+;;; for ruby-mode
+(load "init-ruby.el")
+
 ;;; for google-translate
 (load "init-google-translate.el")
 
