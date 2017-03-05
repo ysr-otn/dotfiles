@@ -349,6 +349,11 @@
 	   (load "init-window-system-ns.el"))
 	  )
 
+;;; ウィンドウシステムならカーソル行をハイライト
+(if window-system
+	(progn
+	  (custom-set-faces '(hl-line ((t (:background "dark slate gray")))))
+	  (global-hl-line-mode t)))
 
 ;;;;;;;;;;;;;;;;;;; package 設定 ;;;;;;;;;;;;;;;;;;;
 ;;; http://emacs-jp.github.io/packages/package-management/package-el.html
@@ -591,3 +596,5 @@
                 (which-func-mode ("" which-func-format "-"))
                 "-%-")
               )
+
+
