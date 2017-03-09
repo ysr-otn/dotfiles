@@ -430,6 +430,9 @@
 ;;; for w3m
 (load "init-w3m.el")
 
+;;; for eww
+(load "init-eww.el")
+
 ;;; for ddskk
 (load "init-ddskk.el")
 

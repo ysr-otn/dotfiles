@@ -21,7 +21,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(search-web-default-browser (quote w3m-browse-url))
+ '(ac-clang-cflags (quote ("-I./")))
+ '(anzu-search-threshold 1024)
+ '(anzu-use-migemo nil)
+ '(helm-command-prefix-key "C-c h")
+ '(helm-mini-default-sources
+   (quote
+	(helm-source-buffers-list helm-source-recentf helm-source-files-in-current-dir helm-source-emacs-commands-history helm-source-emacs-commands)))
+ '(projectile-enable-caching t)
+ '(search-web-default-browser (quote eww-browse-url))
  '(search-web-in-emacs-browser (quote w3m-browse-url))
  '(session-use-package t nil (session)))
 (custom-set-faces
@@ -29,4 +37,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(hl-line ((t (:background "dark slate gray")))))
