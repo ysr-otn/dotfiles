@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2017-03-10 Fri 14:08>
+    - Windows 環境の migemo の設定ミスを修正し migemo を有効化
   - <2017-03-10 Fri 02:12>
     - eww の設定を追加
     - customize-group の結果を .emacs に反映

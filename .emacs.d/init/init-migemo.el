@@ -17,7 +17,7 @@
 		((string= (getenv "HOSTTYPE") "windows")
 		 (progn
 		   (setq migemo-command (substitute-in-file-name "c:/cygwin64/opt/cmigemo-default-win64/cmigemo"))
-		   (setq migemo-dictionary (substitute-in-file-name "c:/cygwin64/opt/cmigemo-default-win64/dict/utf-8"))
+		   (setq migemo-dictionary (substitute-in-file-name "c:/cygwin64/opt/cmigemo-default-win64/dict/utf-8/migemo-dict"))
 		   (setq migemo-coding-system 'utf-8-dos)
 		   ))
 		(t
