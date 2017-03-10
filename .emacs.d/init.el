@@ -436,9 +436,8 @@
 ;;; for ddskk
 (load "init-ddskk.el")
 
-;;; for migemo(Windos 環境は未だ動作しないので無効化)
-(if (null (eq system-type 'windows-nt))
-	(load "init-migemo.el"))
+;;; for migemo
+(load "init-migemo.el")
 
 ;;; for navi2ch
 (load "init-navi2ch.el")

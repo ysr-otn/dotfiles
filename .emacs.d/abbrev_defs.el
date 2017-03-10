@@ -144,6 +144,16 @@ main(int argc, char *argv[])
     ("de" "default:
 break;" 
 	 (lambda nil (c-indent-command) (backward-char 10)) 2)
+    ("main" "#include <iostream>
+#include <string>
+
+int
+main(int argc, char *argv[])
+{
+
+	return 0;
+}" 
+	 (lambda nil (previous-line 2) (c-indent-command)) 2)
 	))
 
 
@@ -156,8 +166,8 @@ break;"
 
 ;;; c++-mode
 (define-abbrev-table 'c++-mode-abbrev-table 
-  (append c++-mode-local-abbrev-table 
-		  c-mode-default-abbrev-table))
+  (append c-mode-default-abbrev-table
+		  c++-mode-local-abbrev-table ))
    
 											
 ;;; java-mode

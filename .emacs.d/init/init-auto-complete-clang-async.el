@@ -4,7 +4,10 @@
 (cond ((eq system-type 'darwin)
 	   (setq ac-clang-complete-executable (substitute-in-file-name "/usr/local/bin/clang-complete")))
 	  ((eq system-type 'gnu/linux)
-	   (setq ac-clang-complete-executable (substitute-in-file-name "$HOME/Tools/$HOSTTYPE/bin/clang-complete.sh"))))
+	   (setq ac-clang-complete-executable (substitute-in-file-name "$HOME/Tools/$HOSTTYPE/bin/clang-complete.sh")))
+	  ((eq system-type 'windows-nt)
+	   (setq ac-clang-complete-executable (substitute-in-file-name "c:/cygwin64/usr/local/bin/clang-complete.exe")))
+	  )
 
 (add-hook 'c++-mode-hook
           '(lambda()
