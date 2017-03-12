@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2017-03-13 Mon 00:25>
+    - Emacs-25 用の設定を追加
   - <2017-03-10 Fri 20:16>
     - abbrev_defs の C++ の定義を修正
     - auto-complete-clang-async に Windows の定義を追加

@@ -57,6 +57,10 @@
 (global-set-key "\M-g" 'goto-line)
 ;; C-z (Emacs をアイコン化)を無効化
 (global-unset-key "\C-z")
+;;; フレーム最大化
+(global-set-key "\C-xm" 'toggle-frame-maximized)
+;;; フレーム全画面化
+(global-set-key "\C-xM" 'toggle-frame-fullscreen)
 ;;; コンパイル関係
 (global-set-key "\C-cc" 'compile)
 (global-set-key "\C-cn" 'next-error)
@@ -405,6 +409,10 @@
 	  
 	  ;;  proglaming language tools
 	  erlang
+	  
+	  ;; org-mode
+	  org-tree-slide
+	  
 	  ))
 
 ;; インストールされていないパッケージがあればインストール

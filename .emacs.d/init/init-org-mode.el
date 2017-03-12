@@ -42,16 +42,19 @@
 ;;; スライドインの開始位置を調節する（行数を指定）
 (setq org-tree-slide-slide-in-brank-lines 10) 
 
-;(define-key org-tree-slide-mode-map (kbd "<right>") 'org-tree-slide-move-next-tree)
-;(define-key org-tree-slide-mode-map (kbd "n") 'org-tree-slide-move-next-tree)
-;(define-key org-tree-slide-mode-map (kbd "<left>") 'org-tree-slide-move-previous-tree)
-;(define-key org-tree-slide-mode-map (kbd "p") 'org-tree-slide-move-previous-tree)
-
 (add-hook 'org-mode-hook
 		  '(lambda ()
 			 ;;; for org-tree-slide-move
 			 (progn
+			   (load "org-tree-slide")
+			   
 			   (define-key org-mode-map (kbd "C-c t") 'org-tree-slide-mode)
+			   
+			   (define-key org-tree-slide-mode-map (kbd "<right>") 'org-tree-slide-move-next-tree)
+			   (define-key org-tree-slide-mode-map (kbd "n") 'org-tree-slide-move-next-tree)
+			   (define-key org-tree-slide-mode-map (kbd "<left>") 'org-tree-slide-move-previous-tree)
+			   (define-key org-tree-slide-mode-map (kbd "p") 'org-tree-slide-move-previous-tree)
+			   
 			   (setq org-tree-slide-mode-play-hook nil)
 			   (setq org-tree-slide-mode-stop-hook nil)
 			   
@@ -69,5 +72,9 @@
 							(org-remove-inline-images)
 							(read-only-mode -1)
 							))
+			   )
+		     ;;; for ox-reveal
+			 (progn
+			   (load-library "ox-reveal")
 			   )
 			 ))

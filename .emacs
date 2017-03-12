@@ -1,3 +1,10 @@
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (cond 
  ((>= (string-to-number emacs-version) 24)	   
   (load-library (substitute-in-file-name "$HOME/.emacs.d/init.el")))
@@ -8,12 +15,6 @@
  ((and window-system (string-match "XEmacs" emacs-version))
   (load-library "$EMACS_STARTUP/.xemacs.el"))
  )
-
-;;; 上の式はこう書くことも可
-;;(load-library (if (string-match "^20" emacs-version)
-;;				  "~/emacs/startup/.emacs-20.el"
-;;				"~/emacs/startup/.mule.el"))
-
 
 ;(server-start)
 (custom-set-variables
@@ -38,3 +39,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(hl-line ((t (:background "dark slate gray")))))
+(put 'scroll-left 'disabled nil)
