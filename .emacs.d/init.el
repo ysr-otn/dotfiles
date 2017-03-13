@@ -411,7 +411,7 @@
 	  erlang
 	  
 	  ;; org-mode
-	  org-tree-slide
+	  org-tree-slide ox-reveal
 	  
 	  ))
 
