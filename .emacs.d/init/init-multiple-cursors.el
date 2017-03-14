@@ -3,7 +3,7 @@
 
 (declare-function smartrep-define-key "smartrep")
 
-(smartrep-define-key global-map "C-c l"
+(smartrep-define-key global-map "C-c M"
 					 '(("l"		   . 'mc/edit-lines)
 					   ("r"		   . 'mc/mark-all-in-region)
 					   ("n"        . 'mc/mark-next-like-this)
