@@ -35,6 +35,10 @@ termcapinfo xterm|kterm|rxvt 'hs:ts=\E]0;:fs=\007:ds=\E]0;screen\007'
 termcapinfo  xterm* LP:hs
 termcapinfo  kterm* LP:G0:hs
 
+# 256 色表示のための設定
+defbce "on"
+term xterm-256color
+
 
 ########################################## UTF-8 のための設定
 defencoding     utf8

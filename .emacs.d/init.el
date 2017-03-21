@@ -351,6 +351,8 @@
 	   (load "init-window-system-mac.el"))
 	  ((eq window-system 'ns)	;; Emacs frame on a GNUstep or Macintosh Cocoa display,
 	   (load "init-window-system-ns.el"))
+	  (t						;; ターミナル用の設定
+	   (load "init-window-system-term.el"))
 	  )
 
 ;;; ウィンドウシステムならカーソル行をハイライト

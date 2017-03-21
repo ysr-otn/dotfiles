@@ -36,6 +36,11 @@ termcapinfo  xterm* LP:hs
 termcapinfo  kterm* LP:G0:hs
 
 
+# 256 色表示のための設定
+defbce "on"
+term xterm-256color
+
+
 ########################################## UTF-8 のための設定
 #defencoding     utf8
 #defkanji        utf8

@@ -8,6 +8,10 @@ setopt auto_pushd			# 過去に移動したヂィレクトリをスタックに�
 bindkey "^]" vi-cmd-mode		# 一時的に vi モードにするハック
 	
 
+####### Terminal #######
+export TERM="xterm-256color"	# 256 色表示のターミナルに対応
+
+
 ####### Complement #######
 autoload -U compinit
 compinit
