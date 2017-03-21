@@ -9,6 +9,8 @@ Unix 系の各種設定ファイル(.*)を GitHub で管理する
 * 更新履歴
   - <2017-03-21 Thu 20:10>
     - Zsh, Screen, Emacs をターミナル上で 256 色表示する設定を追加
+  - <2017-03-14 Thu 19:05>
+    - multiple-cursors のプレフィクスを C-c l→C-c M に変更(highlight-symbol-at-point と被るので)
   - <2017-03-13 Mon 09:32>
     - ox-reveal の package 設定を追加
   - <2017-03-13 Mon 00:25>
