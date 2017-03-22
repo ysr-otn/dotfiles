@@ -31,6 +31,9 @@
 
 ;;; 等幅フォントにする
 ;;; http://macemacsjp.sourceforge.jp/index.php?CocoaEmacs#j9873729
+;;; 注: Osaka等幅フォントになるように，アプリケーション→Font Book→Osakaレギュラー
+;;;     を選択し右クリックで「使用停止」して“切”で使う必要がある
+;;;     https://www.yokoweb.net/2017/01/23/emacs-fontsize-screensize/
 (set-default-font
  "-*-Osaka-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
 ;; 新しいフレームを作ったときに同じフォントを使う
