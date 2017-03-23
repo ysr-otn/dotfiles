@@ -355,11 +355,6 @@
 	   (load "init-window-system-term.el"))
 	  )
 
-;;; ウィンドウシステムならカーソル行をハイライト
-(if window-system
-	(progn
-	  (custom-set-faces '(hl-line ((t (:background "dark slate gray")))))
-	  (global-hl-line-mode t)))
 
 ;;;;;;;;;;;;;;;;;;; package 設定 ;;;;;;;;;;;;;;;;;;;
 ;;; http://emacs-jp.github.io/packages/package-management/package-el.html
@@ -414,6 +409,9 @@
 	  
 	  ;; org-mode
 	  org-tree-slide ox-reveal
+	  
+	  ;; color-theme
+	  sublime-themes color-theme-sanityinc-tomorrow
 	  
 	  ))
 
@@ -585,6 +583,41 @@
 
 ;;; for org-mode
 (load "init-org-mode.el")
+
+;;; ウィンドウシステムならカラーテーマを有効にし，カーソル行をハイライト
+(if window-system
+	(progn
+	  (load-theme 'sanityinc-tomorrow-bright t)
+	  (custom-set-faces '(hl-line ((t (:background "dark slate gray")))))
+	  (global-hl-line-mode t)))
+	  
+;;; mode-line setting
+;; 何故か elscreen の設定より先に実行するとエラーがでるのでその後ろに移動
+(setq-default mode-line-format
+              '("-"
+                mode-line-mule-info
+                mode-line-modified
+                mode-line-frame-identification
+                mode-line-buffer-identification
+                ""
+                (line-number-mode "L%l-")
+                (column-number-mode "C%c-")
+                (-3 . "%p")
+				" "
+                global-mode-string
+                " %[("
+                mode-name
+                mode-line-process
+                minor-mode-alist
+                "%n" ")%]-"
+                (which-func-mode ("" which-func-format "-"))
+                "-%-")
+              )
+
+
+e gray")))))
+	  (global-hl-line-mode t))
+  )
 
 ;;; mode-line setting
 ;; 何故か elscreen の設定より先に実行するとエラーがでるのでその後ろに移動

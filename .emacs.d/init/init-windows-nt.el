@@ -143,9 +143,10 @@
 				'(height . 92)
 				'(top		. 0)
 				'(left		. 0)
-				'(foreground-color . "white")
-				'(background-color . "black")
-				'(cursor-color . "turquoise3")
+;;; 色はカラーテーマに任せる
+;				'(foreground-color . "white")
+;				'(background-color . "black")
+;				'(cursor-color . "turquoise3")
 				'(font . "fontset-msgochic")    ; 通常のフォント
 ;				'(ime-font . (w32-logfont; 変換待ち中のフォント設定
 ;							  "ms-gothic9"

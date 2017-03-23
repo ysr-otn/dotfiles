@@ -148,9 +148,10 @@
 							 '(width	. 99)
 							 '(top		. 0)
 							 '(left		. 0)
-							 '(foreground-color . "white")
-							 '(background-color . "black")
-							 '(cursor-color . "turquoise3")
+;;; 色はカラーテーマに任せる
+;							 '(foreground-color . "white")
+;							 '(background-color . "black")
+;							 '(cursor-color . "turquoise3")
 							 )))
 (setq initial-frame-alist 
 					(append (list
@@ -158,7 +159,8 @@
 							 '(width	. 99)
 							 '(top		. 29)
 							 '(left		. 4)
-							 '(foreground-color . "white")
-							 '(background-color . "black")
-							 '(cursor-color . "turquoise3")
+;;; 色はカラーテーマに任せる
+;							 '(foreground-color . "white")
+;							 '(background-color . "black")
+;							 '(cursor-color . "turquoise3")
 							 )))
