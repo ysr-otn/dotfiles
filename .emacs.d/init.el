@@ -614,11 +614,6 @@
                 "-%-")
               )
 
-
-e gray")))))
-	  (global-hl-line-mode t))
-  )
-
 ;;; mode-line setting
 ;; 何故か elscreen の設定より先に実行するとエラーがでるのでその後ろに移動
 (setq-default mode-line-format
