@@ -1,7 +1,7 @@
-;;; debug ÀßÄê
+;;; debug è¨­å®š
 (setq debug-on-error t)
 
-;;; PATH ÀßÄê
+;;; PATH è¨­å®š
 (setq load-path
       (append
        (list
@@ -10,44 +10,44 @@
 		)
        load-path))
 
-;;; info ¥Õ¥¡¥¤¥ë¤ÎÀßÄê
+;;; info ãƒ•ã‚¡ã‚¤ãƒ«ã®è¨­å®š
 (add-to-list 'Info-default-directory-list "~/.emacs.d/info")
 
-;;; ³ÆÀßÄê¥Õ¥¡¥¤¥ë¤Î¥â¡¼¥É»ØÄê
+;;; å„è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ¢ãƒ¼ãƒ‰æŒ‡å®š
 (setq auto-mode-alist
       (append
-       '(("init$"				. emacs-lisp-mode)	; emacs ÀßÄê¥Õ¥¡¥¤¥ë
-		 ("init-private$"		. emacs-lisp-mode)	; emacs ¸Ä¿ÍÍÑÀßÄê¥Õ¥¡¥¤¥ë
-		 ("\.src$"				. asm-mode)			; ¥¢¥»¥ó¥Ö¥é¥Õ¥¡¥¤¥ë
+       '(("init$"				. emacs-lisp-mode)	; emacs è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«
+		 ("init-private$"		. emacs-lisp-mode)	; emacs å€‹äººç”¨è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«
+		 ("\.src$"				. asm-mode)			; ã‚¢ã‚»ãƒ³ãƒ–ãƒ©ãƒ•ã‚¡ã‚¤ãƒ«
 		 )
        auto-mode-alist))
 
-;;;;;;;;;;;;;;;;;;  ´ðËÜÅª¤ÊÀßÄê ;;;;;;;;;;;;;;;;;;;;;;;;
-;;; tab Éý
+;;;;;;;;;;;;;;;;;;  åŸºæœ¬çš„ãªè¨­å®š ;;;;;;;;;;;;;;;;;;;;;;;;
+;;; tab å¹…
 (setq-default tab-width 4)
-;;;É¸½à¤Î fill-column ¤ò 60 ¤ËÀßÄê
+;;;æ¨™æº–ã® fill-column ã‚’ 60 ã«è¨­å®š
 (setq-default fill-column 60)
-;;; ¸¡º÷¤Î¤È¤­ÂçÊ¸»ú¤È¾®Ê¸»ú¤ò¶èÊÌ¤·¤Ê¤¤
+;;; æ¤œç´¢ã®ã¨ãå¤§æ–‡å­—ã¨å°æ–‡å­—ã‚’åŒºåˆ¥ã—ãªã„
 (setq case-fold-search nil)
-;;; Ê¸Ëö¤òÉ½¤ï¤¹Àµµ¬É½¸½
-(setq sentence-end "[.?!][]\"')}]*\\($\\| $\\|	\\|  \\)[ 	\n]*\\|[¡£¡¥¡©¡ª]")
-;;; ÆüËÜ¸ì¤Î dabbrev-expand 
+;;; æ–‡æœ«ã‚’è¡¨ã‚ã™æ­£è¦è¡¨ç¾
+(setq sentence-end "[.?!][]\"')}]*\\($\\| $\\|	\\|  \\)[ 	\n]*\\|[ã€‚ï¼Žï¼Ÿï¼]")
+;;; æ—¥æœ¬èªžã® dabbrev-expand 
 (setq dabbrev-abbrev-char-regexp "\\w\\|\\s_")    
-;;;¥é¥¤¥óÈÖ¹æ¤òÉ½¼¨ 
+;;;ãƒ©ã‚¤ãƒ³ç•ªå·ã‚’è¡¨ç¤º 
 (line-number-mode t)
-;;; ÎóÈÖ¹æ¤òÉ½¼¨
+;;; åˆ—ç•ªå·ã‚’è¡¨ç¤º
 (column-number-mode t)
-;;; ½ÄÊ¬³ä¤µ¤ì¤¿¥¦¥£¥ó¥É¥¦¤Ï 200 ¤è¤ê¶¹¤¤¥¦¥¤¥ó¥É¥¦¤Ê¤é¹ÔËö¤òÀÞ¤êÊÖ¤¨¤µ¤Ê¤¤
+;;; ç¸¦åˆ†å‰²ã•ã‚ŒãŸã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã¯ 200 ã‚ˆã‚Šç‹­ã„ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ãªã‚‰è¡Œæœ«ã‚’æŠ˜ã‚Šè¿”ãˆã•ãªã„
 (setq truncate-partial-width-windows 200)
-;;; yes/no ¤ÎÂå¤ê¤Ë y/n ¤Ç±þ¤¨¤ë¡¥
+;;; yes/no ã®ä»£ã‚Šã« y/n ã§å¿œãˆã‚‹ï¼Ž
 (fset 'yes-or-no-p 'y-or-n-p)
-;; Ä¹¤¤¹Ô¤ÎÀÞ¤êÊÖ¤·É½¼¨¤ò¤¹¤ë¡¥
+;; é•·ã„è¡Œã®æŠ˜ã‚Šè¿”ã—è¡¨ç¤ºã‚’ã™ã‚‹ï¼Ž
 (setq-default truncate-lines nil)
 
 
-;;;;;;;;;;;;;;;;;;;; ¥­¡¼ÀßÄê ;;;;;;;;;;;;;;;;;;;;;;;;
-;;; ´ðËÜÁàºî
-(global-set-key "\C-x\C-c" nil) ; ¸í¤Ã¤Æ½ªÎ»¤·¤Ê¤¤¤è¤¦¤Ë
+;;;;;;;;;;;;;;;;;;;; ã‚­ãƒ¼è¨­å®š ;;;;;;;;;;;;;;;;;;;;;;;;
+;;; åŸºæœ¬æ“ä½œ
+(global-set-key "\C-x\C-c" nil) ; èª¤ã£ã¦çµ‚äº†ã—ãªã„ã‚ˆã†ã«
 (global-set-key "\C-x\C-c\C-c" 'save-buffers-kill-emacs)
 ;(global-set-key "\C-h" 'backward-delete-char)
 (global-set-key "\C-H" 'backward-delete-char)
@@ -55,54 +55,54 @@
 (define-key esc-map "\C-h" 'backward-kill-word)
 (global-set-key "\M-?" 'help-for-help)
 (global-set-key "\M-g" 'goto-line)
-;; C-z (Emacs ¤ò¥¢¥¤¥³¥ó²½)¤òÌµ¸ú²½
+;; C-z (Emacs ã‚’ã‚¢ã‚¤ã‚³ãƒ³åŒ–)ã‚’ç„¡åŠ¹åŒ–
 (global-unset-key "\C-z")
-;;; ¥Õ¥ì¡¼¥àºÇÂç²½
+;;; ãƒ•ãƒ¬ãƒ¼ãƒ æœ€å¤§åŒ–
 (global-set-key "\C-xm" 'toggle-frame-maximized)
-;;; ¥Õ¥ì¡¼¥àÁ´²èÌÌ²½
+;;; ãƒ•ãƒ¬ãƒ¼ãƒ å…¨ç”»é¢åŒ–
 (global-set-key "\C-xM" 'toggle-frame-fullscreen)
-;;; ¥³¥ó¥Ñ¥¤¥ë´Ø·¸
+;;; ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«é–¢ä¿‚
 (global-set-key "\C-cc" 'compile)
 (global-set-key "\C-cn" 'next-error)
 (global-set-key "\C-cp" 'previous-error)
 (global-set-key "\C-cg" 'compile-goto-error)
 (global-set-key "\C-cm" 'manual-entry)
-;;; Î¬¸ìÅ¸³«´Ø·¸
+;;; ç•¥èªžå±•é–‹é–¢ä¿‚
 (global-set-key "\C-o" 'dabbrev-expand)
 (global-set-key "\M-o" 'expand-abbrev)
-;;; ¥«¡¼¥½¥ë¤Î²¼¤Ë¶õ¹Ô¤òÆþ¤ì¤ë (C-o ¤ÎÂå¤ê)
+;;; ã‚«ãƒ¼ã‚½ãƒ«ã®ä¸‹ã«ç©ºè¡Œã‚’å…¥ã‚Œã‚‹ (C-o ã®ä»£ã‚Š)
 (define-key esc-map "\J" 'open-line)
-;;; ²èÌÌ¤Î²£¥¹¥¯¥í¡¼¥ë
+;;; ç”»é¢ã®æ¨ªã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
 (global-set-key [M-left] 'scroll-right)
 (global-set-key [M-right] 'scroll-left)
 (global-set-key [(control >)] 'scroll-left)
 (global-set-key [(control <)] 'scroll-right)
-;;; fill ´ØÏ¢
+;;; fill é–¢é€£
 (global-set-key "\C-xP" 'fill-paragraph)
 (global-set-key "\C-xF" 'fill-region)
-;;; M-q (fill-column) ¤òÊÑ¹¹
+;;; M-q (fill-column) ã‚’å¤‰æ›´
 (global-set-key "\C-xS" 'set-fill-column)
 (global-set-key "\C-xR" 'fill-region-as-paragraph)
-;;; ¼¡¤Î¥¦¥¤¥ó¥É¥¦¤Ë°ÜÆ°
+;;; æ¬¡ã®ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã«ç§»å‹•
 (global-set-key "\C-q" 'other-window)
-;;; C-q ¤ÎÂå¤ï¤ê
+;;; C-q ã®ä»£ã‚ã‚Š
 (global-set-key "\C-xQ" 'quoted-insert)
-;;; C-m ¤ò C-j ¤ÈÆ±¤¸¤Ë¤¹¤ë
+;;; C-m ã‚’ C-j ã¨åŒã˜ã«ã™ã‚‹
 (global-set-key "\C-m" 'newline-and-indent)
 ;;; shell-mode
 (global-set-key "\C-c\C-s" 'shell)
 ;;; ispell
 (global-set-key "\C-c\C-i" 'ispell-complete-word)
-;;; isearch-mode ¤Ç M-y ¤ò isearch-yank-pop ¤ËÀßÄê
+;;; isearch-mode ã§ M-y ã‚’ isearch-yank-pop ã«è¨­å®š
 (define-key isearch-mode-map "\M-y" 'isearch-yank-pop)
-;;; ³ç¸Ì¤ÎÈÏ°ÏÆâ¤ò¶¯Ä´É½¼¨
+;;; æ‹¬å¼§ã®ç¯„å›²å†…ã‚’å¼·èª¿è¡¨ç¤º
 (show-paren-mode t)
 (setq show-paren-delay 0)
 (setq show-paren-style 'parenthesis)
 (set-face-background 'show-paren-match-face "#F0F")
-;; ¥ß¥Ë¥Ð¥Ã¥Õ¥¡¤ÎÍúÎò¤òÊÝÂ¸¤¹¤ë
+;; ãƒŸãƒ‹ãƒãƒƒãƒ•ã‚¡ã®å±¥æ­´ã‚’ä¿å­˜ã™ã‚‹
 (savehist-mode 1)
-;; ¥ß¥Ë¥Ð¥Ã¥Õ¥¡¤ÎÍúÎò¤ÎÊÝÂ¸¿ô¤òÁý¤ä¤¹
+;; ãƒŸãƒ‹ãƒãƒƒãƒ•ã‚¡ã®å±¥æ­´ã®ä¿å­˜æ•°ã‚’å¢—ã‚„ã™
 (setq history-length 4096)
 
 
@@ -144,10 +144,10 @@
  '(lambda ()
 	(local-set-key "q"	'help-quit)))
 
-;; dired-x¤ò»È¤¦¡£
+;; dired-xã‚’ä½¿ã†ã€‚
 (setq dired-load-hook '(lambda () (load "dired-x")))
 
-;; ! ¤Îdefault¤ÎÀßÄê
+;; ! ã®defaultã®è¨­å®š
 (setq dired-guess-shell-alist-user
 	  '(("\\.tar\\.gz$" "tar ztvf")
 		("\\.\\(g\\|\\)z" "zcat")
@@ -182,7 +182,7 @@
    ))
 
 
-;;; buffer ¤ÎÁªÂò
+;;; buffer ã®é¸æŠž
 (global-set-key	"\C-x\C-b" 'buffer-menu)
 (define-key Buffer-menu-mode-map " " 'Buffer-menu-this-window)
 (define-key Buffer-menu-mode-map "k" 'previous-line)
@@ -211,17 +211,17 @@
 (global-set-key "\M-jf" 'frame-configuration-to-register)
 
 
-;;; Î¬¸ìÊä´°
-;; ÀÅÅªÎ¬¸ìÊä´°ÀßÄê¥Õ¥¡¥¤¥ë
+;;; ç•¥èªžè£œå®Œ
+;; é™çš„ç•¥èªžè£œå®Œè¨­å®šãƒ•ã‚¡ã‚¤ãƒ«
 (setq abbrev-file-name (substitute-in-file-name "$HOME/.emacs.d/abbrev_defs.el"))
-;; ¥Õ¥¡¥¤¥ë¤ò³«¤¯»þ¤ËÀÅÅªÎ¬¸ìÊä´°¥â¡¼¥É¤¬¼«Æ°¤Ç ON ¤µ¤ì¤ë¤Î¤òËÉ¤°
+;; ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ãæ™‚ã«é™çš„ç•¥èªžè£œå®Œãƒ¢ãƒ¼ãƒ‰ãŒè‡ªå‹•ã§ ON ã•ã‚Œã‚‹ã®ã‚’é˜²ã
 (add-hook 'pre-command-hook
           (lambda ()
             (setq abbrev-mode nil)))
-;; ´Á»ú¡¦Ê¿²¾Ì¾¤ò´Þ¤àÃ±¸ì¤òÂÐ¾Ý¤È¤¹¤ëÆ°ÅªÎ¬¾ÎÅ¸³«¤ò»È¤¤¤ä¤¹¤¯¤¹¤ë¤¿¤áÀßÄê
+;; æ¼¢å­—ãƒ»å¹³ä»®åã‚’å«ã‚€å˜èªžã‚’å¯¾è±¡ã¨ã™ã‚‹å‹•çš„ç•¥ç§°å±•é–‹ã‚’ä½¿ã„ã‚„ã™ãã™ã‚‹ãŸã‚è¨­å®š
 ;; http://www.sodan.org/~knagano/emacs/dabbrev-20.html
-(or (boundp 'MULE)			; Mule2 ¤È
-    (featurep 'xemacs)			; XEmacs ¤ÏÀßÄêÉÔÍ×
+(or (boundp 'MULE)			; Mule2 ã¨
+    (featurep 'xemacs)			; XEmacs ã¯è¨­å®šä¸è¦
     (let (current-load-list)
       (defadvice dabbrev-expand
 		(around modify-regexp-for-japanese activate compile)
@@ -244,7 +244,7 @@
 					(t dabbrev-abbrev-char-regexp)))))
 			ad-do-it)))))
 
-;;; ¥Ð¥Ã¥¯¥¢¥Ã¥×¥Õ¥¡¥¤¥ë¤Î»ØÄê
+;;; ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã®æŒ‡å®š
 (setq backup-by-copying t) 
 (fset 'make-backup-file-name
       '(lambda (file)
@@ -252,15 +252,15 @@
 				 (file-name-nondirectory file))))
 (setq auto-save-list-file-prefix  (substitute-in-file-name "$HOME/.emacs.d/auto-save/auto-save"))
 
-;;; buffer-name É½¼¨
+;;; buffer-name è¡¨ç¤º
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
 
-;;; ¸½ºß¤Î´Ø¿ôÌ¾¤ò¥â¡¼¥É¥é¥¤¥ó¤ËÉ½¼¨
+;;; ç¾åœ¨ã®é–¢æ•°åã‚’ãƒ¢ãƒ¼ãƒ‰ãƒ©ã‚¤ãƒ³ã«è¡¨ç¤º
 (which-function-mode t)
 
-;;; ÂÐ±þ¤¹¤ë³ç¸Ì¤ò¸÷¤é¤»¤ë
+;;; å¯¾å¿œã™ã‚‹æ‹¬å¼§ã‚’å…‰ã‚‰ã›ã‚‹
 (show-paren-mode t)
 
 ;;; sticky key map
@@ -286,8 +286,8 @@
         sticky-list)
 (define-key sticky-map sticky-key '(lambda ()(interactive)(insert sticky-key)))
 
-;; SKK ÆÉ¤ß¹þ¤ß¸å¤Ë sticky-map ¤òÀßÄê
-;; (eval-after-load ¤ò»È¤¦¾ì¹ç¤À¤È²¿¸Î¤«¾å¼ê¤¯¹Ô¤«¤Ê¤«¤Ã¤¿¤Î¤Ç add-hook ¤ò»È¤¦¤è¤¦¤ËÊÑ¹¹
+;; SKK èª­ã¿è¾¼ã¿å¾Œã« sticky-map ã‚’è¨­å®š
+;; (eval-after-load ã‚’ä½¿ã†å ´åˆã ã¨ä½•æ•…ã‹ä¸Šæ‰‹ãè¡Œã‹ãªã‹ã£ãŸã®ã§ add-hook ã‚’ä½¿ã†ã‚ˆã†ã«å¤‰æ›´
 (add-hook 'skk-mode-hook
           (lambda ()
             (progn
@@ -302,34 +302,34 @@
 ;     (define-key skk-jisx0208-latin-mode-map sticky-key sticky-map)
 ;     (define-key skk-abbrev-mode-map sticky-key sticky-map)))
 
-;; skk-isearch ¤Î¤È¤­¤Î sticky-map ¤ÎÀßÄê¤À¤¬¡¤¥¨¥é¡¼¤¬½Ð¤ë¤·ÆÃ¤ËÌäÂêÌµ¤¤¤Î¤Ç
-;; ¥³¥á¥ó¥È¥¢¥¦¥È(eval-after-load ¤ò»È¤Ã¤Æ¤ë¤È¾å¤ÈÆ±ÍÍ¤Ë¾å¼ê¤¯¤¤¤«¤Ê¤¤¤«¤â¤·¤ì¤Ê¤¤¤¬¡Ä)
+;; skk-isearch ã®ã¨ãã® sticky-map ã®è¨­å®šã ãŒï¼Œã‚¨ãƒ©ãƒ¼ãŒå‡ºã‚‹ã—ç‰¹ã«å•é¡Œç„¡ã„ã®ã§
+;; ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆ(eval-after-load ã‚’ä½¿ã£ã¦ã‚‹ã¨ä¸Šã¨åŒæ§˜ã«ä¸Šæ‰‹ãã„ã‹ãªã„ã‹ã‚‚ã—ã‚Œãªã„ãŒâ€¦)
 ;(eval-after-load "skk-isearch"
 ;				'(define-key skk-isearch-mode-map sticky-key sticky-map))
 
 
-;;; »þ·×É½¼¨
-;; »þ·×¹¹¿·¥¿¥¤¥ß¥ó¥° 1 ÉÃ
+;;; æ™‚è¨ˆè¡¨ç¤º
+;; æ™‚è¨ˆæ›´æ–°ã‚¿ã‚¤ãƒŸãƒ³ã‚° 1 ç§’
 (setq display-time-interval 1)
-;; »þ·×¥Õ¥©¡¼¥Þ¥Ã¥ÈÊÑ¹¹
+;; æ™‚è¨ˆãƒ•ã‚©ãƒ¼ãƒžãƒƒãƒˆå¤‰æ›´
 (setq display-time-string-forms
 	  '((format " %s/%s/%s(%s)%s:%s:%s"
 				year month day dayname
 				24-hours minutes seconds
 				)))
-;; »þ·×É½¼¨ ON
+;; æ™‚è¨ˆè¡¨ç¤º ON
 (display-time)
 
-;; ¥¹¥¿¡¼¥È¥¢¥Ã¥×ÈóÉ½¼¨
+;; ã‚¹ã‚¿ãƒ¼ãƒˆã‚¢ãƒƒãƒ—éžè¡¨ç¤º
 (setq inhibit-startup-screen t)
 
-;; scratch¤Î½é´ü¥á¥Ã¥»¡¼¥¸¾Ãµî
+;; scratchã®åˆæœŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸æ¶ˆåŽ»
 (setq initial-scratch-message "")
 
-;;; ediff¤ò1¥¦¥£¥ó¥É¥¦¤Ç¼Â¹Ô
+;;; ediffã‚’1ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã§å®Ÿè¡Œ
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
-;;; emacsclient ¤Î°Ù¤Î¥µ¡¼¥Ð¤òµ¯Æ°
+;;; emacsclient ã®ç‚ºã®ã‚µãƒ¼ãƒã‚’èµ·å‹•
 (require 'server)
 (unless (server-running-p)
   (server-start))
@@ -351,27 +351,29 @@
 	   (load "init-window-system-mac.el"))
 	  ((eq window-system 'ns)	;; Emacs frame on a GNUstep or Macintosh Cocoa display,
 	   (load "init-window-system-ns.el"))
-	  (t						;; ¥¿¡¼¥ß¥Ê¥ëÍÑ¤ÎÀßÄê
+	  ((eq window-system 'w32)	;; Windows ç”¨ã®è¨­å®š
+	   (load "init-window-system-w32.el"))
+	  (t						;; ã‚¿ãƒ¼ãƒŸãƒŠãƒ«ç”¨ã®è¨­å®š
 	   (load "init-window-system-term.el"))
 	  )
 
 
-;;;;;;;;;;;;;;;;;;; package ÀßÄê ;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;; package è¨­å®š ;;;;;;;;;;;;;;;;;;;
 ;;; http://emacs-jp.github.io/packages/package-management/package-el.html
 (require 'package)
-;; MELPA¤òÄÉ²Ã
+;; MELPAã‚’è¿½åŠ 
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-;; Marmalade¤òÄÉ²Ã(¸«ÉÕ¤«¤é¤Ê¤¤¤Î¤ÇÌµ¸ú²½)
+;; Marmaladeã‚’è¿½åŠ (è¦‹ä»˜ã‹ã‚‰ãªã„ã®ã§ç„¡åŠ¹åŒ–)
 ;; (add-to-list 'package-archives  '("marmalade" . "http://marmalade-repo.org/packages/"))
-;; www.e6h.org¤òÄÉ²Ã(¸«ÉÕ¤«¤é¤Ê¤¤¤Î¤ÇÌµ¸ú²½)
+;; www.e6h.orgã‚’è¿½åŠ (è¦‹ä»˜ã‹ã‚‰ãªã„ã®ã§ç„¡åŠ¹åŒ–)
 ;;(add-to-list 'package-archives	'("e6h" . "http://www.e6h.org/packages/") t)
-;; ½é´ü²½
+;; åˆæœŸåŒ–
 (package-initialize)
 
-;;; ³Æ¼ï¥Ñ¥Ã¥±¡¼¥¸¾ðÊó¤Î¹¹¿·
+;;; å„ç¨®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸æƒ…å ±ã®æ›´æ–°
 (package-refresh-contents)
 
-;;; ¥¤¥ó¥¹¥È¡¼¥ë¤¹¤ë¥Ñ¥Ã¥±¡¼¥¸¤Î¥ê¥¹¥È
+;;; ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã™ã‚‹ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã®ãƒªã‚¹ãƒˆ
 (defvar my/favorite-packages
     '(
 	  ;; helm
@@ -415,13 +417,13 @@
 	  
 	  ))
 
-;; ¥¤¥ó¥¹¥È¡¼¥ë¤µ¤ì¤Æ¤¤¤Ê¤¤¥Ñ¥Ã¥±¡¼¥¸¤¬¤¢¤ì¤Ð¥¤¥ó¥¹¥È¡¼¥ë
+;; ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã•ã‚Œã¦ã„ãªã„ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ãŒã‚ã‚Œã°ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 (dolist (package my/favorite-packages)
     (unless (package-installed-p package)
 	      (package-install package)))
 
 
-;;;; ³Æ¼ï¥é¥¤¥Ö¥é¥ê¤ÎÀßÄê
+;;;; å„ç¨®ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®è¨­å®š
 
 ;;; for mylisp
 (load "mylisp.el")
@@ -454,7 +456,7 @@
 (load "init-session.el")
 
 ;;; for minibuf-isearch
-;; ¸¡º÷´Ø·¸¤Ï helm ¤ÎÊý¤ËÅý¹ç¤¹¤ë¤Î¤ÇÌµ¸ú²½(2015/02/23)
+;; æ¤œç´¢é–¢ä¿‚ã¯ helm ã®æ–¹ã«çµ±åˆã™ã‚‹ã®ã§ç„¡åŠ¹åŒ–(2015/02/23)
 ;; (load "init-minibuf-isearch.el")
 
 ;;; for mew
@@ -464,7 +466,7 @@
 (load "init-wanderlust.el")
 
 ;;; for auto-install
-;; »È¤Ã¤Æ¤Ê¤¤¤Î¤ÇÌµ¸ú²½(2015/02/23)
+;; ä½¿ã£ã¦ãªã„ã®ã§ç„¡åŠ¹åŒ–(2015/02/23)
 ;(load "init-auto-install.el")
 
 ;;; for windows
@@ -477,8 +479,8 @@
 (load "init-mpg123.el")
 
 ;;; for browse-kill-ring
-;;; (helm-show-kill-ring ¤¬ session ¤È¤ÎÁêÀ­¤Ç¥¨¥é¡¼¤¬È¯À¸¤¹¤ë¤Î¤Ç 
-;;;  Âå¤ê¤Ë browse-kill-ring ¤ò»ÈÍÑ¤¹¤ë) ¢ª ²ò¾Ã¤·¤¿¤Î¤Ç browse-kill-ring ¤òÌµ¸ú²½
+;;; (helm-show-kill-ring ãŒ session ã¨ã®ç›¸æ€§ã§ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã™ã‚‹ã®ã§ 
+;;;  ä»£ã‚Šã« browse-kill-ring ã‚’ä½¿ç”¨ã™ã‚‹) â†’ è§£æ¶ˆã—ãŸã®ã§ browse-kill-ring ã‚’ç„¡åŠ¹åŒ–
 ;(load "init-browse-kill-ring.el")
 
 ;;; for helm
@@ -494,7 +496,7 @@
 (load "init-ag.el")
 
 ;;; for smooth-scroll
-; C-v, M-v ¤Ë¤è¤ë¥¹¥¯¥í¡¼¥ë¤¬ÃÙ¤¹¤®¤ë¤Î¤ÇÌµ¸ú²½
+; C-v, M-v ã«ã‚ˆã‚‹ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãŒé…ã™ãŽã‚‹ã®ã§ç„¡åŠ¹åŒ–
 ;(load "init-smooth-scroll.el")
 
 ;;; for popwin
@@ -524,7 +526,7 @@
 ;;; for VC
 (load "init-vc.el")
 
-;;; for flycheck(Windos ´Ä¶­¤ÏÌ¤¤ÀÆ°ºî¤·¤Ê¤¤¤Î¤ÇÌµ¸ú²½)
+;;; for flycheck(Windos ç’°å¢ƒã¯æœªã å‹•ä½œã—ãªã„ã®ã§ç„¡åŠ¹åŒ–)
 (if (null (eq system-type 'windows-nt))
 	(load "init-flycheck.el"))
 
@@ -556,7 +558,7 @@
 (load "init-e2wm.el")
 
 ;;; for god-mode
-;;; ¤¦¤¶¤¤¤Î¤ÇÌµ¸ú²½
+;;; ã†ã–ã„ã®ã§ç„¡åŠ¹åŒ–
 ;(load "init-god-mode.el")
 
 ;;; for emacs-refactor
@@ -566,7 +568,7 @@
 (load "init-minimap.el")
 
 ;;; for srefactor
-;;; helm-imenu ¤¬¸íÆ°ºî¤¹¤ë¤Î¤ÇÌµ¸ú²½
+;;; helm-imenu ãŒèª¤å‹•ä½œã™ã‚‹ã®ã§ç„¡åŠ¹åŒ–
 ;(load "srefactor.el")
 
 ;;; for erlang-mode
@@ -584,7 +586,7 @@
 ;;; for org-mode
 (load "init-org-mode.el")
 
-;;; ¥¦¥£¥ó¥É¥¦¥·¥¹¥Æ¥à¤Ê¤é¥«¥é¡¼¥Æ¡¼¥Þ¤òÍ­¸ú¤Ë¤·¡¤¥«¡¼¥½¥ë¹Ô¤ò¥Ï¥¤¥é¥¤¥È
+;;; ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚·ã‚¹ãƒ†ãƒ ãªã‚‰ã‚«ãƒ©ãƒ¼ãƒ†ãƒ¼ãƒžã‚’æœ‰åŠ¹ã«ã—ï¼Œã‚«ãƒ¼ã‚½ãƒ«è¡Œã‚’ãƒã‚¤ãƒ©ã‚¤ãƒˆ
 (if window-system
 	(progn
 	  (load-theme 'sanityinc-tomorrow-bright t)
@@ -592,7 +594,7 @@
 	  (global-hl-line-mode t)))
 	  
 ;;; mode-line setting
-;; ²¿¸Î¤« elscreen ¤ÎÀßÄê¤è¤êÀè¤Ë¼Â¹Ô¤¹¤ë¤È¥¨¥é¡¼¤¬¤Ç¤ë¤Î¤Ç¤½¤Î¸å¤í¤Ë°ÜÆ°
+;; ä½•æ•…ã‹ elscreen ã®è¨­å®šã‚ˆã‚Šå…ˆã«å®Ÿè¡Œã™ã‚‹ã¨ã‚¨ãƒ©ãƒ¼ãŒã§ã‚‹ã®ã§ãã®å¾Œã‚ã«ç§»å‹•
 (setq-default mode-line-format
               '("-"
                 mode-line-mule-info

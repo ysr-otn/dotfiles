@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2017-03-24 金 10:53>
+    - Emacs の Windows 用のウィンドウ関係の設定を init-window-system-w32.el を作成して移動
   - <2017-03-24 Fri 02:27>
     - .emacs.d/init.el の冗長な設定を削除
   - <2017-03-24 Fri 02:25>
