@@ -1,5 +1,5 @@
 ;;; 見易いカラーテーマを設定
-(load-theme 'tsdh-dark t)
+(load-theme 'wilson t)
 
 ;;; 背景色と文字色を設定
 (set-foreground-color "white")
@@ -15,3 +15,7 @@
 							 '(foreground-color . "white")
 							 '(background-color . "black")
 							 )))
+
+;;; カーソル行をハイライト
+(custom-set-faces '(hl-line ((t (:background "#000088")))))
+(global-hl-line-mode t)
