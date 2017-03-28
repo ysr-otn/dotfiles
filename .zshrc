@@ -95,6 +95,13 @@ alias Hidedotfiles='defaults write com.apple.finder AppleShowAllFiles -boolean F
 # 画像ビューア qlmanage の ql(と古の X11 画像ヒューア xv)のエイリアスを作成
 alias ql='qlmanage -p "$@" >& /dev/null'
 alias xv='qlmanage -p "$@" >& /dev/null'
+# colordiff があれば diff の代りに colordiff を使用する
+if type colordiff 2>/dev/null 1>/dev/null ; then
+	alias diff='colordiff'
+fi
+# lv に色ずけを許可する
+alias lv='lv -c'
+
 
 # C-o により dabbrev 風の補完(http://d.hatena.ne.jp/secondlife/20060108/1136650653)
 # HARDCOPYFILE=$HOME/tmp/screen-hardcopy
