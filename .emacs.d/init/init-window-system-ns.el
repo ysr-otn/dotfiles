@@ -29,15 +29,18 @@
 
 ;;; フォントの設定
 
-;;; 等幅フォントにする
+;;; プログラミング向けフォント Migu 2M を使用
+;;; http://mix-mplus-ipa.osdn.jp/migu/
+(set-default-font "Migu 2M-14")
+
+;;; Osaka フォントを等幅フォントにする
 ;;; http://macemacsjp.sourceforge.jp/index.php?CocoaEmacs#j9873729
 ;;; 注: Osaka等幅フォントになるように，アプリケーション→Font Book→Osakaレギュラー
 ;;;     を選択し右クリックで「使用停止」して“切”で使う必要がある
 ;;;     https://www.yokoweb.net/2017/01/23/emacs-fontsize-screensize/
-(set-default-font
- "-*-Osaka-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
-;; 新しいフレームを作ったときに同じフォントを使う
-(setq frame-inherited-parameters '(font tool-bar-lines))
+;; 
+; (set-default-font
+;  "-*-Osaka-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
 
 ;; サイズは大きいが等幅フォントで使える
 ;; http://d.hatena.ne.jp/kazu-yamamoto/20140625/1403674172
@@ -139,13 +142,17 @@
 ; 				  'katakana-jisx0201
 ; 				  '("Hiragino Maru Gothic ProN"))
 
+
+;; 新しいフレームを作ったときに同じフォントを使う
+(setq frame-inherited-parameters '(font tool-bar-lines))
+
 ;;; フレームの設定
 ;;; (何故か初期化時のフレームの位置がずれるので，default-frame-alist と
 ;;;  initial-frame-alist でフレーム位置を微調整)
 (setq default-frame-alist
 					(append (list
-							 '(height	. 59)
-							 '(width	. 99)
+							 '(height	. 70)
+							 '(width	. 100)
 							 '(top		. 0)
 							 '(left		. 0)
 ;;; 色はカラーテーマに任せる
@@ -155,8 +162,8 @@
 							 )))
 (setq initial-frame-alist 
 					(append (list
-							 '(height	. 58)
-							 '(width	. 99)
+							 '(height	. 70)
+							 '(width	. 100)
 							 '(top		. 29)
 							 '(left		. 4)
 ;;; 色はカラーテーマに任せる
