@@ -41,9 +41,10 @@
 (setq truncate-partial-width-windows 200)
 ;;; yes/no の代りに y/n で応える．
 (fset 'yes-or-no-p 'y-or-n-p)
-;; 長い行の折り返し表示をする．
+;;; 長い行の折り返し表示をする．
 (setq-default truncate-lines nil)
-
+;;; 警告のビープ音を無効化
+(setq ring-bell-function 'ignore)
 
 ;;;;;;;;;;;;;;;;;;;; キー設定 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 基本操作
