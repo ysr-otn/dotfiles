@@ -12,12 +12,8 @@
 ;; for elscreen-dired
 (load "elscreen-dired")
 
-(cond (window-system
-	   (elscreen-set-prefix-key "\C-z")
-	   (define-key elscreen-map "\C-z" 'elscreen-toggle))
-	  (t
-	   (elscreen-set-prefix-key "\C-c\C-x")
-	   (define-key elscreen-map "z" 'elscreen-toggle)))
+(elscreen-set-prefix-key "\C-]")
+(define-key elscreen-map "\C-]" 'elscreen-toggle)
 
 ;; elscreen のタブ化(emacs21 以降でないと face 関係でエラーがでるので，とりあえず中止)
 ;; (load "elscreen-tab")
