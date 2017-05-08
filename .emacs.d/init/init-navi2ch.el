@@ -10,6 +10,21 @@
 ;;; dat アクセスのために 2chproxy.pl をプロキシに設定
 (setq navi2ch-net-http-proxy "127.0.0.1:8080")
 
+;;; navi2ch 実行時に 2chproxy.pl の過去のプロセスとファイルを削除して 2chproxy.pl を実行
+(add-hook 'navi2ch-load-hook
+		  '(lambda ()
+			 (progn
+			   (shell-command-to-string "2chproxy.pl --kill")
+			   (shell-command-to-string "rm -f /tmp/2chproxy.pid")
+			   (start-process "2chproxy" "*2chproxy*" (substitute-in-file-name "$HOME/Tools/share/bin/2chproxy.pl"))
+			   )))
+
+;;; emacs 終了時に 2chproxy.pl を終了
+(add-hook 'navi2ch-kill-emacs-hook
+		  '(lambda ()
+			 (shell-command-to-string "2chproxy.pl --kill")))
+
+
 (add-hook 'navi2ch-list-mode-hook
 		  '(lambda ()
 			 (define-key navi2ch-list-mode-map "\C-o" 'navi2ch-goto-url)
