@@ -22,6 +22,12 @@
 		 )
        auto-mode-alist))
 
+;;; 実行ファイルのパス
+(setenv "PATH"
+		(concat (substitute-in-file-name "$HOME/Tools/share/bin:")
+				(getenv "PATH")))
+
+
 ;;;;;;;;;;;;;;;;;;  基本的な設定 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; tab 幅
 (setq-default tab-width 4)
