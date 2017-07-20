@@ -21,6 +21,12 @@
 (add-to-list 'default-frame-alist
 			 '(font . "fontset-msgochic"))
 
+
+
+;;; プログラミング向けフォント Migu 2M を使用
+;;; http://mix-mplus-ipa.osdn.jp/migu/
+;(set-default-font "Migu 2M-10")
+
 ;;; frame
 (setq default-frame-alist
       (append (list

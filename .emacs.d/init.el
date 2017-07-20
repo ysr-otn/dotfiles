@@ -399,7 +399,7 @@
 	  anzu god-mode multiple-cursors undo-tree undohist
 	  
 	  ;; auto-complete
-	  auto-complete auto-complete-clang-async
+	  auto-complete auto-complete-clang-async fuzzy
 	  
 	  ;; skk
 	  ddskk
@@ -524,8 +524,8 @@
 ;;; for cc-mode
 (load "init-cc-mode.el")
 
-;;; for auto-complete-clang-async
-(load "init-auto-complete-clang-async.el")
+;;; for auto-complete-clang-async(clang-complete のプロセスオーバーエラーが出るので無効化)
+;(load "init-auto-complete-clang-async.el")
 
 ;;; for ggtags
 (load "init-ggtags.el")
