@@ -7,6 +7,11 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2017-07-20 Thu 15:08>
+    - .zshrc の EDITOR の設定を変更
+    - clang-complete のプロセスオーバーエラーが出るので auto-complete-clang-async を無効化
+    - fuzzy.el をインストールパッケージに追加
+    - Windows 環境下の emacs のフォント設定に Migu 2M を追加(ただし無効にしている)
   - <2017-05-17 Wed 12:01>
     - tmux の設定を変更
     - navi2ch の設定のコミット盛れを修正

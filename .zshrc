@@ -53,6 +53,13 @@ else
 	export LANG=ja_JP.UTF-8
 fi
 	
+###### Set Editor ######
+if [ $HOSTTYPE != linux ]; then			# Linux 環境では vim の日本語設定が正しく動作しないのでエディタに vim は設定しない
+	export EDITOR=vim
+fi
+
+
+
 ########## PATH ##########
 export PATH=$HOME/Tools/$HOSTTYPE/bin:$HOME/Tools/share/bin:$PATH
 if [ $HOSTTYPE = linux ]; then
