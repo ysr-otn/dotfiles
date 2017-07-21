@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2017-07-22 Sat 00:33>
+    - .zshrc に Python の設定を追加
   - <2017-07-20 Thu 15:08>
     - .zshrc の EDITOR の設定を変更
     - clang-complete のプロセスオーバーエラーが出るので auto-complete-clang-async を無効化
