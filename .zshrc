@@ -64,7 +64,7 @@ export GITHUG_DOTFILE_DIR=$HOME/Development/github/ysr-otn/dotfiles
 
 # llvm 関係のパス設定
 if [ $HOSTTYPE = i386 ]; then
-	export PATH=/usr/local/Cellar/llvm/3.5.0/bin/:$PATH
+	export PATH=/usr/local/Cellar/llvm/3.5.0/bin:$PATH
 	export DYLD_LIBRARY_PATH=/usr/local/Cellar/llvm/3.5.0/lib:$DYLD_LIBRARY_PATH 
 fi
 
@@ -74,6 +74,12 @@ export EMACS_STARTUP=$EMACS_DIR/startup
 export EMACS_SITE_LISP=$HOME/Tools/$HOSTTYPE/share/emacs/site-lisp
 export EMACS_INFO=$HOME/Tools/$HOSTTYPE/share/info
 export EMACS_INFO2=$HOME/Tools/$HOSTTYPE/info
+
+
+#######	Python の設定  #######
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 
 #######	Aliasis  #######
