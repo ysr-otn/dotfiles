@@ -1,6 +1,74 @@
 ;;; debug 設定
 (setq debug-on-error t)
 
+
+;;;;;;;;;;;;;;;;;;; package 設定 ;;;;;;;;;;;;;;;;;;;
+;;; http://emacs-jp.github.io/packages/package-management/package-el.html
+(require 'package)
+;; MELPAを追加
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+;; Marmaladeを追加(見付からないので無効化)
+;; (add-to-list 'package-archives  '("marmalade" . "http://marmalade-repo.org/packages/"))
+;; www.e6h.orgを追加(見付からないので無効化)
+;;(add-to-list 'package-archives	'("e6h" . "http://www.e6h.org/packages/") t)
+;; 初期化
+(package-initialize)
+
+;;; 各種パッケージ情報の更新
+(package-refresh-contents)
+
+;;; インストールするパッケージのリスト
+(defvar my/favorite-packages
+    '(
+	  ;; helm
+	  helm ac-helm helm-ag helm-c-yasnippet helm-gtags helm-projectile helm-swoop
+	  
+	  ;; ace-jump
+	  ace-jump-mode	ace-pinyin	ace-window
+	  
+	  ;; search tools
+	  ag google-translate migemo wgrep wgrep-ag 
+	  
+	  ;; buffer/window control tools
+	  elscreen minibuf-isearch minimap point-undo popup popwin session highlight-symbol
+	  
+	  ;; misc
+	  anzu god-mode multiple-cursors undo-tree undohist cp5022x
+	  
+	  ;; auto-complete
+	  auto-complete auto-complete-clang-async fuzzy
+	  
+	  ;; skk
+	  ddskk
+	  
+	  ;; howm
+	  howm
+	  
+	  ;; web tools
+	  mew navi2ch search-web semi w3m wanderlust
+	  
+	  ;; developmemt tools
+	  e2wm emr flycheck ggtags projectile yasnippet
+	  
+	  ;;  proglaming language tools
+	  erlang
+	  
+	  ;; org-mode
+	  org-tree-slide ox-reveal
+	  
+	  ;; color-theme
+	  sublime-themes color-theme-sanityinc-tomorrow
+	  
+	  ))
+
+;; インストールされていないパッケージがあればインストール
+(dolist (package my/favorite-packages)
+    (unless (package-installed-p package)
+	      (package-install package)))
+
+
+;;;;;;;;;;;;;;;;;;  PATH の設定 ;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;;; PATH 設定
 (setq load-path
       (append
@@ -341,6 +409,9 @@
 (unless (server-running-p)
   (server-start))
 
+;;; wanderlust の文字コードの設定に必要な cp5022x の設定
+(require 'cp5022x)
+
 ;;; load init file for each version emacs
 (load (concat (substitute-in-file-name "$HOME/.emacs.d/init-")
 			  (number-to-string emacs-major-version)
@@ -363,72 +434,6 @@
 	  (t						;; ターミナル用の設定
 	   (load "init-window-system-term.el"))
 	  )
-
-
-;;;;;;;;;;;;;;;;;;; package 設定 ;;;;;;;;;;;;;;;;;;;
-;;; http://emacs-jp.github.io/packages/package-management/package-el.html
-(require 'package)
-;; MELPAを追加
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-;; Marmaladeを追加(見付からないので無効化)
-;; (add-to-list 'package-archives  '("marmalade" . "http://marmalade-repo.org/packages/"))
-;; www.e6h.orgを追加(見付からないので無効化)
-;;(add-to-list 'package-archives	'("e6h" . "http://www.e6h.org/packages/") t)
-;; 初期化
-(package-initialize)
-
-;;; 各種パッケージ情報の更新
-(package-refresh-contents)
-
-;;; インストールするパッケージのリスト
-(defvar my/favorite-packages
-    '(
-	  ;; helm
-	  helm ac-helm helm-ag helm-c-yasnippet helm-gtags helm-projectile helm-swoop
-	  
-	  ;; ace-jump
-	  ace-jump-mode	ace-pinyin	ace-window
-	  
-	  ;; search tools
-	  ag google-translate migemo wgrep wgrep-ag 
-	  
-	  ;; buffer/window control tools
-	  elscreen minibuf-isearch minimap point-undo popup popwin session highlight-symbol
-	  
-	  ;; misc
-	  anzu god-mode multiple-cursors undo-tree undohist
-	  
-	  ;; auto-complete
-	  auto-complete auto-complete-clang-async fuzzy
-	  
-	  ;; skk
-	  ddskk
-	  
-	  ;; howm
-	  howm
-	  
-	  ;; web tools
-	  mew navi2ch search-web semi w3m wanderlust
-	  
-	  ;; developmemt tools
-	  e2wm emr flycheck ggtags projectile yasnippet
-	  
-	  ;;  proglaming language tools
-	  erlang
-	  
-	  ;; org-mode
-	  org-tree-slide ox-reveal
-	  
-	  ;; color-theme
-	  sublime-themes color-theme-sanityinc-tomorrow
-	  
-	  ))
-
-;; インストールされていないパッケージがあればインストール
-(dolist (package my/favorite-packages)
-    (unless (package-installed-p package)
-	      (package-install package)))
-
 
 ;;;; 各種ライブラリの設定
 

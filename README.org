@@ -7,6 +7,11 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2017-09-13 Wed 22:32>
+    - wanderlust のために cp5022x の設定を追加
+      (メール表示時の warning 修正のため)
+    - init.el の package の設定をファイルの先頭に移動
+      (package インストールと package の設定の依存関係の不整合解消のため)
   - <2017-07-22 Sat 00:33>
     - .zshrc に Python の設定を追加
   - <2017-07-20 Thu 15:08>
