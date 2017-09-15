@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2017-09-15 Fri 09:46>
+    - .zshrc の Python の設定を Mac のみに限定(他の OS の python の環境が整っていないので)
   - <2017-09-13 Wed 22:32>
     - wanderlust のために cp5022x の設定を追加
       (メール表示時の warning 修正のため)
