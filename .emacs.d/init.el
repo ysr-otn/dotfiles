@@ -56,6 +56,9 @@
 	  ;; org-mode
 	  org-tree-slide ox-reveal
 	  
+	  ;; markdown-mode
+	  markdown-mode
+	  
 	  ;; color-theme
 	  sublime-themes color-theme-sanityinc-tomorrow
 	  
@@ -597,6 +600,9 @@
 
 ;;; for org-mode
 (load "init-org-mode.el")
+
+;;; for markdown-mode
+(load "init-markdown-mode.el")
 
 ;;; ウィンドウシステムならカラーテーマを有効にし，カーソル行をハイライト
 (if window-system
