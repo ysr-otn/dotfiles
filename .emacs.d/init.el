@@ -62,6 +62,9 @@
 	  ;; color-theme
 	  sublime-themes color-theme-sanityinc-tomorrow
 	  
+	  ;; image
+	  image+ image-dired+
+	  
 	  ))
 
 ;; インストールされていないパッケージがあればインストール
@@ -603,6 +606,9 @@
 
 ;;; for markdown-mode
 (load "init-markdown-mode.el")
+
+;;; for image+-mode
+(load "init-image+.el")
 
 ;;; ウィンドウシステムならカラーテーマを有効にし，カーソル行をハイライト
 (if window-system

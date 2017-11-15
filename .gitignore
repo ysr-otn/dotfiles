@@ -30,3 +30,4 @@
 .emacs.d/games/*
 .emacs.d/semanticdb/
 .emacs.d/srecode-map.el
+.emacs.d/image-dired
