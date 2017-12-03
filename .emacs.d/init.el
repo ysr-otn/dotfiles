@@ -65,6 +65,8 @@
 	  ;; image
 	  image+ image-dired+
 	  
+	  ;; yatex
+	  yatex
 	  ))
 
 ;; インストールされていないパッケージがあればインストール
@@ -609,6 +611,9 @@
 
 ;;; for image+-mode
 (load "init-image+.el")
+
+;;; for yatex-mode
+(load "init-yatex.el")
 
 ;;; ウィンドウシステムならカラーテーマを有効にし，カーソル行をハイライト
 (if window-system
