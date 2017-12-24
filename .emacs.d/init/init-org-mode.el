@@ -82,3 +82,7 @@
 ;; 画像の幅を変更するときに必要っぽい
 ;; https://emacs.stackexchange.com/questions/26363/downscaling-inline-images-in-org-mode
 (setq org-image-actual-width t)
+
+
+;;; ソースコードの色付けのための htmlize の設定
+(require 'htmlize)

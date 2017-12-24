@@ -74,35 +74,38 @@
 ;;; compile コマンド設定
 (defun set-compile-command-for-c ()  
   (interactive)  
-  (let* ((filename (file-name-nondirectory buffer-file-name))  
-		 (index (or (string-match "\\.c$" filename)
-					(string-match "\\.cc$" filename)
-					(string-match "\\.cxx$" filename)
-					(string-match "\\.cpp$" filename)))
-		 (filename-no-suffix (substring filename 0 index)))
-    (cond  
-     ;; Makefile があれば "gmake -k"  
-     ((or (file-exists-p "Makefile")  
-		  (file-exists-p "makefile"))
-	  ;; Dual CPU マシンの場合はコンパイルプロセスを複数同時に走らせる
-	  ;; (ついでに LANG 設定を C にしてコンパイルメッセージを英語にしコンパイルエラー行に compile-goto-error で飛べるようにしておく)
-	  (cond ((string-match "^\\(dsclinux...\\)\\(\\..+\\)*$"
-						   system-name)
-			 (setq compile-command "LC_ALL=C make -k -j 4"))
+  ;; org-mode のソースコード内では buffer-file-name が nil なのでエラーが出ないように 
+  ;; buffer-file-name が存在する時のみ以下の処理を実行
+  (cond ((null (eq buffer-file-name nil))
+		 (let* ((filename (file-name-nondirectory buffer-file-name))  
+				(index (or (string-match "\\.c$" filename)
+						   (string-match "\\.cc$" filename)
+						   (string-match "\\.cxx$" filename)
+						   (string-match "\\.cpp$" filename)))
+				(filename-no-suffix (substring filename 0 index)))
+		   (cond  
+			;; Makefile があれば "gmake -k"  
+			((or (file-exists-p "Makefile")  
+				 (file-exists-p "makefile"))
+			 ;; Dual CPU マシンの場合はコンパイルプロセスを複数同時に走らせる
+			 ;; (ついでに LANG 設定を C にしてコンパイルメッセージを英語にしコンパイルエラー行に compile-goto-error で飛べるようにしておく)
+			 (cond ((string-match "^\\(dsclinux...\\)\\(\\..+\\)*$"
+								  system-name)
+					(setq compile-command "LC_ALL=C make -k -j 4"))
+				   (t 
+					(setq compile-command "gmake -k"))))
+			;; ヘッダファイルがあれば、オブジェクトファイルをつくる  
+			((file-exists-p (concat filename-no-suffix ".h"))  
+			 (setq compile-command  
+				   (concat "gcc -ansi -Wall -g -c " filename)))  
+			((or (string-match "\\.cc$" filename)
+				 (string-match "\\.cxx$" filename)
+				 (string-match "\\.cpp$" filename))
+			 (setq compile-command  
+				   (concat "g++ -ansi -Wall -g -lstdc++ -o "
+						   filename-no-suffix " " filename)))
+			;; それ以外ならファイル名の実行ファイルを作成
 			(t 
-			 (setq compile-command "gmake -k"))))
-     ;; ヘッダファイルがあれば、オブジェクトファイルをつくる  
-     ((file-exists-p (concat filename-no-suffix ".h"))  
-      (setq compile-command  
-			(concat "gcc -ansi -Wall -g -c " filename)))  
-	 ((or (string-match "\\.cc$" filename)
-		  (string-match "\\.cxx$" filename)
-		  (string-match "\\.cpp$" filename))
-	  (setq compile-command  
-			(concat "g++ -ansi -Wall -g -lstdc++ -o "
-					filename-no-suffix " " filename)))
-	 ;; それ以外ならファイル名の実行ファイルを作成
-	 (t 
-	  (setq compile-command  
-			(concat "gcc -ansi -Wall -g -o "
-					filename-no-suffix " " filename))))))
+			 (setq compile-command  
+				   (concat "gcc -ansi -Wall -g -o "
+						   filename-no-suffix " " filename))))))))
