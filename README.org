@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2018-02-11 Sun 20:42>
+    - Emacs の calendar に日本の祝日に対応するために japanese-holidays を導入
   - <2017-12-24 Sun 23:59>
     - org-mode に htmlize の設定を追加
     - org-mode の htmlize に共ない cc-mode のコンパイルコマンド設定を修正

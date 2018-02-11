@@ -33,7 +33,7 @@
 	  elscreen minibuf-isearch minimap point-undo popup popwin session highlight-symbol
 	  
 	  ;; misc
-	  anzu god-mode multiple-cursors undo-tree undohist cp5022x
+	  anzu god-mode multiple-cursors undo-tree undohist cp5022x japanese-holidays
 	  
 	  ;; auto-complete
 	  auto-complete auto-complete-clang-async fuzzy
@@ -614,6 +614,9 @@
 
 ;;; for yatex-mode
 (load "init-yatex.el")
+
+;;; for japanese-holidays
+(load "init-japanese-holidays.el")
 
 ;;; ウィンドウシステムならカラーテーマを有効にし，カーソル行をハイライト
 (if window-system
