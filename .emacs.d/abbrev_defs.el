@@ -260,6 +260,34 @@ break;"
     ))
 
 
+;;; org-mode
+;(define-abbrev-table 'org-mode-abbrev-table 
+;  '(
+;    ;; 制御構文
+;    ("h" (format "#+STARTUP: showall
+;#+TITLE: 
+;#+AUTHOR: 大谷 欽洋
+;#+DATE: %s
+;#+OPTIONS: ^:{}
+;"			(format-time-string "%Y/%m/%d" (current-time)))
+;	 nil 2)
+;	))
+
+(define-abbrev-table 'org-mode-abbrev-table 
+  '(
+    ;; ヘッダ
+    ("h" "#+STARTUP: showall
+#+TITLE: 
+#+AUTHOR: 大谷 欽洋
+#+DATE: 
+#+OPTIONS: ^:{}" (lambda nil (previous-line 3)) 2)
+	;; HTML 画像サイズ指定
+	("hi" "#+ATTR_HTML: :width 800px" nil 2)
+	;; ファイルへのリンク
+	("f" "[[file:]]" (lambda nil (backward-char 2)) 2)
+	;; 脚注
+	("n" "[fn:]" (lambda nil (backward-char 1)) 2)
+	))
 
 (define-abbrev-table 'wl-draft-mode-abbrev-table '(
     ))

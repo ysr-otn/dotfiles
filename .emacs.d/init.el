@@ -1,3 +1,18 @@
+;;;;;;;;;;;;;;;;;;  LOAD PATH の設定 ;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;; PATH 設定
+(setq load-path
+      (append
+       (list
+		(substitute-in-file-name "$HOME/.emacs.d/init")
+		(substitute-in-file-name "$HOME/.emacs.d/elisp/misc")
+		)
+       load-path))
+
+
+;;; 起動時間の測定用のツール initchart
+(load "initchart.el")
+
 ;;; debug 設定
 (setq debug-on-error t)
 
@@ -76,15 +91,6 @@
 
 
 ;;;;;;;;;;;;;;;;;;  PATH の設定 ;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;; PATH 設定
-(setq load-path
-      (append
-       (list
-		(substitute-in-file-name "$HOME/.emacs.d/init")
-		(substitute-in-file-name "$HOME/.emacs.d/elisp/misc")
-		)
-       load-path))
 
 ;;; info ファイルの設定
 (add-to-list 'Info-default-directory-list "~/.emacs.d/info")
