@@ -7,6 +7,9 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2018-02-26 Mon 00:52>
+    - skk-study による変換候補の学習機能を有効化
+    - skk-search-web による変換候補を Google CGI API for Japanese Input から表示
   - <2018-02-21 Wed 12:05>
     - 動的略語語補完に org-mode の設定を追加
     - Emacs の起動処理の処理時間の視覚化ツール initchart の設定を追加

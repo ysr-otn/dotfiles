@@ -104,3 +104,19 @@
 
 ;;; 動的補完の複数表示 
 (setq skk-dcomp-multiple-activate t)
+
+;;; 変換候補を学習する
+(require 'skk-study)
+(setq skk-study-file (substitute-in-file-name "$HOME/.emacs.d/ddskk/study"))
+
+
+;;; Google CGI API for Japanese Input を利用したかな漢字変換
+(require 'skk-search-web)
+(add-to-list 'skk-search-prog-list
+             '(skk-search-web 'skk-google-cgi-api-for-japanese-input)
+             t)
+
+; 辞書登録モードへの突入時の初期値に Google サジェストを表示
+(setq skk-read-from-minibuffer-function
+      (lambda ()
+		(car (skk-google-suggest skk-henkan-key))))
