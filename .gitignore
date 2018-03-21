@@ -16,8 +16,8 @@
 .emacs.d/auto-save
 .emacs.d/backup
 .emacs.d/ddskk/jisyo
-.emacs.d/ddskk/jisyo.bak
 .emacs.d/ddskk/record
+.emacs.d/ddskk/study
 .emacs.d/elpa
 .emacs.d/recentf
 .emacs.d/scratch

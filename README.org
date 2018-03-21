@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2018-03-22 Thu 00:28>
+    - skk-study の学習ファイル .emacs.d/ddskk/study を git の管理対象外に変更
   - <2018-02-26 Mon 00:52>
     - skk-study による変換候補の学習機能を有効化
     - skk-search-web による変換候補を Google CGI API for Japanese Input から表示
