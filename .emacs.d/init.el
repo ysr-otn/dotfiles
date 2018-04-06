@@ -30,7 +30,7 @@
 (package-initialize)
 
 ;;; 各種パッケージ情報の更新
-(package-refresh-contents)
+;(package-refresh-contents)
 
 ;;; インストールするパッケージのリスト
 (defvar my/favorite-packages
