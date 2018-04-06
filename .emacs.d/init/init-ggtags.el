@@ -18,3 +18,20 @@
 (define-key ggtags-navigation-map "\M-}" 'forward-paragraph)
 (define-key ggtags-navigation-map "\M-<" 'beginning-of-buffer)
 (define-key ggtags-navigation-map "\M->" 'end-of-buffer)
+
+
+;;; 複数の GTAGS のプロジェクトを切り替えるための設定
+;;; http://philos0.blog94.fc2.com/blog-entry-38.html をベースに修正
+(defvar parent-project "" "current project parent directory" )
+
+(defun my-project nil "setup my project"
+	   (interactive)
+	   (setq parent-project (expand-file-name (read-file-name "project parent directory : ")))
+	   (setq gtags-rootdir parent-project))
+
+(add-hook 'c-mode-hook 'c-init-for-gtags)
+
+(defun c-init-for-gtags nil
+  " C mode specific setup for GTAGS. "
+  (cond (parent-project nil) (t (my-project)))
+  (ggtags-mode 1))
