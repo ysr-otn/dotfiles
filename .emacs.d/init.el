@@ -80,6 +80,9 @@
 	  ;; image
 	  image+ image-dired+
 	  
+	  ;;; multi media
+	  bongo
+	  
 	  ;; yatex
 	  yatex
 	  ))
@@ -503,6 +506,9 @@
 
 ;;; for mpg123
 (load "init-mpg123.el")
+
+;;; for bongo
+(load "init-bongo.el")
 
 ;;; for browse-kill-ring
 ;;; (helm-show-kill-ring が session との相性でエラーが発生するので 
