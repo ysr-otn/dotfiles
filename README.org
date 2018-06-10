@@ -7,6 +7,9 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2018-06-11 Mon 01:21>
+    - Emacs に powerline の設定を追加
+    - Emacs に perspeen の設定を追加し，windows.el と elscreen の設定を無効化
   - <2018-04-08 Sun 16:35>
     - Emacs にマルチメディア再生環境の bongo の設定を追加
   - <2018-04-06 Fri 12:07>

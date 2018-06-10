@@ -45,7 +45,7 @@
 	  ag google-translate migemo wgrep wgrep-ag 
 	  
 	  ;; buffer/window control tools
-	  elscreen minibuf-isearch minimap point-undo popup popwin session highlight-symbol
+	  perspeen powerline elscreen minibuf-isearch minimap point-undo popup popwin session highlight-symbol
 	  
 	  ;; misc
 	  anzu god-mode multiple-cursors undo-tree undohist cp5022x japanese-holidays
@@ -463,8 +463,17 @@
 ;;; for dmacro
 (load "init-dmacro.el")
 
-;;; for elscreen
-(load "init-elscreen.el")
+;;; for elscreen(perspeen を使うようにしたので無効化)
+;; powerline を使用すると 2 回目に (load "init-elscreen.el") を実行すると何故か
+;; エラーが発生するので init-elscreen.el のロードは 1 回のみにする
+; (defvar load-init-elscreen nil)
+; (if (null load-init-elscreen)
+; 	(progn 
+; 	  (load "init-elscreen.el")
+; 	  (setq load-init-elscreen t)))
+
+;;; for perspeen
+(load "init-perspeen.el")
 
 ;;; for w3m
 (load "init-w3m.el")
@@ -498,8 +507,8 @@
 ;; 使ってないので無効化(2015/02/23)
 ;(load "init-auto-install.el")
 
-;;; for windows
-(load "init-windows.el")
+;;; for windows(perspeen を使うようになったので無効化)
+; (load "init-windows.el")
 
 ;;; for howm
 (load "init-howm.el")
@@ -659,3 +668,8 @@
                 (which-func-mode ("" which-func-format "-"))
                 "-%-")
               )
+
+;;; for powerline
+;; powerline の設定は mode-line の設定の後にしないと反映されないので
+;; mode-line の後に実行している．
+(load "init-powerline.el")
