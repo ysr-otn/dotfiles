@@ -534,43 +534,47 @@ max-fill-column, min-fill-column を利用する"
 
 
 ;;; for windows.el(windows.el を使わなくなったので無効化)
-; (global-set-key "\e1"
-; 		 (defun win-1 ()
-; 		   (interactive)
-; 		   (win-switch-to-window 1 1)))
-; (global-set-key "\e2"
-; 		 (defun win-2 ()
-; 		   (interactive)
-; 		   (win-switch-to-window 1 2)))
-; (global-set-key "\e3"
-; 		 (defun win-3 ()
-; 		   (interactive)
-; 		   (win-switch-to-window 1 3)))
-; (global-set-key "\e4"
-; 		 (defun win-4 ()
-; 		   (interactive)
-; 		   (win-switch-to-window 1 4)))
-; (global-set-key "\e5"
-; 		 (defun win-5 ()
-; 		   (interactive)
-; 		   (win-switch-to-window 1 5)))
-; (global-set-key "\e6"
-; 		 (defun win-6 ()
-; 		   (interactive)
-; 		   (win-switch-to-window 1 6)))
-; (global-set-key "\e7"
-; 		 (defun win-7 ()
-; 		   (interactive)
-; 		   (win-switch-to-window 1 7)))
-; (global-set-key "\e8"
-; 		 (defun win-8 ()
-; 		   (interactive)
-; 		   (win-switch-to-window 1 8)))
-; (global-set-key "\e9"
-; 		 (defun win-9 ()
-; 		   (interactive)
-; 		   (win-switch-to-window 1 9)))
-; (global-set-key "\e0" 'win-switch-menu)
+(if (< (string-to-number emacs-version) 25)
+    (progn
+      (global-set-key "\e1"
+		      (defun win-1 ()
+			(interactive)
+			(win-switch-to-window 1 1)))
+      (global-set-key "\e2"
+		      (defun win-2 ()
+			(interactive)
+			(win-switch-to-window 1 2)))
+      (global-set-key "\e3"
+		      (defun win-3 ()
+			(interactive)
+			(win-switch-to-window 1 3)))
+      (global-set-key "\e4"
+		      (defun win-4 ()
+			(interactive)
+			(win-switch-to-window 1 4)))
+      (global-set-key "\e5"
+		      (defun win-5 ()
+			(interactive)
+			(win-switch-to-window 1 5)))
+      (global-set-key "\e6"
+		      (defun win-6 ()
+			(interactive)
+			(win-switch-to-window 1 6)))
+      (global-set-key "\e7"
+		      (defun win-7 ()
+			(interactive)
+			(win-switch-to-window 1 7)))
+      (global-set-key "\e8"
+		      (defun win-8 ()
+			(interactive)
+			(win-switch-to-window 1 8)))
+      (global-set-key "\e9"
+		      (defun win-9 ()
+			(interactive)
+			(win-switch-to-window 1 9)))
+
+      (global-set-key "\e0" 'win-switch-menu)
+      ))
 
 
 

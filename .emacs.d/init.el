@@ -45,8 +45,7 @@
 	  ag google-translate migemo wgrep wgrep-ag 
 	  
 	  ;; buffer/window control tools
-	  perspeen powerline elscreen minibuf-isearch minimap point-undo popup popwin session highlight-symbol
-	  
+	  powerline elscreen minibuf-isearch minimap point-undo popup popwin session highlight-symbol
 	  ;; misc
 	  anzu god-mode multiple-cursors undo-tree undohist cp5022x japanese-holidays
 	  
@@ -87,6 +86,10 @@
 	  yatex
 	  ))
 
+(if (>= (string-to-number emacs-version) 25)
+    (append '(perspeen)
+	    my/favorite-packages))
+	    
 ;; インストールされていないパッケージがあればインストール
 (dolist (package my/favorite-packages)
     (unless (package-installed-p package)
@@ -463,17 +466,19 @@
 ;;; for dmacro
 (load "init-dmacro.el")
 
-;;; for elscreen(perspeen を使うようにしたので無効化)
-;; powerline を使用すると 2 回目に (load "init-elscreen.el") を実行すると何故か
-;; エラーが発生するので init-elscreen.el のロードは 1 回のみにする
-; (defvar load-init-elscreen nil)
-; (if (null load-init-elscreen)
-; 	(progn 
-; 	  (load "init-elscreen.el")
-; 	  (setq load-init-elscreen t)))
-
-;;; for perspeen
-(load "init-perspeen.el")
+;;; for perspeen or elscreen
+(if (>= (string-to-number emacs-version) 25)
+  ;; for perspeen
+    (load "init-perspeen.el")
+  (progn
+  ;; for elscreen(perspeen を使うようにしたので無効化)
+  ; powerline を使用すると 2 回目に (load "init-elscreen.el") を実行すると何故か
+  ;; エラーが発生するので init-elscreen.el のロードは 1 回のみにする
+    (defvar load-init-elscreen nil)
+    (if (null load-init-elscreen)
+ 	(progn 
+ 	  (load "init-elscreen.el")
+ 	  (setq load-init-elscreen t)))))
 
 ;;; for w3m
 (load "init-w3m.el")
@@ -508,7 +513,8 @@
 ;(load "init-auto-install.el")
 
 ;;; for windows(perspeen を使うようになったので無効化)
-; (load "init-windows.el")
+(if (< (string-to-number emacs-version) 25)
+    (load "init-windows.el"))
 
 ;;; for howm
 (load "init-howm.el")
