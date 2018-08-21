@@ -88,6 +88,8 @@ if [ $HOSTTYPE = i386 ]; then
 	export PYENV_ROOT="$HOME/.pyenv"
 	export PATH="$PYENV_ROOT/bin:$PATH"
 	eval "$(pyenv init -)"
+elif [ $HOSTTYPE = windows ]; then
+	export PATH="/cygdrive/c/ProgramData/Anaconda3:$PATH"
 fi
 
 
