@@ -41,6 +41,8 @@ if [ $HOSTNAME = imglinux110 ]; then
 	export HOSTTYPE=linux
 elif [ "$OS" ]; then
 	export HOSTTYPE=windows
+elif [ $HOSTNAME = PC-PA1710C2120R -a `uname -s` = Linux ]; then
+	export HOSTTYPE=ubuntu
 else
 	export HOSTTYPE=i386		# mac
 fi
@@ -84,7 +86,7 @@ export EMACS_INFO2=$HOME/Tools/$HOSTTYPE/info
 
 
 #######	Python の設定  #######
-if [ $HOSTTYPE = i386 ]; then
+if [ $HOSTTYPE = i386 -o $HOSTTYPE = ubuntu ]; then
 	export PYENV_ROOT="$HOME/.pyenv"
 	export PATH="$PYENV_ROOT/bin:$PATH"
 	eval "$(pyenv init -)"
