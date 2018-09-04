@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2018-09-04 Tue 22:05>
+    - Emacs で windows.el を使うように戻す
   - <2018-08-21 Thu 19:48>
     - .zshrc に Windows 環境での Anaconda の設定を追加
   - <2018-06-11 Mon 10:05>

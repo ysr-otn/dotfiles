@@ -466,19 +466,14 @@
 ;;; for dmacro
 (load "init-dmacro.el")
 
-;;; for perspeen or elscreen
-(if (>= (string-to-number emacs-version) 25)
-  ;; for perspeen
-    (load "init-perspeen.el")
-  (progn
-  ;; for elscreen(perspeen を使うようにしたので無効化)
-  ; powerline を使用すると 2 回目に (load "init-elscreen.el") を実行すると何故か
-  ;; エラーが発生するので init-elscreen.el のロードは 1 回のみにする
-    (defvar load-init-elscreen nil)
-    (if (null load-init-elscreen)
+;; for elscreen
+; powerline を使用すると 2 回目に (load "init-elscreen.el") を実行すると何故か
+;; エラーが発生するので init-elscreen.el のロードは 1 回のみにする
+(defvar load-init-elscreen nil)
+(if (null load-init-elscreen)
  	(progn 
  	  (load "init-elscreen.el")
- 	  (setq load-init-elscreen t)))))
+ 	  (setq load-init-elscreen t)))
 
 ;;; for w3m
 (load "init-w3m.el")
@@ -512,9 +507,8 @@
 ;; 使ってないので無効化(2015/02/23)
 ;(load "init-auto-install.el")
 
-;;; for windows(perspeen を使うようになったので無効化)
-(if (< (string-to-number emacs-version) 25)
-    (load "init-windows.el"))
+;;; for windows
+(load "init-windows.el")
 
 ;;; for howm
 (load "init-howm.el")
