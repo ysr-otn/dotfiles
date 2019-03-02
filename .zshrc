@@ -121,6 +121,10 @@ fi
 # lv に色ずけを許可する
 alias lv='lv -c'
 
+if [ $HOSTTYPE = i386 ]; then
+# jnethack の文字コードを cocot を使って UTF-8 に変換する
+alias jnethack='cocot -t UTF-8 -p eucjp -- jnethack'
+fi
 
 # C-o により dabbrev 風の補完(http://d.hatena.ne.jp/secondlife/20060108/1136650653)
 # HARDCOPYFILE=$HOME/tmp/screen-hardcopy

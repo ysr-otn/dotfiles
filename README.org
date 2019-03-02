@@ -7,6 +7,10 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+
+  - <2019-03-02 Sat 11:24>
+    - .zshrc に Mac 環境での jnethack の文字コードの設定を追加
+    - mylisp.el に dired のソート処理を追加  
   - <2018-09-05 Wed 00:14>
     - Ubuntu on Windows 環境の .zshrc の設定を追加
   - <2018-09-04 Tue 22:05>
