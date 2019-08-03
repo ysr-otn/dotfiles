@@ -432,6 +432,12 @@
 ;;; wanderlust の文字コードの設定に必要な cp5022x の設定
 (require 'cp5022x)
 
+;;; 短形編集 cua-mode の設定
+;;; https://qiita.com/yyamamot/items/7efcbfdcccdb5fa45ebe
+(cua-mode t)
+(setq cua-enable-cua-keys nil) ; デフォルトキーバインドを無効化
+(define-key global-map (kbd "C-x SPC") 'cua-set-rectangle-mark)
+
 ;;; load init file for each version emacs
 (load (concat (substitute-in-file-name "$HOME/.emacs.d/init-")
 			  (number-to-string emacs-major-version)
