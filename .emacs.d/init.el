@@ -47,7 +47,7 @@
 	  ;; buffer/window control tools
 	  powerline elscreen minibuf-isearch minimap point-undo popup popwin session highlight-symbol
 	  ;; misc
-	  anzu god-mode multiple-cursors undo-tree undohist cp5022x japanese-holidays
+	  anzu god-mode multiple-cursors undo-tree undohist cp5022x japanese-holidays adaptive-wrap
 	  
 	  ;; auto-complete
 	  auto-complete auto-complete-clang-async fuzzy
