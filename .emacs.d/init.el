@@ -46,6 +46,8 @@
 	  
 	  ;; buffer/window control tools
 	  powerline elscreen minibuf-isearch minimap point-undo popup popwin session highlight-symbol
+	  buffer-expose dimmer
+	  
 	  ;; misc
 	  anzu god-mode multiple-cursors undo-tree undohist cp5022x japanese-holidays adaptive-wrap
 	  
@@ -515,6 +517,12 @@
 
 ;;; for windows
 (load "init-windows.el")
+
+;;; for buffer-expose
+(load "init-buffer-expose.el")
+
+;;; for dimmer
+(load "init-dimmer.el")
 
 ;;; for howm
 (load "init-howm.el")
