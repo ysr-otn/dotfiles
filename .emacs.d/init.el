@@ -64,7 +64,7 @@
 	  mew navi2ch search-web semi w3m wanderlust
 	  
 	  ;; developmemt tools
-	  e2wm emr flycheck ggtags projectile yasnippet
+	  e2wm emr flycheck ggtags dumb-jump projectile yasnippet
 	  
 	  ;;  proglaming language tools
 	  erlang
@@ -521,6 +521,9 @@
 ;;; for buffer-expose
 (load "init-buffer-expose.el")
 
+;;; for adaptive-wrap
+(load "init-adaptive-wrap.el")
+
 ;;; for dimmer
 (load "init-dimmer.el")
 
@@ -577,6 +580,9 @@
 
 ;;; for ggtags
 (load "init-ggtags.el")
+
+;;; for dumb-jump
+(load "init-dumb-jump.el")
 
 ;;; for VC
 (load "init-vc.el")

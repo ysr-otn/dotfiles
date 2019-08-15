@@ -74,7 +74,7 @@
 		"." dir-ftp-domain-name
 		":" dir-ftp-remorthost-directory))
   (dired dir-ftp-var))
-(global-set-key "\C-cd" 'dir-ftp)
+(global-set-key "\C-cD" 'dir-ftp)
 
 (defun set-dir-ftp ()
   " dir-ftp の各種設定"

@@ -7,6 +7,10 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2019-08-15 Thu 21:54>
+    - dumb-jump の設定を追加
+    - dir-ftp のキー設定が dumb-jump と被っていたので変更
+    - init-adaptive-wrap.el の load 漏れを修正
   - <2019-08-03 Sat 17:22>
     - dimmer の設定を追加
   - <2019-08-03 Sat 17:08>
