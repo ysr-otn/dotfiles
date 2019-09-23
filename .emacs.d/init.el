@@ -196,7 +196,10 @@
 (show-paren-mode t)
 (setq show-paren-delay 0)
 (setq show-paren-style 'parenthesis)
-(set-face-background 'show-paren-match-face "#F0F")
+(if (>= (string-to-number emacs-version) 26)
+	(set-face-background 'show-paren-match "#F0F")
+  (set-face-background 'show-paren-match-face "#F0F"))
+
 ;; ミニバッファの履歴を保存する
 (savehist-mode 1)
 ;; ミニバッファの履歴の保存数を増やす
