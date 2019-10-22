@@ -20,3 +20,7 @@
 ;;; http://suzuki.tdiary.net/20161226.html
 (setq default-truncate-lines (default-value 'truncate-lines))
 
+;;; string-to-int が廃止になったので string-to-int を参照している package のために
+;;; string-to-int を定義
+(defun string-to-int (string &optional base)
+  (floor (string-to-number string base)))

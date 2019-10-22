@@ -51,8 +51,11 @@
 	  ;; misc
 	  anzu god-mode multiple-cursors undo-tree undohist cp5022x japanese-holidays adaptive-wrap
 	  
-	  ;; auto-complete
-	  auto-complete auto-complete-clang-async fuzzy
+	  ;; auto-complete(company を使うようになったので
+	  ;auto-complete auto-complete-clang-async fuzzy
+	  
+	  ;; company
+	  company company-quickhelp
 	  
 	  ;; skk
 	  ddskk
@@ -192,6 +195,8 @@
 (global-set-key "\C-c\C-i" 'ispell-complete-word)
 ;;; isearch-mode で M-y を isearch-yank-pop に設定
 (define-key isearch-mode-map "\M-y" 'isearch-yank-pop)
+;;; タグジャンプ元への復帰
+(global-set-key "\M-*" 'pop-tag-mark)
 ;;; 括弧の範囲内を強調表示
 (show-paren-mode t)
 (setq show-paren-delay 0)
@@ -579,8 +584,14 @@
 ;;; for ace-jump
 (load "init-ace-jump.el")
 
-;;; for auto-complete
-(load "init-auto-complete.el")
+;;; for auto-complete(company を使うようになったので廃止)
+;(load "init-auto-complete.el")
+
+;;; for company
+(load "init-company.el")
+
+;;; for lsp
+(load "init-lsp.el")
 
 ;;; for yasnippet
 (load "init-yasnippet.el")

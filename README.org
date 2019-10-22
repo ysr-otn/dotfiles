@@ -7,6 +7,12 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2019-10-22 Tue 21:54>
+    - .zshrc の Mac 環境での llvm のパス設定を llvm のバージョンに依存しない形式に変更
+    - Emacs の Mac 環境での llvm のパス設定を llvm のバージョンに依存しない形式に変更
+    - Emacs-26 環境での string-to-int の後方互換の処理を追加
+    - auto-complete から company に移行
+    - lsp-mode を導入
   - <2019-09-23 Mon 21:34>
     - Emacs-26 用の設定を追加
   - <2019-09-15 Sun 22:42>

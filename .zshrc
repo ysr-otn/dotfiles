@@ -73,8 +73,8 @@ export GITHUG_DOTFILE_DIR=$HOME/Development/github/ysr-otn/dotfiles
 
 # llvm 関係のパス設定
 if [ $HOSTTYPE = i386 ]; then
-	export PATH=/usr/local/Cellar/llvm/3.5.0/bin:$PATH
-	export DYLD_LIBRARY_PATH=/usr/local/Cellar/llvm/3.5.0/lib:$DYLD_LIBRARY_PATH 
+	export PATH=/usr/local/opt/llvm/bin:$PATH
+	export DYLD_LIBRARY_PATH=/usr/local/opt/llvm/lib:$DYLD_LIBRARY_PATH 
 fi
 
 ####### Emacs Environment ########
