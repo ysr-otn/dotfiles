@@ -35,6 +35,9 @@
 ;;; インストールするパッケージのリスト
 (defvar my/favorite-packages
     '(
+	  ;; use-package
+	  use-package
+	  
 	  ;; helm
 	  helm ac-helm helm-ag helm-c-yasnippet helm-gtags helm-projectile helm-swoop
 	  
@@ -53,6 +56,9 @@
 	  
 	  ;; auto-complete(company を使うようになったので
 	  ;auto-complete auto-complete-clang-async fuzzy
+	  
+	  ;;; lsp
+	  lsp-mode lsp-ui company-lsp clang-format ccls
 	  
 	  ;; company
 	  company company-quickhelp
@@ -584,20 +590,20 @@
 ;;; for ace-jump
 (load "init-ace-jump.el")
 
+;;; for cc-mode(c-mode-hook をクリアしているので c-mode-hook を追加する init-lsp.el の前に実行0
+(load "init-cc-mode.el")
+
 ;;; for auto-complete(company を使うようになったので廃止)
 ;(load "init-auto-complete.el")
-
-;;; for company
-(load "init-company.el")
 
 ;;; for lsp
 (load "init-lsp.el")
 
+;;; for company
+(load "init-company.el")
+
 ;;; for yasnippet
 (load "init-yasnippet.el")
-
-;;; for cc-mode
-(load "init-cc-mode.el")
 
 ;;; for auto-complete-clang-async(clang-complete のプロセスオーバーエラーが出るので無効化)
 ;(load "init-auto-complete-clang-async.el")

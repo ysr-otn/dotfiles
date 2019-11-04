@@ -1,29 +1,5 @@
 (require 'company)
 
-;;; TAB での補完を効率化
-;;; https://qiita.com/sune2/items/b73037f9e85962f5afb7
-(defun company--insert-candidate2 (candidate)
-  (when (> (length candidate) 0)
-	(setq candidate (substring-no-properties candidate))
-	(if (eq (company-call-backend 'ignore-case) 'keep-prefix)
-		(insert (company-strip-prefix candidate))
-	  (if (equal company-prefix candidate)
-		  (company-select-next)
-		(delete-region (- (point) (length company-prefix)) (point))
-		(insert candidate))
-	  )))
-
-(defun company-complete-common2 ()
-  (interactive)
-  (when (company-manual-begin)
-	(if (and (not (cdr company-candidates))
-			 (equal company-common (car company-candidates)))
-		(company-complete-selection)
-	  (company--insert-candidate2 company-common))))
-
-(define-key company-active-map [tab] 'company-complete-common2)
-(define-key company-active-map [backtab] 'company-select-previous) ; おまけ
-  
 ;;; 各種キー設定
 (define-key company-active-map (kbd "C-i") 'company-select-next)
 (define-key company-active-map (kbd "C-n") 'company-select-next)
@@ -50,3 +26,6 @@
 
 ;;; company のヘルプを有効化
 (company-quickhelp-mode)
+
+;;; clang のパスを指定
+(setq company-clang-executable "/usr/local/opt/llvm/bin/clang")

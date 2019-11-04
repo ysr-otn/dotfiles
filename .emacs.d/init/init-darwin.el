@@ -1,6 +1,7 @@
 (setq exec-path
 	  (append
 	   (list
+		"/usr/local/opt/llvm/bin"
 		"/usr/local/bin"
 		"/Applications/CarbonEmacs.app/Contents/MacOS/bin/"
 		)
@@ -12,10 +13,13 @@
 		(concat (substitute-in-file-name "$HOME/Tools/$HOSTTYPE/bin:")
 				(substitute-in-file-name "/usr/local/bin:")
 				;;; for llvm
-				(substitute-in-file-name "/usr/local/opt/llvm/bin")
+				(substitute-in-file-name "/usr/local/opt/llvm/bin:")
 				(getenv "PATH")))
 
 ;;; for llvm
 (setenv "DYLD_LIBRARY_PATH"
 		(concat "/usr/local/opt/llvm/lib:"
 				(getenv "DYLD_LIBRARY_PATH")))
+
+(setenv "LDFLAGS" "-L/usr/local/opt/llvm/lib")
+(setenv "CPPFLAGS" "-I/usr/local/opt/llvm/include")

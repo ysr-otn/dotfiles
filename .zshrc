@@ -75,6 +75,8 @@ export GITHUG_DOTFILE_DIR=$HOME/Development/github/ysr-otn/dotfiles
 if [ $HOSTTYPE = i386 ]; then
 	export PATH=/usr/local/opt/llvm/bin:$PATH
 	export DYLD_LIBRARY_PATH=/usr/local/opt/llvm/lib:$DYLD_LIBRARY_PATH 
+	export LDFLAGS="-L/usr/local/opt/llvm/lib"
+	export CPPFLAGS="-I/usr/local/opt/llvm/include"	
 fi
 
 ####### Emacs Environment ########

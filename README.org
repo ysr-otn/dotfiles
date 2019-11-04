@@ -7,6 +7,9 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2019-11-05 Tue 00:46>
+    - ccls を用いてプロジェクト解析をし clangd を用いた lsp-mode の補完に対応
+      (要 dash をアップデートしてからの lsp-ui, flycheck のアップデート)
   - <2019-10-22 Tue 21:54>
     - .zshrc の Mac 環境での llvm のパス設定を llvm のバージョンに依存しない形式に変更
     - Emacs の Mac 環境での llvm のパス設定を llvm のバージョンに依存しない形式に変更
