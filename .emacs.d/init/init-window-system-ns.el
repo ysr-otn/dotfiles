@@ -1,12 +1,12 @@
-;; ÆüËÜ¸ì¤ÎÀßÄê¡ÊUTF-8¡Ë
+;; æ—¥æœ¬èªã®è¨­å®šï¼ˆUTF-8ï¼‰
 (set-language-environment 'Japanese)
 (prefer-coding-system 'utf-8)
 
-;; ÆüËÜ¸ìIMÍÑ¤ÎÀßÄê¡Êinline_patch ¤òÅö¤Æ¤Æ¤¤¤ë¤³¤È¤¬¾ò·ï¡Ë
+;; æ—¥æœ¬èªIMç”¨ã®è¨­å®šï¼ˆinline_patch ã‚’å½“ã¦ã¦ã„ã‚‹ã“ã¨ãŒæ¡ä»¶ï¼‰
 (setq default-input-method "MacOSX")
 
 
-;;; ¥¿¥Ö¡¤Á´³Ñ¶õÇò¡¤²ş¹Ô¤ÎÁ°¤Ë¤¢¤ë¥¹¥Ú¡¼¥¹¤ª¤è¤Ó¥¿¥Ö¤ò¶¯Ä´É½¼¨
+;;; ã‚¿ãƒ–ï¼Œå…¨è§’ç©ºç™½ï¼Œæ”¹è¡Œã®å‰ã«ã‚ã‚‹ã‚¹ãƒšãƒ¼ã‚¹ãŠã‚ˆã³ã‚¿ãƒ–ã‚’å¼·èª¿è¡¨ç¤º
 (defface my-face-b-1 '((t (:background "gray"))) nil)
 (defface my-face-b-2 '((t (:background "gray26"))) nil)
 (defface my-face-u-1 '((t (:foreground "SteelBlue" :underline t))) nil)
@@ -14,38 +14,38 @@
 (defvar my-face-b-2 'my-face-b-2)
 (defvar my-face-u-1 'my-face-u-1)
 
-;;; default-frame-alist ¤È¡¤°Ê²¼¤ÏÎ¾ÊıÀßÄê¤·¤Æ¤ª¤¯É¬Í×¤¬¤¢¤ë¡¥
+;;; default-frame-alist ã¨ï¼Œä»¥ä¸‹ã¯ä¸¡æ–¹è¨­å®šã—ã¦ãŠãå¿…è¦ãŒã‚ã‚‹ï¼
 (set-foreground-color "white")
 (set-background-color "black")
 (set-cursor-color "turquoise3")
 
 
-;;;¤½¤ÎÂ¾¤Î¿§¤ÎÀßÄê
+;;;ãã®ä»–ã®è‰²ã®è¨­å®š
 (set-mouse-color "black")
 (set-border-color "red")
 (set-face-background 'highlight "Navy")
 (set-face-background 'region "Navy")
 (set-face-background 'secondary-selection "white")
 
-;;; ¥Õ¥©¥ó¥È¤ÎÀßÄê
+;;; ãƒ•ã‚©ãƒ³ãƒˆã®è¨­å®š
 
-;;; ¥×¥í¥°¥é¥ß¥ó¥°¸ş¤±¥Õ¥©¥ó¥È Migu 2M ¤ò»ÈÍÑ
+;;; ãƒ—ãƒ­ã‚°ãƒ©ãƒŸãƒ³ã‚°å‘ã‘ãƒ•ã‚©ãƒ³ãƒˆ Migu 2M ã‚’ä½¿ç”¨
 ;;; http://mix-mplus-ipa.osdn.jp/migu/
 (set-default-font "Migu 2M-14")
 
-;;; Osaka ¥Õ¥©¥ó¥È¤òÅùÉı¥Õ¥©¥ó¥È¤Ë¤¹¤ë
+;;; Osaka ãƒ•ã‚©ãƒ³ãƒˆã‚’ç­‰å¹…ãƒ•ã‚©ãƒ³ãƒˆã«ã™ã‚‹
 ;;; http://macemacsjp.sourceforge.jp/index.php?CocoaEmacs#j9873729
-;;; Ãí: OsakaÅùÉı¥Õ¥©¥ó¥È¤Ë¤Ê¤ë¤è¤¦¤Ë¡¤¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¢ªFont Book¢ªOsaka¥ì¥®¥å¥é¡¼
-;;;     ¤òÁªÂò¤·±¦¥¯¥ê¥Ã¥¯¤Ç¡Ö»ÈÍÑÄä»ß¡×¤·¤Æ¡ÈÀÚ¡É¤Ç»È¤¦É¬Í×¤¬¤¢¤ë
+;;; æ³¨: Osakaç­‰å¹…ãƒ•ã‚©ãƒ³ãƒˆã«ãªã‚‹ã‚ˆã†ã«ï¼Œã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³â†’Font Bookâ†’Osakaãƒ¬ã‚®ãƒ¥ãƒ©ãƒ¼
+;;;     ã‚’é¸æŠã—å³ã‚¯ãƒªãƒƒã‚¯ã§ã€Œä½¿ç”¨åœæ­¢ã€ã—ã¦â€œåˆ‡â€ã§ä½¿ã†å¿…è¦ãŒã‚ã‚‹
 ;;;     https://www.yokoweb.net/2017/01/23/emacs-fontsize-screensize/
 ;; 
 ; (set-default-font
 ;  "-*-Osaka-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1")
 
-;; ¥µ¥¤¥º¤ÏÂç¤­¤¤¤¬ÅùÉı¥Õ¥©¥ó¥È¤Ç»È¤¨¤ë
+;; ã‚µã‚¤ã‚ºã¯å¤§ãã„ãŒç­‰å¹…ãƒ•ã‚©ãƒ³ãƒˆã§ä½¿ãˆã‚‹
 ;; http://d.hatena.ne.jp/kazu-yamamoto/20140625/1403674172
 ;;
-;; °Ê²¼¤¬ Mac ÍÑ¤Î¥Õ¥©¥ó¥ÈÀßÄê
+;; ä»¥ä¸‹ãŒ Mac ç”¨ã®ãƒ•ã‚©ãƒ³ãƒˆè¨­å®š
 ; (when (memq window-system '(mac ns))
 ;   (global-set-key [s-mouse-1] 'browse-url-at-mouse)
 ;   (let* ((size 14)
@@ -68,11 +68,11 @@
 ; 	  (".*monaco cy-bold-.*-mac-cyrillic" . 0.9)
 ; 	  (".*monaco-bold-.*-mac-roman" . 0.9)
 ; 	  ("-cdac$" . 1.3)))
-;   ;; C-x 5 2 ¤Ç¿·¤·¤¤¥Õ¥ì¡¼¥à¤òºî¤Ã¤¿¤È¤­¤ËÆ±¤¸¥Õ¥©¥ó¥È¤ò»È¤¦
+;   ;; C-x 5 2 ã§æ–°ã—ã„ãƒ•ãƒ¬ãƒ¼ãƒ ã‚’ä½œã£ãŸã¨ãã«åŒã˜ãƒ•ã‚©ãƒ³ãƒˆã‚’ä½¿ã†
 ;   (setq frame-inherited-parameters '(font tool-bar-lines)))
 
 
-;;; åºÎï¤Ç¤Ï¤¢¤ë¤¬ÅùÉı¥Õ¥©¥ó¥È¤ÎÀßÄê¤¬¤¦¤Ş¤¯¤¤¤«¤Ê¤«¤Ã¤¿¤Î¤ÇÌµ¸ú²½
+;;; ç¶ºéº—ã§ã¯ã‚ã‚‹ãŒç­‰å¹…ãƒ•ã‚©ãƒ³ãƒˆã®è¨­å®šãŒã†ã¾ãã„ã‹ãªã‹ã£ãŸã®ã§ç„¡åŠ¹åŒ–
 ;(when (>= emacs-major-version 23)
 ;  (setq fixed-width-use-QuickDraw-for-ascii t)
 ;  (setq mac-allow-anti-aliasing t)
@@ -91,20 +91,20 @@
 ;   (frame-parameter nil 'font)
 ;   'katakana-jisx0201
 ;   '("Hiragino Maru Gothic Pro" . "iso10646-1"))
-;  ;; Unicode ¥Õ¥©¥ó¥È
+;  ;; Unicode ãƒ•ã‚©ãƒ³ãƒˆ
 ;  (set-fontset-font
 ;   (frame-parameter nil 'font)
 ;   'mule-unicode-0100-24ff
 ;   '("monaco" . "iso10646-1"))
-;  ;; ¥­¥ê¥ë¡¤¥®¥ê¥·¥¢Ê¸»úÀßÄê
-;  ;; Ãí°Õ¡§ ¤³¤ÎÀßÄê¤À¤±¤Ç¤Ï¸ÅÂå¥®¥ê¥·¥¢Ê¸»ú¡¢¥³¥×¥ÈÊ¸»ú¤ÏÉ½¼¨¤Ç¤­¤Ê¤¤
-;  ;; http://socrates.berkeley.edu/~pinax/greekkeys/NAUdownload.html ¤¬É¬Í×
-;  ;; ¥­¥ê¥ëÊ¸»ú
+;  ;; ã‚­ãƒªãƒ«ï¼Œã‚®ãƒªã‚·ã‚¢æ–‡å­—è¨­å®š
+;  ;; æ³¨æ„ï¼š ã“ã®è¨­å®šã ã‘ã§ã¯å¤ä»£ã‚®ãƒªã‚·ã‚¢æ–‡å­—ã€ã‚³ãƒ—ãƒˆæ–‡å­—ã¯è¡¨ç¤ºã§ããªã„
+;  ;; http://socrates.berkeley.edu/~pinax/greekkeys/NAUdownload.html ãŒå¿…è¦
+;  ;; ã‚­ãƒªãƒ«æ–‡å­—
 ;  (set-fontset-font
 ;   (frame-parameter nil 'font)
 ;   'cyrillic-iso8859-5
 ;   '("monaco" . "iso10646-1"))
-;  ;; ¥®¥ê¥·¥¢Ê¸»ú
+;  ;; ã‚®ãƒªã‚·ã‚¢æ–‡å­—
 ;  (set-fontset-font
 ;   (frame-parameter nil 'font)
 ;   'greek-iso8859-7
@@ -118,8 +118,8 @@
 ;		  (".*monaco-bold-.*-mac-roman" . 0.9)
 ;		  ("-cdac$" . 1.3))))
 
-;;; °Ê²¼¤ÎÀßÄê¤Ï±Ñ»ú¤¬ÅùÉı¤Ë¤Ê¤é¤Ê¤¤ÌäÂê¤ò½ü¤±¤Ğ»ÈÍÑ²ÄÇ½
-; ;;; ¥Õ¥©¥ó¥È¤ÎÀßÄê(ÆüËÜ¸ì¥¤¥¿¥ê¥Ã¥¯ÂÎ¤¬É½¼¨¤µ¤ì¤Ê¤¤ÂĞºö)
+;;; ä»¥ä¸‹ã®è¨­å®šã¯è‹±å­—ãŒç­‰å¹…ã«ãªã‚‰ãªã„å•é¡Œã‚’é™¤ã‘ã°ä½¿ç”¨å¯èƒ½
+; ;;; ãƒ•ã‚©ãƒ³ãƒˆã®è¨­å®š(æ—¥æœ¬èªã‚¤ã‚¿ãƒªãƒƒã‚¯ä½“ãŒè¡¨ç¤ºã•ã‚Œãªã„å¯¾ç­–)
 ; ;;; http://mugijiru.seesaa.net/article/273281731.html
 ; (let* ((size 12)
 ;          (asciifont "Menlo")
@@ -137,25 +137,25 @@
 ;     (set-fontset-font nil '(#x0080 . #x024F) fontspec)
 ;     (set-fontset-font nil '(#x0370 . #x03FF) fontspec))
 ;  
-; ;; È¾³Ñ¥«¥Ê¤ò¥Ò¥é¥®¥Î³Ñ¥´ProN¤Ë¤¹¤ë
+; ;; åŠè§’ã‚«ãƒŠã‚’ãƒ’ãƒ©ã‚®ãƒè§’ã‚´ProNã«ã™ã‚‹
 ; (set-fontset-font "fontset-default"
 ; 				  'katakana-jisx0201
 ; 				  '("Hiragino Maru Gothic ProN"))
 
 
-;; ¿·¤·¤¤¥Õ¥ì¡¼¥à¤òºî¤Ã¤¿¤È¤­¤ËÆ±¤¸¥Õ¥©¥ó¥È¤ò»È¤¦
+;; æ–°ã—ã„ãƒ•ãƒ¬ãƒ¼ãƒ ã‚’ä½œã£ãŸã¨ãã«åŒã˜ãƒ•ã‚©ãƒ³ãƒˆã‚’ä½¿ã†
 (setq frame-inherited-parameters '(font tool-bar-lines))
 
-;;; ¥Õ¥ì¡¼¥à¤ÎÀßÄê
-;;; (²¿¸Î¤«½é´ü²½»ş¤Î¥Õ¥ì¡¼¥à¤Î°ÌÃÖ¤¬¤º¤ì¤ë¤Î¤Ç¡¤default-frame-alist ¤È
-;;;  initial-frame-alist ¤Ç¥Õ¥ì¡¼¥à°ÌÃÖ¤òÈùÄ´À°)
+;;; ãƒ•ãƒ¬ãƒ¼ãƒ ã®è¨­å®š
+;;; (ä½•æ•…ã‹åˆæœŸåŒ–æ™‚ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã®ä½ç½®ãŒãšã‚Œã‚‹ã®ã§ï¼Œdefault-frame-alist ã¨
+;;;  initial-frame-alist ã§ãƒ•ãƒ¬ãƒ¼ãƒ ä½ç½®ã‚’å¾®èª¿æ•´)
 (setq default-frame-alist
 					(append (list
 							 '(height	. 70)
 							 '(width	. 100)
 							 '(top		. 0)
 							 '(left		. 0)
-;;; ¿§¤Ï¥«¥é¡¼¥Æ¡¼¥Ş¤ËÇ¤¤»¤ë
+;;; è‰²ã¯ã‚«ãƒ©ãƒ¼ãƒ†ãƒ¼ãƒã«ä»»ã›ã‚‹
 ;							 '(foreground-color . "white")
 ;							 '(background-color . "black")
 ;							 '(cursor-color . "turquoise3")
@@ -166,7 +166,7 @@
 							 '(width	. 100)
 							 '(top		. 29)
 							 '(left		. 4)
-;;; ¿§¤Ï¥«¥é¡¼¥Æ¡¼¥Ş¤ËÇ¤¤»¤ë
+;;; è‰²ã¯ã‚«ãƒ©ãƒ¼ãƒ†ãƒ¼ãƒã«ä»»ã›ã‚‹
 ;							 '(foreground-color . "white")
 ;							 '(background-color . "black")
 ;							 '(cursor-color . "turquoise3")

@@ -23,3 +23,7 @@
 
 (setenv "LDFLAGS" "-L/usr/local/opt/llvm/lib")
 (setenv "CPPFLAGS" "-I/usr/local/opt/llvm/include")
+
+
+;;; command キー(システム側で option キーになっている)をメタキーにする
+(setq mac-option-modifier 'meta)
