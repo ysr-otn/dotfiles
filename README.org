@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2019-11-30 Sat 16:50>
+    - zsh 用に helm ライク絞り込み検索処理 peco の設定を追加
   - <2019-11-09 Sat 00:18>
     - Mac 環境の Emacs-26.3 を https://github.com/railwaycat/homebrew-emacsmacport 
       に置き換え
