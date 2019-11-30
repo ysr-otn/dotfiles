@@ -69,7 +69,7 @@ if [ $HOSTTYPE = linux ]; then
 fi
 export MANPATH=$MANPATH
 
-export GITHUG_DOTFILE_DIR=$HOME/Development/github/ysr-otn/dotfiles
+export GITHUB_DOTFILE_DIR=$HOME/Development/github/ysr-otn/dotfiles
 
 # llvm 関係のパス設定
 if [ $HOSTTYPE = i386 ]; then
@@ -182,4 +182,4 @@ fi
 
 
 ######### Private setting #########
-source $GITHUG_DOTFILE_DIR/.zshrc-private
+source $GITHUB_DOTFILE_DIR/.zshrc-private
