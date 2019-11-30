@@ -107,6 +107,7 @@ if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]
     zstyle ':chpwd:*' recent-dirs-file "$HOME/.cache/chpwd-recent-dirs"
 fi
 
+
 #######	helm ライクな絞り込み検索 peco の設定  #######
 function peco-history-selection() {
     BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
@@ -118,10 +119,14 @@ zle -N peco-history-selection
 bindkey '^R' peco-history-selection	# C-r で peco によるコマンドの絞り込み検索
 
 # peco を用いた cdr
+# https://qiita.com/tmsanrinsha/items/72cebab6cd448704e366
 function peco-cdr () {
-    local selected_dir="$(cdr -l | sed 's/^[0-9]\+ \+//' | peco --prompt="cdr >" --query "$LBUFFER")"
+    # cdr を用いて $NUMBER	$DIRECTORY のフォーマットでディレクトリの履歴を表示
+	# ($NUMBER 部分があると helm 的に $NUMBER を指定しても絞り込み検索が可能)
+	local selected_dir="$(cdr -l | peco --prompt="cdr >" --query "$LBUFFER")"
     if [ -n "$selected_dir" ]; then
-        BUFFER="cd ${selected_dir}"
+        # cd に渡す時は $NUMBER の部分とその後の空白を削除
+		BUFFER="cd `echo ${selected_dir} | sed 's/[0-9]*[ \t]*//'`"
         zle accept-line
     fi
 }
