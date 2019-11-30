@@ -97,6 +97,16 @@ elif [ $HOSTTYPE = windows ]; then
 fi
 
 
+####### cd の絶対パス履歴保存 cdr ####### 
+if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]]; then
+    autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+    add-zsh-hook chpwd chpwd_recent_dirs
+    zstyle ':completion:*' recent-dirs-insert both
+    zstyle ':chpwd:*' recent-dirs-default true
+    zstyle ':chpwd:*' recent-dirs-max 1000
+    zstyle ':chpwd:*' recent-dirs-file "$HOME/.cache/chpwd-recent-dirs"
+fi
+
 #######	helm ライクな絞り込み検索 peco の設定  #######
 function peco-history-selection() {
     BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
@@ -105,7 +115,18 @@ function peco-history-selection() {
 }
 
 zle -N peco-history-selection
-bindkey '^R' peco-history-selection
+bindkey '^R' peco-history-selection	# C-r で peco によるコマンドの絞り込み検索
+
+# peco を用いた cdr
+function peco-cdr () {
+    local selected_dir="$(cdr -l | sed 's/^[0-9]\+ \+//' | peco --prompt="cdr >" --query "$LBUFFER")"
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+}
+zle -N peco-cdr
+bindkey '^[r' peco-cdr	# M-r で peco-cdr
 
 
 #######	Aliasis  #######
