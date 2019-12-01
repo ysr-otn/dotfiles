@@ -97,6 +97,10 @@ elif [ $HOSTTYPE = windows ]; then
 fi
 
 
+#######	Go の設定 #######
+export PATH=$HOME/go/bin:$PATH
+
+
 ####### cd の絶対パス履歴保存 cdr ####### 
 if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]]; then
     autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
@@ -110,7 +114,7 @@ fi
 
 #######	helm ライクな絞り込み検索 peco の設定  #######
 function peco-history-selection() {
-    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco --initial-filter Migemo`
     CURSOR=$#BUFFER
     zle reset-prompt
 }
@@ -123,7 +127,7 @@ bindkey '^R' peco-history-selection	# C-r で peco によるコマンドの絞�
 function peco-cdr () {
     # cdr を用いて $NUMBER	$DIRECTORY のフォーマットでディレクトリの履歴を表示
 	# ($NUMBER 部分があると helm 的に $NUMBER を指定しても絞り込み検索が可能)
-	local selected_dir="$(cdr -l | peco --prompt="cdr >" --query "$LBUFFER")"
+	local selected_dir="$(cdr -l | peco --initial-filter Migemo --prompt="cdr >" --query "$LBUFFER")"
     if [ -n "$selected_dir" ]; then
         # cd に渡す時は $NUMBER の部分とその後の空白を削除
 		BUFFER="cd `echo ${selected_dir} | sed 's/[0-9]*[ \t]*//'`"

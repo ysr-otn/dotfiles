@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2019-12-01 Sun 11:08>
+    - peco から migemo が使えるように migemogrep の設定を追加
   - <2019-12-01 Sun 00:24>
     - .zshrc の GITHUB_DOTFILE_DIR のスペルミスを修正
   - <2019-11-30 Sat 23:05>
