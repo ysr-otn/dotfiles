@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2019-12-02 Mon 00:09>
+    - peco の peco-history-selection, peco-cdr を migemo 有り/無しで別関数として再定義
   - <2019-12-01 Sun 11:08>
     - peco から migemo が使えるように migemogrep の設定を追加
   - <2019-12-01 Sun 00:24>
