@@ -51,11 +51,11 @@
 
 
 ;; Cygwin のドライブ・プレフィックスを有効にする
-;(require 'cygwin-mount)
-;(cygwin-mount-activate)
-;(setq cygwin-mount-table--internal
-;	  '(("c:/" . "/cygdrive/c/") ("c:/cygwin64/lib/" . "/usr/lib/") ("c:/cygwin64/bin/" . "/usr/bin/") ("c:/cygwin64/" . "/")
-;		))
+(require 'cygwin-mount)
+(cygwin-mount-activate)
+(setq cygwin-mount-table--internal
+	  '(("c:/" . "/cygdrive/c/") ("c:/cygwin64/lib/" . "/usr/lib/") ("c:/cygwin64/bin/" . "/usr/bin/") ("c:/cygwin64/" . "/")
+		))
 
 ;;; dired-mode 時の fiber により Windows によってファイルに関連付けされたアプリの起動
 (add-hook 'dired-mode-hook

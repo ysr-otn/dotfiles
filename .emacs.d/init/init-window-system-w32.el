@@ -4,7 +4,9 @@
 ; 「msgochic」という名前で新たなフォントセットを定義
 ; 英字フォントとしてＭＳ ゴシック、12ポイントを使用
 (create-fontset-from-ascii-font
- "-outline-ＭＳ ゴシック-normal-r-normal-normal-12-*-*-*-*-*-iso8859-1"
+ (if (>= (x-display-pixel-width)  1900)
+	  "-outline-ＭＳ ゴシック-normal-r-normal-normal-18-*-*-*-*-*-iso8859-1"
+   "-outline-ＭＳ ゴシック-normal-r-normal-normal-12-*-*-*-*-*-iso8859-1")
  nil "msgochic")
 
 ; myfont-msgochicの日本語フォントとしてメイリオを使用
@@ -29,37 +31,37 @@
 
 ;;; frame
 (setq default-frame-alist
-      (append (list
-				'(width . 124)
-				'(height . 92)
-				'(top		. 0)
-				'(left		. 0)
+      (if (>= (x-display-pixel-width)  1900)
+		  (append (list
+				   '(width . 102)
+				   '(height . 59)
+				   '(top		. 0)
+				   '(left		. 0)
 ;;; 色はカラーテーマに任せる
-;				'(foreground-color . "white")
-;				'(background-color . "black")
-;				'(cursor-color . "turquoise3")
-				'(font . "fontset-msgochic")    ; 通常のフォント
-;				'(ime-font . (w32-logfont; 変換待ち中のフォント設定
-;							  "ms-gothic9"
-;							  0 -12 400 0 nil nil nil
-;							  128 1 3 49))
-				
-				)))
+;		 		   '(foreground-color . "white")
+;				   (background-color . "black")
+;				   (cursor-color . "turquoise3")
+				   '(font . "fontset-msgochic")    ; 通常のフォント
+;				   (ime-font . (w32-logfont; 変換待ち中のフォント設定
+;								  "ms-gothic9"
+;								  0 -12 400 0 nil nil nil
+;								  128 1 3 49))
+				   ))
+		(append (list
+				 '(width . 124)
+				 '(height . 92)
+				 '(top		. 0)
+				 '(left		. 0)
+;;; 色はカラーテマに任せる
+;		 		 '(foreground-color . "white")
+;				 (background-color . "black")
+;				 (cursor-color . "turquoise3")
+				 '(font . "fontset-msgochic")    ; 通常のフォント
+;				 (ime-font . (w32-logfont; 変換待ち中のフォント設定
+;								  "ms-gothic9"
+;								  0 -12 400 0 nil nil nil
+;								  128 1 3 49))
+				 ))))
 
-(setq initial-frame-alist
-      (append (list
-				'(width . 124)
-				'(height . 92)
-				'(top		. 0)
-				'(left		. 0)
-;;; 色はカラーテーマに任せる
-;				'(foreground-color . "white")
-;				'(background-color . "black")
-;				'(cursor-color . "turquoise3")
-				'(font . "fontset-msgochic")    ; 通常のフォント
-;				'(ime-font . (w32-logfont; 変換待ち中のフォント設定
-;							  "ms-gothic9"
-;							  0 -12 400 0 nil nil nil
-;							  128 1 3 49))
-				
-				)))
+
+(setq initial-frame-alist default-frame-alist)
