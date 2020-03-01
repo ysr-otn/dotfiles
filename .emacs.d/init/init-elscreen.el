@@ -8,7 +8,8 @@
 ;; for elscreen-howm
 (load "elscreen-howm")
 ;; for elscreen-wl
-(load "elscreen-wl")
+(if (not (eq system-type 'windows-nt))	; Windows 環境でエラーが出るので読み込み廃止
+	(load "elscreen-wl"))
 ;; for elscreen-dired
 (load "elscreen-dired")
 
