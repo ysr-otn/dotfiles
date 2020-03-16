@@ -52,7 +52,7 @@
 	  buffer-expose dimmer
 	  
 	  ;; misc
-	  anzu god-mode multiple-cursors undo-tree undohist cp5022x japanese-holidays adaptive-wrap
+	  anzu god-mode multiple-cursors undo-tree undohist cp5022x japanese-holidays adaptive-wrap wttrin
 	  
 	  ;; auto-complete(company を使うようになったので
 	  ;auto-complete auto-complete-clang-async fuzzy
@@ -688,6 +688,10 @@
 
 ;;; for japanese-holidays
 (load "init-japanese-holidays.el")
+
+;;; for wttrin
+(load "init-wttrin.el")
+
 
 ;;; ウィンドウシステムならカラーテーマを有効にし，カーソル行をハイライト
 (if window-system

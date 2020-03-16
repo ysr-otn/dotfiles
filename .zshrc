@@ -159,6 +159,12 @@ zle -N peco-cdr-migemo
 bindkey '^[x' peco-cdr-migemo	# M-x で peco-cdr-migemo
 
 
+# コマンドラインから天気を取得するスクリプト wttrin(https://linuxfan.info/wttr-in)
+wttrin() {
+  location=${1:-大阪}
+  curl ja.wttr.in/$location
+}
+
 #######	Aliasis  #######
 alias la='ls -a'
 alias lf='ls -FA'
