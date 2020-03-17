@@ -101,7 +101,7 @@
 ;;; アジェンダのフォーマット 
 ;;; (%-12(org-entry-get (point) \"PIC\") は Property の PIC を, %8e は Property の Effort を表示)
 (setq org-agenda-prefix-format
-	  '((agenda . "%2i %-12:c%-12t%12 s %-10(org-entry-get (point) \"Person\")) %6e ")
+	  '((agenda . "%2i %-12:c%-12t%12 s %-10(org-entry-get (point) \"PIC\")) %6e ")
 		(properties . "%12 s")
 		(timeline . "%12 s")
 		(todo . "%2i %-12:c")

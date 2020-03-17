@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-03-18 Wed 01:18>
+    - org-mode の org-agenda-prefix-format を変更
   - <2020-03-17 Tue 23:59>
     - org-agenda の設定を追加
   - <2020-03-16 Mon 23:04>
