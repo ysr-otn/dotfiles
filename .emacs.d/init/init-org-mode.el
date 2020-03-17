@@ -86,3 +86,24 @@
 
 ;;; ソースコードの色付けのための htmlize の設定
 (require 'htmlize)
+
+
+;;;; org-agenda の設定
+;;; org-agenda のキー設定
+(global-set-key (kbd "C-c a") 'org-agenda)
+;;; アジェンダ対象のファイルを置くディレクトリ
+(setq org-agenda-files-dir "~/Documents/org/gtd/")
+;;; アジェンダ対象のファイル
+(setq org-agenda-files-suffix '("todo.org" "notes.org"))
+;;; アジェンダ対象のファイル org-agenda-files を設定
+(setq org-agenda-files (mapcar (lambda (f) (concat org-agenda-files-dir f))
+                               org-agenda-files-suffix))
+;;; アジェンダのフォーマット 
+;;; (%-12(org-entry-get (point) \"PIC\") は Property の PIC を, %8e は Property の Effort を表示)
+(setq org-agenda-prefix-format
+	  '((agenda . "%2i %-12:c%-12t%12 s %-10(org-entry-get (point) \"Person\")) %6e ")
+		(properties . "%12 s")
+		(timeline . "%12 s")
+		(todo . "%2i %-12:c")
+		(tags . "%2i %-12:c")
+		(search . "%2i %-12:c")))
