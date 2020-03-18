@@ -107,3 +107,103 @@
 		(todo . "%2i %-12:c")
 		(tags . "%2i %-12:c")
 		(search . "%2i %-12:c")))
+
+;;; アジェンダを HTML で出力する際のスタイルの設定
+;;; (等幅フォントで表示したいので "Courier New", Consolas, monospace の順に優先度を付けて指定)
+(setq org-agenda-export-html-style
+"<style>
+    <!--
+      body {
+        color: #eaeaea;
+        background-color: #000000;
+		font-family: \"Courier New\", Consolas, monospace;
+       }
+      .org-agenda-calendar-event {
+        /* org-agenda-calendar-event */
+        color: #eaeaea;&#x61;
+        background-color: #000000;
+ 		font-family: \"Courier New\", Consolas, monospace;
+      }
+      .org-agenda-date {
+        /* org-agenda-date */
+        color: #7aa6da;
+ 		font-family: \"Courier New\", Consolas, monospace;
+      }
+      .org-agenda-date-today {
+        /* org-agenda-date-today */
+        color: #7aa6da;
+        font-weight: bold;
+        font-style: italic;
+ 		font-family: \"Courier New\", Consolas, monospace;
+      }
+      .org-agenda-date-weekend {
+        /* org-agenda-date-weekend */
+        color: #7aa6da;
+        font-weight: bold;
+ 		font-family: \"Courier New\", Consolas, monospace;
+      }
+      .org-agenda-diary {
+        /* org-agenda-diary */
+        color: #eaeaea;
+        background-color: #000000;
+ 		font-family: \"Courier New\", Consolas, monospace;
+      }
+      .org-agenda-done {
+        /* org-agenda-done */
+        color: #b9ca4a;
+ 		font-family: \"Courier New\", Consolas, monospace;
+      }
+      .org-agenda-structure {
+        /* org-agenda-structure */
+        color: #c397d8;
+ 		font-family: \"Courier New\", Consolas, monospace;
+      }
+      .org-done {
+        /* org-done */
+        color: #b9ca4a;
+ 		font-family: \"Courier New\", Consolas, monospace;
+      }
+      .org-scheduled {
+        /* org-scheduled */
+        color: #b9ca4a;
+ 		font-family: \"Courier New\", Consolas, monospace;
+      }
+      .org-scheduled-previously {
+        /* org-scheduled-previously */
+        color: #70c0b1;
+ 		font-family: \"Courier New\", Consolas, monospace;
+      }
+      .org-scheduled-today {
+        /* org-scheduled-today */
+        color: #b9ca4a;
+ 		font-family: \"Courier New\", Consolas, monospace;
+      }
+      .org-todo {
+        /* org-todo */
+        color: #d54e53;
+ 		font-family: \"Courier New\", Consolas, monospace;
+      }
+      .org-upcoming-deadline {
+        /* org-upcoming-deadline */
+        color: #e78c45;
+ 		font-family: \"Courier New\", Consolas, monospace;
+      }
+      .org-warning {
+        /* org-warning */
+        color: #d54e53;
+        font-weight: bold;
+ 		font-family: \"Courier New\", Consolas, monospace;
+      }
+
+      a {
+        color: inherit;
+        background-color: inherit;
+ 		font-family: \"Courier New\", Consolas, monospace;
+         text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+</style>"
+)
