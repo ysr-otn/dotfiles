@@ -77,6 +77,86 @@
 			 (progn
 			   (load-library "ox-reveal")
 			   )
+			 
+			 ;; org-version 9.3.6 以降で org-taskjuggler--build-task を上書き
+			 (if (string> org-version "9.3.5")
+				 (progn
+				   ;; org-taskjuggler--build-task でプロパティ :start: が無くとも :SCHEDULED の値で
+				   ;; TaskJuggleru の start 要素を設定できるように org-taskjuggler--build-task を上書き
+				   ;; (# でコメント部が オリジナルからの変更部分)
+				   (require 'ox-taskjuggler)
+				   (defun org-taskjuggler--build-task (task info)
+"Return a task declaration.
+
+TASK is a headline.  INFO is a plist used as a communication
+channel.
+
+All valid attributes from TASK are inserted.  If TASK defines
+a property \"task_id\" it will be used as the id for this task.
+Otherwise it will use the ID property.  If neither is defined
+a unique id will be associated to it."
+					 (let* ((allocate (org-element-property :ALLOCATE task))
+							(complete													; # begin
+							 (cond ((eq (org-element-property :todo-type task) 'done)
+									"100")												; # DONE になってれば complete は 100
+								   ((org-element-property :COMPLETE task)				; # :COMPLETE の値があれば complete の値として使用
+									(org-element-property :COMPLETE task))
+								   (t "0"))												; # 進捗の記載が無ければ complete は 0
+							 )															; # end 
+							(depends (org-taskjuggler-resolve-dependencies task info))
+							(effort (let ((property
+										   (intern (concat ":" (upcase org-effort-property)))))
+									  (org-element-property property task)))
+							(milestone
+							 (or (org-element-property :MILESTONE task)
+								 (not (or (org-element-map (org-element-contents task) 'headline
+											'identity info t)  ; Has task any child?
+										  effort
+										  (org-element-property :LENGTH task)
+										  (org-element-property :DURATION task)
+										  (and (org-taskjuggler-get-start task)
+											   (org-taskjuggler-get-end task))
+										  (org-element-property :PERIOD task)))))
+							(start (org-taskjuggler-get-start task))	; # :SCHEDULED から start を取得
+							(priority
+							 (let ((pri (org-element-property :priority task)))
+							   (and pri
+									(max 1 (/ (* 1000 (- org-lowest-priority pri))
+											  (- org-lowest-priority org-highest-priority)))))))
+					   (concat
+						;; Opening task.
+						(format "task %s \"%s\" {\n"
+								(org-taskjuggler-get-id task info)
+								(org-taskjuggler-get-name task))
+						;; Add default attributes.
+						(and depends
+							 (format "  depends %s\n"
+									 (org-taskjuggler-format-dependencies depends task info)))
+						(and allocate
+							 (format "  purge %s\n  allocate %s\n"
+									 ;; Compatibility for previous TaskJuggler versions.
+									 (if (>= org-taskjuggler-target-version 3.0) "allocate"
+									   "allocations")
+									 allocate))
+						(and complete (format "  complete %s\n" complete))
+						(and effort (format "  effort %s\n" effort))
+						(and priority (format "  priority %s\n" priority))
+						(and milestone "  milestone\n")
+						(and start (format "  start %s\n" start))	;; # start を追加(:start: と :SCHEDULED が同時あると 2 個 start が付くので必要に応じて修正)
+						;; Add other valid attributes.
+						(org-taskjuggler--indent-string
+						 (org-taskjuggler--build-attributes
+						  task org-taskjuggler-valid-task-attributes))
+						;; Add inner tasks.
+						(org-taskjuggler--indent-string
+						 (mapconcat 'identity
+									(org-element-map (org-element-contents task) 'headline
+									  (lambda (hl) (org-taskjuggler--build-task hl info))
+									  info nil 'headline)
+									""))
+						;; Closing task.
+						"}\n")))
+			   ))
 			 ))
 
 ;; 画像の幅を変更するときに必要っぽい
@@ -99,9 +179,9 @@
 (setq org-agenda-files (mapcar (lambda (f) (concat org-agenda-files-dir f))
                                org-agenda-files-suffix))
 ;;; アジェンダのフォーマット 
-;;; (%-12(org-entry-get (point) \"PIC\") は Property の PIC を, %8e は Property の Effort を表示)
+;;; (%-12(org-entry-get (point) \"allocate\") は Property の allocate を, %8e は Property の Effort を表示)
 (setq org-agenda-prefix-format
-	  '((agenda . "%2i %-12:c%-12t%12 s %-10(org-entry-get (point) \"PIC\")) %6e ")
+	  '((agenda . "%2i %-12:c%-12t%12 s %-10(org-entry-get (point) \"allocate\")) %6e ")
 		(properties . "%12 s")
 		(timeline . "%12 s")
 		(todo . "%2i %-12:c")
@@ -122,6 +202,11 @@
         /* org-agenda-calendar-event */
         color: #eaeaea;&#x61;
         background-color: #000000;
+ 		font-family: \"Courier New\", Consolas, monospace;
+      }
+      .org-agenda-current-time {
+        /* org-agenda-current-time */
+        color: #eedd82;
  		font-family: \"Courier New\", Consolas, monospace;
       }
       .org-agenda-date {
@@ -178,6 +263,11 @@
         color: #b9ca4a;
  		font-family: \"Courier New\", Consolas, monospace;
       }
+      .org-time-grid {
+        /* org-time-grid */
+        color: #eedd82;
+ 		font-family: \"Courier New\", Consolas, monospace;
+      }
       .org-todo {
         /* org-todo */
         color: #d54e53;
@@ -207,3 +297,39 @@
     -->
 </style>"
 )
+
+
+;;; tjp ファイルの textreport report "Plan" のフォーマットの設定
+(setq org-taskjuggler-default-reports
+  '("textreport report \"Plan\" {
+  formats html
+  header '== %title =='
+
+  center -8<-
+    [#Plan Plan] | [#Resource_Allocation Resource Allocation]
+    ----
+    === Plan ===
+    <[report id=\"plan\"]>
+    ----
+    === Resource Allocation ===
+    <[report id=\"resourceGraph\"]>
+  ->8-
+}
+
+# A traditional Gantt chart with a project overview.
+taskreport plan \"\" {
+  headline \"Project Plan\"
+  columns bsi, name, priority, start, end, effort, complete, chart
+  loadunit shortauto
+  hideresource 1
+}
+
+# A graph showing resource allocation. It identifies whether each
+# resource is under- or over-allocated for.
+resourcereport resourceGraph \"\" {
+  headline \"Resource Allocation Graph\"
+  columns no, name, priority, effort, complete, daily
+  loadunit shortauto
+  hidetask ~(isleaf() & isleaf_())
+  sorttasks plan.start.up
+}"))

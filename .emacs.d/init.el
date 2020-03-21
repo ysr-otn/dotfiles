@@ -22,6 +22,8 @@
 (require 'package)
 ;; MELPAを追加
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+;; org を追加
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 ;; Marmaladeを追加(見付からないので無効化)
 ;; (add-to-list 'package-archives  '("marmalade" . "http://marmalade-repo.org/packages/"))
 ;; www.e6h.orgを追加(見付からないので無効化)
