@@ -333,7 +333,7 @@ a unique id will be associated to it."
 # A traditional Gantt chart with a project overview.
 taskreport plan \"\" {
   headline \"Project Plan\"
-  columns bsi, name, priority, start, end, effort, complete, chart {scale day}
+  columns bsi, name, priority, resources, start, end, effort, complete, chart {scale day}
   loadunit shortauto
   hideresource 1
 }
