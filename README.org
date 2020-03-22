@@ -7,6 +7,9 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-03-22 Sun 23:27>
+	- org-mode で TaskJuggler のガントチャートの進捗自動計算処理を追加
+    - org-mode で TaskJuggler の Plan のガントチャートを weekly→daily に変更
   - <2020-03-21 Sat 23:35>
     - org-mode にガントチャート化ツール TaskJuggler の設定を追加
   - <2020-03-19 Thu 00:28>

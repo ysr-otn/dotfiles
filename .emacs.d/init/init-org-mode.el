@@ -23,6 +23,17 @@
 ;     (setq org-present-text-scale 5)))
 
 
+;;; org-taskjuggler の task の :raw-value から，[x/y], [z%] の値から百分率の進捗数値に変換
+(defun org-taskjuggler--raw-value-to-progress (raw-value-str)
+  (cond ((string-match "\\[\\([0-9]*\\)/\\([0-9]*\\)\\][ \t]*$" raw-value-str)
+		 (progn
+		   (let ((molecule (string-to-number (match-string 1 raw-value-str)))
+				 (denominator (string-to-number (match-string 2 raw-value-str))))
+			 (/ (* 100 molecule) denominator))))
+		((string-match "\\[\\([0-9]*\\)%\\]$" raw-value-str)
+		 (string-to-number (match-string 1 raw-value-str)))
+		(t 
+		 nil)))
 
 
 ;;; for org-tree-slide-mode
@@ -95,13 +106,16 @@ All valid attributes from TASK are inserted.  If TASK defines
 a property \"task_id\" it will be used as the id for this task.
 Otherwise it will use the ID property.  If neither is defined
 a unique id will be associated to it."
+					 (message "%s" (org-element-property :raw-value task))
 					 (let* ((allocate (org-element-property :ALLOCATE task))
 							(complete													; # begin
-							 (cond ((eq (org-element-property :todo-type task) 'done)
-									"100")												; # DONE になってれば complete は 100
-								   ((org-element-property :COMPLETE task)				; # :COMPLETE の値があれば complete の値として使用
-									(org-element-property :COMPLETE task))
-								   (t "0"))												; # 進捗の記載が無ければ complete は 0
+							 (let ((progress	(org-taskjuggler--raw-value-to-progress (org-element-property :raw-value task)))	; # [x/y], [z%] の進捗
+								   (done		(eq (org-element-property :todo-type task) 'done))	; # DONE になっているか？
+								   (complete	(org-element-property :COMPLETE task)))				; # :COMPLETE の値
+							   (cond (progress		progress)							; # [x/y], [z%] の進捗
+									 (done			"100")								; # DONE になってれば complete は 100
+									 (complete		complete)							; # :COMPLETE の値があれば complete の値として使用
+									 (t "0")))											; # 進捗の記載が無ければ complete は 0
 							 )															; # end 
 							(depends (org-taskjuggler-resolve-dependencies task info))
 							(effort (let ((property
@@ -319,7 +333,7 @@ a unique id will be associated to it."
 # A traditional Gantt chart with a project overview.
 taskreport plan \"\" {
   headline \"Project Plan\"
-  columns bsi, name, priority, start, end, effort, complete, chart
+  columns bsi, name, priority, start, end, effort, complete, chart {scale day}
   loadunit shortauto
   hideresource 1
 }
