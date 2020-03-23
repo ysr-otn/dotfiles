@@ -497,7 +497,7 @@
 ;;; for text-adjust
 (load "text-adjust.el")
 
-;;; for dmacro
+;;; for dmacro(自動で emacs のマクロを作成)
 (load "init-dmacro.el")
 
 ;; for elscreen
@@ -544,13 +544,13 @@
 ;;; for windows
 (load "init-windows.el")
 
-;;; for buffer-expose
+;;; for buffer-expose(バッファを Expose 風に表示する)
 (load "init-buffer-expose.el")
 
-;;; for adaptive-wrap
+;;; for adaptive-wrap(長い行を折り返して見やすくする)
 (load "init-adaptive-wrap.el")
 
-;;; for dimmer
+;;; for dimmer(カーソルのあるバッファを強調)
 (load "init-dimmer.el")
 
 ;;; for howm
@@ -559,7 +559,7 @@
 ;;; for mpg123
 (load "init-mpg123.el")
 
-;;; for bongo
+;;; for bongo(オーディオプレーヤ)
 (load "init-bongo.el")
 
 ;;; for browse-kill-ring
@@ -570,23 +570,23 @@
 ;;; for helm
 (load "init-helm.el")
 
-;;; for helm-swoop
+;;; for helm-swoop(バッファを helm インタフェースで絞り込み検索)
 (load "init-helm-swoop.el")
 
 ;;; for helm-gtags
 (load "init-helm-gtags.el")
 
-;;; for ag
+;;; for ag(the silver searcher インタフェース)
 (load "init-ag.el")
 
-;;; for smooth-scroll
+;;; for smooth-scroll(滑かにスクロール)
 ; C-v, M-v によるスクロールが遅すぎるので無効化
 ;(load "init-smooth-scroll.el")
 
-;;; for popwin
+;;; for popwin(ヘルプバッファや補完バッファをポップアップで表示)
 (load "init-popwin.el")
 
-;;; for search-web
+;;; for search-web(ウェブブラウザを起動して検索)
 (load "init-search-web.el")
 
 ;;; for ace-jump
@@ -598,10 +598,10 @@
 ;;; for auto-complete(company を使うようになったので廃止)
 ;(load "init-auto-complete.el")
 
-;;; for lsp
+;;; for lsp(Language Server Protocol Support for Emacs)
 (load "init-lsp.el")
 
-;;; for company
+;;; for company(auto-complete 的な補完機能)
 (load "init-company.el")
 
 ;;; for yasnippet
@@ -613,7 +613,7 @@
 ;;; for ggtags
 (load "init-ggtags.el")
 
-;;; for dumb-jump
+;;; for dumb-jump(タグファイルを使わないタグジャンプ)
 (load "init-dumb-jump.el")
 
 ;;; for VC
@@ -629,10 +629,10 @@
 ;;; for undohist
 (load "init-undohist.el")
 
-;;; for point-undo
+;;; for point-undo(カーソル位置のアンドゥ)
 (load "init-point-undo.el")
 
-;;; for volatile-highlights
+;;; for volatile-highlights(操作に対する視覚的フィードバック)
 (load "init-volatile-highlights.el")
 
 ;;; for projectile
@@ -647,20 +647,20 @@
 ;;; for multiple-cursors
 (load "init-multiple-cursors.el")
 
-;;; for e2wm
+;;; for e2wm(IDE 風ウィンドウ管理ツール)
 (load "init-e2wm.el")
 
-;;; for god-mode
+;;; for god-mode(Ctrl, Meta キーを使わずに emacs キーバイントの操作をする)
 ;;; うざいので無効化
 ;(load "init-god-mode.el")
 
-;;; for emacs-refactor
+;;; for emacs-refactor(リファクタリングツール)
 (load "init-emr.el")
 
 ;;; for minimap
 (load "init-minimap.el")
 
-;;; for srefactor
+;;; for srefactor(リファクタリングツール)
 ;;; helm-imenu が誤動作するので無効化
 ;(load "srefactor.el")
 
@@ -673,7 +673,7 @@
 ;;; for google-translate
 (load "init-google-translate.el")
 
-;;; for highlight-symbol
+;;; for highlight-symbol(カーソルのある単語と同じ単語をハイライト)
 (load "init-highlight-symbol.el")
 
 ;;; for org-mode
@@ -682,16 +682,16 @@
 ;;; for markdown-mode
 (load "init-markdown-mode.el")
 
-;;; for image+-mode
+;;; for image+-mode(画像をバッファに合せて表示したり，画像のあるディレクトリで画像のサマリを出す image-dired ができるツール)
 (load "init-image+.el")
 
 ;;; for yatex-mode
 (load "init-yatex.el")
 
-;;; for japanese-holidays
+;;; for japanese-holidays(日本の休日に対応したカレンダーデータ)
 (load "init-japanese-holidays.el")
 
-;;; for wttrin
+;;; for wttrin(天気予報サイト wttr.in を用いた天気予報データ取得ツール)
 (load "init-wttrin.el")
 
 
@@ -725,7 +725,7 @@
                 "-%-")
               )
 
-;;; for powerline
+;;; for powerline(モードラインを Spacemacs 風にするツール)
 ;; powerline の設定は mode-line の設定の後にしないと反映されないので
 ;; mode-line の後に実行している．
-(load "init-powerline.el")
+(load "init-1powerline.el")
