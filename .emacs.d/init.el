@@ -728,4 +728,4 @@
 ;;; for powerline(モードラインを Spacemacs 風にするツール)
 ;; powerline の設定は mode-line の設定の後にしないと反映されないので
 ;; mode-line の後に実行している．
-(load "init-1powerline.el")
+(load "init-powerline.el")

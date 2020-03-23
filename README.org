@@ -7,6 +7,10 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-03-23 Mon 23:41>
+    - init.el の init-1powerline.el でのエラーを修正
+  - <2020-03-23 Mon 23:07>
+	- init.el に elisp のライブラリに対するコメントを追加
   - <2020-03-22 Sun 23:53>
     - org-mode で TaskJuggler の Plan のガントチャートに resources を追加
   - <2020-03-22 Sun 23:27>
