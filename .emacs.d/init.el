@@ -41,7 +41,7 @@
 	  use-package
 	  
 	  ;; helm
-	  helm ac-helm helm-ag helm-c-yasnippet helm-gtags helm-projectile helm-swoop
+	  helm ac-helm helm-ag helm-c-yasnippet helm-gtags helm-projectile helm-swoop helm-ispell
 	  
 	  ;; ace-jump
 	  ace-jump-mode	ace-pinyin	ace-window

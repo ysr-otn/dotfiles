@@ -7,6 +7,9 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-03-27 Mon 01:18>
+    - google-translate のエラーを修正(要 google-translate   20190620.1416)
+    - helm-ispell の設定を追加
   - <2020-03-23 Mon 23:41>
     - init.el の init-1powerline.el でのエラーを修正
   - <2020-03-23 Mon 23:07>

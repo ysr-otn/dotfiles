@@ -25,4 +25,16 @@
 
 (push '("\*Google Translate\*" :height 0.5 :stick t) popwin:special-display-config)
 
-(global-set-key (kbd "C-x t") 'google-translate-enja-or-jaen)
+(global-set-key (kbd "C-c t") 'google-translate-enja-or-jaen)
+
+;;; "Args out of range" のエラーが出る問題への暫定対策
+;;;  https://qiita.com/akicho8/items/cae976cb3286f51e4632
+(defun google-translate-json-suggestion (json)
+  "Retrieve from JSON (which returns by the
+`google-translate-request' function) suggestion. This function
+does matter when translating misspelled word. So instead of
+translation it is possible to get suggestion."
+  (let ((info (aref json 7)))
+    (if (and info (> (length info) 0))
+        (aref info 1)
+      nil)))    

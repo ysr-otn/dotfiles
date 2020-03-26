@@ -87,6 +87,12 @@
 (setq recentf-max-saved-items 4096)
 
 
+
+;;; for helm-ispell(ispell での単語の絞り込みを helm インタフェースで実施)
+(require 'helm-ispell)
+(global-set-key "\C-ci" 'helm-ispell)
+
+
 ; ;; customize
 ; (progn
 ; ;  (require 'helm-ls-git)
