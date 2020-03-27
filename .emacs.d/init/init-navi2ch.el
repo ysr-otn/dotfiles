@@ -1,7 +1,14 @@
 (autoload 'navi2ch "navi2ch" nil t)
 
 ;;; *bbstable の URL
-(setq navi2ch-list-bbstable-url "http://kita.jikkyo.org/cbm/cbm.cgi/20.op.p0.sc.m0/-all/bbsmenu.html")
+; (setq navi2ch-list-valid-host-regexp
+; 	  (concat "\\("
+; 			  (regexp-opt '(".2ch.net" ".5ch.net" ".bbsp=ink.com" ".mach=ibbs.com" ".mach=i.to"))
+; 			  "\\)\\'"))
+;(setq navi2ch-list-bbstable-url "http://menu.5ch.net/bbstable.html")
+(setq navi2ch-list-bbstable-url "http://menu.5ch.net/bbsmenu.html")
+
+
 ;(autoload 'navi2ch-browse-url "navi2ch" nil t)
 ;(setq navi2ch-browse-url-browser-function 'w3m-browse-url)
 ;(setq browse-url-browser-function 'navi2ch-browse-url)
