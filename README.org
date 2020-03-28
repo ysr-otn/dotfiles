@@ -7,9 +7,12 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-03-28 Sat 23:44>
+    - 2020-03-27 Fri 23:27 のコミットでの init.el のコミット漏れを修正
   - <2020-03-27 Fri 23:27>
     - Emacs の時刻に関するローケルを C に明示的に設定
      (曜日表示が何故か日本語表記になったのを，明示的に英語表記にするため)
+    - navi2ch の navi2ch-list-bbstable-url の設定を変更
   - <2020-03-27 Mon 01:18>
     - google-translate のエラーを修正(要 google-translate   20190620.1416)
     - helm-ispell の設定を追加

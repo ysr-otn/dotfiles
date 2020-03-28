@@ -152,6 +152,8 @@
 (setq-default truncate-lines nil)
 ;;; 警告のビープ音を無効化
 (setq ring-bell-function 'ignore)
+;;; 時刻に関するローケルを C に設定(曜日表示が英語表記になる)
+(setq system-time-locale "C")
 
 ;;;;;;;;;;;;;;;;;;;; キー設定 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 基本操作
