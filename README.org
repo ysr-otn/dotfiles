@@ -7,6 +7,9 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-03-28 Sat 23:48>
+	- org-mode で TaskJuggler の start に時間指定ができるように対応
+    - org-mode で TaskJuggler の start が二重に挿入されるバグを修正
   - <2020-03-28 Sat 23:44>
     - 2020-03-27 Fri 23:27 のコミットでの init.el のコミット漏れを修正
   - <2020-03-27 Fri 23:27>

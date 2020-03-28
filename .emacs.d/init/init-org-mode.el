@@ -89,13 +89,27 @@
 			   (load-library "ox-reveal")
 			   )
 			 
-			 ;; org-version 9.3.6 以降で org-taskjuggler--build-task を上書き
+			 ;; org-version 9.3.6 以降で org-taskjuggler-get-start, org-taskjuggler--build-task を上書き
 			 (if (string> org-version "9.3.5")
 				 (progn
+				   (require 'ox-taskjuggler)
+				   ;; org-taskjuggler-get-start で :scheduled に 時:分 の指定がある場合に対応
+				   (defun org-taskjuggler-get-start (item)
+"Return start date for task or resource ITEM.
+ITEM is a headline.  Return value is a string or nil if ITEM
+doesn't have any start date defined."
+					 (let* ((scheduled (org-element-property :scheduled item))
+							(hour-start (org-element-property :hour-start scheduled))		; # :scheduled の hour-start のプロパティ
+							(minute-start (org-element-property :minute-start scheduled)))	; # :scheduled の minute-start のプロパティ
+					   (or
+						(and scheduled hour-start minute-start (org-timestamp-format scheduled "%Y-%02m-%02d-%02H:%02M"))	; # 時:分の指定がある場合
+						(and scheduled (org-timestamp-format scheduled "%Y-%02m-%02d"))
+						(and (memq 'start org-taskjuggler-valid-task-attributes)
+							 (org-element-property :START item)))))				   
+				   
 				   ;; org-taskjuggler--build-task でプロパティ :start: が無くとも :SCHEDULED の値で
 				   ;; TaskJuggleru の start 要素を設定できるように org-taskjuggler--build-task を上書き
 				   ;; (# でコメント部が オリジナルからの変更部分)
-				   (require 'ox-taskjuggler)
 				   (defun org-taskjuggler--build-task (task info)
 "Return a task declaration.
 
@@ -160,7 +174,10 @@ a unique id will be associated to it."
 						;; Add other valid attributes.
 						(org-taskjuggler--indent-string
 						 (org-taskjuggler--build-attributes
-						  task org-taskjuggler-valid-task-attributes))
+						  task 
+						  (if start																				; # start が既に設定されていれば
+							  (remove-if '(lambda (x) (eq x 'start)) org-taskjuggler-valid-task-attributes)		; # org-taskjuggler-valid-task-attributes から start を除去してその他の設定を追加
+							org-taskjuggler-valid-task-attributes)))											; # start 有りの org-taskjuggler-valid-task-attributes でその他の設定を追加
 						;; Add inner tasks.
 						(org-taskjuggler--indent-string
 						 (mapconcat 'identity
