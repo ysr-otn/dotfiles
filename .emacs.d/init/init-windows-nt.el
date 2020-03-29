@@ -72,6 +72,10 @@
       (start-process "fiber" "diredfiber" "fiber.exe" file))))
 
 
+;;; ispell
+(setq ispell-alternate-dictionary "/usr/share/dict/words")
+
+
 
 ;;; NTEmacsでスクリプトを実行する
 ;(require 'nt-script)
