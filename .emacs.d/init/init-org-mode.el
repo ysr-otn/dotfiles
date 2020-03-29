@@ -120,7 +120,6 @@ All valid attributes from TASK are inserted.  If TASK defines
 a property \"task_id\" it will be used as the id for this task.
 Otherwise it will use the ID property.  If neither is defined
 a unique id will be associated to it."
-					 (message "%s" (org-element-property :raw-value task))
 					 (let* ((allocate (org-element-property :ALLOCATE task))
 							(complete													; # begin
 							 (let ((progress	(org-taskjuggler--raw-value-to-progress (org-element-property :raw-value task)))	; # [x/y], [z%] の進捗

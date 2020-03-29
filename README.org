@@ -7,6 +7,9 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-03-29 Sun 18:12>
+    - Windows の org-taskjuggler の環境設定を追加
+    - org-taskjuggler--build-task の不要メッセージを削除
   - <2020-03-29 Sun 15:31>
     - Windows 環境の Emacs の ispell の辞書設定を追加
   - <2020-03-28 Sat 23:48>

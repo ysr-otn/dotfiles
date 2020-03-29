@@ -5,6 +5,12 @@
 (setq shell-command-switch "-c")
 
 
+;;; 実行ファイルのパス
+(setenv "PATH"
+		(concat (substitute-in-file-name "$HOME\\.gem\\ruby\\2.6.0\\gems\\taskjuggler-3.7.1\\bin:")
+				(getenv "PATH")))
+
+
 ;;; 各種の言語設定を UTF-8 を基準にし，Shell, Grep の文字コード設定をする
 ;;; https://skalldan.wordpress.com/2011/11/09/ntemacs-%E3%81%A7-utf-8-%E3%81%AA%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%82%92%E8%A9%A6%E8%A1%8C%E9%8C%AF%E8%AA%A4/
 ;; LANG 設定

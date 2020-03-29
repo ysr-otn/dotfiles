@@ -97,6 +97,11 @@ elif [ $HOSTTYPE = windows ]; then
 fi
 
 
+#######	Ruby の設定  #######
+if [ $HOSTTYPE = windows ]; then
+	export PATH="$HOME/.gem/ruby/2.6.0/gems/taskjuggler-3.7.1/bin:$PATH"
+fi
+
 #######	Go の設定 #######
 export PATH=$HOME/go/bin:$PATH
 

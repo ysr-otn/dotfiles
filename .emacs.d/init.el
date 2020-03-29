@@ -81,7 +81,7 @@
 	  erlang
 	  
 	  ;; org-mode
-	  org-tree-slide ox-reveal htmlize
+	  org-plus-contrib org-tree-slide ox-reveal htmlize
 	  
 	  ;; markdown-mode
 	  markdown-mode
