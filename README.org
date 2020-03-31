@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-03-31 Tue 21:08>
+	- Windows 環境で zsh の peco の設定を無効化(peco が cygwin 未対応なため)
   - <2020-03-29 Sun 18:12>
     - Windows の org-taskjuggler の環境設定を追加
     - org-taskjuggler--build-task の不要メッセージを削除

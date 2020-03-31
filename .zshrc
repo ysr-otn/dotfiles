@@ -117,51 +117,54 @@ if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]
 fi
 
 
-#######	helm ライクな絞り込み検索 peco の設定  #######
-function peco-history-selection() {
-    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
-    CURSOR=$#BUFFER
-    zle reset-prompt
-}
-zle -N peco-history-selection
-bindkey '^r' peco-history-selection			# C-r で peco によるコマンドの絞り込み検索
+if [ $HOSTTYPE != windows ]; then
 
-function peco-history-selection-migemo() {
-    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco --initial-filter Migemo`
-    CURSOR=$#BUFFER
-    zle reset-prompt
-}
-
-zle -N peco-history-selection-migemo
-bindkey '^[r' peco-history-selection-migemo	# M-r で migemo 有りの peco によるコマンドの絞り込み検索
-
-# peco を用いた cdr
-# https://qiita.com/tmsanrinsha/items/72cebab6cd448704e366
-function peco-cdr () {
-    # cdr を用いて $NUMBER	$DIRECTORY のフォーマットでディレクトリの履歴を表示
-	# ($NUMBER 部分があると helm 的に $NUMBER を指定しても絞り込み検索が可能)
-	local selected_dir="$(cdr -l | peco --prompt="cdr >" --query "$LBUFFER")"
-    if [ -n "$selected_dir" ]; then
-        # cd に渡す時は $NUMBER の部分とその後の空白を削除
-		BUFFER="cd `echo ${selected_dir} | sed 's/[0-9]*[ \t]*//'`"
-        zle accept-line
-    fi
-}
-zle -N peco-cdr
-bindkey '^x' peco-cdr	# C-x で peco-cdr
-
-function peco-cdr-migemo () {
-    # cdr を用いて $NUMBER	$DIRECTORY のフォーマットでディレクトリの履歴を表示
-	# ($NUMBER 部分があると helm 的に $NUMBER を指定しても絞り込み検索が可能)
-	local selected_dir="$(cdr -l | peco --initial-filter Migemo --prompt="cdr >" --query "$LBUFFER")"
-    if [ -n "$selected_dir" ]; then
-        # cd に渡す時は $NUMBER の部分とその後の空白を削除
-		BUFFER="cd `echo ${selected_dir} | sed 's/[0-9]*[ \t]*//'`"
-        zle accept-line
-    fi
-}
-zle -N peco-cdr-migemo
-bindkey '^[x' peco-cdr-migemo	# M-x で peco-cdr-migemo
+	#######	helm ライクな絞り込み検索 peco の設定  #######
+	function peco-history-selection() {
+	    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+	    CURSOR=$#BUFFER
+	    zle reset-prompt
+	}
+	zle -N peco-history-selection
+	bindkey '^r' peco-history-selection			# C-r で peco によるコマンドの絞り込み検索
+	
+	function peco-history-selection-migemo() {
+	    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco --initial-filter Migemo`
+	    CURSOR=$#BUFFER
+	    zle reset-prompt
+	}
+	
+	zle -N peco-history-selection-migemo
+	bindkey '^[r' peco-history-selection-migemo	# M-r で migemo 有りの peco によるコマンドの絞り込み検索
+	
+	# peco を用いた cdr
+	# https://qiita.com/tmsanrinsha/items/72cebab6cd448704e366
+	function peco-cdr () {
+	    # cdr を用いて $NUMBER	$DIRECTORY のフォーマットでディレクトリの履歴を表示
+		# ($NUMBER 部分があると helm 的に $NUMBER を指定しても絞り込み検索が可能)
+		local selected_dir="$(cdr -l | peco --prompt="cdr >" --query "$LBUFFER")"
+	    if [ -n "$selected_dir" ]; then
+	        # cd に渡す時は $NUMBER の部分とその後の空白を削除
+			BUFFER="cd `echo ${selected_dir} | sed 's/[0-9]*[ \t]*//'`"
+	        zle accept-line
+	    fi
+	}
+	zle -N peco-cdr
+	bindkey '^x' peco-cdr	# C-x で peco-cdr
+	
+	function peco-cdr-migemo () {
+	    # cdr を用いて $NUMBER	$DIRECTORY のフォーマットでディレクトリの履歴を表示
+		# ($NUMBER 部分があると helm 的に $NUMBER を指定しても絞り込み検索が可能)
+		local selected_dir="$(cdr -l | peco --initial-filter Migemo --prompt="cdr >" --query "$LBUFFER")"
+	    if [ -n "$selected_dir" ]; then
+	        # cd に渡す時は $NUMBER の部分とその後の空白を削除
+			BUFFER="cd `echo ${selected_dir} | sed 's/[0-9]*[ \t]*//'`"
+	        zle accept-line
+	    fi
+	}
+	zle -N peco-cdr-migemo
+	bindkey '^[x' peco-cdr-migemo	# M-x で peco-cdr-migemo
+fi
 
 
 # コマンドラインから天気を取得するスクリプト wttrin(https://linuxfan.info/wttr-in)
