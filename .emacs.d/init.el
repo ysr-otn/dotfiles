@@ -41,7 +41,7 @@
 	  use-package
 	  
 	  ;; helm
-	  helm ac-helm helm-ag helm-c-yasnippet helm-gtags helm-projectile helm-swoop helm-ispell
+	  helm ac-helm helm-ag helm-c-yasnippet helm-gtags helm-projectile helm-swoop helm-ispell helm-descbinds
 	  
 	  ;; ace-jump
 	  ace-jump-mode	ace-pinyin	ace-window
@@ -569,6 +569,9 @@
 ;;;  代りに browse-kill-ring を使用する) → 解消したので browse-kill-ring を無効化
 ;(load "init-browse-kill-ring.el")
 
+;;; for cc-mode(c-mode-hook をクリアしているので c-mode-hook を追加する init-helm-gtags, init-lsp.el の前に実行
+(load "init-cc-mode.el")
+
 ;;; for helm
 (load "init-helm.el")
 
@@ -593,9 +596,6 @@
 
 ;;; for ace-jump
 (load "init-ace-jump.el")
-
-;;; for cc-mode(c-mode-hook をクリアしているので c-mode-hook を追加する init-lsp.el の前に実行0
-(load "init-cc-mode.el")
 
 ;;; for auto-complete(company を使うようになったので廃止)
 ;(load "init-auto-complete.el")

@@ -1,5 +1,5 @@
 (setq howm-directory "~/Documents/memo")
 (setq howm-menu-lang 'ja)
 (setq howm-menu-file "~/.howm-menu")
-(require 'howm-mode)
+(require 'howm)
 ;(howm-setup-changelog)

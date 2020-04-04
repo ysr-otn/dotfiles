@@ -7,6 +7,11 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-04-05 Sun 00:47>
+    - howm-mode の代りに howm を使用
+	- helm-descbinds の設定を追加
+    - helm-gtags-mode を c++-mode でも有効化
+    - search-web のデフォルトのブラウザを w3m に変更
   - <2020-03-31 Tue 21:08>
 	- Windows 環境で zsh の peco の設定を無効化(peco が cygwin 未対応なため)
   - <2020-03-29 Sun 18:12>
