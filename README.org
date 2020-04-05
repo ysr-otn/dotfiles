@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-04-05 Sun 15:49>
+    - point-undo を廃止して point-history を導入
   - <2020-04-05 Sun 00:47>
     - howm-mode の代りに howm を使用
 	- helm-descbinds の設定を追加

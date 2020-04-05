@@ -631,8 +631,11 @@
 ;;; for undohist
 (load "init-undohist.el")
 
-;;; for point-undo(カーソル位置のアンドゥ)
-(load "init-point-undo.el")
+;;; for point-undo(カーソル位置のアンドゥ)(動作しないので無効化)
+; (load "init-point-undo.el")
+
+;;; for point-history(カーソル位置の履歴)
+(load "init-point-history.el")
 
 ;;; for volatile-highlights(操作に対する視覚的フィードバック)
 (load "init-volatile-highlights.el")
