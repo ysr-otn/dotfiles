@@ -1,7 +1,7 @@
 (global-anzu-mode +1)
 
 (custom-set-variables
- '(anzu-use-migemo nil)
+ '(anzu-use-migemo t)
  '(anzu-search-threshold 1024))
 
 ;;; キーマップを query-replace と query-replace-regexp に割り当て
