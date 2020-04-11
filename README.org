@@ -1,30 +1,37 @@
 #+STARTUP: showall
-#+TITLE:	各種ドットファイルの設定
-#+AUTHOR:	Yoshihiro Ohtani
+#+TITLE:    各種ドットファイルの設定
+#+AUTHOR:   Yoshihiro Ohtani
 
 * 概要
 
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-04-11 Sat 18:21>
+    - init-yasnippet.el のコミット漏れを修正
+    - README.org のインデントを修正
+  - <2020-04-11 Sat 16:19>
+    - yasnippet のデフォルトの snippets の使用を廃止
+    - yasnippet の cc-mode, python-mode を追加
+    - yasnippet の c-mode の設定の一部を cc-mode に移管
   - <2020-04-07 Tue 00:01>
-	- anzu で migemo 連携を有効化
+    - anzu で migemo 連携を有効化
   - <2020-04-05 Sun 15:49>
     - point-undo を廃止して point-history を導入
   - <2020-04-05 Sun 00:47>
     - howm-mode の代りに howm を使用
-	- helm-descbinds の設定を追加
+    - helm-descbinds の設定を追加
     - helm-gtags-mode を c++-mode でも有効化
     - search-web のデフォルトのブラウザを w3m に変更
   - <2020-03-31 Tue 21:08>
-	- Windows 環境で zsh の peco の設定を無効化(peco が cygwin 未対応なため)
+    - Windows 環境で zsh の peco の設定を無効化(peco が cygwin 未対応なため)
   - <2020-03-29 Sun 18:12>
     - Windows の org-taskjuggler の環境設定を追加
     - org-taskjuggler--build-task の不要メッセージを削除
   - <2020-03-29 Sun 15:31>
     - Windows 環境の Emacs の ispell の辞書設定を追加
   - <2020-03-28 Sat 23:48>
-	- org-mode で TaskJuggler の start に時間指定ができるように対応
+    - org-mode で TaskJuggler の start に時間指定ができるように対応
     - org-mode で TaskJuggler の start が二重に挿入されるバグを修正
   - <2020-03-28 Sat 23:44>
     - 2020-03-27 Fri 23:27 のコミットでの init.el のコミット漏れを修正
@@ -38,11 +45,11 @@ Unix 系の各種設定ファイル(.*)を GitHub で管理する
   - <2020-03-23 Mon 23:41>
     - init.el の init-1powerline.el でのエラーを修正
   - <2020-03-23 Mon 23:07>
-	- init.el に elisp のライブラリに対するコメントを追加
+    - init.el に elisp のライブラリに対するコメントを追加
   - <2020-03-22 Sun 23:53>
     - org-mode で TaskJuggler の Plan のガントチャートに resources を追加
   - <2020-03-22 Sun 23:27>
-	- org-mode で TaskJuggler のガントチャートの進捗自動計算処理を追加
+    - org-mode で TaskJuggler のガントチャートの進捗自動計算処理を追加
     - org-mode で TaskJuggler の Plan のガントチャートを weekly→daily に変更
   - <2020-03-21 Sat 23:35>
     - org-mode にガントチャート化ツール TaskJuggler の設定を追加

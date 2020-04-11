@@ -2,7 +2,7 @@
 (require 'yasnippet)
 (setq yas-snippet-dirs
       '("~/.emacs.d/snippets"			   ;; 自作スニペット
-        yas-installed-snippets-dir         ;; package に最初から含まれるスニペット
+        ;yas-installed-snippets-dir         ;; package に最初から含まれるスニペット(自作スニペットと競合するので使用を廃止)
         ))
 (require 'helm-c-yasnippet)
 (setq helm-yas-space-match-any-greedy t)
