@@ -40,6 +40,9 @@
 	  ;; use-package
 	  use-package
 	  
+	  ;;; emacs lisp tools
+	  f s
+	  
 	  ;; helm
 	  helm ac-helm helm-ag helm-c-yasnippet helm-gtags helm-projectile helm-swoop helm-ispell helm-descbinds
 	  

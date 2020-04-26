@@ -7,6 +7,9 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-04-26 Sun 21:44>
+    - yasnippet に lisp-mode, emacs-lisp-mode を追加
+    - init.el の package に s.el, f.el を追加
   - <2020-04-11 Sat 18:21>
     - init-yasnippet.el のコミット漏れを修正
     - README.org のインデントを修正
