@@ -50,7 +50,7 @@
 	  ace-jump-mode	ace-pinyin	ace-window
 	  
 	  ;; search tools
-	  ag google-translate migemo wgrep wgrep-ag 
+	  ag google-translate migemo wgrep wgrep-ag ripgrep deadgrep
 	  
 	  ;; buffer/window control tools
 	  powerline elscreen minibuf-isearch minimap point-undo popup popwin session highlight-symbol

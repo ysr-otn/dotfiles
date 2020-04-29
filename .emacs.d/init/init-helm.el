@@ -93,6 +93,11 @@
 (global-set-key "\C-ci" 'helm-ispell)
 
 
+;;; rg(ripgrep) が存在すれば helm-ag のインタフェースとして rg を使用
+(if (executable-find "rg")
+	(setq helm-ag-base-command "rg --vimgrep --no-heading"))
+
+
 ; ;; customize
 ; (progn
 ; ;  (require 'helm-ls-git)
