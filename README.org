@@ -7,6 +7,9 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-04-30 Thu 22:06>
+    - init-ripgrep.el を追加
+    - yasnippet の lisp-mode の設定を修正
   - <2020-04-29 Wed 15:30>
     - ripgrep 用インタフェース ripgrep, deadgrep の設定を追加
     - init-heml.el に helm-ag で ripgrep を使う設定を追加

@@ -587,6 +587,9 @@
 ;;; for ag(the silver searcher インタフェース)
 (load "init-ag.el")
 
+;;; for ripgrep(ripgrep インタフェース)
+(load "init-ripgrep.el")
+
 ;;; for smooth-scroll(滑かにスクロール)
 ; C-v, M-v によるスクロールが遅すぎるので無効化
 ;(load "init-smooth-scroll.el")
