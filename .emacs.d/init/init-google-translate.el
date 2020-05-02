@@ -25,7 +25,7 @@
 
 (push '("\*Google Translate\*" :height 0.5 :stick t) popwin:special-display-config)
 
-(global-set-key (kbd "C-c t") 'google-translate-enja-or-jaen)
+(global-set-key (kbd "C-c T") 'google-translate-enja-or-jaen)
 
 ;;; "Args out of range" のエラーが出る問題への暫定対策
 ;;;  https://qiita.com/akicho8/items/cae976cb3286f51e4632

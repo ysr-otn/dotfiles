@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-05-02 Sat 22:48>
+    - google-translate-enja-or-jaen のキー設定を修正
   - <2020-04-30 Thu 22:06>
     - init-ripgrep.el を追加
     - yasnippet の lisp-mode の設定を修正
