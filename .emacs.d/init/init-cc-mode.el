@@ -109,3 +109,10 @@
 			 (setq compile-command  
 				   (concat "gcc -ansi -Wall -g -o "
 						   filename-no-suffix " " filename))))))))
+
+;;; for hideif-extension
+;;; 注: hideif-extension.el は 
+;;;     ~/Development/github/ysr-otn/dotfiles/.emacs.d/elisp/misc/hideif-extension.el に
+;;;     ~/Development/github/ysr-otn/hideif-extension/hideif-extension.el へのシンボリックリンク
+;;;     としており，.gitignore で git の管理対象外としている(Windows 環境との共存のため)
+(require 'hideif-extension)
