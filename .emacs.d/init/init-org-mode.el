@@ -280,6 +280,10 @@ a unique id will be associated to it."
 		(tags . "%2i %-12:c")
 		(search . "%2i %-12:c")))
 
+;;; TODO の設定
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "WAIT(w)" "REMIND(r)" "|" "DONE(d)" "SOMEDAY(s)")))
+
 ;;; アジェンダを HTML で出力する際のスタイルの設定
 ;;; (等幅フォントで表示したいので "Courier New", Consolas, monospace の順に優先度を付けて指定)
 (setq org-agenda-export-html-style
@@ -411,7 +415,7 @@ a unique id will be associated to it."
 # A traditional Gantt chart with a project overview.
 taskreport plan \"\" {
   headline \"Project Plan\"
-  columns bsi, name, priority, resources, start, end, effort, complete, chart {scale day}
+  columns bsi, name, priority, resources{listitem \"<-query attribute='name'->\"}, start, end, effort, complete, chart {scale day}
   loadunit shortauto
   hideresource 1
 }
