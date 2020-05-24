@@ -53,3 +53,12 @@
 (setq howm-view-grep-fixed-option "-F")
 (setq howm-view-grep-expr-option nil)
 (setq howm-view-grep-file-stdin-option nil)
+
+;;;; howm-menu で -j1 オプションを使う
+;;; https://extra-vision.blogspot.com/2016/12/howm-ripgrep.html
+(defun howm-menu-with-j1 (orig-fun &rest args)
+  (setq howm-view-grep-option "-nH --no-heading -j1 --color never")
+  (apply orig-fun args)
+  (setq howm-view-grep-option "-nH --no-heading --color never"))
+
+(advice-add 'howm-menu-refresh :around #'howm-menu-with-j1)
