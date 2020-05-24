@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-05-24 Sun 16:22>
+    - howm-mode の org-mode との連携の設定を追加
   - <2020-05-23 Sat 22:14>
     - yasnippet の lisp-mode の設定を修正
   - <2020-05-07 Thu 23:37>
