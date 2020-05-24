@@ -42,3 +42,14 @@
 #+OPTIONS: ^:{}
 "
 	))
+
+
+;;;; ripgrep との連携の設定
+;;; https://extra-vision.blogspot.com/2016/10/ripgrep-howm.html
+(setq howm-view-use-grep t)
+(setq howm-view-grep-command "rg")
+(setq howm-view-grep-option "-nH --no-heading --color never")
+(setq howm-view-grep-extended-option nil)
+(setq howm-view-grep-fixed-option "-F")
+(setq howm-view-grep-expr-option nil)
+(setq howm-view-grep-file-stdin-option nil)
