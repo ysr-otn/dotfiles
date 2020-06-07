@@ -122,11 +122,11 @@
 		  '(lambda ()
 			 ;; for org-babel
 			 (progn
-			   (require 'ob-C)
-			   ;; org-babel で shell, C が使えるようにする
+			   ;; org-babel で shell, C, dot が使えるようにする
 			   (org-babel-do-load-languages 'org-babel-load-languages
 											'((shell . t)
 											  (C . t)
+											  (dot . t)
 											  ))
 			   )
 			 
