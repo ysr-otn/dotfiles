@@ -117,13 +117,19 @@
 (when (version<= "9.2" (org-version))
   (require 'org-tempo))
 
-;;; org-babel でシェルが使えるようにする
-(org-babel-do-load-languages 'org-babel-load-languages
-							 '((shell . t)))
-
 
 (add-hook 'org-mode-hook
 		  '(lambda ()
+			 ;; for org-babel
+			 (progn
+			   (require 'ob-C)
+			   ;; org-babel で shell, C が使えるようにする
+			   (org-babel-do-load-languages 'org-babel-load-languages
+											'((shell . t)
+											  (C . t)
+											  ))
+			   )
+			 
 			 ;;; for org-tree-slide-move
 			 (progn
 			   (load "org-tree-slide")
