@@ -113,6 +113,15 @@
 ;;; スライドインの開始位置を調節する（行数を指定）
 (setq org-tree-slide-slide-in-brank-lines 10) 
 
+;;; org-version 9.2 以上ならテンプレート機能のために org-tempo を読み込み
+(when (version<= "9.2" (org-version))
+  (require 'org-tempo))
+
+;;; org-babel でシェルが使えるようにする
+(org-babel-do-load-languages 'org-babel-load-languages
+							 '((shell . t)))
+
+
 (add-hook 'org-mode-hook
 		  '(lambda ()
 			 ;;; for org-tree-slide-move

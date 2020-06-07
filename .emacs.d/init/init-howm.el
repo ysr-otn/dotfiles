@@ -42,6 +42,18 @@
 #+OPTIONS: ^:{}
 "
 	))
+			 
+;;; howm-mode のプレフィクスキー C-c が org-mode のプレフィクスキーと被るので howm-mode の
+;;; プレフィクスキーを C-x に変更
+(global-unset-key (kbd "C-x ,"))
+(setq howm-prefix (kbd "C-x ,"))
+(eval-after-load "howm-mode"
+  '(progn
+    (define-key howm-mode-map (kbd "C-c C-c") nil)))
+(global-set-key "\C-x,," 'howm-menu)
+(global-set-key "\C-x,c" 'howm-create)
+(global-set-key "\C-x,t" 'howm-insert-dtime)
+(global-set-key "\C-x,d" 'howm-insert-date)
 
 
 ;;;; ripgrep との連携の設定
