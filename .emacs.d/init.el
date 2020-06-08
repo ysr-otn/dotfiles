@@ -84,7 +84,7 @@
 	  erlang
 	  
 	  ;; org-mode
-	  org-plus-contrib org-tree-slide ox-reveal htmlize
+	  org-plus-contrib org-tree-slide ox-reveal htmlize slime
 	  
 	  ;; markdown-mode
 	  markdown-mode
@@ -698,6 +698,9 @@
 
 ;;; for yatex-mode
 (load "init-yatex.el")
+
+;;; for slime
+(load "init-slime.el")
 
 ;;; for japanese-holidays(日本の休日に対応したカレンダーデータ)
 (load "init-japanese-holidays.el")

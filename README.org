@@ -7,6 +7,9 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-06-08 Mon 22:25>
+    - org-babel に ruby, python, common-lisp の設定を追加
+    - ob-lisp のために slime を導入
   - <2020-06-07 Sun 23:37>
     - org-babel に dot の設定を追加
   - <2020-06-07 Sun 22:31>

@@ -122,10 +122,13 @@
 		  '(lambda ()
 			 ;; for org-babel
 			 (progn
-			   ;; org-babel で shell, C, dot が使えるようにする
+			   ;; org-babel で shell, C, C++, ruby, python, lisp, dot が使えるようにする
 			   (org-babel-do-load-languages 'org-babel-load-languages
 											'((shell . t)
 											  (C . t)
+											  (ruby . t)
+											  (python . t)
+											  (lisp . t)
 											  (dot . t)
 											  ))
 			   )
