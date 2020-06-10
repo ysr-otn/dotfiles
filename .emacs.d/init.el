@@ -84,7 +84,7 @@
 	  erlang
 	  
 	  ;; org-mode
-	  org-plus-contrib org-tree-slide ox-reveal htmlize slime
+	  org-plus-contrib org-tree-slide ox-reveal htmlize slime gnuplot
 	  
 	  ;; markdown-mode
 	  markdown-mode
