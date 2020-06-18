@@ -121,17 +121,37 @@ if [ $HOSTTYPE != windows ]; then
 
 	#######	helm ライクな絞り込み検索 peco の設定  #######
 	function peco-history-selection() {
-	    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
-	    CURSOR=$#BUFFER
-	    zle reset-prompt
+		# 改行を含む履歴の展開に対応
+		# https://gist.github.com/ay65535/1b4f73ffd029f51a9959
+		local buffer
+		local sep='⏎'
+		buffer=$(
+			history -nr $'\n'=$sep 1 | \
+				peco | \
+				sed s/$sep/\\$'\n'/g)
+		if [[ ! -z buffer ]]; then
+			BUFFER=$buffer
+		fi
+		CURSOR=$#BUFFER
+		zle redisplay
 	}
 	zle -N peco-history-selection
 	bindkey '^r' peco-history-selection			# C-r で peco によるコマンドの絞り込み検索
 	
 	function peco-history-selection-migemo() {
-	    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco --initial-filter Migemo`
+		# 改行を含む履歴の展開に対応
+		# https://gist.github.com/ay65535/1b4f73ffd029f51a9959
+		local buffer
+		local sep='⏎'
+		buffer=$(
+			history -nr $'\n'=$sep 1 | \
+				peco --initial-filter Migemo | \
+				sed s/$sep/\\$'\n'/g)
+		if [[ ! -z buffer ]]; then
+			BUFFER=$buffer
+		fi
 	    CURSOR=$#BUFFER
-	    zle reset-prompt
+		zle redisplay
 	}
 	
 	zle -N peco-history-selection-migemo
