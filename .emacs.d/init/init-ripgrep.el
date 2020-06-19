@@ -10,3 +10,6 @@
 		(encode (read-coding-system "Encode: " '("euc-jp" "shift-jis" "japanese-iso-8bit" "utf-8"))))
 	;; encode を文字列にしてリストに格納し，ripgrep-regexp を実行
 	(ripgrep-regexp regexp dir (list (concat "-E " (symbol-name encode))))))
+
+;;; Emacsから外部プロセスを実行するときのコーディングシステムをカレントバッファに合わせる
+(my-adapt-coding-system-with-current-buffer ripgrep-regexp)

@@ -35,3 +35,14 @@
   " C mode specific setup for GTAGS. "
   (cond (parent-project nil) (t (my-project)))
   (ggtags-mode 1))
+
+
+;;; Emacsから外部プロセスを実行するときのコーディングシステムをカレントバッファに合わせる
+(my-adapt-coding-system-with-current-buffer gtags-find-tag)
+(my-adapt-coding-system-with-current-buffer gtags-find-with-idutils)
+(my-adapt-coding-system-with-current-buffer gtags-find-with-grep)
+(my-adapt-coding-system-with-current-buffer ggtags-find-tag-dwin)
+(my-adapt-coding-system-with-current-buffer ggtags-find-reference)
+(my-adapt-coding-system-with-current-buffer ggtags-find-other-symbol)
+(my-adapt-coding-system-with-current-buffer ggtags-show-definition)
+

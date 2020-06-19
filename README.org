@@ -7,6 +7,10 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-06-19 Fri 13:03>
+    - mylisp.el に Emacsから外部プロセスを実行するときのコーディングシステムを
+      カレントバッファに合わせる my-adapt-coding-system-with-current-buffer を追加
+    - ripgrep-regexp, ag, ggtags に my-adapt-coding-system-with-current-buffer の設定を追加
   - <2020-06-19 Fri 09:59>
     - .zshrc の peco で重複した履歴の削除が無効化されていたので復帰
   - <2020-06-19 Fri 08:35>

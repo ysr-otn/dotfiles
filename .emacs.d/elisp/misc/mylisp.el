@@ -800,3 +800,14 @@ max-fill-column, min-fill-column を利用する"
 (when (eq system-type 'darwin)
   (require 'ls-lisp)
   (setq ls-lisp-use-insert-directory-program nil))
+
+
+;;; Emacsから外部プロセスを実行するときのコーディングシステムをカレントバッファに合わせる
+;;; https://qiita.com/8bit-jzjjy/items/7af68074494b5e9129e5
+(defmacro my-adapt-coding-system-with-current-buffer (target-function)
+  `(defadvice ,target-function
+     (around my-adapt-coding-system-with-current-buffer activate)
+     (let ((coding-system-for-read buffer-file-coding-system)
+       (coding-system-for-write buffer-file-coding-system)
+       (coding-system-require-warning t))
+       ad-do-it)))
