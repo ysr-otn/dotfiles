@@ -126,7 +126,8 @@ if [ $HOSTTYPE != windows ]; then
 		local buffer
 		local sep='⏎'
 		buffer=$(
-			history -nr $'\n'=$sep 1 | \
+			# awk で重複した履歴を削除
+			history -nr $'\n'=$sep 1 | awk '!a[$0]++' | \
 				peco | \
 				sed s/$sep/\\$'\n'/g)
 		if [[ ! -z buffer ]]; then
@@ -144,7 +145,8 @@ if [ $HOSTTYPE != windows ]; then
 		local buffer
 		local sep='⏎'
 		buffer=$(
-			history -nr $'\n'=$sep 1 | \
+			# awk で重複した履歴を削除
+			history -nr $'\n'=$sep 1 | awk '!a[$0]++' | \
 				peco --initial-filter Migemo | \
 				sed s/$sep/\\$'\n'/g)
 		if [[ ! -z buffer ]]; then
