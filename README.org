@@ -7,6 +7,9 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-08-01 Sat 21:46>
+    - .zshrc に r コマンドを無効化する設定を追加(R との競合を避けるため)
+    - rotate.el の設定を追加う
   - <2020-06-19 Fri 13:03>
     - mylisp.el に Emacsから外部プロセスを実行するときのコーディングシステムを
       カレントバッファに合わせる my-adapt-coding-system-with-current-buffer を追加

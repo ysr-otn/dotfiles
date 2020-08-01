@@ -6,7 +6,8 @@ setopt ignoreeof
 setopt nobeep				# ビープ音無し
 setopt auto_pushd			# 過去に移動したヂィレクトリをスタックに自動で入れ cd -[TAB] で表示
 bindkey "^]" vi-cmd-mode		# 一時的に vi モードにするハック
-	
+disable r				# R のためにビルドインコマンドの r を無効化
+
 
 ####### Terminal #######
 export TERM="xterm-256color"	# 256 色表示のターミナルに対応

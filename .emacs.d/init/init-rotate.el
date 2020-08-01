@@ -1,0 +1,6 @@
+(global-set-key (kbd "C-x w w") 'rotate-window)
+(global-set-key (kbd "C-x w t") 'rotate:tiled)
+(global-set-key (kbd "C-x w h") 'rotate:even-horizontal)
+(global-set-key (kbd "C-x w v") 'rotate:even-vertical)
+(global-set-key (kbd "C-x w H") 'rotate:main-horizontal)
+(global-set-key (kbd "C-x w V") 'rotate:main-vertical)

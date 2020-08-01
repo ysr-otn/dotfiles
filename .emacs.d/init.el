@@ -21,7 +21,9 @@
 ;;; http://emacs-jp.github.io/packages/package-management/package-el.html
 (require 'package)
 ;; MELPAを追加
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+;; http の melpa の接続エラーが発生したので https の方に切り替え
+;;(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;; org を追加
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 ;; Marmaladeを追加(見付からないので無効化)
@@ -57,7 +59,7 @@
 	  buffer-expose dimmer
 	  
 	  ;; misc
-	  anzu god-mode multiple-cursors undo-tree undohist cp5022x japanese-holidays adaptive-wrap wttrin
+	  anzu god-mode multiple-cursors undo-tree undohist cp5022x japanese-holidays adaptive-wrap wttrin rotate
 	  
 	  ;; auto-complete(company を使うようになったので
 	  ;auto-complete auto-complete-clang-async fuzzy
@@ -707,6 +709,9 @@
 
 ;;; for wttrin(天気予報サイト wttr.in を用いた天気予報データ取得ツール)
 (load "init-wttrin.el")
+
+;;; for rotate(ウインドウの配置変えツール)
+(load "init-rotate.el")
 
 
 ;;; ウィンドウシステムならカラーテーマを有効にし，カーソル行をハイライト
