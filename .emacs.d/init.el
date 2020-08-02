@@ -83,7 +83,7 @@
 	  e2wm emr flycheck ggtags dumb-jump projectile yasnippet
 	  
 	  ;;  proglaming language tools
-	  erlang
+	  erlang ess
 	  
 	  ;; org-mode
 	  org-plus-contrib org-tree-slide ox-reveal htmlize slime gnuplot
@@ -679,6 +679,9 @@
 
 ;;; for erlang-mode
 (load "init-erlang.el")
+
+;;; for ess(R の開発環境)
+(load "init-ess.el")
 
 ;;; for ruby-mode
 (load "init-ruby.el")

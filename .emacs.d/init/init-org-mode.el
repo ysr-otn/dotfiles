@@ -131,6 +131,7 @@
 											  (lisp . t)
 											  (dot . t)
 											  (gnuplot . t)
+											  (R . t)
 											  ))
 			   )
 			 
