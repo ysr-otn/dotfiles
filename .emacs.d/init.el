@@ -629,9 +629,8 @@
 ;;; for VC
 (load "init-vc.el")
 
-;;; for flycheck(Windos 環境は未だ動作しないので無効化)
-(if (null (eq system-type 'windows-nt))
-	(load "init-flycheck.el"))
+;;; for flycheck
+(load "init-flycheck.el")
 
 ;;; for undo-tree
 (load "init-undo-tree.el")

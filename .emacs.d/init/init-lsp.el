@@ -8,7 +8,10 @@
 (add-hook 'c++-mode-hook #'lsp)
 (add-hook 'c-mode-hook #'lsp)
 
-(setq lsp-clients-clangd-executable "/usr/local/opt/llvm/bin/clangd")
+(cond ((eq system-type 'windows-nt)
+	   (setq lsp-clients-clangd-executable "C:/msys64/mingw64/bin/clangd"))
+	  (t
+	   (setq lsp-clients-clangd-executable "/usr/local/opt/llvm/bin/clangd")))
 (setq lsp-prefer-flymake nil)
 
 

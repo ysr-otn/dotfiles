@@ -78,6 +78,11 @@ if [ $HOSTTYPE = i386 ]; then
 	export DYLD_LIBRARY_PATH=/usr/local/opt/llvm/lib:$DYLD_LIBRARY_PATH 
 	export LDFLAGS="-L/usr/local/opt/llvm/lib"
 	export CPPFLAGS="-I/usr/local/opt/llvm/include"	
+elif [ $HOSTTYPE = windows ]; then
+	export PATH=/cygdrive/c/msys64/mingw64/bin:$PATH
+	export DYLD_LIBRARY_PATH=/cygdrive/c/msys64/mingw64/lib:$DYLD_LIBRARY_PATH 
+	export LDFLAGS="-L/cygdrive/c/msys64/mingw64/lib"
+	export CPPFLAGS="-I/cygdrive/c/msys64/mingw64/include"	
 fi
 
 ####### Emacs Environment ########

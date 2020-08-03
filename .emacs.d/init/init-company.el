@@ -28,4 +28,8 @@
 (company-quickhelp-mode)
 
 ;;; clang のパスを指定
-(setq company-clang-executable "/usr/local/opt/llvm/bin/clang")
+
+(cond ((eq system-type 'windows-nt)
+	   (setq company-clang-executable "C:/msys64/mingw64/bin/clang"))
+	  (t
+	   (setq company-clang-executable "/usr/local/opt/llvm/bin/clang")))

@@ -1,3 +1,13 @@
+(setq exec-path
+	  (append
+	   (list
+		"c:/cygwin64/usr/local/bin"
+		"C:/msys64/mingw64/usr/bin"
+		"C:/msys64/mingw64/bin"
+		)
+	   exec-path))
+
+
 ;;; shell に zsh を使用する
 ;;; http://www.bookshelf.jp/soft/meadow_9.html#SEC50
 (setq explicit-shell-file-name "zsh")
@@ -7,8 +17,20 @@
 
 ;;; 実行ファイルのパス
 (setenv "PATH"
-		(concat (substitute-in-file-name "$HOME\\.gem\\ruby\\2.6.0\\gems\\taskjuggler-3.7.1\\bin:")
+		(concat (substitute-in-file-name "C:\\cygwin64\\usr\\local\\bin:")
+				(substitute-in-file-name "C:\\msys64\\mingw64\\usr\\bin:")
+				(substitute-in-file-name "C:\\msys64\\mingw64\\bin:")
+				(substitute-in-file-name "$HOME\\.gem\\ruby\\2.6.0\\gems\\taskjuggler-3.7.1\\bin:")
 				(getenv "PATH")))
+
+
+;;; for llvm
+(setenv "DYLD_LIBRARY_PATH"
+		(concat "C:\\msys64\\mingw64\\lib:"
+				(getenv "DYLD_LIBRARY_PATH")))
+
+(setenv "LDFLAGS" "-LC:\\msys64\\mingw64\\lib")
+(setenv "CPPFLAGS" "-IC:\\msys64\\mingw64\\include")
 
 
 ;;; 各種の言語設定を UTF-8 を基準にし，Shell, Grep の文字コード設定をする
