@@ -8,7 +8,7 @@
 		   ))
 		(t
 		 (progn
-		   (setq tex-command "platex")
+		   (setq tex-command "platex -shell-escape")	; minted のために -shell-escape を追加
 		   (setenv "PATH"
 				   (concat (substitute-in-file-name "/Library/TeX/texbin/:")
 						   (getenv "PATH")))

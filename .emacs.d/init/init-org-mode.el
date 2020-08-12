@@ -169,6 +169,30 @@
 			   (load-library "ox-reveal")
 			   )
 			 
+			 ;;; for ox-latex
+			 (progn
+			   (add-to-list 'org-latex-classes
+							'("jsarticle"
+							  "\\documentclass[dvipdfmx,10pt]{jsarticle}"
+							  ("\\section{%s}" . "\\section*{%s}")
+							  ("\\subsection{%s}" . "\\subsection*{%s}")
+							  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+							  ("\\paragraph{%s}" . "\\paragraph*{%s}")
+							  ("\\subparagraph{%s}" . "\\subparagraph*{%s}")
+							  )
+							)
+			   (setq org-latex-default-class "jsarticle")
+			   (setq org-latex-pdf-process
+					 '("platex -shell-escape %f"	; minted のために -shell-escape を追加
+					   "platex -shell-escape %f"
+					   "pbibtex %b"
+					   "platex -shell-escape %f"
+					   "platex -shell-escape %f"
+					   "dvipdfmx %b.dvi"))
+			   (setq org-export-latex-listings t)
+			   (setq org-latex-listings 'minted)			   
+			   )
+			 
 			 ;; org-version 9.3.6 以降で org-taskjuggler-get-start, org-taskjuggler--build-task を上書き．
 			 ;; (# でコメント部が オリジナルからの変更部分)
 			 ;; Overwrite org-taskjuggler-get-start, org-taskjuggler--build-task, if org-version is 9.3.6 or higher.
