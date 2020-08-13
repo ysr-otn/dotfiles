@@ -111,6 +111,8 @@ fi
 #######	Go の設定 #######
 export PATH=$HOME/go/bin:$PATH
 
+#######	Haskell の設定 #######
+export PATH=$HOME/.cabal/bin:$PATH
 
 ####### cd の絶対パス履歴保存 cdr ####### 
 if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]]; then
