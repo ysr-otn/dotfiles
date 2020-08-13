@@ -171,7 +171,16 @@
 			 
 			 ;;; for ox-latex
 			 (progn
-			   (add-to-list 'org-latex-classes
+			   ;; LaTeX へのコンバートでスペースを自動的にタブにされないようにタブを無効化
+               ;; (コードブロックを LaTeX へ変換した時にタブにされると LaTeX でコンパイル
+               ;;  した時に ^^I になるのを防ぐため)
+               (setq indent-tabs-mode nil)
+			   (add-hook 'org-export-before-processing-hook
+						 '(lambda (&optional _mode)
+							(setq indent-tabs-mode nil)
+							))
+               
+               (add-to-list 'org-latex-classes
 							'("jsarticle"
 							  "\\documentclass[dvipdfmx,10pt]{jsarticle}"
 							  ("\\section{%s}" . "\\section*{%s}")
@@ -190,7 +199,14 @@
 					   "platex -shell-escape %f"
 					   "dvipdfmx %b.dvi"))
 			   (setq org-export-latex-listings t)
-			   (setq org-latex-listings 'minted)			   
+			   (setq org-latex-listings 'minted)
+			   (setq org-latex-minted-options
+					 '(("frame" "lines")			; 上下にラインを出力
+					   ("framesep=2mm")
+					   ("baselinestretch=1.2")
+					   ("fontsize=\\scriptsize")	; フォントをスクリプトサイズに縮小
+					   ("breaklines")				; 行末で改行
+					   ))
 			   )
 			 
 			 ;; org-version 9.3.6 以降で org-taskjuggler-get-start, org-taskjuggler--build-task を上書き．
