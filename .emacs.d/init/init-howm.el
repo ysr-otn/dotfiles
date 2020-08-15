@@ -1,5 +1,5 @@
 ;;; howm のドキュメントを置くディレクトリ
-(setq howm-directory "~/Documents/memo")
+(setq howm-directory "~/Documents/memo/public")
 ;;; howm のメニューの言語設定
 (setq howm-menu-lang 'ja)
 ;;; howm のメニューファイル
@@ -7,6 +7,47 @@
 
 (require 'howm)
 ;(howm-setup-changelog)
+
+
+;;; SwitchMemoDirectory(独立した 2 つのメモ束を切り替える)
+;;; https://howm.osdn.jp/cgi-bin/hiki/hiki.cgi?SwitchMemoDirectory
+(defun my-howm-set-directory (dir &optional keyfile)
+  `(lambda ()
+     (interactive)
+     ;; kill current keyword buffer first to avoid the error
+     ;; "howm-get-buffer-for-file: Buffer name ` *howm-keys:*' is in use"
+     (kill-buffer (howm-keyword-buffer))
+     (setq howm-directory ,dir)
+     (when ,keyfile
+       (setq howm-keyword-file ,keyfile))
+     (setq howm-menu-next-expiry-time (current-time))
+     (message "%s" ,dir)))
+
+;; 切り替えてメニューを呼ぶ
+(defun my-howm-switch-directory (dir &optional keyfile)
+  (funcall (my-howm-set-directory dir keyfile))
+  (howm-menu))
+
+;;; 切り替えをするメモ束の設定
+(setq my-howm-directory-alist
+	  '((public  ("~/Documents/memo/public"  "~/.howm-keys-public"))
+		(private ("~/Documents/memo/private" "~/.howm-keys-private"))))
+
+;;; メモ束 1 への切り替え
+(global-set-key "\C-x,1" (my-howm-set-directory
+						  (first (cadr (assoc 'public my-howm-directory-alist)))
+						  (second (cadr (assoc 'public my-howm-directory-alist)))))
+
+;;; メモ束 2 への切り替え
+(global-set-key "\C-x,2" (my-howm-set-directory
+						  (first (cadr (assoc 'private my-howm-directory-alist)))
+						  (second (cadr (assoc 'private my-howm-directory-alist)))))
+
+;;; メニューからメモ束切り替えコマンドを実行するための Wrapper
+(defun my-howm-switch-dir (key)
+  (my-howm-switch-directory
+   (first (cadr (assoc key my-howm-directory-alist)))
+   (second (cadr (assoc key my-howm-directory-alist)))))
 
 
 ;;;; org-mode との連携の設定
