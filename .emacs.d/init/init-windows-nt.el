@@ -17,7 +17,8 @@
 
 ;;; 実行ファイルのパス
 (setenv "PATH"
-		(concat (substitute-in-file-name "C:\\cygwin64\\usr\\local\\bin:")
+		(concat (substitute-in-file-name "C:\\Program Files\\R\\R-4.0.2\\bin:")
+				(substitute-in-file-name "C:\\cygwin64\\usr\\local\\bin:")
 				(substitute-in-file-name "C:\\msys64\\mingw64\\usr\\bin:")
 				(substitute-in-file-name "C:\\msys64\\mingw64\\bin:")
 				(substitute-in-file-name "$HOME\\.gem\\ruby\\2.6.0\\gems\\taskjuggler-3.7.1\\bin:")
