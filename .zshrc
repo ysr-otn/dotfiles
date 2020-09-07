@@ -68,7 +68,7 @@ export PATH=$HOME/Tools/$HOSTTYPE/bin:$HOME/Tools/share/bin:$PATH
 if [ $HOSTTYPE = linux ]; then
 	export PATH=${HOME}/pkg/bin:${HOME}/pkg/sbin:${PATH}
 fi
-export MANPATH=$MANPATH
+export MANPATH=$HOME/Tools/$HOSTTYPE/man:$MANPATH
 
 export GITHUB_DOTFILE_DIR=$HOME/Development/github/ysr-otn/dotfiles
 

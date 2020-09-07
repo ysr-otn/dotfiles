@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-09-08 Tue 00:25>
+    - .zshrc で MANPATH に $HOME/Tools/$HOSTTYPE/man を追加
   - <2020-08-15 Sat 22:02>
     - howm をパブリックなメモとプライベートなメモに分ける設定を追加
     - .howm-keys-public, .howm-menu を GItHub での管理に追加
