@@ -7,6 +7,9 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-09-11 Fri 22:05>
+    - .howm-menu の文字コードを utf-8-unix に変更
+    - emacs で org-mode と dired-mode で MS-Office ファイルは外部プログラムで開くように設定
   - <2020-09-08 Tue 00:25>
     - .zshrc で MANPATH に $HOME/Tools/$HOSTTYPE/man を追加
   - <2020-08-15 Sat 22:02>

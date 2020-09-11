@@ -101,6 +101,12 @@
       (start-process "fiber" "diredfiber" "fiber.exe" file))))
 
 
+;;; dired で ! によるプログラムの起動に MS-Office ファイルの場合は cygstart を用いる
+(add-to-list 'dired-guess-shell-alist-user '("\\.\\(xls\\|xlsx\\|xlsm\\)" "cygstart"))
+(add-to-list 'dired-guess-shell-alist-user '("\\.\\(ppt\\|pptx\\)" "cygstart"))
+(add-to-list 'dired-guess-shell-alist-user '("\\.\\(doc\\|docx\\)" "cygstart"))
+
+
 ;;; ispell
 (setq ispell-alternate-dictionary "/usr/share/dict/words")
 

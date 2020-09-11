@@ -208,6 +208,13 @@
 					   ("breaklines")				; 行末で改行
 					   ))
 			   )
+
+			 ;; MS-Office ファイルは外部プロセスで開く
+			 (progn
+			   (add-to-list 'org-file-apps '("\\.\\(xls\\|xlsx\\|xlsm\\)" . default))
+			   (add-to-list 'org-file-apps '("\\.\\(ppt\\|pptx\\)" . default))
+			   (add-to-list 'org-file-apps '("\\.\\(doc\\|docx\\)" . default)))
+
 			 
 			 ;; org-version 9.3.6 以降で org-taskjuggler-get-start, org-taskjuggler--build-task を上書き．
 			 ;; (# でコメント部が オリジナルからの変更部分)
@@ -475,7 +482,7 @@ a unique id will be associated to it."
 # A traditional Gantt chart with a project overview.
 taskreport plan \"\" {
   headline \"Project Plan\"
-  columns bsi, name, priority, resources{listitem \"<-query attribute='name'->\"}, start, end, effort, complete, chart {scale day}
+  columns bsi, name, priority, resources{listitem \"<-query attribute='name'->\"}, start, end, effort, complete, chart {scale day width 1000}
   loadunit shortauto
   hideresource 1
 }
@@ -484,7 +491,7 @@ taskreport plan \"\" {
 # resource is under- or over-allocated for.
 resourcereport resourceGraph \"\" {
   headline \"Resource Allocation Graph\"
-  columns no, name, priority, effort, complete, daily
+  columns no, name, priority, effort, complete, daily {width 1000}
   loadunit shortauto
   hidetask ~(isleaf() & isleaf_())
   sorttasks plan.start.up
