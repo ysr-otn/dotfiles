@@ -1,13 +1,3 @@
-(setq exec-path
-	  (append
-	   (list
-		"c:/cygwin64/usr/local/bin"
-		"C:/msys64/mingw64/usr/bin"
-		"C:/msys64/mingw64/bin"
-		)
-	   exec-path))
-
-
 ;;; shell に zsh を使用する
 ;;; http://www.bookshelf.jp/soft/meadow_9.html#SEC50
 (setq explicit-shell-file-name "zsh")
@@ -15,14 +5,35 @@
 (setq shell-command-switch "-c")
 
 
-;;; 実行ファイルのパス
+;;; 環境変数 PATH の追加
 (setenv "PATH"
-		(concat (substitute-in-file-name "C:\\Program Files\\R\\R-4.0.2\\bin:")
-				(substitute-in-file-name "C:\\cygwin64\\usr\\local\\bin:")
-				(substitute-in-file-name "C:\\msys64\\mingw64\\usr\\bin:")
-				(substitute-in-file-name "C:\\msys64\\mingw64\\bin:")
-				(substitute-in-file-name "$HOME\\.gem\\ruby\\2.6.0\\gems\\taskjuggler-3.7.1\\bin:")
+		(concat "C:\\cygwin64\\opt\\texlive\\2020\\bin\\win32;"
+				"C:\\Program Files\\R\\R-4.0.2\\bin;"
+				"C:\\ProgramData\\Anaconda3\\Scripts;"
+				"C:\\cygwin64\\usr\\local\\bin;"
+				"C:\\cygwin64\\usr\\bin;"
+				"C:\\cygwin64\\bin;"
+				"C:\\msys64\\mingw64\\usr\\bin;"
+				"C:\\msys64\\mingw64\\bin;"
+				(concat (substitute-in-file-name "$HOME") "\\.gem\\ruby\\2.6.0\\gems\\taskjuggler-3.7.1\\bin;")
 				(getenv "PATH")))
+
+;;; Emacs 用に PATH に追加したディレクトリを exec-path にも追加
+(setq exec-path
+	  (append
+	   (list
+		"c:/cygwin64/opt/texlive/2020/bin/win32"
+		"c:/Program Files/R/R-4.0.2/bin"
+		"c:/ProgramData/Anaconda3"
+		"c:/ProgramData/Anaconda3/Scripts"
+		"c:/cygwin64/usr/local/bin"
+		"c:/cygwin64/usr/bin"
+		"c:/cygwin64/bin"
+		"c:/msys64/usr/bin"
+		"c:/msys64/bin"
+		"~/.gem/ruby/2.6.0/gems/taskjuggler-3.7.1/bin"
+		)
+	   exec-path))
 
 
 ;;; for llvm

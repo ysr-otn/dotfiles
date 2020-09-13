@@ -7,9 +7,12 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-09-13 Sun 16:26>
+    - Eamcs の Windows 環境の PATH, exec-path の設定を整理
+    - Emacs の Windows 環境の TeX の設定を追加
   - <2020-09-11 Fri 22:05>
     - .howm-menu の文字コードを utf-8-unix に変更
-    - emacs で org-mode と dired-mode で MS-Office ファイルは外部プログラムで開くように設定
+    - Emacs で org-mode と dired-mode で MS-Office ファイルは外部プログラムで開くように設定
   - <2020-09-08 Tue 00:25>
     - .zshrc で MANPATH に $HOME/Tools/$HOSTTYPE/man を追加
   - <2020-08-15 Sat 22:02>

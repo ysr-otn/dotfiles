@@ -129,11 +129,15 @@
        auto-mode-alist))
 
 ;;; 実行ファイルのパス
-(setenv "PATH"
-		(concat (substitute-in-file-name "$HOME/Tools/share/bin:")
-				(getenv "PATH")))
-
-
+(cond ((eq system-type 'windows-nt)	; windows は環境変数 PATH の書式が異なる
+	   (setenv "PATH"
+			   (concat (substitute-in-file-name "$HOME") "\\Tools\\share\\bin;")
+					   (getenv "PATH")))
+      (t
+       (setenv "PATH"
+	       (concat (substitute-in-file-name "$HOME/Tools/share/bin:")
+		       (getenv "PATH")))))
+  
 ;;;;;;;;;;;;;;;;;;  基本的な設定 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; tab 幅
 (setq-default tab-width 4)

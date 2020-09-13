@@ -5,6 +5,7 @@
 		   ))
 		((string= (getenv "HOSTTYPE") "windows")
 		 (progn
+		   (setq tex-command "platex -shell-escape")	; minted のために -shell-escape を追加
 		   ))
 		(t
 		 (progn
