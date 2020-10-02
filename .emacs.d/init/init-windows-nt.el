@@ -16,6 +16,8 @@
 				"C:\\msys64\\mingw64\\usr\\bin;"
 				"C:\\msys64\\mingw64\\bin;"
 				(concat (substitute-in-file-name "$HOME") "\\.gem\\ruby\\2.6.0\\gems\\taskjuggler-3.7.1\\bin;")
+				"C:\\cygwin64\\opt\\glo656wb\\bin;"
+				"C:\\cygwin64\\opt\\cmigemo-default-win64;"
 				(getenv "PATH")))
 
 ;;; Emacs 用に PATH に追加したディレクトリを exec-path にも追加
@@ -32,6 +34,8 @@
 		"c:/msys64/usr/bin"
 		"c:/msys64/bin"
 		"~/.gem/ruby/2.6.0/gems/taskjuggler-3.7.1/bin"
+		"c:/cygwin64opt/glo656wb/bin"
+		"c:/cygwin64opt/cmigemo-default-win64"
 		)
 	   exec-path))
 
