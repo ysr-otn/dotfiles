@@ -86,7 +86,7 @@
 	  erlang ess
 	  
 	  ;; org-mode
-	  org-plus-contrib org-tree-slide ox-reveal htmlize slime gnuplot
+	  org-plus-contrib org-tree-slide ox-reveal htmlize slime gnuplot ob-mermaid
 	  
 	  ;; markdown-mode
 	  markdown-mode
@@ -102,6 +102,9 @@
 	  
 	  ;; yatex
 	  yatex
+	  
+	  ;; mermaid
+	  mermaid-mode
 	  ))
 
 (if (>= (string-to-number emacs-version) 25)
@@ -700,6 +703,9 @@
 
 ;;; for markdown-mode
 (load "init-markdown-mode.el")
+
+;;; for mermade-mode
+(load "init-mermade-mode.el")
 
 ;;; for image+-mode(画像をバッファに合せて表示したり，画像のあるディレクトリで画像のサマリを出す image-dired ができるツール)
 (load "init-image+.el")

@@ -327,6 +327,13 @@ a unique id will be associated to it."
 (require 'htmlize)
 
 
+;;; ob-mermaid の設定
+(cond ((eq system-type 'darwin)
+	   (setq ob-mermaid-cli-path "/usr/local/bin/mmdc")))
+
+
+
+
 ;;;; org-agenda の設定
 ;;; org-agenda のキー設定
 (global-set-key (kbd "C-c a") 'org-agenda)

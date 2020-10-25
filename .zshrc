@@ -114,6 +114,11 @@ export PATH=$HOME/go/bin:$PATH
 #######	Haskell の設定 #######
 export PATH=$HOME/.cabal/bin:$PATH
 
+#######	Node.js の設定 #######
+if [ $HOSTTYPE = i386 ]; then
+	export PATH=$HOME/.nodebrew/current/bin:$PATH
+fi
+
 ####### cd の絶対パス履歴保存 cdr ####### 
 if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]]; then
     autoload -Uz chpwd_recent_dirs cdr add-zsh-hook

@@ -18,6 +18,10 @@
 				(substitute-in-file-name "/usr/local/bin:")
 				;;; for llvm
 				(substitute-in-file-name "/usr/local/opt/llvm/bin:")
+				
+				;;; for node
+				(concat (getenv "HOME") "/.nodebrew/current/bin:")
+				
 				(getenv "PATH")))
 
 ;;; for llvm

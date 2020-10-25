@@ -7,6 +7,9 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-10-25 Sun 15:55>
+    - mermaid-mode, ob-mermaid の設定を追加
+    - Node.js の設定を追加
   - <2020-10-03 Sat 01:01>
     - Eamcs の Windows 環境の PATH, exec-path の設定に glo656wb, cmigemo-default-win64 を追加
   - <2020-09-13 Sun 16:26>
