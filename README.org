@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2020-10-25 Sun 16:02>
+    - .emacs の不要な設定を削除
   - <2020-10-25 Sun 15:55>
     - mermaid-mode, ob-mermaid の設定を追加
     - Node.js の設定を追加
