@@ -546,7 +546,8 @@
 ;; (load "init-minibuf-isearch.el")
 
 ;;; for mew
-(load "init-mew.el")
+;;; 使ってないので無効化
+; (load "init-mew.el")
 
 ;;; for wanderlust
 (load "init-wanderlust.el")
@@ -616,10 +617,12 @@
 ;(load "init-auto-complete.el")
 
 ;;; for lsp(Language Server Protocol Support for Emacs)
-(load "init-lsp.el")
+(if (not (eq system-type 'windows-nt))	; Windwos 環境で重くなるので無効化
+	(load "init-lsp.el"))
 
 ;;; for company(auto-complete 的な補完機能)
-(load "init-company.el")
+(if (not (eq system-type 'windows-nt))	; Windwos 環境で重くなるので無効化
+	(load "init-company.el"))
 
 ;;; for yasnippet
 (load "init-yasnippet.el")
@@ -637,7 +640,8 @@
 (load "init-vc.el")
 
 ;;; for flycheck
-(load "init-flycheck.el")
+(if (not (eq system-type 'windows-nt))	; Windwos 環境で重くなるので無効化
+	(load "init-flycheck.el"))
 
 ;;; for undo-tree
 (load "init-undo-tree.el")
@@ -667,14 +671,16 @@
 (load "init-multiple-cursors.el")
 
 ;;; for e2wm(IDE 風ウィンドウ管理ツール)
-(load "init-e2wm.el")
+;;; 使っていないので無効化
+; (load "init-e2wm.el")
 
 ;;; for god-mode(Ctrl, Meta キーを使わずに emacs キーバイントの操作をする)
 ;;; うざいので無効化
 ;(load "init-god-mode.el")
 
 ;;; for emacs-refactor(リファクタリングツール)
-(load "init-emr.el")
+;;; 使わないので無効化
+; (load "init-emr.el")
 
 ;;; for minimap
 (load "init-minimap.el")
