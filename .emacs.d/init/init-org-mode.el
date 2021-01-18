@@ -503,3 +503,7 @@ resourcereport resourceGraph \"\" {
   hidetask ~(isleaf() & isleaf_())
   sorttasks plan.start.up
 }"))
+
+;;; TaskJuggler のデフォルトのプロジェクトの日程長
+(setq org-taskjuggler-default-project-duration 365)
+
