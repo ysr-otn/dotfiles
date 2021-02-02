@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2021-02-02 Tue 23:09>
+    - .zshrc に Catalina 以降の Mac での stdio.h のインクルードエラー対策を追加
   - <2021-01-18 Mon 10:40>
     - init-org-mode.el で TaskJuggler のプロジェクト長を 365 日に設定
   - <2021-01-04 Mon 16:42>

@@ -92,6 +92,11 @@ export EMACS_SITE_LISP=$HOME/Tools/$HOSTTYPE/share/emacs/site-lisp
 export EMACS_INFO=$HOME/Tools/$HOSTTYPE/share/info
 export EMACS_INFO2=$HOME/Tools/$HOSTTYPE/info
 
+#######	C/C++ の設定  #######
+if [ $HOSTTYPE = i386 ]; then
+	# Catalina 以降の Mac での stdio.h のインクルードエラー対策
+	export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
+fi
 
 #######	Python の設定  #######
 if [ $HOSTTYPE = i386 -o $HOSTTYPE = ubuntu ]; then
