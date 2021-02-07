@@ -211,10 +211,12 @@
 (global-set-key "\C-xQ" 'quoted-insert)
 ;;; C-m を C-j と同じにする
 (global-set-key "\C-m" 'newline-and-indent)
-;;; shell-mode
-(global-set-key "\C-c\C-s" 'shell)
 ;;; ispell
-(global-set-key "\C-c\C-i" 'ispell-complete-word)
+(global-set-key "\C-x\C-i" 'ispell-complete-word)
+;;; artist-mode
+(global-set-key "\C-x\C-ma" 'artist-mode)
+;;; picture-mode
+(global-set-key "\C-x\C-mp" 'picture-mode)
 ;;; isearch-mode で M-y を isearch-yank-pop に設定
 (define-key isearch-mode-map "\M-y" 'isearch-yank-pop)
 ;;; タグジャンプ元への復帰
@@ -700,6 +702,9 @@
 
 ;;; for google-translate
 (load "init-google-translate.el")
+
+;;; for ditaa and ASCII art draw setting
+(load "init-ditaa.el")
 
 ;;; for highlight-symbol(カーソルのある単語と同じ単語をハイライト)
 (load "init-highlight-symbol.el")

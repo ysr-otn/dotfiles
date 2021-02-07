@@ -122,7 +122,7 @@
 				 (require 'org-tempo))
 			   ;; for org-babel-gnuplot
 
-			   ;; org-babel で shell, C, C++, ruby, python, lisp, dot が使えるようにする
+			   ;; org-babel で shell, C, C++, ruby, python, lisp, dot, ditaa, gnuplot, R  が使えるようにする
 			   (org-babel-do-load-languages 'org-babel-load-languages
 											'((shell . t)
 											  (C . t)
@@ -130,6 +130,7 @@
 											  (python . t)
 											  (lisp . t)
 											  (dot . t)
+											  (ditaa . t)
 											  (gnuplot . t)
 											  (R . t)
 											  ))
@@ -332,7 +333,9 @@ a unique id will be associated to it."
 	   (setq ob-mermaid-cli-path "/usr/local/bin/mmdc")))
 
 
-
+;;; ob-ditaa の設定
+(cond ((eq system-type 'darwin)
+	   (setq org-ditaa-jar-path (substitute-in-file-name "$HOME/Development/github/ysr-otn/jditaa/jditaa.jar"))))
 
 ;;;; org-agenda の設定
 ;;; org-agenda のキー設定

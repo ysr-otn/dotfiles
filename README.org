@@ -7,6 +7,11 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2021-02-07 Sun 13:11>
+    - picture-mode, artist-mode のキー設定追加
+    - shell モードと ispell の不要なキー設定を削除
+    - init-ditaa.el を追加
+    - org-ditaa の設定を追加
   - <2021-02-02 Tue 23:09>
     - .zshrc に Catalina 以降の Mac での stdio.h のインクルードエラー対策を追加
   - <2021-01-18 Mon 10:40>
