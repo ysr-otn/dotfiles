@@ -16,8 +16,10 @@
 				"C:\\msys64\\mingw64\\usr\\bin;"
 				"C:\\msys64\\mingw64\\bin;"
 				(concat (substitute-in-file-name "$HOME") "\\.gem\\ruby\\2.6.0\\gems\\taskjuggler-3.7.1\\bin;")
+				(concat (substitute-in-file-name "$HOME") "\\Tools\\windows\\bin;")
 				"C:\\cygwin64\\opt\\glo656wb\\bin;"
 				"C:\\cygwin64\\opt\\cmigemo-default-win64;"
+				(concat (substitute-in-file-name "$HOME") "\\scoop\\apps\\openjdk\\current\\bin;")
 				(getenv "PATH")))
 
 ;;; Emacs 用に PATH に追加したディレクトリを exec-path にも追加
@@ -34,8 +36,10 @@
 		"c:/msys64/usr/bin"
 		"c:/msys64/bin"
 		"~/.gem/ruby/2.6.0/gems/taskjuggler-3.7.1/bin"
+		"~/Tools/windows/bin"
 		"c:/cygwin64opt/glo656wb/bin"
 		"c:/cygwin64opt/cmigemo-default-win64"
+		"~/scoop/apps/openjdk/current/bin"
 		)
 	   exec-path))
 
@@ -49,49 +53,56 @@
 (setenv "CPPFLAGS" "-IC:\\msys64\\mingw64\\include")
 
 
-;;; 各種の言語設定を UTF-8 を基準にし，Shell, Grep の文字コード設定をする
-;;; https://skalldan.wordpress.com/2011/11/09/ntemacs-%E3%81%A7-utf-8-%E3%81%AA%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%82%92%E8%A9%A6%E8%A1%8C%E9%8C%AF%E8%AA%A4/
-;; LANG 設定
-(setenv "LANG" "ja_JP.UTF-8")
-
-;; 言語環境
-(set-language-environment "Japanese")
-
-;; 文字コード
-(set-buffer-file-coding-system 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(setq default-buffer-file-coding-system 'utf-8)
-(set-selection-coding-system 'utf-16le-dos)
-(setq default-process-coding-system '(utf-8 . cp932))	; vc-svn で日本語ファイル名のファイルの文字化けを防ぐ(http://yoshimov.com/tips/windows-emacs-vc-git/)
-
-;; Grep
-(defadvice grep (around grep-coding-setup activate)
-  (let ((coding-system-for-read 'utf-8))
-    ad-do-it))
-(setq grep-command "lgrep -n -Au8 -Ia ")
-(setq grep-program "lgrep")
-(setq grep-find-command "find . -type f -print0 | xargs -0 lgrep -n -Au8 -Ia ")
-
-;;; Shell
-(setq shell-mode-hook
-      (function (lambda()
-                  (set-buffer-process-coding-system 'utf-8-unix
-                                                    'utf-8-unix))))
-
-;;; vc-git
-;; コミットログの文字化けを防ぐ
-;; http://moimoitei.blogspot.jp/2010/05/use-ntemacs-231x.html
-(defadvice vc-git-checkin
-    (around my-vc-git-checkin activate)
-  (let ((files (ad-get-arg 0))
-		(comment (ad-get-arg 2))
-		(fname (make-temp-file "vc-git-")))
-	(let ((buffer-file-coding-system 'utf-8-unix))
-	  (with-temp-file fname (insert comment)))
-	(vc-git-command nil 0 files "commit" "-F" fname "--only" "--")
-	(delete-file fname)
-	))
+;	;;; 各種の言語設定を UTF-8 を基準にし，Shell, Grep の文字コード設定をする
+;	;;; https://skalldan.wordpress.com/2011/11/09/ntemacs-%E3%81%A7-utf-8-%E3%81%AA%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%82%92%E8%A9%A6%E8%A1%8C%E9%8C%AF%E8%AA%A4/
+;	;; LANG 設定
+;	(setenv "LANG" "ja_JP.UTF-8")
+;	
+;	;; 言語環境
+;	(set-language-environment "Japanese")
+;	
+;	;; 文字コード
+;	(set-buffer-file-coding-system 'utf-8)
+;	(set-terminal-coding-system 'utf-8)
+;	(set-keyboard-coding-system 'utf-8)
+;	(setq default-buffer-file-coding-system 'utf-8)
+;	;	(set-selection-coding-system 'utf-16le-dos)
+;	;	(setq default-process-coding-system '(utf-8 . cp932))	; vc-svn で日本語ファイル名のファイルの文字化けを防ぐ(http://yoshimov.com/tips/windows-emacs-vc-git/)
+;	;	
+;	(modify-coding-system-alist 'file "\\.org\\'" 'utf-8-unix)	; org-mode は UTF-8 にする(howm モードで org ファイル作成時に sjis になる対策)
+;	(add-hook 'find-file-hook '(lambda ()
+;	                             (cond ((string-match "undecided-?.*" (format "%s" buffer-file-coding-system))
+;	                                    (let ((coding-system-for-read 'utf-8))
+;	                                      (revert-buffer t t))))))
+;	
+;	
+;	;; Grep
+;	(defadvice grep (around grep-coding-setup activate)
+;	  (let ((coding-system-for-read 'utf-8))
+;	    ad-do-it))
+;	(setq grep-command "lgrep -n -Au8 -Ia ")
+;	(setq grep-program "lgrep")
+;	(setq grep-find-command "find . -type f -print0 | xargs -0 lgrep -n -Au8 -Ia ")
+;	
+;	;;; Shell
+;	(setq shell-mode-hook
+;	      (function (lambda()
+;	                  (set-buffer-process-coding-system 'utf-8-unix
+;	                                                    'utf-8-unix))))
+;	
+;	;;; vc-git
+;	;; コミットログの文字化けを防ぐ
+;	;; http://moimoitei.blogspot.jp/2010/05/use-ntemacs-231x.html
+;	(defadvice vc-git-checkin
+;	    (around my-vc-git-checkin activate)
+;	  (let ((files (ad-get-arg 0))
+;			(comment (ad-get-arg 2))
+;			(fname (make-temp-file "vc-git-")))
+;		(let ((buffer-file-coding-system 'utf-8-unix))
+;		  (with-temp-file fname (insert comment)))
+;		(vc-git-command nil 0 files "commit" "-F" fname "--only" "--")
+;		(delete-file fname)
+;		))
 
 
 ;; Cygwin のドライブ・プレフィックスを有効にする
@@ -131,39 +142,68 @@
 ;(require 'nt-script)
 
 
-;;; Windows 機種依存文字を表示する方法
-;;; http://www.ysnb.net/meadow/meadow-users-jp/2012/msg00010.html
+;	;;; windows 機種依存文字を表示する方法
+;	;;; http://www.ysnb.net/meadow/meadow-users-jp/2012/msg00010.html
+;	
+;	;; 「丸付き数字」「はしごだか」が入った JISメールを読むための設定
+;	(coding-system-put 'iso-2022-jp :decode-translation-table
+;	       '(cp51932-decode japanese-ucs-cp932-to-jis-map))
+;	
+;	;; 「丸付き数字」「はしごだか」が入った JISメールを送るための設定
+;	;; 以下設定をしない場合は、本来の utf-8 で送付 (消極 Windows派になる)
+;	(coding-system-put 'iso-2022-jp :encode-translation-table
+;	      '(cp51932-encode))
+;	
+;	;; 「丸付き数字」「はしごだか」が入った shift-jis のファイルを
+;	;; 保存できるようにする
+;	(coding-system-put 'japanese-shift-jis :decode-translation-table
+;	       '(cp51932-decode japanese-ucs-cp932-to-jis-map))
+;	(coding-system-put 'japanese-shift-jis :encode-translation-table
+;	      '(cp51932-encode))
+;	
+;	
+;	;; 「丸付き数字」「はしごだか」が入った euc-jp のファイルを
+;	;; 保存できるようにする
+;	(coding-system-put 'euc-jp :decode-translation-table
+;	       '(cp51932-decode japanese-ucs-cp932-to-jis-map))
+;	(coding-system-put 'euc-jp :encode-translation-table
+;	      '(cp51932-encode))
+;	
+;	
+;	;; 全角チルダ/波ダッシュをWindowsスタイルにする
+;	(let ((table (make-translation-table-from-alist '((#x301c . #xff5e))) ))
+;	  (mapc
+;	   (lambda (coding-system)
+;	     (coding-system-put coding-system :decode-translation-table table)
+;	     (coding-system-put coding-system :encode-translation-table table)
+;	     )
+;	   '(utf-8 cp932 utf-16le)))
 
-;; 「丸付き数字」「はしごだか」が入った JISメールを読むための設定
-(coding-system-put 'iso-2022-jp :decode-translation-table
-       '(cp51932-decode japanese-ucs-cp932-to-jis-map))
-
-;; 「丸付き数字」「はしごだか」が入った JISメールを送るための設定
-;; 以下設定をしない場合は、本来の utf-8 で送付 (消極 Windows派になる)
-(coding-system-put 'iso-2022-jp :encode-translation-table
-      '(cp51932-encode))
-
-;; 「丸付き数字」「はしごだか」が入った shift-jis のファイルを
-;; 保存できるようにする
-(coding-system-put 'japanese-shift-jis :decode-translation-table
-       '(cp51932-decode japanese-ucs-cp932-to-jis-map))
-(coding-system-put 'japanese-shift-jis :encode-translation-table
-      '(cp51932-encode))
 
 
-;; 「丸付き数字」「はしごだか」が入った euc-jp のファイルを
-;; 保存できるようにする
-(coding-system-put 'euc-jp :decode-translation-table
-       '(cp51932-decode japanese-ucs-cp932-to-jis-map))
-(coding-system-put 'euc-jp :encode-translation-table
-      '(cp51932-encode))
 
+;; Setenv
+(setenv "LANG" "ja_JP.UTF-8")
 
-;; 全角チルダ/波ダッシュをWindowsスタイルにする
-(let ((table (make-translation-table-from-alist '((#x301c . #xff5e))) ))
-  (mapc
-   (lambda (coding-system)
-     (coding-system-put coding-system :decode-translation-table table)
-     (coding-system-put coding-system :encode-translation-table table)
-     )
-   '(utf-8 cp932 utf-16le)))
+;; 言語環境
+(set-language-environment "Japanese")
+
+;; 文字コード
+(set-buffer-file-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(setq default-buffer-file-coding-system 'utf-8)
+(set-selection-coding-system 'utf-16le-dos)
+
+;; Shell Mode
+(setq shell-mode-hook
+      (function (lambda()
+                  (set-buffer-process-coding-system 'utf-8-unix
+                                                    'utf-8-unix))))
+
+;; Grep
+(defadvice grep (around grep-coding-setup activate)
+  (let ((coding-system-for-read 'utf-8))
+    ad-do-it))
+
+(setq grep-find-command "find . ! -name '*~' -type f -print0 | xargs -0 lgrep -n -Au8 -Ia ")

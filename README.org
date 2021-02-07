@@ -7,6 +7,11 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2021-02-07 Sun 22:02>
+    - init-howm.el に howm-process-coding-system による文字化け対策を追加
+    - init-windows-nt.el に openjdk と ~/Tools/windows/bin のパスの設定を追加
+    - init-windows-nt.el の文字コードの設定の大半をコメントアウトし必要最低限の内容に絞り込み
+    - windwos 環境の org-ditaa の設定を追加
   - <2021-02-07 Sun 13:11>
     - picture-mode, artist-mode のキー設定追加
     - shell モードと ispell の不要なキー設定を削除

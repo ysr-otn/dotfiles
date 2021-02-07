@@ -335,7 +335,16 @@ a unique id will be associated to it."
 
 ;;; ob-ditaa の設定
 (cond ((eq system-type 'darwin)
-	   (setq org-ditaa-jar-path (substitute-in-file-name "$HOME/Development/github/ysr-otn/jditaa/jditaa.jar"))))
+	   (setq org-ditaa-jar-path (substitute-in-file-name "$HOME/Development/github/ysr-otn/jditaa/jditaa.jar")))
+	  ((eq system-type 'windows-nt)
+	   (progn
+		(setq org-ditaa-jar-path (substitute-in-file-name "$HOME/Development/github/ysr-otn/jditaa/jditaa.jar"))
+		(setq org-babel-default-header-args:ditaa
+			  '((:results . "file")
+				(:exports . "results")
+				(:java . "-Dfile.encoding=SJIS")))	; 何故か UTF-8 だと文字化けするので SJIS に設定
+		)))
+
 
 ;;;; org-agenda の設定
 ;;; org-agenda のキー設定

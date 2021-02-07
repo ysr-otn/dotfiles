@@ -9,6 +9,9 @@
 ;(howm-setup-changelog)
 
 
+;;; grep の文字コード環境に依存しないように文字コードを utf-8-unix に固定
+(setq howm-process-coding-system '(utf-8-unix . utf-8-unix))
+
 ;;; SwitchMemoDirectory(独立した 2 つのメモ束を切り替える)
 ;;; https://howm.osdn.jp/cgi-bin/hiki/hiki.cgi?SwitchMemoDirectory
 (defun my-howm-set-directory (dir &optional keyfile)
