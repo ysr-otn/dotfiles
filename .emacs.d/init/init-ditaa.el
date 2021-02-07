@@ -95,7 +95,7 @@
   "Draw line right."
   (interactive "p")
   (picture-line-draw n 0 1 nil))
-			  
+
 (defun picture-line-draw-left (n)
   "Draw line left."
   (interactive "p")
@@ -115,7 +115,7 @@
   "Delete line right."
   (interactive "p")
   (picture-line-draw n 0 1 t))
-			  
+
 (defun picture-line-delete-left (n)
   "Delete line left."
   (interactive "p")
@@ -132,7 +132,7 @@
   (picture-line-draw n 1 0 t))
 
 
-(add-hook 'picture-mode-hook 
+(add-hook 'picture-mode-hook
 		  '(lambda ()
 			 (define-key picture-mode-map [C-right] 'picture-line-draw-right)
 			 (define-key picture-mode-map [C-left]  'picture-line-draw-left)
@@ -147,3 +147,7 @@
 			 (define-key picture-mode-map [C-M-up]    'picture-region-move-up)
 			 (define-key picture-mode-map [C-M-down]  'picture-region-move-down)))
 
+(add-hook 'artist-mode-hook
+   	  	  '(lambda ()
+   	   	   	 ;; マウスに中ボタンが無い環境のために Alt + 右ボタンを artist-mouse-choose-operation に登録
+			 (define-key artist-mode-map [M-down-mouse-3] 'artist-mouse-choose-operation)))
