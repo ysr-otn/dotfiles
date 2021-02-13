@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2021-02-13 Sat 11:50>
+    - google-translate で tkk のエラーが出るのを修正
   - <2021-02-07 Sun 22:37>
     - init-ditta.el に artist-mode の artist-mouse-choose-operation の設定を追加
   - <2021-02-07 Sun 22:02>
