@@ -59,7 +59,7 @@
 	  buffer-expose dimmer
 	  
 	  ;; misc
-	  anzu god-mode multiple-cursors undo-tree undohist cp5022x japanese-holidays adaptive-wrap wttrin rotate
+	  anzu god-mode multiple-cursors undo-tree undohist cp5022x japanese-holidays adaptive-wrap wttrin rotate csv-mode
 	  
 	  ;; auto-complete(company を使うようになったので
 	  ;auto-complete auto-complete-clang-async fuzzy
@@ -219,6 +219,8 @@
 (global-set-key "\C-x\C-mp" 'picture-mode)
 ;;; isearch-mode で M-y を isearch-yank-pop に設定
 (define-key isearch-mode-map "\M-y" 'isearch-yank-pop)
+;;; visual-line-mode
+(global-set-key "\C-x\C-v" 'visual-line-mode)
 ;;; タグジャンプ元への復帰
 (global-set-key "\M-*" 'pop-tag-mark)
 ;;; 括弧の範囲内を強調表示
@@ -735,6 +737,9 @@
 
 ;;; for rotate(ウインドウの配置変えツール)
 (load "init-rotate.el")
+
+;;; for csv-mode
+(load "init-csv-mode.el")
 
 
 ;;; ウィンドウシステムならカラーテーマを有効にし，カーソル行をハイライト
