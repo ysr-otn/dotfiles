@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2021-03-07 Sun 22:45>
+    - yasnippet に ess-r-mode の設定を追加
   - <2021-02-22 Mon 10:27>
     - csv-mode の設定を追加
     - visual-line-mode のキーバインドを追加
