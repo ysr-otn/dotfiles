@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: read_excel.delim(xlsx)
+# key: re
+# --
+${1:library(readxl)
+}
+${2:data} <- read_excel("${3:data}.${4:$$(yas-choose-value '("xlsx" "xlsm" "xls"))}", sheet = "${5:Sheet1}")

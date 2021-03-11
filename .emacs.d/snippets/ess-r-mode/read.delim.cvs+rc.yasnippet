@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: read.delim(cvs)
+# key: rc
+# --
+${1:data} <- read.delim("${2:data}.csv", sep = "${3:,}", header = ${4:$$(yas-choose-value '("TRUE" "FALSE"))})

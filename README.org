@@ -7,6 +7,9 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2021-03-11 Thu 21:45>
+    - .emacs.d/snippets/ess-r-mode のコミット漏れを修正
+    - yasnippet に org-mode の設定を追加
   - <2021-03-07 Sun 22:45>
     - yasnippet に ess-r-mode の設定を追加
   - <2021-02-22 Mon 10:27>
