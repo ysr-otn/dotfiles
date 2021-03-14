@@ -120,3 +120,12 @@
 (setq skk-read-from-minibuffer-function
       (lambda ()
 		(car (skk-google-suggest skk-henkan-key))))
+
+
+;;; kakasi 関係の設定
+(cond ((eq system-type 'darwin)
+	   (progn
+		 ;; Mac の UTF-8 の文字コードから euc-jp を扱う kakasi に渡すために
+		 ;; nkf で変換するシェルスクリプトを介して kakasi を実行する
+		 (setq skk-use-kakasi t)
+		 (setq skk-kakasi-command "kakasi.sh"))))

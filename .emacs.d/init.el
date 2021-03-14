@@ -141,6 +141,14 @@
 	       (concat (substitute-in-file-name "$HOME/Tools/share/bin:")
 		       (getenv "PATH")))))
   
+(setq exec-path
+	  (append
+	   (list
+		(substitute-in-file-name "$HOME/Tools/share/bin")
+		)
+	   exec-path))
+
+
 ;;;;;;;;;;;;;;;;;;  基本的な設定 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; tab 幅
 (setq-default tab-width 4)
