@@ -7,6 +7,9 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2021-03-30 Tue 21:47>
+    - org-mode の HTML エクスポート時に img タグの alt 属性を caption からつける
+      org-altcaption の設定を追加
   - <2021-03-22 Mon 12:04>
     - yasnippet の org-mode の ditaa の設定を修正
   - <2021-03-14 Sun 17:09>

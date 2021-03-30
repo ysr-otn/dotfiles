@@ -113,6 +113,67 @@
 ;;; スライドインの開始位置を調節する（行数を指定）
 (setq org-tree-slide-slide-in-brank-lines 10) 
 
+
+;;; org-modeのHTMLエクスポート時にimgタグのalt属性をcaptionからつける
+;;; http://misohena.jp/blog/2020-05-26-set-alt-attribute-from-caption-in-ox-html.html
+(defun org-altcaption--get-caption (paragraph info)
+  "段落に設定されているキャプション文字列を取得する。
+
+org-html-paragraph関数内の「;; Standalone image.」の部分より。"
+  (if paragraph
+	  (let ((raw (org-export-data (org-export-get-caption paragraph) info)))
+		(if (org-string-nw-p raw) raw nil))))
+
+(defun org-altcaption--get-link-parent (link info)
+  "linkの親要素を取得する。ただし、linkが最初のリンクでない場合はnil。
+
+org-html-link関数内より。"
+  ;; Extract caption from parent's paragraph.  HACK: Only
+  ;; do this for the first link in parent (inner image link
+  ;; for inline images).  This is needed as long as
+  ;; attributes cannot be set on a per link basis.
+  (let* ((parent (org-export-get-parent-element link))
+		 (link (let ((container (org-export-get-parent link)))
+				 (if (and (eq 'link (org-element-type container))
+						  (org-html-inline-image-p link info))
+					 container
+				   link))))
+	(and (eq link (org-element-map parent 'link #'identity info t))
+		 parent)))
+
+(defvar org-altcaption--link nil)
+
+(defun org-altcaption--org-html-link (old-func link desc info)
+  "org-html-linkに対するaround advice"
+  ;; Pass link to org-altcaption--org-html--format-image function
+  (let ((org-altcaption--link link))
+	(funcall old-func link desc info)))
+
+(defun org-altcaption--org-html--format-image (old-func source attributes info)
+  "org-html--format-imageに対するaround advice"
+  ;; Add alt attribute if link has caption
+  (if (and org-altcaption--link (null (plist-get attributes :alt)))
+	  (let ((caption (org-altcaption--get-caption (org-altcaption--get-link-parent org-altcaption--link info) info)))
+		(when caption
+		  (setq attributes (plist-put attributes :alt caption))
+		  ;;(message "caption=%s" caption)
+		  )))
+  ;; Call original function
+  (funcall old-func source attributes info))
+
+
+(defun org-altcaption-activate ()
+  (interactive)
+  (advice-add #'org-html-link :around #'org-altcaption--org-html-link)
+  (advice-add #'org-html--format-image :around #'org-altcaption--org-html--format-image))
+
+(defun org-altcaption-deactivate ()
+  (interactive)
+  (advice-remove #'org-html-link #'org-altcaption--org-html-link)
+  (advice-remove #'org-html--format-image #'org-altcaption--org-html--format-image))
+  
+
+;;; org-mode の hook
 (add-hook 'org-mode-hook
 		  '(lambda ()
 			 ;; for org-babel
@@ -317,6 +378,10 @@ a unique id will be associated to it."
 						;; Closing task.
 						"}\n")))
 			   ))
+			 
+			 ;;; org-modeのHTMLエクスポート時にimgタグのalt属性をcaptionからつける
+			 (org-altcaption-activate)
+			 
 			 ))
 
 ;; 画像の幅を変更するときに必要っぽい
