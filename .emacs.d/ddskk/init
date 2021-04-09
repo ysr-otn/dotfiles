@@ -128,4 +128,10 @@
 		 ;; Mac の UTF-8 の文字コードから euc-jp を扱う kakasi に渡すために
 		 ;; nkf で変換するシェルスクリプトを介して kakasi を実行する
 		 (setq skk-use-kakasi t)
-		 (setq skk-kakasi-command "kakasi.sh"))))
+		 (setq skk-kakasi-command "kakasi.sh")))
+	  ((eq system-type 'windows-nt)
+	   (progn
+		 ;; Windows ネイティブの kakasi を使うので文字コードの変換は不要
+		 (setq skk-use-kakasi t)
+		 (setq skk-kakasi-command "kakasi")))
+	  )

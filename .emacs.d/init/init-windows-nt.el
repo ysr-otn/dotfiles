@@ -19,6 +19,7 @@
 				(concat (substitute-in-file-name "$HOME") "\\Tools\\windows\\bin;")
 				"C:\\cygwin64\\opt\\glo656wb\\bin;"
 				"C:\\cygwin64\\opt\\cmigemo-default-win64;"
+				"C:\\kakasi\\bin;"
 				(concat (substitute-in-file-name "$HOME") "\\scoop\\apps\\openjdk\\current\\bin;")
 				(getenv "PATH")))
 
@@ -39,6 +40,7 @@
 		"~/Tools/windows/bin"
 		"c:/cygwin64opt/glo656wb/bin"
 		"c:/cygwin64opt/cmigemo-default-win64"
+		"c:/kakasi/bin"
 		"~/scoop/apps/openjdk/current/bin"
 		)
 	   exec-path))
@@ -104,12 +106,15 @@
 ;		(delete-file fname)
 ;		))
 
+(setq process-coding-system-alist
+	  (cons '("svn" utf-8 . cp932)
+			process-coding-system-alist))
 
 ;; Cygwin のドライブ・プレフィックスを有効にする
 (require 'cygwin-mount)
 (cygwin-mount-activate)
 (setq cygwin-mount-table--internal
-	  '(("c:/" . "/cygdrive/c/") ("c:/cygwin64/lib/" . "/usr/lib/") ("c:/cygwin64/bin/" . "/usr/bin/") ("c:/cygwin64/" . "/")
+	  '(("c:/" . "/cygdrive/c/") ("c:/cygwin64/lib/" . "/usr/lib/") ("c:/cygwin64/bin/" . "/usr/bin/") ("c:/cygwin64/" . "/") ("c:/Users/" . "/home/")
 		))
 
 ;;; dired-mode 時の fiber により Windows によってファイルに関連付けされたアプリの起動
@@ -194,6 +199,7 @@
 (set-keyboard-coding-system 'utf-8)
 (setq default-buffer-file-coding-system 'utf-8)
 (set-selection-coding-system 'utf-16le-dos)
+(setq default-process-coding-system '(utf-8 . cp932))
 
 ;; Shell Mode
 (setq shell-mode-hook
