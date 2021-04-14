@@ -7,6 +7,11 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2021-04-14 Wed 22:44>
+    - ox-taskjuggler.el 由来のコードを init-org-mode.el から ox-taskjuggler-mod.el に移動
+    - ox-taskjuggler-mod.el を追加
+    - init-org-mode.el に checkbox を変更した TODO の状態を自動的に更新する
+      emacs-org-todo-doing-done-checkbox-cycling の設定を追加
   - <2021-04-09 Fri 16:42>
     - Windows 用の kakasi の設定を追加
     - Windows のプロセスの文字コードの設定を追加
