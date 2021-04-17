@@ -105,6 +105,9 @@
 	  
 	  ;; mermaid
 	  mermaid-mode
+	  
+	  ;; calender tool
+	  calfw calfw-org
 	  ))
 
 (if (>= (string-to-number emacs-version) 25)
@@ -749,6 +752,8 @@
 ;;; for csv-mode
 (load "init-csv-mode.el")
 
+;;; for calfw(カレンダーツール)
+(load "init-calfw.el")
 
 ;;; ウィンドウシステムならカラーテーマを有効にし，カーソル行をハイライト
 (if window-system
