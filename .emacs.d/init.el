@@ -234,6 +234,12 @@
 (global-set-key "\C-x\C-v" 'visual-line-mode)
 ;;; タグジャンプ元への復帰
 (global-set-key "\M-*" 'pop-tag-mark)
+;;; Ctrl + マウススクロールアップ/ダウンでテキストサイズの変更
+(global-set-key [C-wheel-down] 'text-scale-decrease)
+(global-set-key [C-wheel-up] 'text-scale-increase)
+
+
+
 ;;; 括弧の範囲内を強調表示
 (show-paren-mode t)
 (setq show-paren-delay 0)
