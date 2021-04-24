@@ -98,6 +98,37 @@
 	(setq helm-ag-base-command "rg --vimgrep --no-heading"))
 
 
+
+;;; dired 時に helm を無向にするための dired 関連コマンド
+(defvar helm-dired-command-list
+  '(dired dired-do-copy dired-do-copy-regexp dired-do-rename dired-do-rename-regexp dired-do-delete))
+
+;;; helm を dired 時に無効化
+(defun helm-completing-disable-dired ()
+  "Disable helm in dired"
+  (interactive)
+  (let ((disable-cmd-alist (mapcar (lambda (cmd) (cons cmd nil))
+								   helm-dired-command-list)))
+	(setq helm-completing-read-handlers-alist (append disable-cmd-alist helm-completing-read-handlers-alist))
+	(minibuffer-message "Helm is disabled in dired")))
+
+;;; helm を dired 時に有効化
+(defun helm-completing-enable-dired ()
+  "Disable helm in dired"
+  (interactive)
+  (labels ((delete-keys-from-alist (keys alist)
+								   (let ((key (car keys)))
+									 (cond ((null key)
+											alist)
+										   (t
+											(let ((deleted-alist (delete (assoc key alist) alist)))
+											  (delete-keys-from-alist (cdr keys) deleted-alist)))))))
+	(setq helm-completing-read-handlers-alist (delete-keys-from-alist helm-dired-command-list helm-completing-read-handlers-alist))
+	(minibuffer-message "Helm is enabled in dired")))
+
+;;; ange-ftp 時に helm が動作すると Emacs が死ぬので ange-ftp の hook に helm の無効化処理を追加
+(add-hook 'internal-ange-ftp-mode-hook '(lambda () (helm-completing-disable-dired)))
+
 ; ;; customize
 ; (progn
 ; ;  (require 'helm-ls-git)

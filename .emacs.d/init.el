@@ -761,6 +761,17 @@
 ;;; for calfw(カレンダーツール)
 (load "init-calfw.el")
 
+
+;;;
+;;; プライベートの設定を読み込み
+;;;
+(load (substitute-in-file-name "$HOME/.emacs.d/init-private.el"))
+
+
+;;;
+;;; 末尾に設定しないと問題のある処理
+;;;
+
 ;;; ウィンドウシステムならカラーテーマを有効にし，カーソル行をハイライト
 (if window-system
 	(progn

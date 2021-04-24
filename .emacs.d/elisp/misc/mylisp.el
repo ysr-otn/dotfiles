@@ -1,20 +1,20 @@
-;;;(°ìÉô)¼«ºî¤Î Lisp 
+;;;(ä¸€éƒ¨)è‡ªä½œã® Lisp 
 
-;;; °ì¹Ô¤º¤Ä¤Î²¼¥¹¥¯¥í¡¼¥ë
+;;; ä¸€è¡Œãšã¤ã®ä¸‹ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
 (defun scroll-one-line-up ()
-  " °ì¹Ô¤º¤Ä¤Î²¼¥¹¥¯¥í¡¼¥ë"
+  " ä¸€è¡Œãšã¤ã®ä¸‹ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«"
   (interactive)
   (scroll-up 1))
 (global-set-key "\M-z" 'scroll-one-line-up)
 
-;;; °ì¹Ô¤º¤Ä¤Î¾å¥¹¥¯¥í¡¼¥ë
+;;; ä¸€è¡Œãšã¤ã®ä¸Šã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«
 (defun scroll-one-line-down ()
-  " °ì¹Ô¤º¤Ä¤Î¾å¥¹¥¯¥í¡¼¥ë"
+  " ä¸€è¡Œãšã¤ã®ä¸Šã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«"
   (interactive)
   (scroll-up -1))
 (global-set-key "\M-Z" 'scroll-one-line-down)
 
-;;; °ì¤Ä¼¡¤Î window ¤Ë°ÜÆ°¤¹¤ë¤«¡¤window ¤¬ 1 ¤Ä¤Ê¤é window ¤ò²£¤Ë 2 Ê¬³ä¤¹¤ë
+;;; ä¸€ã¤æ¬¡ã® window ã«ç§»å‹•ã™ã‚‹ã‹ï¼Œwindow ãŒ 1 ã¤ãªã‚‰ window ã‚’æ¨ªã« 2 åˆ†å‰²ã™ã‚‹
 (defun other-window-or-split ()
   (interactive)
   (when (one-window-p)
@@ -22,91 +22,97 @@
   (other-window 1))
 (global-set-key "\C-q" 'other-window-or-split)
 
-;;; °ì¤ÄÁ°¤Î window ¤Ë°ÜÆ°¤¹¤ë
+;;; ä¸€ã¤å‰ã® window ã«ç§»å‹•ã™ã‚‹
 (defun pre-window ()
-  " °ì¤ÄÁ°¤Î window ¤Ë°ÜÆ°¤¹¤ë"
+  " ä¸€ã¤å‰ã® window ã«ç§»å‹•ã™ã‚‹"
   (interactive)
   (other-window -1))
 (global-set-key "\M-q" 'pre-window)
 
 
 (defun next-line-more ()
-  "¤è¤ê²¼¤¯¾å¤Ë°ÜÆ°"  
+  "ã‚ˆã‚Šä¸‹ãä¸Šã«ç§»å‹•"  
   (interactive)
   (next-line 4))
 (global-set-key "\M-n" 'next-line-more)
 (defun previous-line-more ()
-  "¤è¤êÂç¤¯¾å¤Ë°ÜÆ°"
+  "ã‚ˆã‚Šå¤§ãä¸Šã«ç§»å‹•"
   (interactive)
   (previous-line 4))
 (global-set-key "\M-p" 'previous-line-more)
 
 
-;;; load-library ¤Ç .emacs ¤òÆÉ¤ß¹ş¤à
+;;; load-library ã§ .emacs ã‚’èª­ã¿è¾¼ã‚€
 (defun load-emacs ()
-  " load-library ¤Ç .emacs ¤òÆÉ¤ß¹ş¤à"
+  " load-library ã§ .emacs ã‚’èª­ã¿è¾¼ã‚€"
   (interactive)
   (load-library "~/.emacs"))
 (global-set-key "\C-c\E" 'load-emacs)
 
-;;; view.el ¤òÆÉ¤ß¤³¤à
+;;; view.el ã‚’èª­ã¿ã“ã‚€
 (defun load-view ()
-  "view.el ¤òÆÉ¤ß¤³¤à"
+  "view.el ã‚’èª­ã¿ã“ã‚€"
   (interactive)
   (load-library "/home/ohtani/Tools/FreeBSD/share/emacs/20.3/lisp/view.el"))
 (global-set-key "\C-c\V" 'load-view)
 
 
-;;; dir-ftp ¤ÎÀÜÂ³Àè¤ò·è¤á¤Æ¤ª¤¯
-(defconst dir-ftp-usr-name
-  "ÀÜÂ³Àè¤Î¥æ¡¼¥¶Ì¾"  "who")
-(defconst dir-ftp-macine-name
-  "ÀÜÂ³Àè¤Î¥Ş¥·¥óÌ¾"  "hogehoge")
-(defconst dir-ftp-domain-name
-  "ÀÜÂ³Àè¤Î¥Í¥Ã¥È¥ï¡¼¥¯Ì¾"  "hoge.or.jp")
-(defconst dir-ftp-remorthost-directory
-  "ÀÜÂ³Àè¤Î¥Ç¥£¥ì¥¯¥È¥ê" "/")
-(defun dir-ftp ()
-  " set-dir-ftp¤Ç»ØÄê¤·¤¿ÀÜÂ³Àè¤Ë ange-ftp ¤Ç·Ñ¤°"
-  (interactive )
-  (setq dir-ftp-var
-	(concat "/" dir-ftp-usr-name "@" dir-ftp-macine-name
-		"." dir-ftp-domain-name
-		":" dir-ftp-remorthost-directory))
-  (dired dir-ftp-var))
-(global-set-key "\C-cD" 'dir-ftp)
+;;;
+;;; ange-ftp ã®ãƒ•ãƒ­ãƒ³ãƒˆã‚¨ãƒ³ãƒ‰ dir-ftp ã®å®šç¾©
+;;; 
 
-(defun set-dir-ftp ()
-  " dir-ftp ¤Î³Æ¼ïÀßÄê"
+;;; dir-ftp ã®å„ç¨®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã®ä»®å®šç¾©
+(defvar dir-ftp-method "ftp")
+(defvar dir-ftp-user "hoge")
+(defvar dir-ftp-host "fuga.or.jp")
+(defvar dir-ftp-dir "/")
+
+;;; dir-ftp ã®å„ç¨®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã®è¨­å®š
+(defun set-dir-ftp-opt ()
+  "Set each parameter of dir-ftp-opt."
   (interactive)
-  (setq dir-ftp-usr-name
-	(read-string "usr-name: " dir-ftp-usr-name))
-  (setq dir-ftp-macine-name
-	(read-string "macine-name: " dir-ftp-macine-name))
-  (setq dir-ftp-domain-name
-	(read-string "domain-name: " dir-ftp-domain-name))
-  (setq dir-ftp-remorthost-directory
-	(read-string "remorthost-directory: " dir-ftp-remorthost-directory))
-  (dir-ftp))
-(global-set-key "\C-cs" 'set-dir-ftp)  
+  (setq dir-ftp-method (completing-read "Connect method: "
+								'(("ftp" 1) ("ssh" 2) ("rlogin" 3) ("telnet" 4) ("none" 5))
+								nil t dir-ftp-method))
+  (setq dir-ftp-user (read-string "User name: " dir-ftp-user))
+  (setq dir-ftp-host (read-string "Remote host name: " dir-ftp-host))
+  (setq dir-ftp-dir  (read-string "Remote host directory: " dir-ftp-dir)))
+
+;;; dir-ftp æœ¬ä½“
+(defun dir-ftp ()
+  "Connect to the remote host that is designated by dir-ftp options."
+  (interactive)
+  (dired (concat "/" 
+				 ;; method ãŒ none ãªã‚‰ãƒ¡ã‚½ãƒƒãƒˆã¯æŒ‡å®šã›ãš /dir-ftp-user@... ã«ã¦ ange-ftp ã«
+				 ;; method ã‚’è‡ªå‹•åˆ¤åˆ¥ã•ã›ï¼Œãã†ã§ãªã‘ã‚Œã° /dir-ftp-method:dir-ftp-user@... ã¨
+				 ;; æ˜ç¤ºçš„ã« method ã‚’æŒ‡å®š
+				 (if (string-match dir-ftp-method "none")
+					 ""
+				   (concat dir-ftp-method ":")
+				   )
+				 dir-ftp-user "@" dir-ftp-host ":" dir-ftp-dir)))
+
+;;; dir-ftp ã®ã‚­ãƒ¼è¨­å®š
+(global-set-key "\C-xDd" 'dir-ftp)
+(global-set-key "\C-xDs" 'set-dir-ftp-opt)
 
 
 
-;;; mew ¤ÇÊÖ¿®¤ò¤·¤¿¤È¤­¤Ë fill-column ¤òÁê¼ê¤Î¥á¡¼¥ë¤ÎÀŞ¤êÊÖ¤·¤Ë
-;;; ¤ÎÄ¹¤µ¤Ë¹ç¤»¤ë¡¥
+;;; mew ã§è¿”ä¿¡ã‚’ã—ãŸã¨ãã« fill-column ã‚’ç›¸æ‰‹ã®ãƒ¡ãƒ¼ãƒ«ã®æŠ˜ã‚Šè¿”ã—ã«
+;;; ã®é•·ã•ã«åˆã›ã‚‹ï¼
 (defconst mew-header-end-string "----"
-  "mew ¤Î¥Ø¥Ã¥À¤Î½ªÎ»¤òÉ½¤ï¤¹Ê¸»úÎó")
+  "mew ã®ãƒ˜ãƒƒãƒ€ã®çµ‚äº†ã‚’è¡¨ã‚ã™æ–‡å­—åˆ—")
 (defconst replay-insert-line 0
-  "replay ¤Î¤È¤­¤Ë¥á¥¤¥ë¤ÎÀèÆ¬¤ËÁŞÆş¤µ¤ì¤ëÊ¸»úÎó¤Î¹Ô¿ô")
+  "replay ã®ã¨ãã«ãƒ¡ã‚¤ãƒ«ã®å…ˆé ­ã«æŒ¿å…¥ã•ã‚Œã‚‹æ–‡å­—åˆ—ã®è¡Œæ•°")
 (defconst max-fill-column 70
-  "ºÇÂç¤Î fill-column ¿ô")
+  "æœ€å¤§ã® fill-column æ•°")
 (defconst min-fill-column 35
-  "ºÇ¾®¤Î fill-column ¿ô")
+  "æœ€å°ã® fill-column æ•°")
 (defun set-mew-draft-fill-column ()
-" mew ¤Î replay ¤ÇÁê¼ê¤Î¥á¥¤¥ë¤Î¹Ô¤ÎÄ¹¤µ¤Ë¤è¤Ã¤Æ, fill-column ¤ò
-ÊÑ¹¹¤¹¤ë¤è¤¦¤Ë¤¹¤ë. 
- ¤¿¤À¤·, Ä¹¤¹¤®¤¿¤êÃ»¤«¤¹¤®¤ë¾ì¤Ï¥Ç¥Õ¥¡¥ë¥È¤ÎÃÍ¤È¤·¤Æ¤½¤ì¤¾¤ì
-max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
+" mew ã® replay ã§ç›¸æ‰‹ã®ãƒ¡ã‚¤ãƒ«ã®è¡Œã®é•·ã•ã«ã‚ˆã£ã¦, fill-column ã‚’
+å¤‰æ›´ã™ã‚‹ã‚ˆã†ã«ã™ã‚‹. 
+ ãŸã ã—, é•·ã™ããŸã‚ŠçŸ­ã‹ã™ãã‚‹å ´ã¯ãƒ‡ãƒ•ã‚¡ãƒ«ãƒˆã®å€¤ã¨ã—ã¦ãã‚Œãã‚Œ
+max-fill-column, min-fill-column ã‚’åˆ©ç”¨ã™ã‚‹"
   (interactive)
   (setq end (point))
   (beginning-of-buffer)
@@ -124,25 +130,25 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
   (beginning-of-buffer)
   (search-forward "----" nil t nil)
   (next-line 4)
-  ;; Áê¼ê¤Î¥á¥¤¥ë¤¬Ã»¤«¤¹¤®¤ë¾ì¹ç¤Ï fill-column ¤Ï
-  ;; max-fill-column ¤ò²¼¸Â¤È¤¹¤ë
+  ;; ç›¸æ‰‹ã®ãƒ¡ã‚¤ãƒ«ãŒçŸ­ã‹ã™ãã‚‹å ´åˆã¯ fill-column ã¯
+  ;; max-fill-column ã‚’ä¸‹é™ã¨ã™ã‚‹
   (if (< mew-draft-fill-column min-fill-column)
       (setq fill-column min-fill-column)
-    ;; Áê¼ê¤Î¥á¥¤¥ë¤¬Ä¹²á¤®¤ë¾ì¹ç¤Ï fill-column ¤Ï
-    ;; min-fill-column ¤ò¾å¸Â¤È¤¹¤ë
+    ;; ç›¸æ‰‹ã®ãƒ¡ã‚¤ãƒ«ãŒé•·éãã‚‹å ´åˆã¯ fill-column ã¯
+    ;; min-fill-column ã‚’ä¸Šé™ã¨ã™ã‚‹
     (if (> mew-draft-fill-column max-fill-column) 
 	(setq fill-column max-fill-column)
       (setq fill-column mew-draft-fill-column))))
 
 (defun my-set-fill-prefix ()
-  "set-mew-draft-fill-column ¤òÍøÍÑ¤¹¤ë¤¿¤á¤Î´Ø¿ô"
+  "set-mew-draft-fill-column ã‚’åˆ©ç”¨ã™ã‚‹ãŸã‚ã®é–¢æ•°"
   (interactive)
   (setq my-fill-prefix (buffer-substring
 			(save-excursion (beginning-of-line) (point))
 			(point))))
 
 (defun mew-summary-auto-set-fill-column-replay ()
-  "¼Âºİ¤Ë set-mew-draft-fill-column ¤òÍøÍÑ¤¹¤ë´Ø¿ô"
+  "å®Ÿéš›ã« set-mew-draft-fill-column ã‚’åˆ©ç”¨ã™ã‚‹é–¢æ•°"
   (interactive)
   (mew-summary-reply-with-citation)
   (set-mew-draft-fill-column)
@@ -154,10 +160,10 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 
 
 
-;;; ¥ê¡¼¥¸¥ç¥ó¤ÎÀèÆ¬¤ËÊ¸»úÎó¤òÁŞÆş¤¹¤ë
+;;; ãƒªãƒ¼ã‚¸ãƒ§ãƒ³ã®å…ˆé ­ã«æ–‡å­—åˆ—ã‚’æŒ¿å…¥ã™ã‚‹
 (defvar quoting-marker "> ")
 (defun cite-region ()
-  "¥ê¡¼¥¸¥ç¥ó¤ÎÀèÆ¬¤ËÊ¸»úÎó¤òÁŞÆş¤¹¤ë"
+  "ãƒªãƒ¼ã‚¸ãƒ§ãƒ³ã®å…ˆé ­ã«æ–‡å­—åˆ—ã‚’æŒ¿å…¥ã™ã‚‹"
   (interactive)
   (setq quoting-marker
 	(read-string "Quoting marker: " quoting-marker))
@@ -176,7 +182,7 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 
 ;;;cyclic buffer change
 (defun get-last-buffer()
-" ¥Ğ¥Ã¥Õ¥¡¤ò¥µ¥¤¥¯¥ê¥Ã¥¯¤ËÀÚ¤êÊÑ¤¨¤ë¤³¤È¤¬¤Ç¤­¤ë¤è¤¦¤Ë¤¹¤ë"
+" ãƒãƒƒãƒ•ã‚¡ã‚’ã‚µã‚¤ã‚¯ãƒªãƒƒã‚¯ã«åˆ‡ã‚Šå¤‰ãˆã‚‹ã“ã¨ãŒã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹"
   (setq lastbuf nil)
   (setq blist (buffer-list))
   (while blist
@@ -219,9 +225,9 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 
 
 
-;;; ¥«¡¼¥½¥ë¤Îº¸Â¦¤ÎÃ±¸ì¤òÂçÊ¸»ú¤Ë¤¹¤ë
+;;; ã‚«ãƒ¼ã‚½ãƒ«ã®å·¦å´ã®å˜èªã‚’å¤§æ–‡å­—ã«ã™ã‚‹
 (defun upcase-backward-word ()
-  "¥«¡¼¥½¥ë¤Îº¸Â¦¤ÎÃ±¸ì¤òÂçÊ¸»ú¤Ë¤¹¤ë"
+  "ã‚«ãƒ¼ã‚½ãƒ«ã®å·¦å´ã®å˜èªã‚’å¤§æ–‡å­—ã«ã™ã‚‹"
   (interactive)
   (push-mark)
   (backward-sexp)
@@ -230,9 +236,9 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
   (pop-mark))
 (define-key esc-map "U" 'upcase-backward-word)
 
-;;; ¥«¡¼¥½¥ë¤Îº¸Â¦¤ÎÃ±¸ì¤ò»ÒÊ¸»ú¤Ë¤¹¤ë
+;;; ã‚«ãƒ¼ã‚½ãƒ«ã®å·¦å´ã®å˜èªã‚’å­æ–‡å­—ã«ã™ã‚‹
 (defun downcase-backward-word ()
-  "¥«¡¼¥½¥ë¤Îº¸Â¦¤ÎÃ±¸ì¤ò»ÒÊ¸»ú¤Ë¤¹¤ë"
+  "ã‚«ãƒ¼ã‚½ãƒ«ã®å·¦å´ã®å˜èªã‚’å­æ–‡å­—ã«ã™ã‚‹"
   (interactive)
   (push-mark)
   (backward-sexp)
@@ -243,13 +249,13 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 
 
 
-;;; ¥¤¥ó¥Ç¥ó¥È¤ò¹Ô¤¤¤Ä¤Ä¼¡¤Î¹Ô¤Ë°ÜÆ°
+;;; ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã‚’è¡Œã„ã¤ã¤æ¬¡ã®è¡Œã«ç§»å‹•
 (defun indent-and-next-line ()
   (interactive)
   (indent-according-to-mode)
   (next-line 1))
 (define-key esc-map "N" 'indent-and-next-line)
-;;; ¥¤¥ó¥Ç¥ó¥È¤ò¹Ô¤¤¤Ä¤ÄÁ°¤Î¹Ô¤Ë°ÜÆ°
+;;; ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã‚’è¡Œã„ã¤ã¤å‰ã®è¡Œã«ç§»å‹•
 (defun indent-and-previous-line ()
   (interactive)
   (indent-according-to-mode)
@@ -260,7 +266,7 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 
 
 (defun view-mode-exit-with-skk ()
-  "view-mode ¤«¤éÈ´¤±¤ÆÊÔ½¸¥â¡¼¥É¤Ë¤Ê¤ë¤È¤­ skk ¤ò°ì½ï¤Ëµ¯Æ°¤¹¤ë"
+  "view-mode ã‹ã‚‰æŠœã‘ã¦ç·¨é›†ãƒ¢ãƒ¼ãƒ‰ã«ãªã‚‹ã¨ã skk ã‚’ä¸€ç·’ã«èµ·å‹•ã™ã‚‹"
   (interactive)
   (View-exit-and-edit)
   (skk-mode))
@@ -268,7 +274,7 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 
 
 (defun end-of-window-line ()
-  "²ş¹Ô¤¬¤¢¤ë¾ì¹ç¤Ï¥«¡¼¥½¥ë¤Î¤¢¤ë¥é¥¤¥ó¤Î¥¦¥¤¥ó¥É¤ÎºÇ¸å¤Ë°ÜÆ°"
+  "æ”¹è¡ŒãŒã‚ã‚‹å ´åˆã¯ã‚«ãƒ¼ã‚½ãƒ«ã®ã‚ã‚‹ãƒ©ã‚¤ãƒ³ã®ã‚¦ã‚¤ãƒ³ãƒ‰ã®æœ€å¾Œã«ç§»å‹•"
   (interactive)
   (progn
 	(let ((ww (window-width))
@@ -279,7 +285,7 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 ;(global-set-key "\C-e" 'end-of-window-line)
 
 (defun begin-of-window-line ()
-  "²ş¹Ô¤¬¤¢¤ë¾ì¹ç¤Ï¥«¡¼¥½¥ë¤Î¤¢¤ë¥é¥¤¥ó¤Î¥¦¥¤¥ó¥É¤ÎÀèÆ¬¤Ë°ÜÆ°"
+  "æ”¹è¡ŒãŒã‚ã‚‹å ´åˆã¯ã‚«ãƒ¼ã‚½ãƒ«ã®ã‚ã‚‹ãƒ©ã‚¤ãƒ³ã®ã‚¦ã‚¤ãƒ³ãƒ‰ã®å…ˆé ­ã«ç§»å‹•"
   (interactive)
   (progn
 	(let ((cc (current-column))
@@ -342,7 +348,7 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 			(move-to-column (% cc (1- ww)))))))))
 
 
-;;; Emacs-22 °ÊÁ°¤Ï¾å²¼¥«¡¼¥½¥ë°ÜÆ°¤¬ÏÀÍı¹Ô¤Ê¤Î¤ÇÊªÍı¹Ô°ÜÆ°¤ÎÂĞ±ş¤ò¤·¤Æ¤ª¤¯
+;;; Emacs-22 ä»¥å‰ã¯ä¸Šä¸‹ã‚«ãƒ¼ã‚½ãƒ«ç§»å‹•ãŒè«–ç†è¡Œãªã®ã§ç‰©ç†è¡Œç§»å‹•ã®å¯¾å¿œã‚’ã—ã¦ãŠã
 (if (<= (string-to-number emacs-version) 22)
 	(progn
 	  (define-key global-map "\C-p" 'move-to-window-prev-line)
@@ -378,7 +384,7 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 
 
 
-;;;;;;; ÂĞ±ş¤¹¤ë¤«¤Ã¤³¤ËÈô¤ó¤Ç¤¯¤ì¤ë ;;;;;;; 
+;;;;;;; å¯¾å¿œã™ã‚‹ã‹ã£ã“ã«é£›ã‚“ã§ãã‚Œã‚‹ ;;;;;;; 
 (progn
   (defvar com-point nil
 	"Remember com point as a marker. \(buffer specific\)")
@@ -415,10 +421,10 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
   (define-key ctl-x-map "%" 'paren-match))
 
 
-;;; ²ş¹Ô¤¹¤ë¤È¤­¤Ë¹ÔËö¤Î¥¹¥Ú¡¼¥¹¤òºï½ü¤·¤Ê¤¤. 
+;;; æ”¹è¡Œã™ã‚‹ã¨ãã«è¡Œæœ«ã®ã‚¹ãƒšãƒ¼ã‚¹ã‚’å‰Šé™¤ã—ãªã„. 
 (defun newline-and-indent-not-delete-space ()
-  "newline-and-indent ¤ÈÆ±¤¸¤À¤¬, 
-²ş¹Ô¤Îºİ¹ÔËö¤Î space ¤òºï½ü¤·¤Ê¤¤. "
+  "newline-and-indent ã¨åŒã˜ã ãŒ, 
+æ”¹è¡Œã®éš›è¡Œæœ«ã® space ã‚’å‰Šé™¤ã—ãªã„. "
   (interactive "*")
   (newline)
   (indent-according-to-mode))
@@ -427,9 +433,9 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 
 
 
-;;; ÂçÊ¸»ú¤Î¤ß¤òÂĞ¾İ¤Ë¤·¤¿°ÜÆ°, ºï½ü
+;;; å¤§æ–‡å­—ã®ã¿ã‚’å¯¾è±¡ã«ã—ãŸç§»å‹•, å‰Šé™¤
 (defun forward-word-large-char (arg)
-  "¼¡¤ÎÂçÊ¸»ú¤Ø°ÜÆ°"
+  "æ¬¡ã®å¤§æ–‡å­—ã¸ç§»å‹•"
   (interactive "P")
   (progn
 	(if (null arg)
@@ -440,7 +446,7 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 (define-key esc-map "F" 'forward-word-large-char)
 
 (defun backward-word-large-char (arg)
-  "Á°¤ÎÂçÊ¸»ú¤Ø°ÜÆ°"
+  "å‰ã®å¤§æ–‡å­—ã¸ç§»å‹•"
   (interactive "P")
   (progn
 	(if (null arg)
@@ -452,7 +458,7 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 
 
 (defun kill-word-large-char (arg)
-  "¼¡¤ÎÂçÊ¸»ú¤ÈÁ°¤ÎÂçÊ¸»ú¤Ş¤Ç¤òºï½ü"
+  "æ¬¡ã®å¤§æ–‡å­—ã¨å‰ã®å¤§æ–‡å­—ã¾ã§ã‚’å‰Šé™¤"
   (interactive "p")
   (kill-region (progn (forward-word-large-char arg) (point))
 			   (progn (backward-word-large-char arg) (point))))
@@ -460,7 +466,7 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 
 
 (defun backward-kill-word-large-char (arg)
-  "Á°¤ÎÂçÊ¸»ú¤È¼¡¤ÎÂçÊ¸»ú¤Ş¤Ç¤òºï½ü"
+  "å‰ã®å¤§æ–‡å­—ã¨æ¬¡ã®å¤§æ–‡å­—ã¾ã§ã‚’å‰Šé™¤"
   (interactive "p")
   (kill-region (progn (backward-word-large-char arg) (point))
 			   (progn (forward-word-large-char arg) (point))))
@@ -468,9 +474,9 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 
 
 
-;;; ¥¹¥Ú¡¼¥¹, ²ş¹Ô, ¥¿¥Ö¤òÂĞ¾İ¤Ë¤·¤¿°ÜÆ°, ºï½ü
+;;; ã‚¹ãƒšãƒ¼ã‚¹, æ”¹è¡Œ, ã‚¿ãƒ–ã‚’å¯¾è±¡ã«ã—ãŸç§»å‹•, å‰Šé™¤
 (defun forward-space (arg)
-  "¼¡¤Î¥¹¥Ú¡¼¥¹, ²ş¹Ô, ¥¿¥Ö¤¬Ìµ¤¤¤È¤³¤í¤Ø°ÜÆ°"
+  "æ¬¡ã®ã‚¹ãƒšãƒ¼ã‚¹, æ”¹è¡Œ, ã‚¿ãƒ–ãŒç„¡ã„ã¨ã“ã‚ã¸ç§»å‹•"
   (interactive "p")
   (progn
 	(if (null arg)
@@ -480,7 +486,7 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 
 
 (defun backward-space (arg)
-  "Á°¤Î¥¹¥Ú¡¼¥¹, ²ş¹Ô, ¥¿¥Ö¤¬Ìµ¤¤¤È¤³¤í¤Ø°ÜÆ°"
+  "å‰ã®ã‚¹ãƒšãƒ¼ã‚¹, æ”¹è¡Œ, ã‚¿ãƒ–ãŒç„¡ã„ã¨ã“ã‚ã¸ç§»å‹•"
   (interactive "p")
     (progn
 	  (if (null arg)
@@ -490,7 +496,7 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 (global-set-key "\M-h" 'backward-space)
 
 (defun kill-space (arg)
-  "Á°¤Ë¸ş¤«¤Ã¤Æ¥¹¥Ú¡¼¥¹, ²ş¹Ô, ¥¿¥Ö¤òºï½ü¤·¤Æ²ş¹Ô¤òÆş¤ì¤ë"
+  "å‰ã«å‘ã‹ã£ã¦ã‚¹ãƒšãƒ¼ã‚¹, æ”¹è¡Œ, ã‚¿ãƒ–ã‚’å‰Šé™¤ã—ã¦æ”¹è¡Œã‚’å…¥ã‚Œã‚‹"
   (interactive "p")
   (if (null arg)
 	  (setq arg 1))
@@ -503,7 +509,7 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 
 
 (defun backward-kill-space (arg)
-  "¸å¤Ë¸ş¤«¤Ã¤Æ¥¹¥Ú¡¼¥¹, ²ş¹Ô, ¥¿¥Ö¤òºï½ü¤¹¤ë"
+  "å¾Œã«å‘ã‹ã£ã¦ã‚¹ãƒšãƒ¼ã‚¹, æ”¹è¡Œ, ã‚¿ãƒ–ã‚’å‰Šé™¤ã™ã‚‹"
   (interactive "p")
   (if (null arg)
 	  (setq arg 1))
@@ -515,7 +521,7 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 (global-set-key "\C-x\M-h" 'backward-kill-space)
 
 (defun delete-head-space (arg)
-"¹Ô¤ÎÀèÆ¬¤Î¥¹¥Ú¡¼¥¹¤òºï½ü¤¹¤ë. "
+"è¡Œã®å…ˆé ­ã®ã‚¹ãƒšãƒ¼ã‚¹ã‚’å‰Šé™¤ã™ã‚‹. "
   (interactive "p")
   (if (null arg)
 	  (setq arg 1))
@@ -533,7 +539,7 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 
 
 
-;;; for windows.el(windows.el ¤ò»È¤ï¤Ê¤¯¤Ê¤Ã¤¿¤Î¤ÇÌµ¸ú²½)
+;;; for windows.el(windows.el ã‚’ä½¿ã‚ãªããªã£ãŸã®ã§ç„¡åŠ¹åŒ–)
 (if (< (string-to-number emacs-version) 25)
     (progn
       (global-set-key "\e1"
@@ -580,9 +586,9 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 
 
 
-;;; Buffer-menu-mode ¤Ç¤Î¥Ğ¥Ã¥Õ¥¡¤Î°ì³çºï½ü
+;;; Buffer-menu-mode ã§ã®ãƒãƒƒãƒ•ã‚¡ã®ä¸€æ‹¬å‰Šé™¤
 (defun Buffer-menu-delete-grep (str)
-  "dired-mode ¤Ç¡¤STR ¤Ë°ìÃ×¤·¤¿ buffer ¤Ëºï½ü¥Ş¡¼¥¯¤òÉÕ¤±¤ë"
+  "dired-mode ã§ï¼ŒSTR ã«ä¸€è‡´ã—ãŸ buffer ã«å‰Šé™¤ãƒãƒ¼ã‚¯ã‚’ä»˜ã‘ã‚‹"
   (interactive "sregexp:")
   (goto-char (point-min))
   (let (lines)
@@ -594,17 +600,17 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 
 
 
-;;;; ¤¤¤Ä¤Ç¤â¤É¤³¤Ç¤â´ÊÃ±¥â¥Ê¡¼¤òÆş¤ì¤é¤ì¤ë
-(defvar default-msg "¤ª¤Ş¤¨¥â¥Ê¡¼")
+;;;; ã„ã¤ã§ã‚‚ã©ã“ã§ã‚‚ç°¡å˜ãƒ¢ãƒŠãƒ¼ã‚’å…¥ã‚Œã‚‰ã‚Œã‚‹
+(defvar default-msg "ãŠã¾ãˆãƒ¢ãƒŠãƒ¼")
 (defvar mona
-  '("¡¡¢Ê¡²¢Ê¡¡¡¡ ¡¿¡±¡±¡±¡±¡±¡±¡±¡±\n"
-    "¡Ê ¡­¢Ï¡®¡Ë¡ã¡¡" mona-msg "\n"
-    "¡Ê¡¡¡¡¡¡ ¡Ë¡¡¡À¡²¡²¡²¡²¡²¡²¡²¡²\n"
-    " ¡Ã ¡Ã¡¡¡Ã\n"
-    "¡Ê_¡²¡Ë¡²¡Ë\n"))
+  '("ã€€âˆ§ï¼¿âˆ§ã€€ã€€ ï¼ï¿£ï¿£ï¿£ï¿£ï¿£ï¿£ï¿£ï¿£\n"
+    "ï¼ˆ Â´âˆ€ï½€ï¼‰ï¼œã€€" mona-msg "\n"
+    "ï¼ˆã€€ã€€ã€€ ï¼‰ã€€ï¼¼ï¼¿ï¼¿ï¼¿ï¼¿ï¼¿ï¼¿ï¼¿ï¼¿\n"
+    " ï½œ ï½œã€€ï½œ\n"
+    "ï¼ˆ_ï¼¿ï¼‰ï¼¿ï¼‰\n"))
 (defun mona (msg)
-  "¤É¤³¤Ç¤â¥â¥Ê¡¼¡£
-  mew ¤È¤«¤Ç ¥á¡¼¥ë¸«¤Æ¤ë¤È¤­¤Ë¤ä¤ë¤ÈÌÌÇò¤¤¤«¤â."
+  "ã©ã“ã§ã‚‚ãƒ¢ãƒŠãƒ¼ã€‚
+  mew ã¨ã‹ã§ ãƒ¡ãƒ¼ãƒ«è¦‹ã¦ã‚‹ã¨ãã«ã‚„ã‚‹ã¨é¢ç™½ã„ã‹ã‚‚."
   (interactive "smessage: ")
   (let ((list mona)
 		 (mona-msg default-msg)
@@ -623,7 +629,7 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 	   (insert-rectangle rect)))) 
 
 
-;;; TV, AV, SV, BV ·×»»
+;;; TV, AV, SV, BV è¨ˆç®—
 (defun TV (T)
   (log (/ 1.0 T)
 	   2))
@@ -646,7 +652,7 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 	 (- (SV S))))
 
 
-;;; *scratch ¤ÎÊİÂ¸
+;;; *scratch ã®ä¿å­˜
 (defun save-scratch-data ()
   (let ((str (progn
                (set-buffer (get-buffer "*scratch*"))
@@ -689,7 +695,7 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 
 
 
-;;; Ï¢ÈÖ
+;;; é€£ç•ª
 ;;; http://d.hatena.ne.jp/rubikitch/20110221/seq
 (eval-when-compile (require 'cl))
 (setq aaa 0)
@@ -698,11 +704,11 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 (defun number-rectangle (point-start point-end string-format number-from number-by)
   "Delete (don't save) text in the region-rectangle, then number it."
   (interactive
-   (list (region-beginning) ; Ã»·Á¥ê¡¼¥¸¥ç¥óÀèÆ¬°ÌÃÖ
-		 (region-end)		; Ã»·Á¥ê¡¼¥¸¥ç¥ó¼íÎÄ°ÌÃÖ
-		 (read-string "Number rectangle: " "%d")	; Ï¢ÈÖ³«»Ï°ÌÃÖ
-		 (read-number "From: " 0)	; Ï¢ÈÖ½ªÎ»°ÌÃÖ
-		 (read-number "By: " 1)		; ·«¤êÊÖ¤·²ó¿ô
+   (list (region-beginning) ; çŸ­å½¢ãƒªãƒ¼ã‚¸ãƒ§ãƒ³å…ˆé ­ä½ç½®
+		 (region-end)		; çŸ­å½¢ãƒªãƒ¼ã‚¸ãƒ§ãƒ³ç‹©çŒŸä½ç½®
+		 (read-string "Number rectangle: " "%d")	; é€£ç•ªé–‹å§‹ä½ç½®
+		 (read-number "From: " 0)	; é€£ç•ªçµ‚äº†ä½ç½®
+		 (read-number "By: " 1)		; ç¹°ã‚Šè¿”ã—å›æ•°
 		 ))
   (save-excursion
 	(goto-char point-start)
@@ -732,7 +738,7 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
 
 
 
-;;; dired ¤ÇÍÍ¡¹¤Ê¼ïÎà¤Î¥½¡¼¥È¤ËÂĞ±ş¤¹¤ë
+;;; dired ã§æ§˜ã€…ãªç¨®é¡ã®ã‚½ãƒ¼ãƒˆã«å¯¾å¿œã™ã‚‹
 ;;; http://d.hatena.ne.jp/mooz/20091207/p1
 (defvar dired-various-sort-type
   '(("S" . "size")
@@ -795,14 +801,14 @@ max-fill-column, min-fill-column ¤òÍøÍÑ¤¹¤ë"
              ))
 
 
-;;; Mac ¤Î¾ì¹ç¤Ï ls ¤Î¥ª¥×¥·¥ç¥ó¤¬¸ÂÄê¤µ¤ì¤ë¤Î¤Ç emacs ÆâÂ¢¤Î ls ¤ò»ÈÍÑ
+;;; Mac ã®å ´åˆã¯ ls ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ãŒé™å®šã•ã‚Œã‚‹ã®ã§ emacs å†…è”µã® ls ã‚’ä½¿ç”¨
 ;;; https://stackoverflow.com/questions/4076360/error-in-dired-sorting-on-os-x
 (when (eq system-type 'darwin)
   (require 'ls-lisp)
   (setq ls-lisp-use-insert-directory-program nil))
 
 
-;;; Emacs¤«¤é³°Éô¥×¥í¥»¥¹¤ò¼Â¹Ô¤¹¤ë¤È¤­¤Î¥³¡¼¥Ç¥£¥ó¥°¥·¥¹¥Æ¥à¤ò¥«¥ì¥ó¥È¥Ğ¥Ã¥Õ¥¡¤Ë¹ç¤ï¤»¤ë
+;;; Emacsã‹ã‚‰å¤–éƒ¨ãƒ—ãƒ­ã‚»ã‚¹ã‚’å®Ÿè¡Œã™ã‚‹ã¨ãã®ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚·ã‚¹ãƒ†ãƒ ã‚’ã‚«ãƒ¬ãƒ³ãƒˆãƒãƒƒãƒ•ã‚¡ã«åˆã‚ã›ã‚‹
 ;;; https://qiita.com/8bit-jzjjy/items/7af68074494b5e9129e5
 (defmacro my-adapt-coding-system-with-current-buffer (target-function)
   `(defadvice ,target-function
