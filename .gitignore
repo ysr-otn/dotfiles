@@ -19,6 +19,7 @@
 .emacs.d/ddskk/record
 .emacs.d/ddskk/study
 .emacs.d/elisp/misc/hideif-extension.el
+.emacs.d/elisp/misc/calfw-syobocal.el
 .emacs.d/elpa
 .emacs.d/recentf
 .emacs.d/scratch

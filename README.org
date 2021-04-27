@@ -7,6 +7,9 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2021-04-28 Wed 00:06>
+    - calfw-syobocal.el の設定を追加
+    - .gitignore に .emacs.d/elisp/misc/calfw-syobocal.el の設定を追加
   - <2021-04-24 Sat 23:01>
     - ange-ftp を使うフトントエンド dir-ftp をリファクタリング
     - ange-ftp と helm の衝突回避のために helm-completing-disable-dired, helm-completing-enable-dired を追加
