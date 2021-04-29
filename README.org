@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2021-04-29 Thu 22:58>
+	- org-reveal-export-to-html のファイル名を hoge_presen.html にする設定を追加
   - <2021-04-29 Thu 21:45>
 	- init-org-mode.el で add-hook で実装していた org ロード後の設定を with-eval-after-load に変更
   - <2021-04-28 Wed 00:06>

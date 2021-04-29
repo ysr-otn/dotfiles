@@ -151,6 +151,18 @@ org-html-link関数内より。"
   ;;; for ox-reveal
   (load-library "ox-reveal")
 			 
+  ;; org-reveal-export-to-html で出力されるファイル名が org-html-export-to-html と同じ
+  ;; hoge.html なので org-export-to-file を advice-add で再定義し reveal から実行された
+  ;; 場合は hoge_presen.html のようにサフィックスで分類できるようにする
+  (defvar org-reveal-export-file-suffix "_presen")
+  (defun my-org-export-to-file (orig-func backend file &optional async subtreep visible-only body-only ext-plist post-process)
+	(if (eq backend 'reveal)
+		(funcall orig-func backend (s-replace ".html" (concat org-reveal-export-file-suffix".html") file) 
+				 async subtreep visible-only body-only ext-plist post-process)
+		(funcall orig-func backend file async subtreep visible-only body-only ext-plist post-process)))
+
+  (advice-add 'org-export-to-file :around 'my-org-export-to-file)
+
   ;;; for ox-latex
   ;; LaTeX へのコンバートでスペースを自動的にタブにされないようにタブを無効化
   ;; (コードブロックを LaTeX へ変換した時にタブにされると LaTeX でコンパイル
