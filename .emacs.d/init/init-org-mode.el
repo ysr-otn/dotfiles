@@ -99,187 +99,172 @@ org-html-link関数内より。"
   (advice-remove #'org-html--format-image #'org-altcaption--org-html--format-image))
   
 
-;;; org-mode の hook
-(add-hook 'org-mode-hook
-		  '(lambda ()
-			 ;; for org-babel
-			 (progn
-			   ;; org-version 9.2 以上ならテンプレート機能のために org-tempo を読み込み
-			   (when (version<= "9.2" (org-version))
-				 (require 'org-tempo))
-			   ;; for org-babel-gnuplot
-
-			   ;; org-babel で shell, C, C++, ruby, python, lisp, dot, ditaa, gnuplot, R  が使えるようにする
-			   (org-babel-do-load-languages 'org-babel-load-languages
-											'((shell . t)
-											  (C . t)
-											  (ruby . t)
-											  (python . t)
-											  (lisp . t)
-											  (dot . t)
-											  (ditaa . t)
-											  (gnuplot . t)
-											  (R . t)
-											  ))
-			   )
+;;; org-mode 読み込み時に実行する設定
+(with-eval-after-load 'org
+  ;; for org-babel
+  ;; org-version 9.2 以上ならテンプレート機能のために org-tempo を読み込み
+  (when (version<= "9.2" (org-version))
+	(require 'org-tempo))
+  
+  ;; for org-babel-gnuplot
+  ;; org-babel で shell, C, C++, ruby, python, lisp, dot, ditaa, gnuplot, R  が使えるようにする
+  (org-babel-do-load-languages 'org-babel-load-languages
+							   '((shell . t)
+								 (C . t)
+								 (ruby . t)
+								 (python . t)
+								 (lisp . t)
+								 (dot . t)
+								 (ditaa . t)
+								 (gnuplot . t)
+								 (R . t)
+								 ))
 			 
-			 ;;; for org-tree-slide-move
-			 (progn
-			   (load "org-tree-slide")
+  ;; for org-tree-slide-move
+  (load "org-tree-slide")
 			   
-			   (define-key org-mode-map (kbd "C-c t") 'org-tree-slide-mode)
+  (define-key org-mode-map (kbd "C-c t") 'org-tree-slide-mode)
 			   
-			   (define-key org-tree-slide-mode-map (kbd "<right>") 'org-tree-slide-move-next-tree)
-			   (define-key org-tree-slide-mode-map (kbd "n") 'org-tree-slide-move-next-tree)
-			   (define-key org-tree-slide-mode-map (kbd "<left>") 'org-tree-slide-move-previous-tree)
-			   (define-key org-tree-slide-mode-map (kbd "p") 'org-tree-slide-move-previous-tree)
+  (define-key org-tree-slide-mode-map (kbd "<right>") 'org-tree-slide-move-next-tree)
+  (define-key org-tree-slide-mode-map (kbd "n") 'org-tree-slide-move-next-tree)
+  (define-key org-tree-slide-mode-map (kbd "<left>") 'org-tree-slide-move-previous-tree)
+  (define-key org-tree-slide-mode-map (kbd "p") 'org-tree-slide-move-previous-tree)
 			   
-			   (setq org-tree-slide-mode-play-hook nil)
-			   (setq org-tree-slide-mode-stop-hook nil)
+  (setq org-tree-slide-mode-play-hook nil)
+  (setq org-tree-slide-mode-stop-hook nil)
 			   
-			   (add-hook 'org-tree-slide-mode-play-hook
-						 '(lambda () 
-							(text-scale-adjust 0)
-							(text-scale-adjust 4)
-							(org-display-inline-images)
-							(read-only-mode 1)
-							))
+  (add-hook 'org-tree-slide-mode-play-hook
+			'(lambda () 
+			   (text-scale-adjust 0)
+			   (text-scale-adjust 4)
+			   (org-display-inline-images)
+			   (read-only-mode 1)
+			   ))
 			   
-			   (add-hook 'org-tree-slide-mode-stop-hook
-						 '(lambda () 
-							(text-scale-adjust 0)
-							(org-remove-inline-images)
-							(read-only-mode -1)
-							))
-			   )
-		     
-			 ;;; for ox-reveal
-			 (progn
-			   (load-library "ox-reveal")
-			   )
+  (add-hook 'org-tree-slide-mode-stop-hook
+			'(lambda () 
+			   (text-scale-adjust 0)
+			   (org-remove-inline-images)
+			   (read-only-mode -1)
+			   ))
+  
+  ;;; for ox-reveal
+  (load-library "ox-reveal")
 			 
-			 ;;; for ox-latex
-			 (progn
-			   ;; LaTeX へのコンバートでスペースを自動的にタブにされないようにタブを無効化
-               ;; (コードブロックを LaTeX へ変換した時にタブにされると LaTeX でコンパイル
-               ;;  した時に ^^I になるのを防ぐため)
-               (setq indent-tabs-mode nil)
-			   (add-hook 'org-export-before-processing-hook
-						 '(lambda (&optional _mode)
-							(setq indent-tabs-mode nil)
-							))
+  ;;; for ox-latex
+  ;; LaTeX へのコンバートでスペースを自動的にタブにされないようにタブを無効化
+  ;; (コードブロックを LaTeX へ変換した時にタブにされると LaTeX でコンパイル
+  ;;  した時に ^^I になるのを防ぐため)
+  (setq indent-tabs-mode nil)
+  (add-hook 'org-export-before-processing-hook
+			'(lambda (&optional _mode)
+			   (setq indent-tabs-mode nil)
+			   ))
                
-               (add-to-list 'org-latex-classes
-							'("jsarticle"
-							  "\\documentclass[dvipdfmx,10pt]{jsarticle}"
-							  ("\\section{%s}" . "\\section*{%s}")
-							  ("\\subsection{%s}" . "\\subsection*{%s}")
-							  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-							  ("\\paragraph{%s}" . "\\paragraph*{%s}")
-							  ("\\subparagraph{%s}" . "\\subparagraph*{%s}")
-							  )
-							)
-			   (setq org-latex-default-class "jsarticle")
-			   (setq org-latex-pdf-process
-					 '("platex -shell-escape %f"	; minted のために -shell-escape を追加
-					   "platex -shell-escape %f"
-					   "pbibtex %b"
-					   "platex -shell-escape %f"
-					   "platex -shell-escape %f"
-					   "dvipdfmx %b.dvi"))
-			   (setq org-export-latex-listings t)
-			   (setq org-latex-listings 'minted)
-			   (setq org-latex-minted-options
-					 '(("frame" "lines")			; 上下にラインを出力
-					   ("framesep=2mm")
-					   ("baselinestretch=1.2")
-					   ("fontsize=\\scriptsize")	; フォントをスクリプトサイズに縮小
-					   ("breaklines")				; 行末で改行
-					   ))
+  (add-to-list 'org-latex-classes
+			   '("jsarticle"
+				 "\\documentclass[dvipdfmx,10pt]{jsarticle}"
+				 ("\\section{%s}" . "\\section*{%s}")
+				 ("\\subsection{%s}" . "\\subsection*{%s}")
+				 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+				 ("\\paragraph{%s}" . "\\paragraph*{%s}")
+				 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")
+				 )
 			   )
+  (setq org-latex-default-class "jsarticle")
+  (setq org-latex-pdf-process
+		'("platex -shell-escape %f"	; minted のために -shell-escape を追加
+		  "platex -shell-escape %f"
+		  "pbibtex %b"
+		  "platex -shell-escape %f"
+		  "platex -shell-escape %f"
+		  "dvipdfmx %b.dvi"))
+  (setq org-export-latex-listings t)
+  (setq org-latex-listings 'minted)
+  (setq org-latex-minted-options
+		'(("frame" "lines")			; 上下にラインを出力
+		  ("framesep=2mm")
+		  ("baselinestretch=1.2")
+		  ("fontsize=\\scriptsize")	; フォントをスクリプトサイズに縮小
+		  ("breaklines")				; 行末で改行
+		  ))
 
-			 ;; MS-Office ファイルは外部プロセスで開く
-			 (progn
-			   (add-to-list 'org-file-apps '("\\.\\(xls\\|xlsx\\|xlsm\\)" . default))
-			   (add-to-list 'org-file-apps '("\\.\\(ppt\\|pptx\\)" . default))
-			   (add-to-list 'org-file-apps '("\\.\\(doc\\|docx\\)" . default)))
+  ;;; MS-Office ファイルは外部プロセスで開く
+  (add-to-list 'org-file-apps '("\\.\\(xls\\|xlsx\\|xlsm\\)" . default))
+  (add-to-list 'org-file-apps '("\\.\\(ppt\\|pptx\\)" . default))
+  (add-to-list 'org-file-apps '("\\.\\(doc\\|docx\\)" . default))
 
-			 
-			 ;;; for ox-taskjuggler-mod
-			 (progn
-			   (load-library "ox-taskjuggler-mod")
-			   )
+  ;;; for ox-taskjuggler-mod
+  (load-library "ox-taskjuggler-mod")
 
-			 ;;; org-modeのHTMLエクスポート時にimgタグのalt属性をcaptionからつける
-			 (org-altcaption-activate)
+  ;;; org-modeのHTMLエクスポート時にimgタグのalt属性をcaptionからつける
+  (org-altcaption-activate)
 			 
 			 
-			 ;;; checkbox を変更した TODO の状態を自動的に更新
-			 ;;; https://christiantietze.de/posts/2021/02/emacs-org-todo-doing-done-checkbox-cycling/
-			 (progn
-			   (defun ct/org-summary-todo-cookie (n-done n-not-done)
-				 "Switch header state to DONE when all subentries are DONE, to TODO when none are DONE, and to DOING otherwise"
-				 (let (org-log-done org-log-states)   ; turn off logging
-				   (org-todo (cond ((= n-done 0)
-									"TODO")
-								   ((= n-not-done 0)
-									"DONE")
-								   (t
-									"DOING")))))
-			   (add-hook 'org-after-todo-statistics-hook #'ct/org-summary-todo-cookie)
+  ;;; checkbox を変更した TODO の状態を自動的に更新
+  ;;; https://christiantietze.de/posts/2021/02/emacs-org-todo-doing-done-checkbox-cycling/
+  (defun ct/org-summary-todo-cookie (n-done n-not-done)
+	"Switch header state to DONE when all subentries are DONE, to TODO when none are DONE, and to DOING otherwise"
+	(let (org-log-done org-log-states)   ; turn off logging
+	  (org-todo (cond ((= n-done 0)
+					   "TODO")
+					  ((= n-not-done 0)
+					   "DONE")
+					  (t
+					   "DOING")))))
+  (add-hook 'org-after-todo-statistics-hook #'ct/org-summary-todo-cookie)
 
-			   (defun org-todo-if-needed (state)
-				 "Change header state to STATE unless the current item is in STATE already."
-				 (unless (string-equal (org-get-todo-state) state)
-				   (org-todo state)))
+  (defun org-todo-if-needed (state)
+	"Change header state to STATE unless the current item is in STATE already."
+	(unless (string-equal (org-get-todo-state) state)
+	  (org-todo state)))
 
-			   (defun ct/org-summary-todo-cookie (n-done n-not-done)
-				 "Switch header state to DONE when all subentries are DONE, to TODO when none are DONE, and to DOING otherwise"
-				 (let (org-log-done org-log-states)   ; turn off logging
-				   (org-todo-if-needed (cond ((= n-done 0)
-											  "TODO")
-											 ((= n-not-done 0)
-											  "DONE")
-											 (t
-											  "DOING")))))
-			   (add-hook 'org-after-todo-statistics-hook #'ct/org-summary-todo-cookie)
+  (defun ct/org-summary-todo-cookie (n-done n-not-done)
+	"Switch header state to DONE when all subentries are DONE, to TODO when none are DONE, and to DOING otherwise"
+	(let (org-log-done org-log-states)   ; turn off logging
+	  (org-todo-if-needed (cond ((= n-done 0)
+								 "TODO")
+								((= n-not-done 0)
+								 "DONE")
+								(t
+								 "DOING")))))
+  (add-hook 'org-after-todo-statistics-hook #'ct/org-summary-todo-cookie)
 
-			   (defun ct/org-summary-checkbox-cookie ()
-				 "Switch header state to DONE when all checkboxes are ticked, to TODO when none are ticked, and to DOING otherwise"
-				 (let (beg end)
-				   (unless (not (org-get-todo-state))
-					 (save-excursion
-					   (org-back-to-heading t)
-					   (setq beg (point))
-					   (end-of-line)
-					   (setq end (point))
-					   (goto-char beg)
-					   ;; Regex group 1: %-based cookie
-					   ;; Regex group 2 and 3: x/y cookie
-					   (if (re-search-forward "\\[\\([0-9]*%\\)\\]\\|\\[\\([0-9]*\\)/\\([0-9]*\\)\\]"
-											  end t)
-						   (if (match-end 1)
-							   ;; [xx%] cookie support
-							   (cond ((equal (match-string 1) "100%")
-									  (org-todo-if-needed "DONE"))
-									 ((equal (match-string 1) "0%")
-									  (org-todo-if-needed "TODO"))
-									 (t
-									  (org-todo-if-needed "DOING")))
-							 ;; [x/y] cookie support
-							 (if (> (match-end 2) (match-beginning 2)) ; = if not empty
-								 (cond ((equal (match-string 2) (match-string 3))
-										(org-todo-if-needed "DONE"))
-									   ((or (equal (string-trim (match-string 2)) "")
-											(equal (match-string 2) "0"))
-										(org-todo-if-needed "TODO"))
-									   (t
-										(org-todo-if-needed "DOING")))
-							   (org-todo-if-needed "DOING"))))))))
-			   
-			   (add-hook 'org-checkbox-statistics-hook #'ct/org-summary-checkbox-cookie)
-			   )
-			 ))
+  (defun ct/org-summary-checkbox-cookie ()
+	"Switch header state to DONE when all checkboxes are ticked, to TODO when none are ticked, and to DOING otherwise"
+	(let (beg end)
+	  (unless (not (org-get-todo-state))
+		(save-excursion
+		  (org-back-to-heading t)
+		  (setq beg (point))
+		  (end-of-line)
+		  (setq end (point))
+		  (goto-char beg)
+		  ;; Regex group 1: %-based cookie
+		  ;; Regex group 2 and 3: x/y cookie
+		  (if (re-search-forward "\\[\\([0-9]*%\\)\\]\\|\\[\\([0-9]*\\)/\\([0-9]*\\)\\]"
+								 end t)
+			  (if (match-end 1)
+				  ;; [xx%] cookie support
+				  (cond ((equal (match-string 1) "100%")
+						 (org-todo-if-needed "DONE"))
+						((equal (match-string 1) "0%")
+						 (org-todo-if-needed "TODO"))
+						(t
+						 (org-todo-if-needed "DOING")))
+				;; [x/y] cookie support
+				(if (> (match-end 2) (match-beginning 2)) ; = if not empty
+					(cond ((equal (match-string 2) (match-string 3))
+						   (org-todo-if-needed "DONE"))
+						  ((or (equal (string-trim (match-string 2)) "")
+							   (equal (match-string 2) "0"))
+						   (org-todo-if-needed "TODO"))
+						  (t
+						   (org-todo-if-needed "DOING")))
+				  (org-todo-if-needed "DOING"))))))))
+  
+  (add-hook 'org-checkbox-statistics-hook #'ct/org-summary-checkbox-cookie)
+  )
 
 ;; 画像の幅を変更するときに必要っぽい
 ;; https://emacs.stackexchange.com/questions/26363/downscaling-inline-images-in-org-mode
