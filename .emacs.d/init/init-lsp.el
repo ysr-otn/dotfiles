@@ -1,8 +1,6 @@
 (require 'lsp)
-(require 'lsp-clients)
 (require 'lsp-ui)
-(require 'company-lsp)
-(push 'company-lsp company-backends)
+(setq lsp-prefer-capf t)	; for company-capf
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 
 (add-hook 'c++-mode-hook #'lsp)
