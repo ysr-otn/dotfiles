@@ -1,6 +1,8 @@
 ;;; コードブロックをそのモードと同じ色付けをする
 (setq org-src-fontify-natively t)
 
+;;; org-babel で export 時にコードブロックを再評価しない
+(setq org-export-use-babel nil)
 
 ;;; for org-present
 
