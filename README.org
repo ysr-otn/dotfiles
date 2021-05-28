@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2021-05-28 Fri 22:29>
+	- Windows の Python 実行環境を Anaconda からオリジナルの Python に変更
   - <2021-05-03 Mon 23:14>
     - org-babel で export 時にコードブロックを再評価しない設定を追加
   - <2021-05-03 Mon 13:35>
