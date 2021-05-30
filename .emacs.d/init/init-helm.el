@@ -78,6 +78,10 @@
 ;; helm-find-files 中にコピー等がしにくいので find-file を別のキーにアサインして残しておく
 (global-set-key (kbd "C-x f") 'find-file)
 
+(with-eval-after-load 'company
+  (require 'helm-company)
+  (define-key company-mode-map (kbd "C-c h") 'helm-company)
+  (define-key company-active-map (kbd "C-c h") 'helm-company))
 
 ;;; for helm-migemo(Windos 環境は未だ動作しないので無効化)
 (if (null (eq system-type 'windows-nt))

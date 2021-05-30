@@ -124,6 +124,12 @@ if [ $HOSTTYPE = i386 ]; then
 	export PATH=$HOME/.nodebrew/current/bin:$PATH
 fi
 
+#######	CMake の設定 #######
+if [ $HOSTTYPE = windows ]; then
+	export CMAKE_GENERATOR="Unix Makefiles"
+	export CMAKE_MAKE_PROGRAM=/usr/bin/make.exe
+fi
+
 ####### cd の絶対パス履歴保存 cdr ####### 
 if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]]; then
     autoload -Uz chpwd_recent_dirs cdr add-zsh-hook

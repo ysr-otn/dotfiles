@@ -46,7 +46,7 @@
 	  f s
 	  
 	  ;; helm
-	  helm ac-helm helm-ag helm-c-yasnippet helm-gtags helm-projectile helm-swoop helm-ispell helm-descbinds
+	  helm ac-helm helm-ag helm-c-yasnippet helm-gtags helm-projectile helm-swoop helm-ispell helm-descbinds helm-company
 	  
 	  ;; ace-jump
 	  ace-jump-mode	ace-pinyin	ace-window
@@ -107,7 +107,7 @@
 	  mermaid-mode
 	  
 	  ;; calender tool
-	  calfw calfw-org
+	  calfw calfw-org request-deferred
 	  ))
 
 (if (>= (string-to-number emacs-version) 25)
@@ -638,12 +638,11 @@
 ;(load "init-auto-complete.el")
 
 ;;; for lsp(Language Server Protocol Support for Emacs)
-(if (not (eq system-type 'windows-nt))	; Windwos 環境で重くなるので無効化
+(if (not (eq system-type 'windows-nt))	; Windwos 環境で動作しないので無効化
 	(load "init-lsp.el"))
 
 ;;; for company(auto-complete 的な補完機能)
-(if (not (eq system-type 'windows-nt))	; Windwos 環境で重くなるので無効化
-	(load "init-company.el"))
+(load "init-company.el")
 
 ;;; for yasnippet
 (load "init-yasnippet.el")
