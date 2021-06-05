@@ -8,21 +8,21 @@ Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
   - <2021-05-30 Sun 21:59>
-	- .zshrc に Windows の CMake の設定を追加
+    - .zshrc に Windows の CMake の設定を追加
     - helm-company の設定を追加
     - request-deferred の設定を追加
     - company を Windows 環境下でも有効化
-	- company + clang の設定を追加
+    - company + clang の設定を追加
   - <2021-05-28 Fri 22:29>
-	- Windows の Python 実行環境を Anaconda からオリジナルの Python に変更
+    - Windows の Python 実行環境を Anaconda からオリジナルの Python に変更
   - <2021-05-03 Mon 23:14>
     - org-babel で export 時にコードブロックを再評価しない設定を追加
   - <2021-05-03 Mon 13:35>
     - lsp-mode を最新の環境にアップデート
   - <2021-04-29 Thu 22:58>
-	- org-reveal-export-to-html のファイル名を hoge_presen.html にする設定を追加
+    - org-reveal-export-to-html のファイル名を hoge_presen.html にする設定を追加
   - <2021-04-29 Thu 21:45>
-	- init-org-mode.el で add-hook で実装していた org ロード後の設定を with-eval-after-load に変更
+    - init-org-mode.el で add-hook で実装していた org ロード後の設定を with-eval-after-load に変更
   - <2021-04-28 Wed 00:06>
     - calfw-syobocal.el の設定を追加
     - .gitignore に .emacs.d/elisp/misc/calfw-syobocal.el の設定を追加
