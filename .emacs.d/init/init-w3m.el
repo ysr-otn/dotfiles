@@ -41,8 +41,15 @@
 		 (define-key w3m-mode-map "h"	'backward-char)
 		 (define-key w3m-mode-map "j"	'next-line)
 		 (define-key w3m-mode-map "k"	'previous-line)
+		 (define-key w3m-mode-map [S-return]	'w3m-view-url-with-browse-url)
 		 (define-key w3m-mode-map [mouse-3]		'w3m-view-previous-page)
 		 (define-key w3m-mode-map [S-mouse-3]	'w3m-view-next-page)
+         ))
+
+;;; Wanderlust の mime-mode で w3m を使用する時のキー設定
+(setq w3m-minor-mode-hook
+      '(lambda () 
+		 (define-key w3m-minor-mode-map [S-return]	'w3m-view-url-with-browse-url)
          ))
 
 (setq w3m-use-cookies t)
