@@ -1,11 +1,10 @@
 (autoload 'navi2ch "navi2ch" nil t)
 
 ;;; *bbstable の URL
-; (setq navi2ch-list-valid-host-regexp
-; 	  (concat "\\("
-; 			  (regexp-opt '(".2ch.net" ".5ch.net" ".bbsp=ink.com" ".mach=ibbs.com" ".mach=i.to"))
-; 			  "\\)\\'"))
-;(setq navi2ch-list-bbstable-url "http://menu.5ch.net/bbstable.html")
+(setq navi2ch-list-valid-host-regexp
+	  (concat "\\("
+			  (regexp-opt '(".2ch.net" ".5ch.net" ".bbsp=ink.com" ".mach=ibbs.com" ".mach=i.to"))
+			  "\\)\\'"))
 (setq navi2ch-list-bbstable-url "http://menu.5ch.net/bbsmenu.html")
 
 
