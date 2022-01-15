@@ -2,6 +2,50 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+####### Set Host #######
+set -x HOSTNAME (hostname)
+
+
+if [ $HOSTNAME = imglinux110 ]
+	set -x HOSTTYPE linux
+else if [ "$OS" ]
+	set -x HOSTTYPE windows
+else if [ $HOSTNAME = PC-PA1710C2120R -a (uname -s) = Linux ]
+	set -x HOSTTYPE ubuntu
+else
+	set -x HOSTTYPE i386		# mac
+end
+
+
+#######	Aliasis  #######
+# 通常コマンドのデフォルトオプションの追加
+alias la='ls -a'
+alias lf='ls -FA'
+alias ll='ls -lA'
+alias ls='ls -F'
+alias cp='cp -i'
+alias rm='rm -i'
+alias mv='mv -i'
+
+# lv に色ずけを許可する
+alias lv='lv -c'
+
+# その他
+alias quit='exit'
+
+if [ $HOSTTYPE = i386 ]
+   # ドットファイルの表示/非表示
+   alias Showdotfiles='defaults write com.apple.finder AppleShowAllFiles -boolean TRUE && killall Finder'
+   alias Hidedotfiles='defaults write com.apple.finder AppleShowAllFiles -boolean FALSE && killall Finder'
+   
+   # 画像ビューア qlmanage の ql(と古の X11 画像ヒューア xv)のエイリアスを作成
+   alias ql='qlmanage -p $argv &> /dev/null'
+   alias xv='qlmanage -p $argv &> /dev/null'
+   
+   # jnethack の文字コードを cocot を使って UTF-8 に変換する
+   alias jnethack='cocot -t UTF-8 -p eucjp -- jnethack'
+end
+
 
 # for peco z
 function peco_z
