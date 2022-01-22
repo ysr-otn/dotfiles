@@ -44,39 +44,55 @@ set -x GITHUB_DOTFILE_DIR $HOME/Development/github/ysr-otn/dotfiles
 
 # llvm 関係のパス設定
 if [ $HOSTTYPE = i386 ]
-	set PATH /usr/local/opt/llvm/bin:$PATH
-	set DYLD_LIBRARY_PATH /usr/local/opt/llvm/lib:$DYLD_LIBRARY_PATH 
-	set LDFLAGS "-L/usr/local/opt/llvm/lib"
-	set CPPFLAGS "-I/usr/local/opt/llvm/include"	
+	set -x PATH /usr/local/opt/llvm/bin:$PATH
+	set -x DYLD_LIBRARY_PATH /usr/local/opt/llvm/lib:$DYLD_LIBRARY_PATH 
+	set -x LDFLAGS "-L/usr/local/opt/llvm/lib"
+	set -x CPPFLAGS "-I/usr/local/opt/llvm/include"	
 else if [ $HOSTTYPE = windows ]
-	set PATH /cygdrive/c/msys64/mingw64/bin:$PATH
-	set DYLD_LIBRARY_PATH /cygdrive/c/msys64/mingw64/lib:$DYLD_LIBRARY_PATH 
-	set LDFLAGS "-L/cygdrive/c/msys64/mingw64/lib"
-	set CPPFLAGS "-I/cygdrive/c/msys64/mingw64/include"	
+	set -x PATH /cygdrive/c/msys64/mingw64/bin:$PATH
+	set -x DYLD_LIBRARY_PATH /cygdrive/c/msys64/mingw64/lib:$DYLD_LIBRARY_PATH 
+	set -x LDFLAGS "-L/cygdrive/c/msys64/mingw64/lib"
+	set -x CPPFLAGS "-I/cygdrive/c/msys64/mingw64/include"	
 end
 
 ####### Emacs Environment ########
-set EMACS_DIR $HOME/.inits/share/emacs
-set EMACS_STARTUP $EMACS_DIR/startup
-set EMACS_SITE_LISP $HOME/Tools/$HOSTTYPE/share/emacs/site-lisp
-set EMACS_INFO $HOME/Tools/$HOSTTYPE/share/info
-set EMACS_INFO2 $HOME/Tools/$HOSTTYPE/info
+set -x EMACS_DIR $HOME/.inits/share/emacs
+set -x EMACS_STARTUP $EMACS_DIR/startup
+set -x EMACS_SITE_LISP $HOME/Tools/$HOSTTYPE/share/emacs/site-lisp
+set -x EMACS_INFO $HOME/Tools/$HOSTTYPE/share/info
+set -x EMACS_INFO2 $HOME/Tools/$HOSTTYPE/info
 
 #######	C/C++ の設定  #######
 if [ $HOSTTYPE = i386 ]
 	# Catalina 以降の Mac での stdio.h のインクルードエラー対策
-	set SDKROOT (xcrun --sdk macosx --show-sdk-path)
+	set -x SDKROOT (xcrun --sdk macosx --show-sdk-path)
 end
 
 #######	Python の設定  #######
 if [ $HOSTTYPE = i386 -o $HOSTTYPE = ubuntu ]
-	set PYENV_ROOT "$HOME/.pyenv"
-	set PATH "$PYENV_ROOT/bin:$PATH"
+	set -x PYENV_ROOT "$HOME/.pyenv"
+	set -x PATH "$PYENV_ROOT/bin:$PATH"
 	pyenv init - | source
 else if [ $HOSTTYPE = windows ]
-	set PATH "$HOME/AppData/Local/Programs/Python/Python39:$HOME/AppData/Local/Programs/Python/Python39/Scripts:$PATH"
+	set -x PATH "$HOME/AppData/Local/Programs/Python/Python39:$HOME/AppData/Local/Programs/Python/Python39/Scripts:$PATH"
 end
 
+#######	Go の設定 #######
+set -x PATH $HOME/go/bin:$PATH
+
+#######	Haskell の設定 #######
+set -x PATH $HOME/.cabal/bin:$PATH
+
+#######	Node.js の設定 #######
+if [ $HOSTTYPE = i386 ]
+	set -x PATH $HOME/.nodebrew/current/bin:$PATH
+end
+
+#######	CMake の設定 #######
+if [ $HOSTTYPE = windows ]
+	set -x CMAKE_GENERATOR="Unix Makefiles"
+	set -x CMAKE_MAKE_PROGRAM=/usr/bin/make.exe
+end
 
 
 #######	Aliasis  #######
