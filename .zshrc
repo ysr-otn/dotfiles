@@ -268,3 +268,11 @@ fi
 
 ######### Private setting #########
 source $GITHUB_DOTFILE_DIR/.zshrc-private
+
+
+######### インタラクティブシェルで fish が存在すれば zsh の変りに fish を実行 #########
+if [[ -o interactive ]]; then
+	if type "fish" > /dev/null 2>&1; then
+		exec fish
+	fi
+fi
