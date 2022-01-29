@@ -270,9 +270,22 @@ fi
 source $GITHUB_DOTFILE_DIR/.zshrc-private
 
 
-######### インタラクティブシェルで fish が存在すれば zsh の変りに fish を実行 #########
-if [[ -o interactive ]]; then
-	if type "fish" > /dev/null 2>&1; then
-		exec fish
+
+######### fish を起動 #########
+
+#  tmux から起動している時はシェルの深さが 3 の時，それ以外は 1 の時に限定して fish を起動
+#  (fish 起動後に zsh を起動した時に再度 fish が起動されないようにするため)
+if [ $TMUX ]; then
+	FISH_EXE_SHLVL=3
+else
+	FISH_EXE_SHLVL=1
+fi
+
+if [ $SHLVL -eq $FISH_EXE_SHLVL ]; then
+    # インタラクティブシェルで fish が存在すれば zsh の変りに fish を実行 #########
+	if [[ -o interactive ]]; then
+		if type "fish" > /dev/null 2>&1; then
+			exec fish
+		fi
 	fi
 fi
