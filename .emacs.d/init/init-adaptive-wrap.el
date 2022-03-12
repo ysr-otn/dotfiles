@@ -2,5 +2,6 @@
 
 (setq-default adaptive-wrap-extra-indent 1)
 (add-hook 'visual-line-mode-hook #'adaptive-wrap-prefix-mode)
-(global-visual-line-mode +1)
+;;; 初期値は無効にしておく
+(global-visual-line-mode 0)
 (add-hook 'org-mode-hook 'visual-line-mode)  ;; For org macros

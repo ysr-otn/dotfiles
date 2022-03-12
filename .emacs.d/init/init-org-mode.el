@@ -1,8 +1,9 @@
 ;;; コードブロックをそのモードと同じ色付けをする
 (setq org-src-fontify-natively t)
 
-;;; org-babel で export 時にコードブロックを再評価しない
-(setq org-export-use-babel nil)
+;;; org-babel で export 時にコードブロックを再評価する
+;;; (nil にして再評価しないようにすると ditta の export が変になるので t としておく)
+(setq org-export-use-babel t)
 
 ;;; for org-present
 
@@ -122,6 +123,18 @@ org-html-link関数内より。"
 								 (R . t)
 								 ))
 			 
+  ; org-babel のアウトプットに ANSI カラーエスケープが含まれている場合に色付けして結果を記述する
+  ; https://emacs.stackexchange.com/questions/44664/apply-ansi-color-escape-sequences-for-org-babel-results
+  (defun ek/babel-ansi ()
+	(when-let ((beg (org-babel-where-is-src-block-result nil nil)))
+	  (save-excursion
+		(goto-char beg)
+		(when (looking-at org-babel-result-regexp)
+		  (let ((end (org-babel-result-end))
+				(ansi-color-context-region nil))
+			(ansi-color-apply-on-region beg end))))))
+  (add-hook 'org-babel-after-execute-hook 'ek/babel-ansi)
+  
   ;; for org-tree-slide-move
   (load "org-tree-slide")
 			   
