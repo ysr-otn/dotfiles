@@ -17,7 +17,7 @@
 				"C:\\msys64\\mingw64\\bin;"
 				(concat (substitute-in-file-name "$HOME") "\\.gem\\ruby\\2.6.0\\gems\\taskjuggler-3.7.1\\bin;")
 				(concat (substitute-in-file-name "$HOME") "\\Tools\\windows\\bin;")
-				"C:\\cygwin64\\opt\\glo656wb\\bin;"
+				"C:\\cygwin64\\opt\\glo668wb\\bin;"
 				"C:\\cygwin64\\opt\\cmigemo-default-win64;"
 				"C:\\kakasi\\bin;"
 				(concat (substitute-in-file-name "$HOME") "\\scoop\\apps\\openjdk\\current\\bin;")
@@ -38,7 +38,7 @@
 		"c:/msys64/bin"
 		"~/.gem/ruby/2.6.0/gems/taskjuggler-3.7.1/bin"
 		"~/Tools/windows/bin"
-		"c:/cygwin64opt/glo656wb/bin"
+		"C:\\cygwin64\\opt\\glo668wb\\bin;"
 		"c:/cygwin64opt/cmigemo-default-win64"
 		"c:/kakasi/bin"
 		"~/scoop/apps/openjdk/current/bin"

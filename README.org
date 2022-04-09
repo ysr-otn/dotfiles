@@ -7,6 +7,11 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2022-04-09 Sat 22:52>
+	- migemo の migemo-init 実行順序を修正
+    - org-mode の TaskJuggler のデフォルトのプロジェクトの日程長を変更
+    - emacs のフレームの設定を新しいノート PC にも対応
+    - Windows 用の emacs の global のパスを新しいノート PC に合せて修正
   - <2022-03-12 Sat 22:51>
     - emacs の adaptive-wrap の visual-line-mode をデフォルトでは無効に変更
     - org-babel で export 時にコードブロックを再評価するように変更

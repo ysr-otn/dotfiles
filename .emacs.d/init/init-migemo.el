@@ -5,8 +5,7 @@
   (setq migemo-user-dictionary nil)
   (setq migemo-regex-dictionary nil)
   (load-library "migemo")
-  (migemo-init)
-
+  
   ;;; 環境毎の設定
   (cond ((string= (getenv "HOSTTYPE") "linux")
 		 (progn
@@ -27,6 +26,8 @@
 		   (setq migemo-coding-system 'utf-8-unix)
 		   )))
 
+  (migemo-init)
+  
   ;;; migemo を C-q で無効化
   (define-key isearch-mode-map "\C-q" 'migemo-toggle-isearch-enable)
 
