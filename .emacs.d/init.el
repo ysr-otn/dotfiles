@@ -638,8 +638,21 @@
 ;(load "init-auto-complete.el")
 
 ;;; for lsp(Language Server Protocol Support for Emacs)
-(if (not (eq system-type 'windows-nt))	; Windwos 環境で動作しないので無効化
-	(load "init-lsp.el"))
+; (if (not (eq system-type 'windows-nt))	; Windwos 環境で動作しないので無効化
+; 	(load "init-lsp.el"))
+
+(use-package eglot
+  :ensure t
+  :config
+  (add-to-list 'eglot-server-programs '(c-mode . ("clangd")))
+  (add-to-list 'eglot-server-programs '(c++-mode . ("clangd")))
+  (add-to-list 'eglot-server-programs '(python-mode . ("pyls")))
+  (add-hook 'c-mode-hook 'eglot-ensure)
+  (add-hook 'c++-mode-hook 'eglot-ensure)
+  (add-hook 'rustic-mode-hook 'eglot-ensure)
+  (define-key eglot-mode-map (kbd "C-c e f") 'eglot-format)
+  (define-key eglot-mode-map (kbd "C-c e n") 'eglot-rename)
+  )
 
 ;;; for company(auto-complete 的な補完機能)
 (load "init-company.el")
