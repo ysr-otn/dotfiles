@@ -24,8 +24,13 @@
 ;; http の melpa の接続エラーが発生したので https の方に切り替え
 ;;(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-;; org を追加
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+;; gnu
+(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
+;; nongnu
+(add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/") t)
+
+
+
 ;; Marmaladeを追加(見付からないので無効化)
 ;; (add-to-list 'package-archives  '("marmalade" . "http://marmalade-repo.org/packages/"))
 ;; www.e6h.orgを追加(見付からないので無効化)
@@ -55,17 +60,17 @@
 	  ag google-translate migemo wgrep wgrep-ag ripgrep deadgrep
 	  
 	  ;; buffer/window control tools
-	  powerline elscreen minibuf-isearch minimap point-undo popup popwin session highlight-symbol
-	  buffer-expose dimmer
+	  powerline elscreen minibuf-isearch minimap popup popwin session highlight-symbol
+	  buffer-expose dimmer volatile-highlights
 	  
 	  ;; misc
-	  anzu god-mode multiple-cursors undo-tree undohist cp5022x japanese-holidays adaptive-wrap wttrin rotate csv-mode
+	  anzu god-mode multiple-cursors undo-tree undohist cp5022x japanese-holidays adaptive-wrap wttrin rotate csv-mode smartrep
 	  
 	  ;; auto-complete(company を使うようになったので
 	  ;auto-complete auto-complete-clang-async fuzzy
 	  
 	  ;;; lsp
-	  lsp-mode lsp-ui company-lsp clang-format ccls
+	  lsp-mode lsp-ui clang-format ccls
 	  
 	  ;; company
 	  company company-quickhelp
@@ -86,7 +91,7 @@
 	  erlang ess
 	  
 	  ;; org-mode
-	  org-plus-contrib org-tree-slide ox-reveal htmlize slime gnuplot ob-mermaid
+	  org-contrib org-tree-slide ox-reveal htmlize slime gnuplot ob-mermaid
 	  
 	  ;; markdown-mode
 	  markdown-mode
@@ -530,7 +535,9 @@
 (load "mylisp.el")
 
 ;;; for text-adjust
-(load "text-adjust.el")
+;;; emacs-28 ではエラーが出るので解消されるまで無効化
+(if (<= (string-to-number emacs-version) 26)
+	(load "text-adjust.el"))
 
 ;;; for dmacro(自動で emacs のマクロを作成)
 (load "init-dmacro.el")

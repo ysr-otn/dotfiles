@@ -31,7 +31,7 @@
 
 ;;; プログラミング向けフォント Migu 2M を使用
 ;;; http://mix-mplus-ipa.osdn.jp/migu/
-(set-default-font "Migu 2M-14")
+(set-frame-font "Migu 2M-14")
 
 ;;; Osaka フォントを等幅フォントにする
 ;;; http://macemacsjp.sourceforge.jp/index.php?CocoaEmacs#j9873729
