@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2022-08-17 Wed 17:17>
+    - .emacs.d 以下の Mac 環境の変更点をコミット
   - <2022-04-09 Sat 22:52>
 	- migemo の migemo-init 実行順序を修正
     - org-mode の TaskJuggler のデフォルトのプロジェクトの日程長を変更
