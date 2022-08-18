@@ -1,7 +1,7 @@
 ;;; revive.el --- Resume Emacs -*- coding: euc-jp -*-
-;;; (c) 1994-2014 by HIROSE Yuuji [yuuji@gentei.org]
-;;; $Id: revive.el,v 2.22 2014/04/02 14:25:14 yuuji Exp $
-;;; Last modified Wed Apr  2 23:25:14 2014 on firestorm
+;;; (c) 1994-2019 by HIROSE Yuuji [yuuji>at<gentei.org]
+;;; $Id: revive.el,v 2.25 2019/11/04 01:57:24 yuuji Exp $
+;;; Last modified Mon Nov  4 10:57:11 2019 on firestorm
 
 ;;;[[[   NOTICE 注意 NOTICE 注意 NOTICE 注意 NOTICE 注意 NOTICE 注意   ]]]
 ;;;--------------------------------------------------------------------------
@@ -126,7 +126,8 @@
 ;;;
 ;;;	  This program is distributed as a free  software. The author is
 ;;;	not responsible  for  any  possible   defects   caused  by  this
-;;;	software.
+;;;	software.  This software can be treated with: ``The 2-Clause BSD
+;;;	License''(since 2017-09-10, revive.el 2.24).
 ;;;
 ;;;	  Comments  and bug   reports  are welcome. Don't  hesitated  to
 ;;;	report.  My possible e-mail address is following.
@@ -228,7 +229,7 @@
 ;;; Code:
 
 (defconst revive:version
-  "$Id: revive.el,v 2.22 2014/04/02 14:25:14 yuuji Exp $"
+  "$Id: revive.el,v 2.25 2019/11/04 01:57:24 yuuji Exp $"
   "Version of revive.el")
 
 (defconst revive:version-prefix ";;;")
@@ -703,12 +704,14 @@ Variable-List is a return value of revive:varlist."
     (widen)
     (goto-char (point-min))
     (and (search-forward revive:version-prefix nil t)
-	 (goto-char (match-beginning 0)) (kill-line 1))
+	 (goto-char (match-beginning 0))
+	 (delete-region (point) (progn (forward-line 1) (point))))
     (insert (format "%s%s\n" revive:version-prefix revive:version))
     (setq num (or num 1))
     (if (re-search-forward (format "^(%d" num) nil t)
 	(progn (goto-char (match-beginning 0))
-	       (kill-sexp 1) (delete-char 1))
+	       (delete-region (point) (progn (forward-list 1)(point)))
+	       (delete-char 1))
       (goto-char (point-max)))
     (delete-blank-lines)
     (if (not (bolp)) (newline 1))
@@ -732,25 +735,24 @@ Variable-List is a return value of revive:varlist."
     (revive:restore-value (car (cdr buflist)))
     (while blist
       (setq x (car blist) success nil)
-      (if (setq command (or (assq (revive:prop-major-mode x) mmc-alist)
-			    (assoc (revive:prop-buffer-name x) mmc-alist)))
-	  (condition-case err
+      (condition-case err
+	  (if (setq command (or (assq (revive:prop-major-mode x) mmc-alist)
+				(assoc (revive:prop-buffer-name x) mmc-alist)))
 	      (let ((noninteractive nil))
 		(if (fboundp (cdr command))
 		    (progn
 		      (call-interactively (cdr command))
 		      (setq success t))))
-	    ;;(funcall (cdr command))
-	    (error (message "%s: %s." (cdr command) err) (sit-for 1)))
-	(if (revive:find-file (revive:prop-file-name x))
-	    (progn
-	      (if (and (not (eq (revive:prop-major-mode x) major-mode))
-		       (fboundp (revive:prop-major-mode x)))
-		  (if (commandp (revive:prop-major-mode x))
-		      (call-interactively (revive:prop-major-mode x))
-		    (funcall (revive:prop-major-mode x))))
-	      (setq success t)
-	      )))
+	    (if (revive:find-file (revive:prop-file-name x))
+		(progn
+		  (if (and (not (eq (revive:prop-major-mode x) major-mode))
+			   (fboundp (revive:prop-major-mode x)))
+		      (if (commandp (revive:prop-major-mode x))
+			  (call-interactively (revive:prop-major-mode x))
+			(funcall (revive:prop-major-mode x))))
+		  (setq success t))))
+	    ;;(funcall (cdr command)))
+	(error (message "%s: %s." (cdr command) err) (sit-for 1)))
       (cond
        (success
 	(and (not (string= (revive:prop-buffer-name x) (buffer-name)))
@@ -780,8 +782,8 @@ Configuration should be saved by save-current-configuration."
 			   (buffer-substring
 			    (point)
 			    (prog2 (end-of-line) (point)))))
-	     (y-or-n-p
-	      "Configuration file's version conflicts. Continue?"))
+	     (not (y-or-n-p
+		   "Configuration file's version conflicts. Continue?")))
 	(error "Configuration file is old.  Please update."))
     (if (null (re-search-forward (format "^(%d" num) nil t))
 	(error "Configuration empty."))
@@ -902,8 +904,17 @@ This functionality is considered to be migrated from `twittering-mode'."
 (provide 'revive)
 
 
-;; $Id: revive.el,v 2.22 2014/04/02 14:25:14 yuuji Exp $
+;; $Id: revive.el,v 2.25 2019/11/04 01:57:24 yuuji Exp $
 ;; $Log: revive.el,v $
+;; Revision 2.25  2019/11/04 01:57:24  yuuji
+;; Update copyright line
+;;
+;; Revision 2.24  2017/11/30 03:21:59  yuuji
+;; Summary: Wrap another 'call-interactively with condition-case.
+;;
+;; Revision 2.23  2015/03/20 04:03:45  yuuji
+;; Summary: kill-sexp replaced to delete-region
+;;
 ;; Revision 2.22  2014/04/02 14:25:14  yuuji
 ;; Check existence of buffer
 ;;
