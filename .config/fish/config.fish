@@ -62,3 +62,10 @@ function fish_user_key_bindings
   # C-x C-z
   bind \cx\cx peco_z
 end
+
+
+# コマンドラインから天気を取得するスクリプト wttrin(https://linuxfan.info/wttr-in)
+function wttrin -a location
+  set -q location[1] || set location 大阪
+  curl ja.wttr.in/$location
+end
