@@ -8,7 +8,8 @@
 ;; for elscreen-howm
 (load "elscreen-howm")
 ;; for elscreen-wl
-(if (not (eq system-type 'windows-nt))	; Windows 環境でエラーが出るので読み込み廃止
+(if (and (not (eq system-type 'windows-nt))	; Windows 環境でエラーが出るので読み込み廃止
+		 (< (string-to-number emacs-version) 28))	;; Emacs 28.1 環境でエラーが出るので読み込み禁止
 	(load "elscreen-wl"))
 ;; for elscreen-dired
 (load "elscreen-dired")
