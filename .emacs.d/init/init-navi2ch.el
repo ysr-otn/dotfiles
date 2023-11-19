@@ -3,7 +3,7 @@
 ;;; *bbstable の URL
 (setq navi2ch-list-valid-host-regexp
 	  (concat "\\("
-			  (regexp-opt '(".2ch.net" ".5ch.net" ".bbsp=ink.com" ".mach=ibbs.com" ".mach=i.to"))
+			  (regexp-opt '(".2ch.net" ".5ch.net" ".bbspink.com" ".machibbs.com" ".machi.to"))
 			  "\\)\\'"))
 (setq navi2ch-list-bbstable-url "http://menu.5ch.net/bbsmenu.html")
 
@@ -14,21 +14,27 @@
 
 
 ;;; dat アクセスのために 2chproxy.pl をプロキシに設定
-(setq navi2ch-net-http-proxy "127.0.0.1:8080")
+;(setq navi2ch-net-http-proxy "127.0.0.1:8080")
+(setq navi2ch-net-http-proxy "localhost:9080")
+
+;;; ファイル受信に GZIP エンコーディングを使わない
+(setq navi2ch-net-accept-gzip nil)
+
+;;; HTTP/1.1 を使用する
+(setq navi2ch-net-enable-http11 t)
+
 
 ;;; navi2ch 実行時に 2chproxy.pl の過去のプロセスとファイルを削除して 2chproxy.pl を実行
-(add-hook 'navi2ch-load-hook
-		  '(lambda ()
-			 (progn
-			   (shell-command-to-string "2chproxy.pl --kill")
-			   (shell-command-to-string "rm -f /tmp/2chproxy.pid")
-			   (start-process "2chproxy" "*2chproxy*" (substitute-in-file-name "$HOME/Tools/share/bin/2chproxy.pl"))
-			   )))
+; (add-hook 'navi2ch-load-hook
+; 		  '(lambda ()
+; 			 (progn
+; 			   (start-process "proxy2ch" "*proxy2ch*" (substitute-in-file-name "$HOME/Tools/share/bin/proxy2ch") "-s" "--chunked" "--api" "a6kwZ1FHfwlxIKJWCq4XQQnUTqiA1P:ZDzsNQ7PcOOGE2mXo145X6bt39WMz6" "--api-server" "api.5ch.net" "--api-auth-xua" "\"JaneStyle/4.23\"" "--api-dat-xua" "\"JaneStyle/4.23\"" "-a" "\"Monazilla/1.00 JaneStyle/4.23 Windows/10.0.22000\""))
+; 			   ))
 
-;;; emacs 終了時に 2chproxy.pl を終了
-(add-hook 'navi2ch-kill-emacs-hook
-		  '(lambda ()
-			 (shell-command-to-string "2chproxy.pl --kill")))
+;;; navi2ch 終了時に proxy2ch を終了
+; (add-hook 'navi2ch-exit-hook
+; 		  '(lambda ()
+; 			 (shell-command-to-string "kill -9 `ps aux | grep proxy2ch | grep -v grep | awk '{print $2}'`")))
 
 
 (add-hook 'navi2ch-list-mode-hook
