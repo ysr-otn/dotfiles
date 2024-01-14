@@ -780,6 +780,9 @@
 ;;; for calfw(カレンダーツール)
 (load "init-calfw.el")
 
+;;; for el-easydraw
+(load "init-el-easydraw.el")
+
 
 ;;;
 ;;; プライベートの設定を読み込み
