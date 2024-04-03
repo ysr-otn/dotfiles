@@ -8,7 +8,7 @@
 ;;; 環境変数 PATH の追加
 (setenv "PATH"
 		(concat "C:\\cygwin64\\opt\\texlive\\2020\\bin\\win32;"
-				"C:\\Program Files\\R\\R-4.0.2\\bin;"
+				"C:\\Program Files\\R\\R-4.2.2\\bin\\x64;"
 				"C:\\ProgramData\\Anaconda3\\Scripts;"
 				"C:\\cygwin64\\usr\\local\\bin;"
 				"C:\\cygwin64\\usr\\bin;"
@@ -28,7 +28,7 @@
 	  (append
 	   (list
 		"c:/cygwin64/opt/texlive/2020/bin/win32"
-		"c:/Program Files/R/R-4.0.2/bin"
+		"c:/Program Files/R/R-4.2.2/bin/x64"
 		"c:/ProgramData/Anaconda3"
 		"c:/ProgramData/Anaconda3/Scripts"
 		"c:/cygwin64/usr/local/bin"

@@ -630,26 +630,35 @@ max-fill-column, min-fill-column を利用する"
 
 
 ;;; TV, AV, SV, BV 計算
-(defun TV (T)
-  (log (/ 1.0 T)
+(defun TV (ss)
+  (log (/ 1.0 ss)
 	   2))
 
-(defun AV (A)
-  (log (expt A 2)
+(defun AV (fno)
+  (log (expt fno 2)
 	   2))
 
-(defun SV (S)
-  (log (* 0.3 S)
+(defun SV (iso-gain)
+  (log (* 0.3 iso-gain)
 	   2))
 
-(defun EV (T A)
-  (+ (TV T)
-	 (AV A)))
+(defun EV (ss fno)
+  (+ (TV ss)
+	 (AV fno)))
 
-(defun BV (T A S)
-  (+ (TV T)
-	 (AV A)
-	 (- (SV S))))
+(defun BV (ss fno iso-gain)
+  (+ (TV ss)
+	 (AV fno)
+	 (- (SV iso-gain))))
+
+(defun SS (tv)
+  (/ 1.0 (expt 2 tv)))
+
+(defun FNO (av)
+  (expt (expt 2 av) 0.5))
+  
+(defun ISO-GAIN (sv)
+  (/ (expt 2 sv) 0.3))
 
 
 ;;; *scratch の保存
