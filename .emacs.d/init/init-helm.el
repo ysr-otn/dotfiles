@@ -3,7 +3,7 @@
 ;(require 'helm)
 
 ;; https://monolog.linkode.co.jp/articles/kotoh/Emacs%E3%81%A7helm%E3%82%92%E4%BD%BF%E3%81%86
-(require 'helm-config)
+(require 'helm)
 (helm-mode 1)
 
 (add-to-list 'helm-completing-read-handlers-alist '(find-file . nil))
@@ -46,7 +46,7 @@
 
 ;; set helm-command-prefix-key to "C-c h"
 (progn
-  (require 'helm-config)
+  (require 'helm)
   (global-unset-key (kbd "C-c h"))
   (custom-set-variables
    '(helm-command-prefix-key "C-c h")))
