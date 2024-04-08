@@ -20,6 +20,7 @@
 .emacs.d/ddskk/study
 .emacs.d/elisp/misc/hideif-extension.el
 .emacs.d/elisp/misc/calfw-syobocal.el
+.emacs.d/elisp/el-easydraw
 .emacs.d/elpa
 .emacs.d/recentf
 .emacs.d/scratch
@@ -33,3 +34,5 @@
 .emacs.d/semanticdb/
 .emacs.d/srecode-map.el
 .emacs.d/image-dired
+.emacs.d/eln-cache
+.emacs.d/server

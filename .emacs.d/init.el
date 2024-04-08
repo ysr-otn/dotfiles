@@ -594,7 +594,8 @@
 (load "init-adaptive-wrap.el")
 
 ;;; for dimmer(カーソルのあるバッファを強調)
-(load "init-dimmer.el")
+(if (< (string-to-number emacs-version) 29)	; emacs-29 系では正常動作しないので無効化
+	(load "init-dimmer.el"))
 
 ;;; for howm
 (load "init-howm.el")

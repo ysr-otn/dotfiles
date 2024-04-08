@@ -7,6 +7,10 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2024-04-08 Mon 10:08>
+    - Emacs の dimmer の設定を Emacs-29 系以降は無効化
+    - Windows 環境下の Emacs の exec-path の設定誤りを修正
+    - .gitignore に .emacs.d/elisp/el-easydraw, .emacs.d/eln-cache, .emacs.d/server を追加
   - <2024-04-03 Wed 17:35>
     - Windows 環境下の emacs-29.2 の設定を追加
   - <2024-04-03 Wed 13:33>
