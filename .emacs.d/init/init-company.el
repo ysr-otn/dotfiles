@@ -17,9 +17,9 @@
 (define-key company-active-map (kbd "C-h") nil)  
 
 ;; 各種メジャーモードでも C-M-iで company-modeの補完を使う
-(define-key emacs-lisp-mode-map (kbd "C-M-i") 'company-complete)
+(define-key emacs-lisp-mode-map (kbd "M-C-i") 'company-complete)
 (define-key c-mode-map		    (kbd "M-C-i") 'company-clang)
-(define-key c++-mode-map        (kbd "M-C-i") ''company-clang)
+(define-key c++-mode-map        (kbd "M-C-i") 'company-clang)
 (delq 'company-files company-backends)
 (add-to-list 'company-backends 'company-files)
 

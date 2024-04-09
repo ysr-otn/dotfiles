@@ -36,3 +36,9 @@
 .emacs.d/image-dired
 .emacs.d/eln-cache
 .emacs.d/server
+.config/fish/fish_plugins
+.config/fish/fish_variables
+.config/fish/fish_variables.lock
+.config/fish/completions/
+.config/fish/conf.d/
+.config/fish/functions/

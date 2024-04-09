@@ -80,8 +80,8 @@
 
 (with-eval-after-load 'company
   (require 'helm-company)
-  (define-key company-mode-map (kbd "C-c h") 'helm-company)
-  (define-key company-active-map (kbd "C-c h") 'helm-company))
+  (define-key company-mode-map (kbd "C-c H") 'helm-company)
+  (define-key company-active-map (kbd "C-c H") 'helm-company))
 
 ;;; for helm-migemo(Windos 環境は未だ動作しないので無効化)
 (if (null (eq system-type 'windows-nt))
