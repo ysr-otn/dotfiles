@@ -151,42 +151,41 @@
 ;(require 'nt-script)
 
 
-;	;;; windows 機種依存文字を表示する方法
-;	;;; http://www.ysnb.net/meadow/meadow-users-jp/2012/msg00010.html
-;	
-;	;; 「丸付き数字」「はしごだか」が入った JISメールを読むための設定
-;	(coding-system-put 'iso-2022-jp :decode-translation-table
-;	       '(cp51932-decode japanese-ucs-cp932-to-jis-map))
-;	
-;	;; 「丸付き数字」「はしごだか」が入った JISメールを送るための設定
-;	;; 以下設定をしない場合は、本来の utf-8 で送付 (消極 Windows派になる)
-;	(coding-system-put 'iso-2022-jp :encode-translation-table
-;	      '(cp51932-encode))
-;	
-;	;; 「丸付き数字」「はしごだか」が入った shift-jis のファイルを
-;	;; 保存できるようにする
-;	(coding-system-put 'japanese-shift-jis :decode-translation-table
-;	       '(cp51932-decode japanese-ucs-cp932-to-jis-map))
-;	(coding-system-put 'japanese-shift-jis :encode-translation-table
-;	      '(cp51932-encode))
-;	
-;	
-;	;; 「丸付き数字」「はしごだか」が入った euc-jp のファイルを
-;	;; 保存できるようにする
-;	(coding-system-put 'euc-jp :decode-translation-table
-;	       '(cp51932-decode japanese-ucs-cp932-to-jis-map))
-;	(coding-system-put 'euc-jp :encode-translation-table
-;	      '(cp51932-encode))
-;	
-;	
-;	;; 全角チルダ/波ダッシュをWindowsスタイルにする
-;	(let ((table (make-translation-table-from-alist '((#x301c . #xff5e))) ))
-;	  (mapc
-;	   (lambda (coding-system)
-;	     (coding-system-put coding-system :decode-translation-table table)
-;	     (coding-system-put coding-system :encode-translation-table table)
-;	     )
-;	   '(utf-8 cp932 utf-16le)))
+;;; windows 機種依存文字を表示する方法
+;;; http://www.ysnb.net/meadow/meadow-users-jp/2012/msg00010.html
+;; 「丸付き数字」「はしごだか」が入った JISメールを読むための設定
+(coding-system-put 'iso-2022-jp :decode-translation-table
+       '(cp51932-decode japanese-ucs-cp932-to-jis-map))
+
+;; 「丸付き数字」「はしごだか」が入った JISメールを送るための設定
+;; 以下設定をしない場合は、本来の utf-8 で送付 (消極 Windows派になる)
+(coding-system-put 'iso-2022-jp :encode-translation-table
+      '(cp51932-encode))
+
+;; 「丸付き数字」「はしごだか」が入った shift-jis のファイルを
+;; 保存できるようにする
+(coding-system-put 'japanese-shift-jis :decode-translation-table
+       '(cp51932-decode japanese-ucs-cp932-to-jis-map))
+(coding-system-put 'japanese-shift-jis :encode-translation-table
+      '(cp51932-encode))
+
+
+;; 「丸付き数字」「はしごだか」が入った euc-jp のファイルを
+;; 保存できるようにする
+(coding-system-put 'euc-jp :decode-translation-table
+       '(cp51932-decode japanese-ucs-cp932-to-jis-map))
+(coding-system-put 'euc-jp :encode-translation-table
+      '(cp51932-encode))
+
+
+;; 全角チルダ/波ダッシュをWindowsスタイルにする
+(let ((table (make-translation-table-from-alist '((#x301c . #xff5e))) ))
+  (mapc
+   (lambda (coding-system)
+     (coding-system-put coding-system :decode-translation-table table)
+     (coding-system-put coding-system :encode-translation-table table)
+     )
+   '(utf-8 cp932 utf-16le)))
 
 
 
