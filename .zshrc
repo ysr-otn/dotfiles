@@ -79,8 +79,8 @@ if [ $HOSTTYPE = i386 ]; then
 	export LDFLAGS="-L/usr/local/opt/llvm/lib"
 	export CPPFLAGS="-I/usr/local/opt/llvm/include"	
 elif [ $HOSTTYPE = windows ]; then
-	export PATH=/cygdrive/c/msys64/mingw64/bin:$PATH
-	export DYLD_LIBRARY_PATH=/cygdrive/c/msys64/mingw64/lib:$DYLD_LIBRARY_PATH 
+	export PATH=$PATH:/cygdrive/c/msys64/mingw64/bin
+	export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/cygdrive/c/msys64/mingw64/lib
 	export LDFLAGS="-L/cygdrive/c/msys64/mingw64/lib"
 	export CPPFLAGS="-I/cygdrive/c/msys64/mingw64/include"	
 fi
@@ -273,10 +273,14 @@ source $GITHUB_DOTFILE_DIR/.zshrc-private
 
 ######### fish を起動 #########
 
-#  tmux から起動している時はシェルの深さが 3 の時，それ以外は 1 の時に限定して fish を起動
+#  tmux から起動している時はシェルの深さが 3(Windows の場合は 2)の時，それ以外は 1 の時に限定して fish を起動
 #  (fish 起動後に zsh を起動した時に再度 fish が起動されないようにするため)
 if [ $TMUX ]; then
-	FISH_EXE_SHLVL=3
+	if [ $HOSTTYPE = windows ]; then
+	   FISH_EXE_SHLVL=2
+	else
+	   FISH_EXE_SHLVL=3
+	fi
 else
 	FISH_EXE_SHLVL=1
 fi
@@ -285,7 +289,19 @@ if [ $SHLVL -eq $FISH_EXE_SHLVL ]; then
     # インタラクティブシェルで fish が存在すれば zsh の変りに fish を実行 #########
 	if [[ -o interactive ]]; then
 		if type "fish" > /dev/null 2>&1; then
-			exec fish
+			if [ $HOSTTYPE = windows ]; then
+				# fish 起動時に /bin が PATH の先頭に設定されるので PATH の設定を引き継ぐようにする
+				set -g default-command fish --init-command="set PATH 'string split : $PATH')"
+				# cygwin 上から peco を使えるように, tmux で起動した時は winpty 経由で fish を立ち上げる
+				# (winpty 起動後に tmux を起動するとエラーになるので最初のターミナル起動時は peco は無効化)
+				if [ $SHLVL -eq 2 ]; then
+					exec winpty fish
+				else
+					exec fish
+				fi
+			else
+				exec fish
+			fi
 		fi
 	fi
 fi

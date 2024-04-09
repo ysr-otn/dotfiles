@@ -7,6 +7,12 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2024-04-09 Tue 11:58>
+	- Windows 環境下の Emacs の exec-path, 環境変数 PATH の msys64 関係のパスの優先度を下げる
+	- Windows 環境下の .zshrc の msys64 関係のパスの優先度を下げる
+	- Windows 環境下の fish 用の設定を追加
+  - <2024-04-08 Mon 11:20>
+	- scoop の設定ファイルを ~/.config 以下で github の dotfiles 下の管理に移動
   - <2024-04-08 Mon 10:08>
     - Emacs の dimmer の設定を Emacs-29 系以降は無効化
     - Windows 環境下の Emacs の exec-path の設定誤りを修正
