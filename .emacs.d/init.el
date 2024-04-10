@@ -511,6 +511,9 @@
 			  (number-to-string emacs-major-version)
 			  ".el"))
 
+;;; Emacs から起動するシェルかを判定するための環境変数を設定
+(setenv "SHELL_ON_EMACS" "TURE")
+
 ;;; load init file for each systems
 (cond ((eq system-type 'darwin)
 	   (load "init-darwin.el"))

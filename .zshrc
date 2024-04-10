@@ -272,35 +272,38 @@ source $GITHUB_DOTFILE_DIR/.zshrc-private
 
 
 ######### fish を起動 #########
-
-#  tmux から起動している時はシェルの深さが 3(Windows の場合は 2)の時，それ以外は 1 の時に限定して fish を起動
-#  (fish 起動後に zsh を起動した時に再度 fish が起動されないようにするため)
-if [ $TMUX ]; then
-	if [ $HOSTTYPE = windows ]; then
-	   FISH_EXE_SHLVL=2
+# Emacs からのシェル立ち上げでなければ fish を起動
+# (Emacs の shell-mode として fish との相性が悪いので)
+if [ -z $SHELL_ON_EMACS ]; then
+	#  tmux から起動している時はシェルの深さが 3(Windows の場合は 2)の時，それ以外は 1 の時に限定して fish を起動
+	#  (fish 起動後に zsh を起動した時に再度 fish が起動されないようにするため)
+	if [ $TMUX ]; then
+		if [ $HOSTTYPE = windows ]; then
+			FISH_EXE_SHLVL=2
+		else
+			FISH_EXE_SHLVL=3
+		fi
 	else
-	   FISH_EXE_SHLVL=3
+		FISH_EXE_SHLVL=1
 	fi
-else
-	FISH_EXE_SHLVL=1
-fi
 
-if [ $SHLVL -eq $FISH_EXE_SHLVL ]; then
-    # インタラクティブシェルで fish が存在すれば zsh の変りに fish を実行 #########
-	if [[ -o interactive ]]; then
-		if type "fish" > /dev/null 2>&1; then
-			if [ $HOSTTYPE = windows ]; then
-				# fish 起動時に /bin が PATH の先頭に設定されるので PATH の設定を引き継ぐようにする
-				set -g default-command fish --init-command="set PATH 'string split : $PATH')"
-				# cygwin 上から peco を使えるように, tmux で起動した時は winpty 経由で fish を立ち上げる
-				# (winpty 起動後に tmux を起動するとエラーになるので最初のターミナル起動時は peco は無効化)
-				if [ $SHLVL -eq 2 ]; then
-					exec winpty fish
+	if [ $SHLVL -eq $FISH_EXE_SHLVL ]; then
+		# インタラクティブシェルで fish が存在すれば zsh の変りに fish を実行 #########
+		if [[ -o interactive ]]; then
+			if type "fish" > /dev/null 2>&1; then
+				if [ $HOSTTYPE = windows ]; then
+					# fish 起動時に /bin が PATH の先頭に設定されるので PATH の設定を引き継ぐようにする
+					set -g default-command fish --init-command="set PATH 'string split : $PATH')"
+					# cygwin 上から peco を使えるように, tmux で起動した時は winpty 経由で fish を立ち上げる
+					# (winpty 起動後に tmux を起動するとエラーになるので最初のターミナル起動時は peco は無効化)
+					if [ $SHLVL -eq 2 ]; then
+						exec winpty fish
+					else
+						exec fish
+					fi
 				else
 					exec fish
 				fi
-			else
-				exec fish
 			fi
 		fi
 	fi
