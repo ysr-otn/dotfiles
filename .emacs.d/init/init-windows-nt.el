@@ -210,9 +210,24 @@
                   (set-buffer-process-coding-system 'utf-8-unix
                                                     'utf-8-unix))))
 
-;; Grep
-(defadvice grep (around grep-coding-setup activate)
-  (let ((coding-system-for-read 'utf-8))
-    ad-do-it))
 
+;;; Windows 環境だと lgrep の方が相性が良いので lgrep を使用
+(setq grep-command "lgrep -n -Au8 -Ia ")
 (setq grep-find-command "find . ! -name '*~' -type f -print0 | xargs -0 lgrep -n -Au8 -Ia ")
+(setq grep-use-null-device nil)	; /dev/null を使用しない
+
+;; サブプロセスに渡すパラメータの文字コードを cp932 にする
+;; https://pandanote.info/?p=5347
+(cl-loop for (func args-pos) in '((call-process        4)
+                                  (call-process-region 6)
+                                  (start-process       3))
+         do (eval `(advice-add ',func
+                               :around (lambda (orig-fun &rest args)
+                                         (setf (nthcdr ,args-pos args)
+                                               (mapcar (lambda (arg)
+                                                         (if (multibyte-string-p arg)
+                                                             (encode-coding-string arg 'cp932)
+                                                           arg))
+                                                       (nthcdr ,args-pos args)))
+                                         (apply orig-fun args))
+                               '((depth . 99)))))
