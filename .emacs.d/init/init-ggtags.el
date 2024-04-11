@@ -21,20 +21,18 @@
 
 
 ;;; 複数の GTAGS のプロジェクトを切り替えるための設定
-;;; http://philos0.blog94.fc2.com/blog-entry-38.html をベースに修正
-(defvar parent-project "" "current project parent directory" )
-
-(defun my-project nil "setup my project"
-	   (interactive)
-	   (setq parent-project (expand-file-name (read-file-name "project parent directory : ")))
-	   (setq gtags-rootdir parent-project))
-
-(add-hook 'c-mode-hook 'c-init-for-gtags)
-
-(defun c-init-for-gtags nil
+(defun c-init-for-ggtags ()
   " C mode specific setup for GTAGS. "
-  (cond (parent-project nil) (t (my-project)))
+  ;; "global -p" でプロジェクトのルートディレクトリが得られたら ggtags-project-root にそれを設定
+  (let ((global-output (shell-command-to-string "global -p")))
+	(if (string-match-p ".*GTAGS not found" global-output)
+		(setq ggtags-project-root (shell-command-to-string "global -p"))))
+  ;; ggtags-mode 有効化
   (ggtags-mode 1))
+
+;;; c-mode, c++-mode に ggtags の設定を適用
+(add-hook 'c-mode-hook 'c-init-for-ggtags)
+(add-hook 'c++-mode-hook 'c-init-for-ggtags)
 
 
 ;;; Emacsから外部プロセスを実行するときのコーディングシステムをカレントバッファに合わせる
