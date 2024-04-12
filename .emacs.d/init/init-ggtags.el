@@ -24,11 +24,11 @@
 (defun c-init-for-ggtags ()
   " C mode specific setup for GTAGS. "
   ;; "global -p" でプロジェクトのルートディレクトリが得られたら ggtags-project-root にそれを設定
-  (let ((global-output (shell-command-to-string "global -p")))
-	(if (string-match-p ".*GTAGS not found" global-output)
-		(setq ggtags-project-root (shell-command-to-string "global -p"))))
-  ;; ggtags-mode 有効化
-  (ggtags-mode 1))
+  ;; (コマンドの応答値の末尾に改行があるので削除して global-output に入れる)
+  (let ((global-output (replace-regexp-in-string "\n" "" (shell-command-to-string "global -p"))))
+	(if (not (string-match-p ".*GTAGS not found" global-output))
+		(setq ggtags-project-root global-output))))
+
 
 ;;; c-mode, c++-mode に ggtags の設定を適用
 (add-hook 'c-mode-hook 'c-init-for-ggtags)
