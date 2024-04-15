@@ -3,6 +3,19 @@ if status is-interactive
 end
 
 
+####### PATH #######
+if [ $HOSTTYPE = windows ]
+	# 何故か fish を起動すると zsh の PATH に対して /bin が先頭になって
+	# python 等で /bin 以外の PATH のコマンドを優先したい場合に問題となるので
+	# 一度 /bin を削除してから PATH の末尾に /bin を追加
+	# (/cygdrive/c/msys64/mingw64/bin が PATH の末尾になっているので /cygdrive/c/msys64/mingw64/bin も
+	#  削除して /bin -> /cygdrive/c/msys64/mingw64/bin の優先順位になるように再設定)
+	set PATH (string match -v /bin $PATH)
+	set PATH (string match -v /cygdrive/c/msys64/mingw64/bin $PATH)
+	set PATH $PATH /bin /cygdrive/c/msys64/mingw64/bin
+end
+
+
 #######	Aliasis  #######
 # 通常コマンドのデフォルトオプションの追加
 alias la='ls -a'

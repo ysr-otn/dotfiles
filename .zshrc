@@ -293,7 +293,7 @@ if [ -z $SHELL_ON_EMACS ]; then
 			if type "fish" > /dev/null 2>&1; then
 				if [ $HOSTTYPE = windows ]; then
 					# fish 起動時に /bin が PATH の先頭に設定されるので PATH の設定を引き継ぐようにする
-					set -g default-command fish --init-command="set PATH 'string split : $PATH')"
+					# set -g default-command fish --init-command="set PATH 'string split : $PATH')"
 					# cygwin 上から peco を使えるように, tmux で起動した時は winpty 経由で fish を立ち上げる
 					# (winpty 起動後に tmux を起動するとエラーになるので最初のターミナル起動時は peco は無効化)
 					if [ $SHLVL -eq 2 ]; then

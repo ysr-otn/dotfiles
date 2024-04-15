@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2024-04-15 Mon 09:43>
+    - Windows 環境下の PATH の設定を修正
   - <2024-04-12 Fri 10:23>
     - ggtags の ggtags-project-root の設定が誤っていたので修正
   - <2024-04-11 Thu 18:09>
