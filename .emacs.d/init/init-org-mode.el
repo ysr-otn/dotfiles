@@ -333,7 +333,7 @@ org-html-link関数内より。"
 ;;; アジェンダのフォーマット 
 ;;; (%-12(org-entry-get (point) \"allocate\") は Property の allocate を, %8e は Property の Effort を表示)
 (setq org-agenda-prefix-format
-	  '((agenda . "%2i %-12:c%-12t%14 s %-32(org-entry-get (point) \"allocate\")) %8e ")
+	  '((agenda . "%2i %-12:c%-12t%14 s %-32(org-entry-get (point) \"allocate\") %8e ")
 		(properties . "%12 s")
 		(timeline . "%12 s")
 		(todo . "%2i %-12:c")
