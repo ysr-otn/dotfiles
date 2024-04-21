@@ -21,6 +21,8 @@
 .emacs.d/elisp/misc/hideif-extension.el
 .emacs.d/elisp/misc/calfw-syobocal.el
 .emacs.d/elisp/el-easydraw
+.emacs.d/elisp/misc/cal-japan.el
+.emacs.d/edraw-ui-state.config
 .emacs.d/elpa
 .emacs.d/recentf
 .emacs.d/scratch
