@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2024-04-26 Fri 19:24>
+    - Windows 環境下の zsh と Emacs の taskjuggler の設定を 3.7.2 用に更新
   - <2024-04-21 Sun 17:09>
     - Emacs の eglot の設定を追加
     - Emacs の cal-japan.el の設定を追加

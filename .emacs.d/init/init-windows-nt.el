@@ -13,7 +13,7 @@
 				"C:\\cygwin64\\usr\\local\\bin;"
 				"C:\\cygwin64\\usr\\bin;"
 				"C:\\cygwin64\\bin;"
-				(concat (substitute-in-file-name "$HOME") "\\.gem\\ruby\\2.6.0\\gems\\taskjuggler-3.7.1\\bin;")
+				(concat (substitute-in-file-name "$HOME") "\\.gem\\ruby\\2.6.0\\gems\\taskjuggler-3.7.2\\bin;")
 				(concat (substitute-in-file-name "$HOME") "\\Tools\\windows\\bin;")
 				"C:\\cygwin64\\opt\\glo6612wb\\bin;"
 				"C:\\cygwin64\\opt\\cmigemo-default-win64;"
@@ -36,7 +36,7 @@
 		"c:/cygwin64/usr/local/bin"
 		"c:/cygwin64/usr/bin"
 		"c:/cygwin64/bin"
-		"~/.gem/ruby/2.6.0/gems/taskjuggler-3.7.1/bin"
+		"~/.gem/ruby/2.6.0/gems/taskjuggler-3.7.2/bin"
 		"~/Tools/windows/bin"
 		"c:/cygwin64/opt/glo6612wb/bin"
 		"c:/cygwin64/opt/cmigemo-default-win64"
