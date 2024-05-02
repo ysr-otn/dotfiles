@@ -173,7 +173,7 @@ max-fill-column, min-fill-column を利用する"
 	  (len (length quoting-marker)))
       (goto-char b)
       (while (<= (+ (point) 1) e)
-	(insert-string quoting-marker)
+	(insert quoting-marker)
 	(setq e (+ e len))
 	(forward-line 1)))))
 ;(global-set-key "\C-c\y" 'cite-region)

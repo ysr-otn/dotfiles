@@ -780,6 +780,8 @@
 ;;; for el-easydraw
 (load "init-el-easydraw.el")
 
+;;; for chatgpt.el
+(load "init-chatgpt.el")
 
 ;;;
 ;;; プライベートの設定を読み込み

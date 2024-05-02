@@ -7,6 +7,11 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2024-05-02 Thu 15:30>
+    - Emacs に chatgpt.el の設定を追加
+    - mylisp.el の cite-region の実行エラーを修正
+    - Mac 環境下で dired の ! で open を使う設定を追加
+    - wanderlust の outbox の表示変更により最新の Emacs 環境でエラーが出るので変更を無効化
   - <2024-04-26 Fri 19:24>
     - Windows 環境下の zsh と Emacs の taskjuggler の設定を 3.7.2 用に更新
   - <2024-04-21 Sun 17:09>

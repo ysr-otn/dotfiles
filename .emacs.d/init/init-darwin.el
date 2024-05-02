@@ -38,3 +38,7 @@
 
 ;;; command キー(システム側で option キーになっている)をメタキーにする
 (setq mac-option-modifier 'meta)
+
+
+;;; dired で ! によるプログラムの起動に open を用いる
+(add-to-list 'dired-guess-shell-alist-user '("\\..*$" "open"))

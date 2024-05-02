@@ -22,9 +22,11 @@
 .emacs.d/elisp/misc/calfw-syobocal.el
 .emacs.d/elisp/el-easydraw
 .emacs.d/elisp/misc/cal-japan.el
+.emacs.d/elisp/misc/chatgpt.el
 .emacs.d/edraw-ui-state.config
 .emacs.d/elpa
 .emacs.d/recentf
+.emacs.d/request/curl-cookie-jar
 .emacs.d/scratch
 .emacs.d/session
 .emacs.d/url

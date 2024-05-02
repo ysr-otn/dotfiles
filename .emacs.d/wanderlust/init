@@ -228,59 +228,63 @@
 (setq my-wl-summary-showto-folder-regexp "\\(^\\+outbox\\|^%#mh/outbox\\)")
 ;; Newsgroupsフィールドをoverview情報に入れる設定(ただし，localフォルダのみ)
 
-;; サマリの表示関数を変更する
-(setq wl-summary-from-function 'my-wl-summary-from-function-petname)
-(defun my-wl-summary-from-function-petname (from)
-  (let (retval tos ng)
-    (unless
-	(and (eq major-mode 'wl-summary-mode)
-	     (string-match my-wl-summary-showto-folder-regexp
-			   wl-summary-buffer-folder-name)
-	     (member (wl-address-header-extract-address from)
-		     my-wl-user-mail-address-list)
-	     (cond
-	      ((setq tos (elmo-msgdb-overview-entity-get-to entity))
-	       (setq retval
-		     (concat "To:"
-			     (mapconcat
-			      (function
-			       (lambda (to)
-				 (if wl-use-petname
-				     (wl-address-get-petname to)
-				   (car (std11-extract-address-components to)))))
-			      (wl-parse-addresses tos)
-			      ","))))
-	      ((setq ng (elmo-msgdb-overview-entity-get-extra-field
-			 entity "newsgroups"))
-	       (setq retval (concat "Ng:" ng)))))
-      (if wl-use-petname
-	  (setq retval (wl-address-get-petname from))
-	(setq retval from)))
-    retval))
-;; 自分の送ったメールは To: hoge と表示する
-(defun TT:wl-summary-from-funcion-petname (from)
-  (let ((to (elmo-msgdb-overview-entity-get-to entity))
-		(get-petname-func))
-	(if (and (string= (wl-address-header-extract-address from)
-					  (wl-address-header-extract-address wl-from))
-			 to)
-		(progn
-		  (if wl-use-petname
-			  (setq get-petname-func 'wl-address-get-petname)
-			(setq get-petname-func
-				  '(lambda (fromstr)
-					 (or (car (wl-chop-full-name fromstr))
-						 (nth 1 (wl-chop-full-name fromstr))))))
-		  (concat "To:"
-				  (mapconcat
-				   (function (lambda (petname)
-							   (funcall get-petname-func petname)))
-				   (wl-parse-addresses to)
-				   ",")))
-	  (if wl-use-petname
-		  (wl-address-get-petname from)
-		from))))
-  (setq wl-summary-from-funcion 'TT:wl-summary-from-funcion-petname)
+;; サマリの表示関数を変更する(outbox 表示時にエラーが出るので無効化)
+;(setq wl-summary-from-function 'my-wl-summary-from-function-petname)
+;(defun my-wl-summary-from-function-petname (from)
+;  (let (retval tos ng)
+;    (unless
+;	(and (eq major-mode 'wl-summary-mode)
+;	     (string-match my-wl-summary-showto-folder-regexp
+;			   wl-summary-buffer-folder-name)
+;	     (member (wl-address-header-extract-address from)
+;		     my-wl-user-mail-address-list)
+;	     (cond
+;	      ((setq tos (elmo-msgdb-overview-entity-get-to entity))
+;	       (setq retval
+;		     (concat "To:"
+;			     (mapconcat
+;			      (function
+;			       (lambda (to)
+;				 (if wl-use-petname
+;				     (wl-address-get-petname to)
+;				   (car (std11-extract-address-components to)))))
+;			      (wl-parse-addresses tos)
+;			      ","))))
+;	      ((setq ng (elmo-msgdb-overview-entity-get-extra-field
+;			 entity "newsgroups"))
+;	       (setq retval (concat "Ng:" ng)))))
+;      (if wl-use-petname
+;	  (setq retval (wl-address-get-petname from))
+;	(setq retval from)))
+;    retval))
+
+;; 自分の送ったメールは To: hoge と表示する(outbox 表示時にエラーが出るので無効化)
+;; http://roguelife.org/~tsumura/emacs/wl.html
+;(defun TT:wl-summary-from-function-petname (from)
+;  (let ((to (elmo-msgdb-overview-entity-get-to entity))
+;		(get-petname-func))
+;	(if (and (string= (wl-address-header-extract-address from)
+;					  (wl-address-header-extract-address wl-from))
+;			 to)
+;		(progn
+;		  (if wl-use-petname
+;			  (setq get-petname-func 'wl-address-get-petname)
+;			(setq get-petname-func
+;				  '(lambda (fromstr)
+;					 (or (car (wl-chop-full-name fromstr))
+;						 (nth 1 (wl-chop-full-name fromstr))))))
+;		  (concat "To:"
+;				  (mapconcat
+;				   (function (lambda (petname)
+;							   (funcall get-petname-func petname)))
+;				   (wl-parse-addresses to)
+;				   ",")))
+;	  (if wl-use-petname
+;		  (wl-address-get-petname from)
+;		from))))
+;(setq wl-summary-from-function 'TT:wl-summary-from-function-petname)
+
+
 ;; 自分が差出人である mail への reply 時は, To: と Cc: を保存する。
 ; (defadvice wl-draft
 ;   (before TT:wl-not-include-myself-in-To-field activate)
