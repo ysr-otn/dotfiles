@@ -115,6 +115,8 @@
 	  calfw calfw-org request-deferred
 	  ))
 
+(setq package-check-signature nil)
+
 (if (>= (string-to-number emacs-version) 25)
     (append '(perspeen)
 	    my/favorite-packages))

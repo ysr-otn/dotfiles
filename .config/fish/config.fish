@@ -27,7 +27,12 @@ alias rm='rm -i'
 alias mv='mv -i'
 
 # lv に色ずけを許可する
-alias lv='lv -c'
+if [ $LANG = ja_JP.UTF-8 ]
+    alias lv='lv -c -Ou8'
+else
+	alias lv='lv -c'	
+end
+
 
 # その他
 alias quit='exit'

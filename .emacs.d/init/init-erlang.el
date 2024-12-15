@@ -2,4 +2,3 @@
 	   (setq erlang-root-dir "/usr/local/bin/erl"))
 	  )
 (require 'erlang-start)
-(require 'erlang-flymake)

@@ -38,7 +38,7 @@ WORDCHARS='*?[]~'
 ####### Set Host #######
 export HOSTNAME=`hostname`
 
-if [ $HOSTNAME = imglinux110 ]; then
+if [ $HOSTNAME = imglinux110 -o $HOSTNAME = inbdlinux610 ]; then
 	export HOSTTYPE=linux
 elif [ "$OS" ]; then
 	export HOSTTYPE=windows
@@ -50,23 +50,22 @@ fi
 
 
 ####### Set lang #######
-if [ $HOSTTYPE = linux ]; then
-	export LANG=ja_JP.eucJP
-else
-	export LANG=ja_JP.UTF-8
-fi
+export LANG=ja_JP.UTF-8
 	
 ###### Set Editor ######
-if [ $HOSTTYPE != linux ]; then			# Linux 環境では vim の日本語設定が正しく動作しないのでエディタに vim は設定しない
-	export EDITOR=vim
-fi
-
+export EDITOR=vim
 
 
 ########## PATH ##########
 export PATH=$HOME/Tools/$HOSTTYPE/bin:$HOME/Tools/share/bin:$PATH
 if [ $HOSTTYPE = linux ]; then
-	export PATH=${HOME}/pkg/bin:${HOME}/pkg/sbin:${PATH}
+	export PATH=${HOME}/homebrew/bin:${HOME}/homebrew/sbin:${PATH}
+	export PATH=${HOME}/homebrew/opt/glibc/bin:$PATH
+	export PATH=${HOME}/homebrew/opt/glibc/sbin:$PATH
+	export MANPATH=${HOME}/homebrew/share/man:${MANPATH}
+	export INFOPATH=${HOME}/homebrew/share/info:${INFOPATH}
+	export LDFLAGS="-L${HOME}/homebrew/opt/glibc/lib -L${HOME}/homebrew/lib"
+	export CPPFLAGS="-I${HOME}/homebrew/opt/glibc/include -I${HOME}/homebrew/include"
 fi
 export MANPATH=$HOME/Tools/$HOSTTYPE/man:$MANPATH
 
@@ -91,6 +90,15 @@ export EMACS_STARTUP=$EMACS_DIR/startup
 export EMACS_SITE_LISP=$HOME/Tools/$HOSTTYPE/share/emacs/site-lisp
 export EMACS_INFO=$HOME/Tools/$HOSTTYPE/share/info
 export EMACS_INFO2=$HOME/Tools/$HOSTTYPE/info
+
+
+####### Homebrew ########
+if [ $HOSTTYPE != windows ]; then
+	export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
+	export HOMEBREW_NO_INSTALL_UPGRADE=1
+	export HOMEBREW_NO_AUTO_UPDATE=1
+fi 
+
 
 #######	C/C++ の設定  #######
 if [ $HOSTTYPE = i386 ]; then
@@ -243,7 +251,11 @@ if type colordiff 2>/dev/null 1>/dev/null ; then
 	alias diff='colordiff'
 fi
 # lv に色ずけを許可する
-alias lv='lv -c'
+if [ $LANG = ja_JP.UTF-8 ]; then
+    alias lv='lv -c -Ou8'
+else
+    alias lv='lv -c'
+fi
 
 if [ $HOSTTYPE = i386 ]; then
 # jnethack の文字コードを cocot を使って UTF-8 に変換する
