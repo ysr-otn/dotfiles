@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2024-12-15 Sun 22:37>
+    - Emacs に bongo のための音量調整ライブラリ volume.el のパッケージ設定を追加
   - <2024-05-02 Thu 15:30>
     - Emacs に chatgpt.el の設定を追加
     - mylisp.el の cite-region の実行エラーを修正

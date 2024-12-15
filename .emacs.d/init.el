@@ -103,7 +103,7 @@
 	  image+ image-dired+
 	  
 	  ;;; multi media
-	  bongo
+	  bongo volume
 	  
 	  ;; yatex
 	  yatex
