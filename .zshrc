@@ -38,14 +38,12 @@ WORDCHARS='*?[]~'
 ####### Set Host #######
 export HOSTNAME=`hostname`
 
-if [ $HOSTNAME = imglinux110 -o $HOSTNAME = inbdlinux610 ]; then
-	export HOSTTYPE=linux
-elif [ "$OS" ]; then
+if [ -e $HOME/AppData ]; then
 	export HOSTTYPE=windows
-elif [ $HOSTNAME = PC-PA1710C2120R -a `uname -s` = Linux ]; then
-	export HOSTTYPE=ubuntu
+elif [ -e /Volumes ]; then
+	export HOSTTYPE=i386
 else
-	export HOSTTYPE=i386		# mac
+	export HOSTTYPE=linux
 fi
 
 
@@ -107,7 +105,7 @@ if [ $HOSTTYPE = i386 ]; then
 fi
 
 #######	Python の設定  #######
-if [ $HOSTTYPE = i386 -o $HOSTTYPE = ubuntu ]; then
+if [ $HOSTTYPE = i386 ]; then
 	export PYENV_ROOT="$HOME/.pyenv"
 	export PATH="$PYENV_ROOT/bin:$PATH"
 	eval "$(pyenv init -)"
