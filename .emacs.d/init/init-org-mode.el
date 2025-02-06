@@ -491,4 +491,4 @@ resourcereport resourceGraph \"\" {
 }"))
 
 ;;; TaskJuggler のデフォルトのプロジェクトの日程長
-(setq org-taskjuggler-default-project-duration 1000)
+(setq org-taskjuggler-default-project-duration 10000)

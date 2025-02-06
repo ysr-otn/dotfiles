@@ -178,14 +178,15 @@
       '(cp51932-encode))
 
 
-;; 全角チルダ/波ダッシュをWindowsスタイルにする
-(let ((table (make-translation-table-from-alist '((#x301c . #xff5e))) ))
-  (mapc
-   (lambda (coding-system)
-     (coding-system-put coding-system :decode-translation-table table)
-     (coding-system-put coding-system :encode-translation-table table)
-     )
-   '(utf-8 cp932 utf-16le)))
+;; 全角チルダ(～)/波ダッシュ(〜)をWindowsスタイル(= 全角チルダ)にする
+;; Unicode が波ダッシュのフォントを修正したので廃止
+;(let ((table (make-translation-table-from-alist '((#x301c . #xff5e))) ))
+;  (mapc
+;   (lambda (coding-system)
+;     (coding-system-put coding-system :decode-translation-table table)
+;     (coding-system-put coding-system :encode-translation-table table)
+;     )
+;   '(utf-8 cp932 utf-16le)))
 
 
 
