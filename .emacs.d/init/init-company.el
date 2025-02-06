@@ -38,5 +38,7 @@
 ;;; clang のパスを指定
 (cond ((eq system-type 'windows-nt)
 	   (setq company-clang-executable "C:/msys64/mingw64/bin/clang"))
-	  (t
-	   (setq company-clang-executable "/usr/local/opt/llvm/bin/clang")))
+	  ((eq system-type 'darwin)
+	   (setq company-clang-executable "/usr/local/opt/llvm/bin/clang"))
+	  ((eq system-type 'gnu/linux)
+	   (setq company-clang-executable (substitute-in-file-name "$HOME/homebrew/opt/llvm/bin/clang"))))

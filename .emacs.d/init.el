@@ -521,6 +521,8 @@
 	   (load "init-darwin.el"))
 	  ((eq system-type 'windows-nt)
 	   (load "init-windows-nt.el"))
+	  ((eq system-type 'gnu/linux)
+	   (load "init-gnu-linux.el"))
 	  )
 
 ;;; load init file for window systems

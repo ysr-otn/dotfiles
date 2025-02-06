@@ -80,6 +80,11 @@ elif [ $HOSTTYPE = windows ]; then
 	export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/cygdrive/c/msys64/mingw64/lib
 	export LDFLAGS="-L/cygdrive/c/msys64/mingw64/lib"
 	export CPPFLAGS="-I/cygdrive/c/msys64/mingw64/include"	
+elif [ $HOSTTYPE = linux ]; then
+	export PATH=$HOME/homebrew/opt/llvm/bin:$PATH
+	export DYLD_LIBRARY_PATH=$HOME/homebrew/opt/llvm/lib:$DYLD_LIBRARY_PATH
+	export LDFLAGS="-L$HOME/homebrew/opt/llvm/lib"
+	export CPPFLAGS="-I$HOME/homebrew/opt/llvm/include"
 fi
 
 ####### Emacs Environment ########

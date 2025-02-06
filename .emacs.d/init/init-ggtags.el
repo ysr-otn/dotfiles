@@ -30,6 +30,9 @@
 		(setq ggtags-project-root global-output))))
 
 
+;;; ファイル保存時の gtags の自動実行を無効化
+(setq ggtags-update-on-save nil)
+
 ;;; c-mode, c++-mode に ggtags の設定を適用
 (add-hook 'c-mode-hook 'c-init-for-ggtags)
 (add-hook 'c++-mode-hook 'c-init-for-ggtags)

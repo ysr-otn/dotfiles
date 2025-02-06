@@ -4,4 +4,4 @@
 (point-history-mode t)
 
 ;; optional
-(global-set-key (kbd "M-[") 'point-history-show)
+ (global-set-key (kbd "M-]") 'point-history-show)
