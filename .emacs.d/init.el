@@ -88,7 +88,7 @@
 	  e2wm emr flycheck ggtags dumb-jump projectile yasnippet
 	  
 	  ;;  proglaming language tools
-	  erlang ess
+	  erlang ess fish-mode
 	  
 	  ;; org-mode
 	  org-contrib org-tree-slide ox-reveal htmlize slime gnuplot ob-mermaid

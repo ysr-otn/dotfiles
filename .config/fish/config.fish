@@ -51,34 +51,59 @@ if [ $HOSTTYPE = i386 ]
 end
 
 
-# for peco z
-function peco_z
-  set -l query (commandline)
-
-  if test -n $query
-    set peco_flags --query "$query"
-  end
-
-  z -l | peco $peco_flags | awk '{ print $2 }' | read recent
-  if [ $recent ]
-      cd $recent
-      commandline -r ''
-      commandline -f repaint
-  end
-end
 
 
-# key bindings
-function fish_user_key_bindings
-  # for peco
-  # C-r
-  bind \cr 'peco_select_history (commandline -b)'
-  # C-x C-k
-  bind \cx\ck peco_kill
+# for fzf
+if type -q fzf
+	# 旧いキーバインドを無効化
+	set -U FZF_LEGACY_KEYBINDINGS 0
+	
+	# C-o: 配下のファイルを絞り込みエディタで表示する
+	set FZF_ENABLE_OPEN_PREVIEW
+	bind \co __fzf_open
+	
+	# C-r 履歴からコマンドを絞り込み実行する
+	bind \cr __fzf_reverse_isearch
+	
+	# M-c: 配下のディレクトを絞り込み移動する
+	bind \ec __fzf_cd
 
-  # for peco + z
-  # C-x C-z
-  bind \cx\cx peco_z
+	# C-x C-x: z
+	bind \cx\cx __fzf_z
+	
+	# fzf を使ったコマンド実行のためのシェルスクリプトのエイリアス
+	alias fzcmd=fzcmd.sh
+	alias fzbat=fzbat.sh
+	alias fzopn=fzopn.sh
+# for peco
+else
+	function peco_z
+	  set -l query (commandline)
+	
+	  if test -n $query
+	    set peco_flags --query "$query"
+	  end
+	
+	  z -l | peco $peco_flags | awk '{ print $2 }' | read recent
+	  if [ $recent ]
+	      cd $recent
+	      commandline -r ''
+	      commandline -f repaint
+	  end
+	end
+	
+	# key bindings
+	function fish_user_key_bindings
+	  # for peco
+	  # C-r
+	  bind \cr 'peco_select_history (commandline -b)'
+	  # C-x C-k
+	  bind \cx\ck peco_kill
+	
+	  # for peco + z
+	  # C-x C-x
+	  bind \cx\cx peco_z
+	end
 end
 
 
