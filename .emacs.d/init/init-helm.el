@@ -172,3 +172,11 @@
 ;   '(progn
 ;      (define-key helm-find-files-map (kbd "C-h") 'helm-ff-backspace)
 ;      (define-key helm-find-files-map (kbd "C-i") 'helm-execute-persistent-action)))
+
+
+;;; helm から URL を開くブラウザを eww に変更
+(eval-after-load "helm-net"
+  '(progn
+	 (defun helm-search-suggest-perform-additional-action (url query)
+	   "Perform the search via URL using QUERY as input."
+	   (eww (format url (url-hexify-string query))))))

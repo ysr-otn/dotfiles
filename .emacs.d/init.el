@@ -57,7 +57,7 @@
 	  ace-jump-mode	ace-pinyin	ace-window
 	  
 	  ;; search tools
-	  ag google-translate migemo wgrep wgrep-ag ripgrep deadgrep
+	  ag google-translate migemo wgrep wgrep-ag ripgrep deadgrep fzf
 	  
 	  ;; buffer/window control tools
 	  powerline elscreen minibuf-isearch minimap popup popwin session highlight-symbol
@@ -85,7 +85,7 @@
 	  mew navi2ch search-web semi w3m wanderlust
 	  
 	  ;; developmemt tools
-	  e2wm emr flycheck ggtags dumb-jump projectile yasnippet
+	  e2wm emr flycheck ggtags dumb-jump projectile yasnippet textile-mode
 	  
 	  ;;  proglaming language tools
 	  erlang ess fish-mode
@@ -786,6 +786,12 @@
 
 ;;; for chatgpt.el
 (load "init-chatgpt.el")
+
+;;; for fzf.el
+(load "init-fzf.el")
+
+;;; for helm-ja-wikipedia.el
+(load "init-helm-ja-wikipedia.el")
 
 ;;;
 ;;; プライベートの設定を読み込み
