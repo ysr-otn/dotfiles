@@ -5,8 +5,8 @@
 	  (concat "\\("
 			  (regexp-opt '(".2ch.net" ".5ch.net" ".bbspink.com" ".machibbs.com" ".machi.to"))
 			  "\\)\\'"))
-(setq navi2ch-list-bbstable-url "http://menu.5ch.net/bbsmenu.html")
-
+(setq navi2ch-list-bbstable-url "http://menu.5ch.net/bbstable.html")
+                                 
 
 ;(autoload 'navi2ch-browse-url "navi2ch" nil t)
 ;(setq navi2ch-browse-url-browser-function 'w3m-browse-url)
@@ -95,8 +95,8 @@
 
 (setq navi2ch-history-max-line nil) ; 履歴の表示行制限無し
 
- ;;; 書き込みは 2chproxy.pl 経由をせずに直接行う
-(setq navi2ch-net-send-message-use-http-proxy nil)
+;;; 書き込みも proxy2ch 経由で行う(--chunked -a "Monazilla/1.00 navi2ch/1.8.4" オプションと併用)
+(setq navi2ch-net-send-message-use-http-proxy t)
 
 
 ;(setq navi2ch-board-enable-readcgi nil
