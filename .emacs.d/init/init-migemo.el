@@ -8,10 +8,17 @@
   
   ;;; 環境毎の設定
   (cond ((string= (getenv "HOSTTYPE") "linux")
-		 (progn
-		   (setq migemo-command (substitute-in-file-name "$HOME/homebrew/bin/cmigemo"))
-		   (setq migemo-dictionary (substitute-in-file-name "$HOME/homebrew/Cellar/cmigemo/20110227/share/migemo/utf-8/migemo-dict"))
-		   (setq migemo-coding-system 'utf-8-unix)
+		 (if (file-exists-p "/usr/bin/cmigemo")
+		   (progn
+			 (setq migemo-command (substitute-in-file-name "/usr/bin/cmigemo"))
+			 (setq migemo-dictionary (substitute-in-file-name "/usr/share/migemo/utf-8/migemo-dict"))
+			 (setq migemo-coding-system 'utf-8-unix)
+			 )
+		   (progn
+			 (setq migemo-command (substitute-in-file-name "$HOME/homebrew/bin/cmigemo"))
+			 (setq migemo-dictionary (substitute-in-file-name "$HOME/homebrew/Cellar/cmigemo/20110227/share/migemo/utf-8/migemo-dict"))
+			 (setq migemo-coding-system 'utf-8-unix)
+			 )
 		   ))
 		((string= (getenv "HOSTTYPE") "windows")
 		 (progn

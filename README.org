@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2025-07-18 Fri 11:18>
+    - Emacs に Linux 環境での migemo と mpg123 のエラー対策を追加
   - <2025-06-15 Sun 15:38>
     - Emacs の Bongo に Timidity++ で MIDI を再生する設定を追加
   - <2025-06-13 Fri 16:33>
