@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2025-09-23 Tue 16:04>
+    - Emacs に Apple silicon 用の migemo の設定を追加
   - <2025-07-18 Fri 11:18>
     - Emacs に Linux 環境での migemo と mpg123 のエラー対策を追加
   - <2025-06-15 Sun 15:38>

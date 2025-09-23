@@ -26,6 +26,12 @@
 		   (setq migemo-dictionary (substitute-in-file-name "c:/cygwin64/opt/cmigemo-default-win64/dict/utf-8/migemo-dict"))
 		   (setq migemo-coding-system 'utf-8-dos)
 		   ))
+		((file-exists-p "/opt/homebrew/bin/cmigemo")
+		 (progn
+			 (setq migemo-command (substitute-in-file-name "/opt/homebrew/bin/cmigemo"))
+			 (setq migemo-dictionary (substitute-in-file-name "/opt/homebrew/share/migemo/utf-8/migemo-dict"))
+			 (setq migemo-coding-system 'utf-8-unix)
+			 ))
 		(t
 		 (progn
 		   (setq migemo-command "/usr/local/bin/cmigemo")
