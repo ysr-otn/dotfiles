@@ -71,10 +71,10 @@ export GITHUB_DOTFILE_DIR=$HOME/Development/github/ysr-otn/dotfiles
 
 # llvm 関係のパス設定
 if [ $HOSTTYPE = i386 ]; then
-	export PATH=/usr/local/opt/llvm/bin:$PATH
-	export DYLD_LIBRARY_PATH=/usr/local/opt/llvm/lib:$DYLD_LIBRARY_PATH 
-	export LDFLAGS="-L/usr/local/opt/llvm/lib"
-	export CPPFLAGS="-I/usr/local/opt/llvm/include"	
+	export PATH=/opt/homebrew/opt/llvm/bin:$PATH
+	export DYLD_LIBRARY_PATH=/opt/homebrew/opt/llvm/lib:$DYLD_LIBRARY_PATH 
+	export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+	export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"	
 elif [ $HOSTTYPE = windows ]; then
 	export PATH=$PATH:/cygdrive/c/msys64/mingw64/bin
 	export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/cygdrive/c/msys64/mingw64/lib

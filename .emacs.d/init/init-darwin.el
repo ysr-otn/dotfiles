@@ -1,9 +1,9 @@
 (setq exec-path
 	  (append
 	   (list
-		"/usr/local/opt/llvm/bin"
+		"/opt/homebrew/opt/llvm/bin"
+		"/opt/homebrew/bin"		
 		"/usr/local/bin"
-		"/Applications/CarbonEmacs.app/Contents/MacOS/bin/"
 		)
 	   exec-path))
 
@@ -15,7 +15,10 @@
 				(concat (getenv "HOME") "/.pyenv/shims:")
 				(concat (getenv "HOME") "/.pyenv/bin:")
 				
+				(substitute-in-file-name "/opt/homebrew/bin:")
+				
 				(substitute-in-file-name "/usr/local/bin:")
+				
 				;;; for llvm
 				(substitute-in-file-name "/usr/local/opt/llvm/bin:")
 				
@@ -26,11 +29,11 @@
 
 ;;; for llvm
 (setenv "DYLD_LIBRARY_PATH"
-		(concat "/usr/local/opt/llvm/lib:"
+		(concat "/opt/homebrew/opt/llvm/lib:"
 				(getenv "DYLD_LIBRARY_PATH")))
 
-(setenv "LDFLAGS" "-L/usr/local/opt/llvm/lib")
-(setenv "CPPFLAGS" "-I/usr/local/opt/llvm/include")
+(setenv "LDFLAGS" "-L/opt/homebrew/opt/llvm/lib")
+(setenv "CPPFLAGS" "-I/opt/homebrew/opt/llvm/include")
 
 ;; for pyenv
 (setenv "PYENV_ROOT" (concat (getenv "HOME") "/.pyenv"))
