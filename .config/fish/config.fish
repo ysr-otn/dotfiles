@@ -46,8 +46,8 @@ if [ $HOSTTYPE = i386 ]
    alias ql='qlmanage -p $argv &> /dev/null'
    alias xv='qlmanage -p $argv &> /dev/null'
    
-   # jnethack の文字コードを cocot を使って UTF-8 に変換する
-   alias jnethack='cocot -t UTF-8 -p eucjp -- jnethack'
+   # jnethack の文字コードを cocot を使って UTF-8 に変換する(2025 年時点で不要になったので無効化)
+   # alias jnethack='cocot -t UTF-8 -p eucjp -- jnethack'
 end
 
 

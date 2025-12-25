@@ -9,6 +9,8 @@
 
 (setenv "HOSTTYPE" "i386")
 
+(setenv "LANG" "ja_JP.UTF-8")
+
 (setenv "PATH"
 		(concat (substitute-in-file-name "$HOME/Tools/$HOSTTYPE/bin:")
 				;; for pyenv

@@ -151,8 +151,8 @@
 ;;;  initial-frame-alist でフレーム位置を微調整)
 (setq default-frame-alist
 					(append (list
-							 '(height	. 70)
-							 '(width	. 100)
+							 '(height	. 80)
+							 '(width	. 132)
 							 '(top		. 0)
 							 '(left		. 0)
 ;;; 色はカラーテーマに任せる
@@ -162,8 +162,8 @@
 							 )))
 (setq initial-frame-alist 
 					(append (list
-							 '(height	. 70)
-							 '(width	. 100)
+							 '(height	. 80)
+							 '(width	. 132)
 							 '(top		. 0)
 							 '(left		. 0)
 ;;; 色はカラーテーマに任せる
@@ -171,4 +171,3 @@
 ;							 '(background-color . "black")
 ;							 '(cursor-color . "turquoise3")
 							 )))
-

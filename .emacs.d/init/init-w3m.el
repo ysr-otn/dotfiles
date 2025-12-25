@@ -8,16 +8,18 @@
 
 (setq w3m-type 'w3m-mnc) ;;; mnc patch を使用した w3m を使用
 (setq w3m-bookmark-file "~/.w3m/bookmark.html")
-(setq w3m-weather-default-area "兵庫県・南部")
-(setq w3m-search-default-engine "google-ja")
+(setq w3m-weather-default-area "大阪府")
+(setq w3m-search-default-engine "duckduckgo")
 ;(setq w3m-home-page "file:///home/ysr-otn/.mozilla/ysr-otn/41an8pij.slt/bookmarks.html")
-(setq w3m-home-page "http://www.google.com")
+(setq w3m-home-page "https://duckduckgo.com/?t=hk")
 
 (setq w3m-display-inline-image nil)
 ;(setq w3m-type 'w3m-mnc)
 ;(setq w3m-use-form t)
 (setq w3m-antenna-sites 
-	  '(("http://localhost/~ysr-otn/antenna" "Yshihiro's Antenna" antenna)))
+	  '(("https://a.hatena.ne.jp/category?c=c" "はてなアンテナ > コンピュータ")
+		("https://2chmatomeru.info/" "2ちゃんねる まとめるまとめ")
+		("http://matome100.com/" "まとめアンテナ 100")))
 ;(setq w3m-icon-directory (substitute-in-file-name "$EMACS_SITE_LISP/w3m/icons"))
 
 (setq w3m-mode-hook
@@ -44,6 +46,14 @@
 		 (define-key w3m-mode-map [S-return]	'w3m-view-url-with-browse-url)
 		 (define-key w3m-mode-map [mouse-3]		'w3m-view-previous-page)
 		 (define-key w3m-mode-map [S-mouse-3]	'w3m-view-next-page)
+		 ;;  emacs-w3m で DuckDuckGo が文字化けする対策
+         ;; https://www.reddit.com/r/emacs/comments/vdmed9/charset_issue_with_emacsw3m/
+		 (setq w3m-encoding-alist
+			   (nconc w3m-encoding-alist
+					  '(("br" . brotli))))
+		 (setq w3m-decoder-alist
+			   (nconc w3m-decoder-alist
+					  '((brotli "brotli" ("-d")))))
          ))
 
 ;;; Wanderlust の mime-mode で w3m を使用する時のキー設定
