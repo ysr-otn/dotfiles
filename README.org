@@ -7,6 +7,8 @@
 Unix 系の各種設定ファイル(.*)を GitHub で管理する
 
 * 更新履歴
+  - <2026-03-31 Tue 16:46>
+	- navi2ch の設定を最新の proxy2ch に合せて修正
   - <2025-12-25 Thu 21:15>
     - zsh と fish で jnethack の文字コードの設定を変更
     - Emacs に Mac 用の文字コードの設定と MacBook Air 用のウィンドウサイズの設定を追加

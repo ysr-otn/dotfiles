@@ -5,8 +5,12 @@
 	  (concat "\\("
 			  (regexp-opt '(".2ch.net" ".5ch.net" ".bbspink.com" ".machibbs.com" ".machi.to"))
 			  "\\)\\'"))
-(setq navi2ch-list-bbstable-url "http://menu.5ch.net/bbstable.html")
-                                 
+
+;;; proxy2ch を使用することで localhost:9080 から板一覧が取得できる
+(setq navi2ch-list-bbstable-url "http://localhost:9080/5ch/bbsmenu.html")
+;;; ↑でなく下記を指定しても自動的に 5ch.io にドメインが変換されて接続できるっぽい
+;(setq navi2ch-list-bbstable-url "http://menu.5ch.net/bbsmenu.html")
+
 
 ;(autoload 'navi2ch-browse-url "navi2ch" nil t)
 ;(setq navi2ch-browse-url-browser-function 'w3m-browse-url)
